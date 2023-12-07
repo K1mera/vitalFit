@@ -2,7 +2,26 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#D74545",
+        secondary: "#D6774F",
+        tertiary: "#2FD6BD",
+        primaryDark: "#475157",
+        primaryLight: "#D9D9D9",
+      },
+      backgroundColor: {
+        primary: "#D74545",
+        secondary: "#D6774F",
+        tertiary: "#2FD6BD",
+        primaryDark: "#475157",
+        primaryLight: "#D9D9D9",
+      },
+      fontFamily: {
+        bebas: "'Bebas Neue', sans-serif",
+        montserrat: "'Montserrat', sans-serif",
+      },
+    },
   },
   plugins: [],
 };
