@@ -9,8 +9,12 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      Cantidad: {
+      amount: {
         type: DataTypes.INTEGER,
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     { timestamps: false }
