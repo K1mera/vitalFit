@@ -1,0 +1,241 @@
+.homecontainer {
+    border: 1px solid black;
+}
+
+.text-image-container {
+    /* border: 1px solid red; */
+    display: flex;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    background: linear-gradient(rgba(5, 7, 12, 0.5), rgba(5, 7, 12, 0.5)),
+        url(../icons/Rectangle.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 420px;
+}
+.text {
+    /* border: 1px solid orange; */
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 34px;
+    font-weight: 250;
+}
+
+.offer {
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imagen {
+    /* border: 1px solid pink; */
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    background: url(../icons/suplemeto-portada.png);
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 15px;
+}
+
+.boton-comprar {
+    /* border: 1px solid pink; */
+    color: white;
+    background-color: #2fd6bd;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Bebas Neue";
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
+}
+
+.categorias-container {
+    display: flex;
+    justify-content: center;
+    background-color: #d9d9d9;
+    padding: 20px 0px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 50px;
+}
+
+.button-categoria {
+    color: white;
+    background-color: #d74545;
+    border-radius: 20px;
+    padding: 5px 30px;
+    font-family: "Bebas Neue";
+    font-size: 24px;
+}
+
+.destacados-text {
+    text-align: center;
+    font-family: "Bebas Neue";
+    font-size: 40px;
+    padding: 30px 0px 0px;
+}
+
+.destacados-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.producto-destacado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Bebas Neue";
+    font-size: 24px;
+}
+
+.images-destacados {
+    width: 200px;
+}
+
+.photos-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 60px;
+    height: 600px;
+    margin-bottom: 60px;
+}
+
+.photo-div1 {
+    background: url(../../public/images/menconcapucha.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.photo-div2 {
+    background: url(../../public/images/mujersogas.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -170px;
+    height: 100%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.motivation-container {
+    background-color: #d9d9d9eb;
+    width: 90%;
+    border-radius: 20px;
+    font-family: "Bebas Neue";
+    font-size: 22px;
+    padding: 10px 20px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.product-buy {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50%;
+}
+
+.product-div {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 50%;
+    border-radius: 20px;
+    margin-bottom: 8%;
+    position: relative;
+}
+
+.parrafo-producto-photo {
+    font-family: "Montserrat";
+    font-size: small;
+    font-weight: 600;
+    margin: 5%;
+}
+
+.images-inphoto {
+    height: 80%;
+}
+
+.boton-comprar-photo {
+    color: white;
+    background-color: #2fd6bd;
+    text-align: center;
+    border-radius: 20px;
+    font-family: "Bebas Neue";
+    padding: 5px;
+    font-size: 20px;
+    width: 25%;
+    position: absolute;
+    top: 90%;
+    left: 40%;
+}
+
+.why-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 80px;
+    margin-top: 30px;
+    margin-bottom: 90px;
+}
+
+.h6 {
+    font-family: "Bebas Neue";
+    font-size: 24px;
+}
+
+.carac-vitalfit-container {
+    /* border: 3px solid red; */
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.vaso-container {
+    width: 40%;
+}
+
+.noestasseguro-container {
+    width: 30%;
+    background-color: #d9d9d9;
+    font-family: "Bebas neue";
+    font-size: 42px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.noestasseguro-p {
+    width: 40%;
+}
+
+#notepreocupes {
+    font-family: "montserrat";
+    font-size: 20px;
+}
+
+#separaunaasesoria {
+    width: 100%;
+}
