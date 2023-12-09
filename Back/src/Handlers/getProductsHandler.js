@@ -9,7 +9,7 @@ async function getProductsHandler(req, res) {
 
     res.status(200).json(response);
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(400).json(error.message);
   }
 }
 module.exports = getProductsHandler;
