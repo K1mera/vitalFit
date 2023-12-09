@@ -1,10 +1,10 @@
 import { Home } from "./pages/home";
+import { MainRouter } from "./routes";
 
 export const VitalFitApp = () => {
     return (
         <div>
-            {/* Aqui abajo pongan el componente que van a trbajar */}
-            <Home />
+            <MainRouter />
         </div>
     );
 };
