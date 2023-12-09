@@ -64,8 +64,8 @@ User.hasMany(Review);
 Review.belongsTo(User);
 
 //Relación productos - categorias
-Product.hasOne(Category);
-Category.belongsToMany(Product, { through: "product_category" });
+Product.belongsTo(Category);
+Category.hasMany(Product);
 
 //Relación categorías - subCategorías
 Category.hasMany(SubCategory);
