@@ -64,12 +64,24 @@ User.hasMany(Review);
 Review.belongsTo(User);
 
 //Relación productos - categorias
-Product.belongsTo(Category);
-Category.hasMany(Product);
+Category.hasMany(Product, {
+  foreignKey: "categoryId",
+  sourceKey: "id",
+});
+Product.belongsTo(Category, {
+  foreignKey: "categoryId",
+  targetKey: "id",
+});
 
 //Relación categorías - subCategorías
-Category.hasMany(SubCategory);
-SubCategory.belongsTo(Category);
+Category.hasMany(SubCategory, {
+  foreignKey: "categoryId",
+  sourceKey: "id",
+});
+SubCategory.belongsTo(Category, {
+  foreignKey: "categoryId",
+  targetKey: "id",
+});
 
 //Relación ordenes - usuario
 User.hasMany(Order);

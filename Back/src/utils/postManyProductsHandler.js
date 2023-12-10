@@ -1,6 +1,6 @@
-const postProducts = require("../Controllers/postProductsController");
+const postProducts = require("./postManyProductsController");
 
-async function postProductsHandler(req, res) {
+async function postManyProductsHandler(req, res) {
   try {
     const response = await postProducts();
     res.status(200).send("Se cargaron los datos correctamente");
@@ -9,4 +9,4 @@ async function postProductsHandler(req, res) {
   }
 }
 
-module.exports = postProductsHandler;
+module.exports = postManyProductsHandler;
