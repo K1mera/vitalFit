@@ -1,10 +1,23 @@
 const { Router } = require("express");
 const router = Router();
 
-const getProductsHandler = require("../Handlers/getProductsHandler");
-const postProductsHandler = require("../Handlers/postProductsHandler");
+const postProductHandler = require("../Handlers/ProductsHandlers/postProductHandler");
+const getCategory = require("../Controllers/Category/getCategory");
+const postCategory = require("../Controllers/Category/postCategory");
+const getProductsHandler = require("../Handlers/ProductsHandlers/getProductsHandler");
+const postManyProductsHandler = require("../utils/postManyProductsHandler");
+const getProductsByIdHandler = require("../Handlers/ProductsHandlers/getProductByIdHandler");
 
-router.post("/", postProductsHandler);
+//products
 router.get("/", getProductsHandler);
-// router.get("/products/:id", getProductsByIdHandler);
+router.post("/", postProductHandler);
+router.get("/:id", getProductsByIdHandler);
+
+//Categories
+router.get("/category", getCategory);
+router.post("/category", postCategory);
+
+//Many
+router.post("/many", postManyProductsHandler);
+
 module.exports = router;
