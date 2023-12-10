@@ -43,29 +43,52 @@ export const NavBarComp = () => {
         >
           Training
         </NavLink>
-        <NavLink to="blog"
+        <NavLink
+          to="blog"
           className={({ isActive }) =>
             `hover:text-tertiary ${
               !isActive
                 ? "text-black"
                 : "text-primary underline decoration-primary underline-offset-4"
             }`
-          }>Blog</NavLink>
-        <NavLink to="asesorias"
+          }
+        >
+          Blog
+        </NavLink>
+        <NavLink
+          to="asesorias"
           className={({ isActive }) =>
             `hover:text-tertiary ${
               !isActive
                 ? "text-black"
                 : "text-primary underline decoration-primary underline-offset-4"
             }`
-          }>Asesorias</NavLink>
+          }
+        >
+          Asesorias
+        </NavLink>
       </section>
       <section className="flex gap-2 w-[160px]">
         {/* // todo  */}
         {/* change the icon if the user is logged */}
-        <UserIcon className={"w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"} />
-        <FavoriteIcon className={"w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"} />
-        <ShoppingCartIcon className={"w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"} />
+        <NavLink to={"/loginPage"}>
+          <UserIcon
+            className={
+              "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+            }
+          />
+        </NavLink>
+
+        <FavoriteIcon
+          className={
+            "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+          }
+        />
+        <ShoppingCartIcon
+          className={
+            "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+          }
+        />
       </section>
     </nav>
   );
