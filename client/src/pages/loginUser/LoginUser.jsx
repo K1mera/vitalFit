@@ -1,7 +1,9 @@
 import { LogoIcon } from "../../icons";
 import { useState } from "react";
+import { validationUser } from "./validations";
 
 export const LoginUser = () => {
+  const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
     usuario: "",
     contraseña: "",
@@ -13,6 +15,7 @@ export const LoginUser = () => {
       ...login,
       [name]: value,
     });
+    setErrors(validationUser({ ...login, [name]: value }));
   };
 
   return (
@@ -78,6 +81,7 @@ export const LoginUser = () => {
             value={login.usuario}
             onChange={handleLogin}
           ></input>
+          {errors.usuario && <p className="text-red-400">{errors.usuario}</p>}
           <br />
           <label
             style={{
@@ -98,6 +102,9 @@ export const LoginUser = () => {
             value={login.contraseña}
             onChange={handleLogin}
           ></input>
+          {errors.contraseña && (
+            <p className="text-red-400">{errors.contraseña}</p>
+          )}
           <br />
           <button
             style={{

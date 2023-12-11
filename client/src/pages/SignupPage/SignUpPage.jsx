@@ -1,15 +1,17 @@
 import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import { validationForm } from "./validations";
 
 export const SingUpPage = () => {
   const [handleForm, setHandleForm] = useState({
     nombre: "",
-    id: "",
+    dni: "",
     correo: "",
     contraseña: "",
     confirmarContraseña: "",
   });
+  const [errors, setErrors] = useState({});
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -17,6 +19,7 @@ export const SingUpPage = () => {
       ...handleForm,
       [name]: value,
     });
+    setErrors(validationForm({ ...handleForm, [name]: value }));
   };
 
   return (
@@ -42,7 +45,7 @@ export const SingUpPage = () => {
       </span>
       <div className="w-100% flex items-center justify-center">
         <div
-          className="absolute top-40 z-20"
+          className="absolute top-40 z-20 justify-center"
           style={{
             background: "rgba(71, 81, 87, 0.8)",
             padding: "15px",
@@ -75,13 +78,14 @@ export const SingUpPage = () => {
           <br />
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
             name="nombre"
             type="text"
             placeholder=" Nombre..."
             value={handleForm.nombre}
             onChange={handleFormLogin}
           ></input>
+          {errors.nombre && <p className="text-red-400">{errors.nombre}</p>}
           <br />
           <label
             style={{
@@ -90,18 +94,19 @@ export const SingUpPage = () => {
               fontSize: "1.5rem",
             }}
           >
-            ID
+            DNI
           </label>
           <br />
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
-            name="id"
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
+            name="dni"
             type="text"
-            placeholder=" ID..."
-            value={handleForm.id}
+            placeholder=" DNI..."
+            value={handleForm.dni}
             onChange={handleFormLogin}
           ></input>
+          {errors.dni && <p className="text-red-400">{errors.dni}</p>}
           <br />
           <label
             style={{
@@ -114,31 +119,39 @@ export const SingUpPage = () => {
           </label>
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
             name="correo"
             type="text"
             placeholder=" Email..."
             value={handleForm.correo}
             onChange={handleFormLogin}
           ></input>
+          {errors.correo && <p className="text-red-400">{errors.correo}</p>}
           <label
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.5rem",
+              marginTop: "10px",
             }}
           >
             CONTRASEÑA
           </label>
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
+            style={{
+              borderRadius: "10px",
+              marginBottom: "10px",
+            }}
             name="contraseña"
             type="password"
             placeholder=" Contraseña..."
             value={handleForm.contraseña}
             onChange={handleFormLogin}
           ></input>
+          {errors.contraseña && (
+            <p className="text-red-400">{errors.contraseña}</p>
+          )}
           <label
             style={{
               fontFamily: "NuevaFuente, bebas neue",
@@ -150,13 +163,16 @@ export const SingUpPage = () => {
           </label>
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
             name="confirmarContraseña"
             type="password"
             placeholder=" Confirmar contraseña..."
             value={handleForm.confirmarContraseña}
             onChange={handleFormLogin}
           ></input>
+          {errors.confirmarContraseña && (
+            <p className="text-red-400">{errors.confirmarContraseña}</p>
+          )}
           <button
             style={{
               fontFamily: "NuevaFuente, bebas neue",
@@ -167,7 +183,8 @@ export const SingUpPage = () => {
               paddingLeft: "25px",
               paddingRight: "25px",
               borderRadius: "15px",
-              marginBottom: "10px",
+              marginBottom: "15px",
+              marginTop: "12px",
               marginLeft: "145px",
             }}
           >

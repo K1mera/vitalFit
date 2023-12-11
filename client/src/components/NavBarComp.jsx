@@ -20,7 +20,7 @@ export const NavBarComp = () => {
           Home
         </NavLink>
         <NavLink
-          to="products"
+          to="productsPage"
           className={({ isActive }) =>
             `hover:text-tertiary ${
               !isActive

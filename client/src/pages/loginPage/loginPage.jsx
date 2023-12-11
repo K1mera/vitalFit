@@ -1,18 +1,42 @@
 import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useForm } from "../../hooks";
 
+const formValidations = {
+  email: [(value) => value.includes("@"), "El correo no es valido"],
+  password: [
+    (value) => /[A-Z]/.test(value) && /\d/.test(value),
+    "La contraseña debe tener una mayúscula y al menos un número",
+  ],
+};
 
 export const LoginPage = () => {
-  const infoEmail = (event) => {
-    let infoEmail = event.target.value;
-  };
+  const [formSubmitted, setformSubmitted] = useState(false);
 
-  const infoPassword = (event) => {
-    let infoPass = event.target.value;
+  const {
+    email,
+    password,
+    emailValid,
+    passwordValid,
+    isFormValid,
+    onInputChange,
+  } = useForm(
+    {
+      email: "",
+      password: "",
+    },
+    formValidations
+  );
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    setformSubmitted(true);
+    if (isFormValid) return;
   };
 
   return (
-    <div className="relative ">
+    <form className="relative" onSubmit={onSubmit}>
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
@@ -67,18 +91,23 @@ export const LoginPage = () => {
           <br />
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
-            name="correo"
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
+            name="email"
             type="text"
             placeholder=" Correo..."
-            onChange={infoEmail}
+            value={email}
+            onChange={onInputChange}
           ></input>
+          {!emailValid && !formSubmitted
+            ? ""
+            : email && <span className="text-red-400" >{emailValid}</span>}
           <br />
           <label
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.5rem",
+              marginTop: "10px",
             }}
           >
             CONTRASEÑA
@@ -86,14 +115,19 @@ export const LoginPage = () => {
           <br />
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "25px" }}
-            name="contraseña"
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
+            name="password"
             type="password"
             placeholder=" Contraseña..."
-            onChange={infoPassword}
+            value={password}
+            onChange={onInputChange}
           ></input>
+          {!passwordValid && !formSubmitted
+            ? ""
+            : email && <span className="text-red-400" >{passwordValid}</span>}
           <br />
           <button
+            type="submit"
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
@@ -104,6 +138,7 @@ export const LoginPage = () => {
               paddingRight: "25px",
               borderRadius: "15px",
               marginBottom: "10px",
+              marginTop: "12px",
               marginLeft: "145px",
             }}
           >
@@ -134,8 +169,6 @@ export const LoginPage = () => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
-
-
