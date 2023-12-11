@@ -1,7 +1,12 @@
-const { SubCategory } = require("../../db");
-const getSubCategory = async (req, res) => {
-  const category = await SubCategory.findAll();
-  return res.json(category);
+const { SubCategory, Category } = require("../../db");
+const getSubCategory = async () => {
+  const subCat = await SubCategory.findAll({
+    include: {
+      model: Category,
+      attributes: ["name"],
+    },
+  });
+  return subCat;
 };
 
 module.exports = getSubCategory;

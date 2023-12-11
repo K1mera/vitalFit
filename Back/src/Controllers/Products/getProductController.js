@@ -1,11 +1,11 @@
-const { Product, Category } = require("../../db.js");
+const { Product, Category, Review } = require("../../db.js");
 
 const getProducts = async () => {
   const products = await Product.findAll({
-    include: {
-      model: Category,
-      attributes: ["name"],
-    },
+    include: [
+      { model: Category, attributes: ["name"] },
+      { model: Review, attributes: ["title", "rate", "content"] },
+    ],
   });
 
   if (!products.length) throw new Error("No hay productos en la base de datos");
