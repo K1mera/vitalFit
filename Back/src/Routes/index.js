@@ -9,6 +9,7 @@ const getProductsByIdHandler = require("../Handlers/Products/getProductByIdHandl
 const postSubCategoryHandler = require("../Handlers/subCategory/postSubHandler");
 const postReviewHandler = require("../Handlers/Review/postReviewHandler");
 const postCategoryHandler = require("../Handlers/Category/postCategoryHandler");
+const postUserHandler = require("../Handlers/User/postUserHandler");
 
 //products
 router.get("/", getProductsHandler);
@@ -27,5 +28,8 @@ router.post("/review", postReviewHandler);
 
 //Many
 router.post("/many", postManyProductsHandler);
+
+//User
+router.post("/user", postUserHandler);
 
 module.exports = router;
