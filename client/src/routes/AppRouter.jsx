@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Home } from "../pages";
 import { NavBarComp } from "../components";
+import ProductsPage from '../components/productsPage/ProductsPage.jsx';
 
-
-export const AppRouter = () => {
+export const AppRouter = ( {items, filter, allItems}) => {
   return (
     <>
       <NavBarComp />
@@ -12,6 +12,7 @@ export const AppRouter = () => {
         <Routes>
           <Route path="home" element={<Home />} />
           {/* agreguen la ruta de las paginas que creen aquí abajo */}
+          <Route path='/productspage' element= {<ProductsPage items={items} filter={filter} allItems={allItems} />} />
 
 
 

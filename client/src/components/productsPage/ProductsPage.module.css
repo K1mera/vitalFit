@@ -1,0 +1,167 @@
+
+.Container {
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.3em;
+    margin: 0.1em;
+    padding: 0 0.5em 0 0.5em;
+    min-height: 100vh;
+    width: 97vw;
+    background: rgba(224, 36, 11, 0); 
+}
+
+.cardsContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    height: auto;
+    width: 75vw;
+}
+
+.controls {
+    border-radius: 15px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column; 
+    height: auto;
+    width: 25vw;
+}
+
+.search {
+    align-items: center;
+    background:  #D9D9D9;
+    margin: 1em;
+    display: flex;
+    height: 18vh;
+    border-radius: 15px;
+    flex-direction: column;
+    border: 0px; 
+}
+
+.searchInput{
+    width: 20vw;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 15px;
+    border: 0px;
+    height: 2em;
+}
+
+.searchButton{
+    width: 7vw;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border: 0px;
+    border-radius: 0.8em;
+    height: 2em;
+    background-color: #2FD6BD;
+    color: white;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 15px; 
+    font-weight: normal;
+}
+
+.filter {
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    height: 18vh;
+    border-radius: 15px;
+    flex-direction: column;
+    border: 0px; 
+}
+
+.line{
+    
+    width: 22vw;
+    border: 1px solid #D9D9D9;
+}
+
+.title{
+    margin-top: 1em;
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 16px; 
+    font-weight: bold;
+}
+
+.Columna {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+} 
+
+.Input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    margin-bottom: 0.5em;
+}
+
+.Checks {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+}
+.Check {
+    margin-right: 5px;
+}
+
+.CheckboxLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 15px; 
+    font-weight: normal;
+}
+
+.paginado {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    flex-wrap: wrap;
+    height: 100vh;
+    /* margin-top: 5px; */
+}
+
+.buttonPag {
+    height: 25px; 
+    width: 40.5px;
+    padding-top: 2px;
+    padding-left: 10px;
+    background-color: #FF5722;
+    color: white;
+    font-size: 11px;
+    border: 2px solid #222831;
+    border-radius: 5px;
+    cursor: pointer;
+ }
+
+.filtro {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    height: 20px;
+    align-items: center;
+}
+
+.pag {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    height: 20px;
+    align-items: center;
+}
+
+.Orden {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    height: 20px;
+    align-items: center;
+}
