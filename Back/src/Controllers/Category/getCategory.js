@@ -1,7 +1,9 @@
 const { Category } = require("../../db");
-const getCategory = async (req, res) => {
+
+const getCategory = async () => {
   const category = await Category.findAll();
-  return res.json(category);
+  if (!category) throw new Error("No se encontraron categorías");
+  return category;
 };
 
 module.exports = getCategory;

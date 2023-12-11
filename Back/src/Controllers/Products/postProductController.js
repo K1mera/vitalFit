@@ -9,12 +9,12 @@ const postProduct = async (data) => {
     image,
     flavour,
     description,
-    category,
+    categoryId,
     subCat,
   } = data;
 
   const findCat = await Category.findOne({
-    where: { name: category },
+    where: { id: categoryId },
   });
 
   const created = await Product.create({
