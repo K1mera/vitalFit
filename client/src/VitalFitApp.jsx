@@ -9,6 +9,7 @@ export const VitalFitApp = () => {
     
     const allItems = [
         {
+          id: 1,
           name: "ISO WHEY PROTEIN 1",
           price: 10000,
           image: 'http://drive.google.com/uc?export=view&id=1e5K09pxyEJjxOpmurWuP7V5quvuQ2Pjw',
@@ -16,6 +17,7 @@ export const VitalFitApp = () => {
           offer: true,
         },
         {
+          id: 2,
           name: "ISO WHEY CREATINE 2",
           price: 20000,
           image: 'http://drive.google.com/uc?export=view&id=1e5K09pxyEJjxOpmurWuP7V5quvuQ2Pjw',
@@ -23,6 +25,7 @@ export const VitalFitApp = () => {
           offer: true,
         },
         {
+            id: 3,
             name: "ISO WHEY ENERGY 3",
             price: 30000,
             image: 'http://drive.google.com/uc?export=view&id=1e5K09pxyEJjxOpmurWuP7V5quvuQ2Pjw',
@@ -30,6 +33,7 @@ export const VitalFitApp = () => {
             offer: false,
         },
         {
+            id: 4,
             name: "ISO WHEY WEIGHT CONTROL 4",
             price: 40000,
             image: 'http://drive.google.com/uc?export=view&id=1e5K09pxyEJjxOpmurWuP7V5quvuQ2Pjw',
@@ -37,6 +41,7 @@ export const VitalFitApp = () => {
             offer: false,
         },
         {
+          id: 5,
           name: "ISO WHEY ACCESSORY 5",
           price: 50000,
           image: 'http://drive.google.com/uc?export=view&id=1e5K09pxyEJjxOpmurWuP7V5quvuQ2Pjw',
