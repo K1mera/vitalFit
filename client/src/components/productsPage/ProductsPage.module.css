@@ -47,6 +47,7 @@
     border-radius: 15px;
     border: 0px;
     height: 2em;
+    text-align: center;
 }
 
 .searchButton{
@@ -68,7 +69,7 @@
     margin-left: 1em;
     margin-right: 1em;
     display: flex;
-    height: 18vh;
+    height: auto;
     border-radius: 15px;
     flex-direction: column;
     border: 0px; 
