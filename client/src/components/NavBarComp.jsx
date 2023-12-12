@@ -1,9 +1,27 @@
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { openShopList } from "../store/slices/products/thunks";
 
+import { OrderModal } from "./";
 import { LogoIcon, FavoriteIcon, ShoppingCartIcon, UserIcon } from "../icons";
 
 export const NavBarComp = () => {
+
+  const dispatch = useDispatch()
+
+  const { orderWindow } = useSelector((state) => state.orders);
+  const { shopListOpen } = useSelector(state => state.product)
+
+  const onShopList = () => {
+    if (shopListOpen !== false) return dispatch(openShopList(false));
+    dispatch(openShopList(true));
+    
+  };
+  
+
   return (
+    <>
+      {!shopListOpen ? "" : <OrderModal />}
     <nav className="flex w-full bg-primaryLight h-24 items-center py-5 px-10 justify-between">
       <LogoIcon className={"w-[34px] h-[69px] mr-[128px]"} />
       <section className="font-bebas flex gap-2 text-2xl">
@@ -84,12 +102,16 @@ export const NavBarComp = () => {
             "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
           }
         />
-        <ShoppingCartIcon
-          className={
-            "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
-          }
-        />
+        <button
+        onClick={() => onShopList()}>
+          <ShoppingCartIcon
+            className={
+              "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+            }
+          />
+        </button>
       </section>
     </nav>
+    </>
   );
 };

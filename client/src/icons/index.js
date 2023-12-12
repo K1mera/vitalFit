@@ -1,6 +1,6 @@
 
 
-
+export * from './CloseIcon'
 export * from './FavoriteIcon'
 export * from './LogoIcon'
 export * from './ShoppingCartIcon'

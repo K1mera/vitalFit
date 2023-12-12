@@ -11,7 +11,7 @@ export const Detail = () => {
 
   return (
     <main className="flex flex-column items-center w-screen gap-2">
-      <section className="w-full flex flex-column" >
+      <section className="w-full flex flex-row" >
         <img
           className="w-85 h-85"
           style={{
@@ -106,7 +106,7 @@ export const Detail = () => {
           <li>Amigable con nuestro intestino</li>
         </div>
       </section>
-      <section>
+      {/* <section className="w-auto flex flex-row flex-wrap">
         <div
           style={{
             display: "flex",
@@ -156,7 +156,7 @@ export const Detail = () => {
             </h2>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 };
