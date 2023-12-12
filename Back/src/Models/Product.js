@@ -29,7 +29,6 @@ module.exports = (sequelize) => {
       },
       flavour: {
         type: DataTypes.ARRAY(DataTypes.STRING),
-
         defaultValue: ["Neutral"],
       },
       pre_description: {
