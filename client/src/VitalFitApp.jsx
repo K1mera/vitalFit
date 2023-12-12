@@ -1,6 +1,8 @@
+import { Provider } from "react-redux";
 import { MainRouter } from "./routes";
-import { Route,Routes } from 'react-router-dom'
+
 import { useState, useEffect } from 'react'
+import {store} from "./store";
 
 
 export const VitalFitApp = () => {
@@ -56,8 +58,8 @@ export const VitalFitApp = () => {
     }
     
     return (
-        <div>
+        <Provider store={ store }>
             <MainRouter items={items} filter={filter} allItems={allItems} />
-        </div>
+        </Provider>
     );
 };
