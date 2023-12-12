@@ -15,16 +15,16 @@ export const Home = () => {
                 <div className="offer">
                     <div className="imagen"></div>
                     <div>
-                        <button className="boton-comprar">Comprar</button>
+                        <button className="boton-comprar transition hover:scale-110 duration-300 ">Agregar</button>
                     </div>
                 </div>
             </div>
             <div className="categorias-container">
                 <div className="buttons-container">
-                    <button className="button-categoria">PROTEINAS</button>
-                    <button className="button-categoria">CREATINAS</button>
-                    <button className="button-categoria">ENERGIA</button>
-                    <button className="button-categoria">
+                    <button className="button-categoria transition hover:scale-110 duration-300">PROTEINAS</button>
+                    <button className="button-categoria transition hover:scale-110 duration-300">CREATINAS</button>
+                    <button className="button-categoria transition hover:scale-110 duration-300">ENERGIA</button>
+                    <button className="button-categoria transition hover:scale-110 duration-300">
                         CONTROL DE PESO
                     </button>
                 </div>
@@ -41,7 +41,7 @@ export const Home = () => {
                     />
                     <span>PRE WORKOUT 400GR</span>
                     <span>$10.000</span>
-                    <button className="boton-comprar">Agregar</button>
+                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
                 </div>
                 <div className="producto-destacado">
                     <img
@@ -51,7 +51,7 @@ export const Home = () => {
                     />
                     <span>100% CAFFEINE MUSCLETECH</span>
                     <span>$12.000</span>
-                    <button className="boton-comprar">Agregar</button>
+                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
                 </div>
                 <div className="producto-destacado">
                     <img
@@ -61,7 +61,7 @@ export const Home = () => {
                     />
                     <span>CREATINE 500GR</span>
                     <span>$13.500</span>
-                    <button className="boton-comprar">Agregar</button>
+                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
                 </div>
             </div>
             <div className="photos-container">
@@ -87,7 +87,7 @@ export const Home = () => {
                                 una ganancia muscular extremas, además de una
                                 mejor recuperación.{" "}
                             </p>
-                            <button className="boton-comprar-photo">
+                            <button className="boton-comprar-photo transition hover:scale-110 duration-300">
                                 {" "}
                                 Agregar
                             </button>
@@ -116,7 +116,7 @@ export const Home = () => {
                                 reducir la sensación de cansancio y comenzar la
                                 recuperación lo antes posible.
                             </p>
-                            <button className="boton-comprar-photo">
+                            <button className="boton-comprar-photo transition hover:scale-110 duration-300">
                                 {" "}
                                 Agregar
                             </button>
@@ -197,7 +197,7 @@ export const Home = () => {
                         <p>¿No estas seguro de qué es mejor para ti?</p>
                         <p id="notepreocupes">No te preocupes!</p>
                     </div>
-                    <button className="button-categoria" id="separaunaasesoria">
+                    <button className="button-categoria transition hover:scale-110 duration-300" id="separaunaasesoria">
                         SEPARA UNA ASESORIA
                     </button>
                 </div>
@@ -222,7 +222,7 @@ export const Home = () => {
                             placeholder="Ingresa tu E-mail"
                             className="border-black h-full text-center    rounded-l-lg font-['Montserrat']"
                         />
-                        <button className="bg-primary text-white   rounded-r-lg font-['Bebas_neue'] text-lg px-5 h-full">
+                        <button className="bg-primary text-white   rounded-r-lg font-['Bebas_neue'] text-lg px-5 h-full transition hover:scale-110 duration-300">
                             ENVIAR
                         </button>
                     </div>
