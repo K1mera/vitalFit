@@ -36,16 +36,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 //Agregar los modelos con primera letra en mayúscula
 /* const {Dog, Temperaments} = sequelize.models; */
-const {
-  Product,
-  Category,
-  Order,
-  User,
-  Order_line,
-  Review,
-  SubCategory,
-  Address,
-} = sequelize.models;
+const { Product, Category, Order, User, Order_line, Review, Address } =
+  sequelize.models;
 
 //Relaciones de modelos
 /* Dog.belongsToMany(Temperament, {through: "dog_temp"})
@@ -66,10 +58,6 @@ Review.belongsTo(User);
 //Relación productos - categorias
 Category.hasMany(Product);
 Product.belongsTo(Category);
-
-//Relación categorías - subCategorías
-Category.hasMany(SubCategory);
-SubCategory.belongsTo(Category);
 
 //Relación ordenes - usuario
 User.hasMany(Order);
