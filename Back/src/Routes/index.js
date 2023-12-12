@@ -10,11 +10,13 @@ const postSubCategoryHandler = require("../Handlers/subCategory/postSubHandler")
 const postReviewHandler = require("../Handlers/Review/postReviewHandler");
 const postCategoryHandler = require("../Handlers/Category/postCategoryHandler");
 const postUserHandler = require("../Handlers/User/postUserHandler");
+const putProductHandler = require("../Handlers/Products/putProductHandler");
 
 //products
 router.get("/", getProductsHandler);
 router.post("/", postProductHandler);
 router.get("/:id", getProductsByIdHandler);
+router.put("/", putProductHandler);
 
 //Categories
 router.get("/category", getCategory);
