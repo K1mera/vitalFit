@@ -12,14 +12,12 @@ const getProductByNameHandler = require("../Handlers/Products/getProductByNameHa
 const putProductHandler = require("../Handlers/Products/putProductHandler");
 const getCategoryHandler = require("../Handlers/Category/getCategoryHandler");
 
-
 //products
 router.get("/", getProductsHandler);
 router.post("/", postProductHandler);
 router.get("/product/:id", getProductsByIdHandler);
-router.get("/", getProductByNameHandler);
+router.get("/name", getProductByNameHandler);
 router.put("/", putProductHandler);
-
 
 //Categories
 router.get("/category", getCategoryHandler);
