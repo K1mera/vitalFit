@@ -1,18 +1,25 @@
-import { handleShopList, itemsAdded, setCurrentPage, setProducts, startLoading } from "./productSlice";
-
-
-
+import {productsIns} from "../../../api";
+import {
+  cleanEverything,
+  handleShopList,
+  itemsAdded,
+  removeItem,
+  setCurrentPage,
+  setProducts,
+  startLoading,
+} from "./productSlice";
 
 export const getProducts = (products, page = 1) => {
   return async (dispatch) => {
     dispatch(startLoading());
 
-    
+    const { data } = productsIns.get('/')
 
     dispatch(setProducts(products));
     dispatch(setCurrentPage(page));
   };
 };
+
 export const openShopList = (value) => {
   return async (dispatch) => {
     dispatch(handleShopList(value));
