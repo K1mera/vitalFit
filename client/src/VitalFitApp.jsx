@@ -7,11 +7,7 @@ import {useEffect} from "react";
 
 export const VitalFitApp = () => {
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-      dispatch(getProducts(allItems));
-    }, [])
+    
     
     const allItems = [
         {
@@ -69,5 +65,5 @@ export const VitalFitApp = () => {
         <Provider store={ store }>
             <MainRouter   allItems={allItems}/>
         </Provider>
-    );
+    );  
 };
