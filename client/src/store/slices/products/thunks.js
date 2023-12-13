@@ -2,6 +2,9 @@ import { handleShopList, itemsAdded, setCurrentPage } from "./productSlice";
 
 
 
+
+
+
 export const openShopList = (value) => {
   return async (dispatch) => {
     dispatch(handleShopList(value));

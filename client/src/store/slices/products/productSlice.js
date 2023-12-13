@@ -11,6 +11,7 @@ export const productSlice = createSlice({
     shopListOpen: false,
     shoppingCart: [],
     countTotal: 0,
+    
   },
   reducers: {
     startLoading: (state /* action */) => {
