@@ -26,10 +26,12 @@ async function postProducts() {
           description,
         });
 
-        const cat = await Category.findOne({ where: { name: category } });
-        if (cat) {
-          await newProduct.setCategory(cat);
-        }
+        const [categoryDb, categoryCreated] = await Category.findOrCreate({
+          where: { name: category },
+        });
+        console.log(categoryDb);
+
+        await newProduct.setCategory(categoryDb);
 
         return newProduct;
       }
