@@ -13,7 +13,7 @@ const putProductHandler = require("../Handlers/Products/putProductHandler");
 const getCategoryHandler = require("../Handlers/Category/getCategoryHandler");
 const deleteProductHandler = require("../Handlers/Products/deleteProductHandler");
 const activarDesactivarHandler = require("../Handlers/Products/activarDesactivarHandler");
-
+const postAddressHandler = require("../Handlers/Address/postAddressHandler");
 //products
 router.get("/", getProductsHandler);
 router.post("/", postProductHandler); //body
@@ -35,5 +35,8 @@ router.post("/many", postManyProductsHandler);
 
 //User
 router.post("/user", postUserHandler); //body
+
+//Address
+router.post("/addres", postAddressHandler);
 
 module.exports = router;
