@@ -228,65 +228,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-60 bg-black bg-foot bg-right bg-no-repeat ">
-                <div className="w-full h-full bg-opacity-75 pt-10 pl-20 flex items-start gap-52  bg-black  ">
-                    <div>
-                        <img src="images/logo.png" alt="" />
-                    </div>
-                    <div className="text-white">
-                        <p className="font-['Bebas_Neue'] text-2xl ">
-                            SITIO WEB
-                        </p>
-                        <ul className="font-['Montserrat']">
-                            <li>Productos</li>
-                            <li>Asesoria</li>
-                            <li>Ofertas</li>
-                            <li>Preguntas frecuentes</li>
-                            <li>Blog</li>
-                            <li>Contacto</li>
-                        </ul>
-                    </div>
-                    <div className="text-white h-full">
-                        <p className="font-['Bebas_Neue'] text-2xl">
-                            SOCIAL MEDIA
-                        </p>
-                        <ul className="font-['Montserrat']">
-                            <li className="flex  items-center gap-5 my-2">
-                                <img
-                                    src="images/facebooklogo.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">Facebook</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/instlogo.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">Instagram</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/youtube.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">YouTube</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/tiktok.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">TikTok</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     );
 };

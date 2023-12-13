@@ -46,12 +46,33 @@ export const productSlice = createSlice({
       }
       state.countTotal += 1;
     },
+    removeItem: (state, action) => {
+      const itemToRemove = action.payload;
+      const existingItem = state.shoppingCart.find(
+        (item) => item.id === itemToRemove
+      );
+
+      if (existingItem) {
+        existingItem.count--;
+
+        if (existingItem.count === 0) {
+          state.shoppingCart = state.shoppingCart.filter(
+            (item) => item.id !== itemToRemove
+          );
+        }
+        state.countTotal -= 1;
+      }
+    },
     handleShopList: (state, action) => {
       state.shopListOpen = action.payload;
+    },
+    cleanEverything: (state, action) => {
+      state.shoppingCart = [];
+      state.countTotal = 0;
     },
   },
 });
 
 
 // Action creators are generated for each case reducer function
-export const { setProducts, startLoading, handleShopList, itemsAdded, setCurrentPage } =  productSlice.actions;
+export const { setProducts, startLoading, handleShopList, itemsAdded, removeItem, setCurrentPage, cleanEverything } =  productSlice.actions;

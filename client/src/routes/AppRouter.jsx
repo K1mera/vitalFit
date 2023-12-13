@@ -1,8 +1,9 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { Home, LoginPage, LoginUser, SingUpPage } from "../pages";
-import { NavBarComp } from "../components";
+import { Home, LoginPage, LoginUser, SingUpPage, DetailPage } from "../pages";
+import { FooterComp, NavBarComp } from "../components";
 import ProductsPage from "../components/productsPage/ProductsPage.jsx";
-import { Detail } from "../components/DetailCard/detail.jsx";
+// import { Detail } from "../components/DetailCard/detail.jsx";
+
 
 export const AppRouter = ({ items, filter, allItems }) => {
   const location = useLocation();
@@ -15,7 +16,7 @@ export const AppRouter = ({ items, filter, allItems }) => {
   return (
     <>
       {showNavBar && <NavBarComp />}
-      <div>
+      
         <Routes>
           <Route path="home" element={<Home />} />
           {/* agreguen la ruta de las paginas que creen aquí abajo */}
@@ -26,13 +27,13 @@ export const AppRouter = ({ items, filter, allItems }) => {
             }
           />
 
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/detail" element={<DetailPage />} />
           <Route path="/loginUser" element={<LoginUser />} />
           <Route path="/signUpPage" element={<SingUpPage />} />
           <Route path="/loginPage" element={<LoginPage />}></Route>
           <Route path="/*" element={<Navigate to="/home" />} />
         </Routes>
-      </div>
+     <FooterComp/>
     </>
   );
 };

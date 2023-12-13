@@ -23,6 +23,7 @@ export default {
       },
       backgroundImage: {
         foot: "url('./src/icons/rectangle.jpg')",
+        footerImg: "url('assets/footerImage.png')"
       },
     },
   },
