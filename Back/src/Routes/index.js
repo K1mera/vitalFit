@@ -12,6 +12,7 @@ const getProductByNameHandler = require("../Handlers/Products/getProductByNameHa
 const putProductHandler = require("../Handlers/Products/putProductHandler");
 const getCategoryHandler = require("../Handlers/Category/getCategoryHandler");
 const deleteProductHandler = require("../Handlers/Products/deleteProductHandler");
+const activarDesactivarHandler = require("../Handlers/Products/activarDesactivarHandler");
 
 //products
 router.get("/", getProductsHandler);
@@ -20,6 +21,7 @@ router.get("/product/:id", getProductsByIdHandler);
 router.get("/name", getProductByNameHandler);
 router.put("/", putProductHandler);
 router.delete("/product/:id", deleteProductHandler);
+router.put("/activar-desactivar", activarDesactivarHandler);
 
 //Categories
 router.get("/category", getCategoryHandler);
