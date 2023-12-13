@@ -8,6 +8,10 @@ export const productSlice = createSlice({
     currentPage: 1,
     itemsPerPage: 8,
     totalPages: 0,
+    shopListOpen: false,
+    shoppingCart: [],
+    countTotal: 0,
+    
   },
   reducers: {
     startLoading: (state /* action */) => {
@@ -29,9 +33,25 @@ export const productSlice = createSlice({
       state.dogs = action.payload;
       state.loading = false;
     },
+    itemsAdded: (state, action) => {
+      const newItem = action.payload;
+      const existingItem = state.shoppingCart.find(
+        (item) => item.id === newItem.id
+      );
+
+      if (existingItem) {
+        existingItem.count++;
+      } else {
+        state.shoppingCart.push({ ...newItem, count: 1 });
+      }
+      state.countTotal += 1;
+    },
+    handleShopList: (state, action) => {
+      state.shopListOpen = action.payload;
+    },
   },
 });
 
 
 // Action creators are generated for each case reducer function
-export const { startLoading } =  productSlice.actions;
+export const { setProducts, startLoading, handleShopList, itemsAdded, setCurrentPage } =  productSlice.actions;

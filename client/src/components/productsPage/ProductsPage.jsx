@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../Card/Card";
 import style from "./ProductsPage.module.css";
 import { useState, useEffect } from "react";
+import { handlePages } from "../../store/slices";
 
 export default function ProductsPage({ items, allItems }) {
   const { products, currentPage, totalPages } = useSelector(
     (state) => state.product
   );
-  console.log(items);
+  
   const [filters, setFilters] = useState([]);
   const [Types, setTypes] = useState([]);
   const [nameToSearch, setNameToSearch] = useState("");
@@ -16,8 +17,11 @@ export default function ProductsPage({ items, allItems }) {
   const[box1Check, setBox1Check] = useState(true)
   const[box2Check, setBox2Check] = useState(false)
 
+  const dispatch = useDispatch()
 
   const startIndex = (currentPage - 1) * 4;
+
+  
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -54,7 +58,7 @@ export default function ProductsPage({ items, allItems }) {
   const handleChange = (e) => {
     e.preventDefault();
     setNameToSearch(e.target.value);
-    console.log(nameToSearch);
+    
   };
 
   const filterName = () => {
@@ -137,26 +141,26 @@ export default function ProductsPage({ items, allItems }) {
           <div className={style.Columna}>
             <div className={style.Input}>
               <div className={style.Checks}>
-                  <label  className={style.CheckboxLabel}>
-                    <input
-                      className={style.Check}
-                      type="checkbox"
-                      value="menorPrimero"
-                      checked={box1Check}
-                      onChange={handleOrderChange}
-                    />
-                    Menor precio primero
-                  </label>
-                  <label  className={style.CheckboxLabel}>
-                    <input
-                      className={style.Check}
-                      type="checkbox"
-                      value="mayorPrimero"
-                      checked={box2Check}
-                      onChange={handleOrderChange}
-                    />
-                    Mayor precio primero
-                  </label>
+                <label className={style.CheckboxLabel}>
+                  <input
+                    className={style.Check}
+                    type="checkbox"
+                    value="menorPrimero"
+                    checked={box1Check}
+                    onChange={handleOrderChange}
+                  />
+                  Menor precio primero
+                </label>
+                <label className={style.CheckboxLabel}>
+                  <input
+                    className={style.Check}
+                    type="checkbox"
+                    value="mayorPrimero"
+                    checked={box2Check}
+                    onChange={handleOrderChange}
+                  />
+                  Mayor precio primero
+                </label>
               </div>
             </div>
           </div>
@@ -172,6 +176,10 @@ export default function ProductsPage({ items, allItems }) {
                 <Card key={name} name={name} price={price} image={image} />
               );
             })}
+        <section className="flex justify-between gap-2 absolute bottom-2">
+          <button onClick={ handlePreviousPage } className="font-bebas p-2">prev</button>
+          <button onClick={ handleNextPage } className="font-bebas p-2">next</button>
+        </section>
       </div>
     </div>
   );
