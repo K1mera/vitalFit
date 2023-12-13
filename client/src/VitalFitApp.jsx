@@ -1,11 +1,17 @@
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { MainRouter } from "./routes";
 
-import {store} from "./store";
+import {getProducts, store} from "./store";
+import {useEffect} from "react";
 
 
 export const VitalFitApp = () => {
 
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(getProducts(allItems));
+    }, [])
     
     const allItems = [
         {

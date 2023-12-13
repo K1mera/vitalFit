@@ -13,7 +13,7 @@ export const getProducts = (products, page = 1) => {
   return async (dispatch) => {
     dispatch(startLoading());
 
-    const { data } = productsIns.get('/')
+    // const { data } = productsIns.get('/')
 
     dispatch(setProducts(products));
     dispatch(setCurrentPage(page));
