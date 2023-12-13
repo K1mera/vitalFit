@@ -16,24 +16,24 @@ const activarDesactivarHandler = require("../Handlers/Products/activarDesactivar
 
 //products
 router.get("/", getProductsHandler);
-router.post("/", postProductHandler);
-router.get("/product/:id", getProductsByIdHandler);
-router.get("/name", getProductByNameHandler);
-router.put("/", putProductHandler);
-router.delete("/product/:id", deleteProductHandler);
-router.put("/activar-desactivar", activarDesactivarHandler);
+router.post("/", postProductHandler); //body
+router.get("/product/:id", getProductsByIdHandler); //params
+router.get("/name", getProductByNameHandler); //query
+router.put("/", putProductHandler); //body
+router.delete("/product/:id", deleteProductHandler); //params
+router.put("/activar-desactivar", activarDesactivarHandler); //body
 
 //Categories
 router.get("/category", getCategoryHandler);
-router.post("/category", postCategoryHandler);
+router.post("/category", postCategoryHandler); //body
 
 //Reviews
-router.post("/review", postReviewHandler);
+router.post("/review", postReviewHandler); //body
 
 //Many
 router.post("/many", postManyProductsHandler);
 
 //User
-router.post("/user", postUserHandler);
+router.post("/user", postUserHandler); //body
 
 module.exports = router;
