@@ -29,7 +29,6 @@ async function postProducts() {
         const [categoryDb, categoryCreated] = await Category.findOrCreate({
           where: { name: category },
         });
-        console.log(categoryDb);
 
         await newProduct.setCategory(categoryDb);
 
