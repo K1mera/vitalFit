@@ -1,18 +1,10 @@
-import { handleShopList, itemsAdded, setCurrentPage, setProducts, startLoading } from "./productSlice";
+import { handleShopList, itemsAdded, setCurrentPage } from "./productSlice";
 
 
 
 
-export const getProducts = (products, page = 1) => {
-  return async (dispatch) => {
-    dispatch(startLoading());
 
-    
 
-    dispatch(setProducts(products));
-    dispatch(setCurrentPage(page));
-  };
-};
 export const openShopList = (value) => {
   return async (dispatch) => {
     dispatch(handleShopList(value));
