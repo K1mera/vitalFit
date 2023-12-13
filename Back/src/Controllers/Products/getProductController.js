@@ -11,8 +11,8 @@ const getProducts = async () => {
   if (!products.length) throw new Error("No hay productos en la base de datos");
 
   const nameCat = await products.map((prod) => {
-    const cat = prod.Category.name;
-    return { ...prod.get(), Category: cat };
+    const categoryName = prod.Category ? prod.Category.name : null;
+    return { ...prod.get(), Category: categoryName };
   });
 
   return nameCat;

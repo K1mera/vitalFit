@@ -10,6 +10,7 @@ const postProduct = async (data) => {
     flavour,
     description,
     categoryId,
+    pre_description,
     subCat,
   } = data;
 
@@ -25,6 +26,7 @@ const postProduct = async (data) => {
     image,
     flavour,
     description,
+    pre_description,
   });
 
   //asociación de Categorías, faltan subCategorias
