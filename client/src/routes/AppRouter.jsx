@@ -30,7 +30,7 @@ export const AppRouter = ({ items, filter, allItems }) => {
           <Route path="/detail" element={<DetailPage />} />
           <Route path="/loginUser" element={<LoginUser />} />
           <Route path="/signUpPage" element={<SingUpPage />} />
-          <Route path="/loginPage" element={<LoginPage />}></Route>
+          <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/*" element={<Navigate to="/home" />} />
         </Routes>
      <FooterComp/>
