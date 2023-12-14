@@ -1,13 +1,23 @@
 const { Op } = require("sequelize");
 const { Product, Category, Review } = require("../../db");
 const getProducts = async (
+  searchByName,
   category,
   minPrice,
   maxPrice,
   sortByName,
-  sortByPrice
+  sortByPrice,
+  offer
 ) => {
   let filters = {};
+
+  if (searchByName) {
+    filters = { ...filters, name: { [Op.iLike]: `%${searchByName}%` } };
+  }
+
+  if (offer) {
+    filters = { ...filters, offer: true };
+  }
 
   if (category) {
     const cat = await Category.findOne({
@@ -45,7 +55,6 @@ const getProducts = async (
   if (orderOptions.length === 0) {
     orderOptions.push(["id", "ASC"]);
   }
-  console.log(filters);
 
   const finds = await Product.findAll({
     where: filters,

@@ -41,6 +41,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM(["Disable", "Active"]),
         defaultValue: "Active",
       },
+      offer: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     { timestamps: false }
   );

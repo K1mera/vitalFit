@@ -1,8 +1,6 @@
 const { Product } = require("../../db");
 
-const activarDesactivarProducto = async (data) => {
-  const { id, status } = data;
-
+const activarDesactivarProducto = async (id, status) => {
   const find = await Product.findByPk(id);
   if (!find) throw new Error("No se ha podido encontrar el producto");
 
