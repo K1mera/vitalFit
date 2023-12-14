@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.sideMenuLayout {
+    @apply w-[400px] h-[calc(100vh)] flex flex-col gap-6 p-6 fixed bg-gray-50 right-0 top-0 shadow-lg border border-gray-200 rounded-md z-40  overflow-auto;
+}
+.addButton {
+    @apply flex text-lg px-8 py-2 bg-tertiary rounded-full font-bebas text-white transition-transform hover:scale-110 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2;
+}

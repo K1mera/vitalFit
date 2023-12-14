@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 
 import Card from "../Card/Card";
@@ -185,3 +184,5 @@ export default function ProductsPage({ items, allItems }) {
     </div>
   );
 }
+
+// disabled={id === "" } onClick={() => search()}
