@@ -16,24 +16,24 @@ export const AppRouter = ({ items, filter, allItems }) => {
   return (
     <>
       {showNavBar && <NavBarComp />}
-      
-        <Routes>
-          <Route path="home" element={<Home />} />
-          {/* agreguen la ruta de las paginas que creen aquí abajo */}
-          <Route
-            path="/productspage"
-            element={
-              <ProductsPage items={items} filter={filter} allItems={allItems} />
-            }
-          />
 
-          <Route path="/detail" element={<DetailPage />} />
-          <Route path="/loginUser" element={<LoginUser />} />
-          <Route path="/signUpPage" element={<SingUpPage />} />
-          <Route path="/loginPage" element={<LoginPage />} />
-          <Route path="/*" element={<Navigate to="/home" />} />
-        </Routes>
-     <FooterComp/>
+      <Routes>
+        <Route path="home" element={<Home />} />
+        {/* agreguen la ruta de las paginas que creen aquí abajo */}
+        <Route
+          path="/productspage"
+          element={
+            <ProductsPage items={items} filter={filter} allItems={allItems} />
+          }
+        />
+
+        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/loginUser" element={<LoginUser />} />
+        <Route path="/signUpPage" element={<SingUpPage />} />
+        <Route path="/loginPage" element={<LoginPage />} />
+        <Route path="/*" element={<Navigate to="/home" />} />
+      </Routes>
+      {showNavBar && <FooterComp />}
     </>
   );
 };
