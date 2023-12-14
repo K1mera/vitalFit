@@ -5,13 +5,7 @@ module.exports = (sequelize) => {
     "Category",
     {
       name: {
-        type: DataTypes.ENUM([
-          "Proteína",
-          "Creatina",
-          "Aminoácidos",
-          "Energía",
-          "Control de peso",
-        ]),
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },

@@ -3,13 +3,14 @@ const getReviews = async (data) => {
   const { userId, productId } = data;
 
   let filtroReview = {};
-  if (userId) {
+  /*  if (userId) {
     const findUser = await User.findByPk(userId);
     filtroReview = { ...filtroReview, userId: findUser.id };
-  }
+  } */
 
   if (productId) {
     const findProduct = await Product.findByPk(productId);
+    if (!findProduct) throw new Error("Este producto no éxiste");
     filtroReview = { ...filtroReview, productId: findProduct.id };
   }
 
@@ -17,9 +18,11 @@ const getReviews = async (data) => {
     where: filtroReview,
     include: [
       { model: Product, attributes: ["name"] },
-      { model: User, attributes: ["email"] },
+      // { model: User, attributes: ["email"] },
     ],
   });
+
+  if (!reviews) throw new Error("Este producto no tiene reviews");
 
   return reviews;
 };

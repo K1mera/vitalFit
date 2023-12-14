@@ -2,21 +2,26 @@ const { Op } = require("sequelize");
 const { Product, Category, Review } = require("../../db");
 const getProducts = async (
   category,
-  maxPrice,
   minPrice,
+  maxPrice,
   sortByName,
   sortByPrice
 ) => {
   let filters = {};
 
   if (category) {
-    const cat = await Category.findOne({ where: { name: category } });
+    const cat = await Category.findOne({
+      where: { name: { [Op.iLike]: category } },
+    });
 
     filters = { ...filters, CategoryId: cat.id };
   }
 
   //si están los dos es porque se estableció un rango de precios
   if (maxPrice && minPrice) {
+    console.log(maxPrice, "max");
+    console.log(minPrice, "min");
+
     filters = { ...filters, price: { [Op.between]: [minPrice, maxPrice] } };
   } else if (minPrice) {
     filters = { ...filters, price: { [Op.gte]: minPrice } };
@@ -40,9 +45,10 @@ const getProducts = async (
   if (orderOptions.length === 0) {
     orderOptions.push(["id", "ASC"]);
   }
+  console.log(filters);
 
   const finds = await Product.findAll({
-    where: { ...filters },
+    where: filters,
     order: orderOptions,
     include: [
       { model: Category, attributes: ["name"] },

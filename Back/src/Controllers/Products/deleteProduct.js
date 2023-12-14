@@ -6,6 +6,7 @@ const deleteProduct = async (id) => {
   if (!find) throw new Error("Éste producto no éxiste");
 
   const deletedProduct = await find.destroy();
+
   return deletedProduct;
 };
 
