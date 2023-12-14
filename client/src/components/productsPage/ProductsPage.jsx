@@ -14,12 +14,12 @@ export default function ProductsPage({ items, allItems }) {
   const [Types, setTypes] = useState([]);
   const [nameToSearch, setNameToSearch] = useState("");
   const [productsToShow, setProductsToShow] = useState(allItems);
-  const[box1Check, setBox1Check] = useState(true)
+  const[box1Check, setBox1Check] = useState(false)
   const[box2Check, setBox2Check] = useState(false)
 
   const dispatch = useDispatch()
 
-  const startIndex = (currentPage - 1) * 4;
+  const startIndex = (currentPage - 1) * 8;
 
   
 
@@ -77,7 +77,7 @@ export default function ProductsPage({ items, allItems }) {
           )
     ; if (box2Check) {
        return setProductsToShow(productsFilter.sort((a,b) => b.price - a.price))
-    } else {
+    } else  {
         return setProductsToShow(productsFilter.sort((a,b) => a.price - b.price))
     }
   };
@@ -85,12 +85,14 @@ export default function ProductsPage({ items, allItems }) {
   const handleOrderChange = (e) => {
     if(e.target.checked && e.target.value === "mayorPrimero") {
         setProductsToShow(productsToShow.sort((a,b) => b.price - a.price))
-        setBox1Check(!box1Check)
-        setBox2Check(!box2Check)
+        setBox1Check(false)
+        setBox2Check(true)
     } else if (e.target.checked && e.target.value === "menorPrimero") {
         setProductsToShow(productsToShow.sort((a,b) => a.price - b.price))
-        setBox1Check(!box1Check)
-        setBox2Check(!box2Check)
+        setBox1Check(true)
+        setBox2Check(false)
+    } else if (!e.target.checked) {
+        setProductsToShow(allItems)
     }
   }
 
@@ -122,9 +124,9 @@ export default function ProductsPage({ items, allItems }) {
                     <input
                       className={style.Check}
                       type="checkbox"
-                      name="types"
+                      name={type}
                       value={type}
-                      //   checked={filters.includes(type)}
+                    //   checked={name === filtroActivado}
                       onChange={handleFilterChange}
                     />
                     {type}
@@ -170,7 +172,7 @@ export default function ProductsPage({ items, allItems }) {
       <div className={style.cardsContainer}>
         {Array.isArray(productsToShow) &&
           productsToShow
-            .slice(startIndex, startIndex + 4)
+            .slice(startIndex, startIndex + 8)
             .map(({ name, price, image }) => {
               return (
                 <Card key={name} name={name} price={price} image={image} />

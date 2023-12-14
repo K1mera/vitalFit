@@ -1,35 +1,32 @@
+import { NavLink } from "react-router-dom";
 import { LogoIconWhite } from "../icons"
 
 
 
 export const FooterComp = () => {
   return (
-<<<<<<< HEAD
     <footer className="flex w-full h-[250px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">
-=======
-    <footer className="flex w-full h-[340px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">
->>>>>>> 907bb3143599b53f25a298dbe7a4d9695e99808d
       <figure>
         <LogoIconWhite className={"w-[75px] h-[151px]"} />
       </figure>
       <section className="h-full">
         <h1 className="text-2xl font-bebas text-white">Sitio Web</h1>
         <ul className="text-white mt-2">
-          <li className="hover:text-primary">Productos</li>
-          <li className="hover:text-primary">Asesorías</li>
-          <li className="hover:text-primary">Ofertas</li>
-          <li className="hover:text-primary">Preguntas frecuentes</li>
-          <li className="hover:text-primary">Blog</li>
-          <li className="hover:text-primary">Contacto</li>
+          <NavLink to={'/detail'}><li className="hover:text-primary cursor-pointer">Productos</li></NavLink>
+          <li className="hover:text-primary cursor-pointer">Asesorías</li>
+          <li className="hover:text-primary cursor-pointer">Ofertas</li>
+          <li className="hover:text-primary cursor-pointer">Preguntas frecuentes</li>
+          <li className="hover:text-primary cursor-pointer">Blog</li>
+          <li className="hover:text-primary cursor-pointer">Contacto</li>
         </ul>
       </section>
       <section className="h-full text-white ">
         <h1 className="text-2xl font-bebas">Social Media</h1>
         <ul className="text-white mt-2">
-          <li className="hover:text-primary">Facebook</li>
-          <li className="hover:text-primary">Instagram</li>
-          <li className="hover:text-primary">Youtube</li>
-          <li className="hover:text-primary">TikTok</li>
+          <li className="hover:text-primary cursor-pointer">Facebook</li>
+          <li className="hover:text-primary cursor-pointer">Instagram</li>
+          <li className="hover:text-primary cursor-pointer">Youtube</li>
+          <li className="hover:text-primary cursor-pointer">TikTok</li>
         </ul>
       </section>
     </footer>

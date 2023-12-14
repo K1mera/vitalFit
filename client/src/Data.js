@@ -1,3 +1,4 @@
+
 const data =
  [
     {
@@ -96,7 +97,7 @@ const data =
     },
     {
       "id": "005",
-      "name": "Ultra Mass",
+      "name": "Ultra Mas",
       "price": 17185.0,
       "size": "1,5kg",
       "stock": 10,

@@ -18,7 +18,7 @@ export const AppRouter = ({ items, filter, allItems }) => {
       {showNavBar && <NavBarComp />}
 
       <Routes>
-        <Route path="home" element={<Home />} />
+        <Route path="home" element={<Home allItems={allItems} />} />
         {/* agreguen la ruta de las paginas que creen aquí abajo */}
         <Route
           path="/productspage"
