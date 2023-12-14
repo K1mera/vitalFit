@@ -4,7 +4,11 @@ import { LogoIconWhite } from "../icons"
 
 export const FooterComp = () => {
   return (
+<<<<<<< HEAD
     <footer className="flex w-full h-[250px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">
+=======
+    <footer className="flex w-full h-[340px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">
+>>>>>>> 907bb3143599b53f25a298dbe7a4d9695e99808d
       <figure>
         <LogoIconWhite className={"w-[75px] h-[151px]"} />
       </figure>
