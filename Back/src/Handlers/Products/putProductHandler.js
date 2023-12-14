@@ -1,9 +1,8 @@
 const putProduct = require("../../Controllers/Products/putProductController");
 
 async function putProductHandler(req, res) {
-  const { id, data } = req.body;
-  console.log(req.body);
-  console.log(data);
+  const { data } = req.body;
+  const { id } = req.params;
   try {
     const response = await putProduct(id, data);
     if (!response) throw new Error("No se recibió información nueva");

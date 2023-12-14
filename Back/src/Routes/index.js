@@ -8,7 +8,6 @@ const postManyProductsHandler = require("../utils/postManyProductsHandler");
 const getProductsByIdHandler = require("../Handlers/Products/getProductByIdHandler");
 const deleteProductHandler = require("../Handlers/Products/deleteProductHandler");
 const activarDesactivarHandler = require("../Handlers/Products/activarDesactivarHandler");
-const getProductByNameHandler = require("../Handlers/Products/getProductByNameHandler");
 const putProductHandler = require("../Handlers/Products/putProductHandler");
 
 //Review
@@ -34,10 +33,9 @@ const postAddressHandler = require("../Handlers/Address/postAddressHandler");
 router.get("/", getProductsHandler);
 router.post("/", postProductHandler); //body
 router.get("/product/:id", getProductsByIdHandler); //params
-router.get("/name", getProductByNameHandler); //query
-router.put("/", putProductHandler); //body
+router.put("/product/:id", putProductHandler); //params & body
 router.delete("/product/:id", deleteProductHandler); //params
-router.put("/activar-desactivar", activarDesactivarHandler); //body
+router.put("/activar-desactivar/:id", activarDesactivarHandler); //params & body
 
 //Categories
 router.get("/category", getCategoryHandler);
