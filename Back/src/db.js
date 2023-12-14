@@ -60,6 +60,7 @@ Category.hasMany(Product);
 Product.belongsTo(Category);
 
 //Relación ordenes - usuario
+
 User.hasMany(Order);
 Order.belongsTo(User);
 
