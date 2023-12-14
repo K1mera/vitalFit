@@ -28,6 +28,7 @@ const getUserByNameHandler = require("../Handlers/User/getUserByNameHandler");
 
 //Address
 const postAddressHandler = require("../Handlers/Address/postAddressHandler");
+const putUserHandler = require("../Handlers/User/putUserHandler");
 
 //Products
 router.get("/", getProductsHandler);
@@ -55,6 +56,7 @@ router.post("/user", postUserHandler); //body
 router.get("/user", getAllUsersHandler);
 router.get("/user/:id", getUserByIdHandler); //params
 router.get("/username", getUserByNameHandler); //query
+router.put("user", putUserHandler); //body
 
 //Address
 router.post("/addres", postAddressHandler);
