@@ -2,6 +2,7 @@ const putUser = require("../../Controllers/User/putUserController");
 
 async function putUserHandler(req, res) {
   const { id, data } = req.body;
+
   try {
     const response = await putUser(id, data);
     res

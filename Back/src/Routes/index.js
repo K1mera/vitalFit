@@ -29,6 +29,8 @@ const getUserByNameHandler = require("../Handlers/User/getUserByNameHandler");
 //Address
 const postAddressHandler = require("../Handlers/Address/postAddressHandler");
 const putUserHandler = require("../Handlers/User/putUserHandler");
+const putCategoryHandler = require("../Handlers/Category/putCategoryHandler");
+const deleteCategoryHandler = require("../Handlers/Category/deleteCategoryHandler");
 
 //Products
 router.get("/", getProductsHandler);
@@ -41,6 +43,8 @@ router.put("/activar-desactivar/:id", activarDesactivarHandler); //params & body
 //Categories
 router.get("/category", getCategoryHandler);
 router.post("/category", postCategoryHandler); //body
+router.put("/category", putCategoryHandler); //body
+router.delete("/category/:id", deleteCategoryHandler); //params
 
 //Reviews
 router.post("/review", postReviewHandler); //body
@@ -56,7 +60,7 @@ router.post("/user", postUserHandler); //body
 router.get("/user", getAllUsersHandler);
 router.get("/user/:id", getUserByIdHandler); //params
 router.get("/username", getUserByNameHandler); //query
-router.put("user", putUserHandler); //body
+router.put("/user", putUserHandler); //body
 
 //Address
 router.post("/addres", postAddressHandler);
