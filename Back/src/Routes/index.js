@@ -20,6 +20,9 @@ const getUserByNameHandler = require("../Handlers/User/getUserByNameHandler");
 
 //Products
 const postAddressHandler = require("../Handlers/Address/postAddressHandler");
+const putReviewHandler = require("../Handlers/Review/putReviewHandler");
+const getReviewsHandler = require("../Handlers/Review/getReviewsHandler");
+const deleteReviewHandler = require("../Handlers/Review/deleteReviewHandler");
 //products
 
 router.get("/", getProductsHandler);
@@ -36,6 +39,9 @@ router.post("/category", postCategoryHandler); //body
 
 //Reviews
 router.post("/review", postReviewHandler); //body
+router.put("/review", putReviewHandler); //body
+router.get("/review", getReviewsHandler);
+router.delete("/review/:id", deleteReviewHandler); //params
 
 //Many
 router.post("/many", postManyProductsHandler);
