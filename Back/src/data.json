@@ -1,36 +1,21 @@
 [
   {
     "id": "001",
-    "name": "Whey X Pro 1Lb",
-    "price": 16420.0,
-    "size": "453gr",
-    "stock": 17,
+    "name": "TrueMade Whey Protein",
+    "price": 16500,
+    "size": "453 grs",
+    "stock": 174,
     "image": [
-      "https://www.enasport.com/cdn/shop/products/Whey_xpro_vainilla_500x.jpg?v=1685711301",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_WheyXPro_2Lb_page-0001_500x.jpg?v=1698664080"
-    ],
-    "flavour": ["Vainilla", "Chocolate"],
-    "category": "Proteína",
-    "pre_description": [
-      "24grs de proteína y 5grs de creatina por medida (scoop)",
-      "Favorece el crecimiento y desarrollo de los músculos",
-      "Acelera la recuperación muscular",
-      "Mejora la reparación del tejido muscular",
-      "Se recomienda consumir todos los días"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "002",
-    "name": "TrueMade Whey Protein 1Lb",
-    "price": 12580.0,
-    "size": "453gr",
-    "stock": 7,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/7792981060021_2_f1b5bea7-4b41-47cc-acd7-c855169e2cb7_500x.jpg?v=1699874513",
-      "https://www.enasport.com/cdn/shop/products/TrueMade_2Lb_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981060021_2_f1b5bea7-4b41-47cc-acd7-c855169e2cb7_1024x.jpg?v=1699874513",
       "https://www.enasport.com/cdn/shop/files/7792981063008_1_c5fb51b8-38de-473d-b4b8-3e1eae027de6_1024x.jpg?v=1699874513",
-      "https://www.enasport.com/cdn/shop/files/7792981063015_1_56b8f709-2931-4e38-baf7-421bc3ee75dd_1024x.jpg?v=1699874513"
+      "https://www.enasport.com/cdn/shop/files/7792981062018_1_1863dc57-230a-4875-afee-c2af2de036af_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981063015_1_56b8f709-2931-4e38-baf7-421bc3ee75dd_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/products/TrueMade_2Lb_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981062025_2_59a682c5-8c26-463f-964d-022985069aa0_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981063022_1_2d4da800-2dc6-4dec-ada4-ba96f8e1925c_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981062063-1_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981062032_2_92c81744-c8c9-417a-9deb-f3d3bf8f1edf_1024x.jpg?v=1699874513",
+      "https://www.enasport.com/cdn/shop/files/7792981063039_1_31476e29-c82b-43df-8f18-d2bc8a22aa59_1024x.jpg?v=1699874513"
     ],
     "flavour": [
       "Vainilla",
@@ -43,40 +28,228 @@
     "category": "Proteína",
     "pre_description": [
       "Proteína de máxima pureza",
-      "25gr de proteína por porción (scoop)",
+      "25 grs de proteína por porción (scoop)",
       "Recuperación muscular rápida y efectiva",
       "Mejora el rendimiento físico",
       "Rápida absorción",
       "Termoestable, ideal para tus recetas"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "description": "Whey Protein Isolate (WPI) es la forma más pura de proteína de suero que existe actualmente. TrueMade contiene un blend de máxima pureza con una rápida absorción y una excelente calidad, garantizando una efectiva y rápida recuperación de tejido múscular. Bajo en carbohidratos, grasis y fácil de digerir logrando una mayor absorción de la proteina",
+    "dose": "Dosis diaria: 1 medida (cada medida aporta 25 grs de proteína). Consumir 1 medida a media mañana o a media tarde, o bien, 1 media hora antes de entrenar o 1 media hora después de entrenar. Diluir cada medida con 150-200 cc de leche o agua. Para lograr óptimos resultados, recomendamos tomarlo con agua o leche fría."
+  },
+  {
+    "id": "002",
+    "name": "Whey X Pro",
+    "price": 20000,
+    "size": "453 grs",
+    "stock": 179,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Whey_xpro_vainilla_1024x.jpg?v=1685711301",
+      "https://www.enasport.com/cdn/shop/files/7792981060120_1024x.jpg?v=1698664080",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_WheyXPro_2Lb_page-0001_1024x.jpg?v=1698664080",
+      "https://www.enasport.com/cdn/shop/products/Whey_xpro_chocolate_1024x.jpg?v=1698664080",
+      "https://www.enasport.com/cdn/shop/files/7792981060137_1024x.jpg?v=1698664080",
+      "https://www.enasport.com/cdn/shop/files/CoreSeries_WheyXPro_1Lb_vainilla.pdf_1024x.png?v=1698664219"
+    ],
+    "flavour": ["Vainilla", "Chocolate"],
+    "category": "Proteína",
+    "pre_description": [
+      "24 grs de proteína y 5 grs de creatina por medida (scoop)",
+      "Favorece el crecimiento y desarrollo de los músculos",
+      "Acelera la recuperación muscular",
+      "Mejora la reparación del tejido muscular",
+      "Se recomienda consumir todos los días"
+    ],
+    "description": "!Todo en uno! Más definición, más energía, rápida recuperación. Whey X Pro Complex Protein aporta una combinación explosiva de proteínas, creatina, aminoácidos, vitaminas, minerales y antioxidantes, en una nueva fórmula mejorada. Aporta más sabor y una máxima disolución para lograr mejores resultados y la puedes consumir antes o después del entrenamiento. Es la proteína de suero más avanzada del mercado",
+    "dose": "Verter una medida de Whey X Pro Complex Protein en un vaso batidor. Agregar 300 cm3 de agua o leche (preferentemente descremada), agitar y consumir. Ingesta diaria: consumir todos los días 2 medidas (cada medida aporta 33 gr), 1 medida a media mañana y otra a media tarde, en los días de entrenamiento consumir una hora antes y media hora después del mismo"
   },
   {
     "id": "003",
-    "name": "Amino 4500",
-    "price": 15032.0,
-    "size": "150 Tabs",
-    "stock": 1,
+    "name": "Ultra Mass",
+    "price": 22000,
+    "size": "1,5 kgs",
+    "stock": 104,
     "image": [
-      "https://www.enasport.com/cdn/shop/products/Amino_4500_500x.jpg?v=1640022423",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_Amino4500_page-0001_1024x.jpg?v=1650901494"
+      "https://www.enasport.com/cdn/shop/products/UltraMass_kilo_vainilla_1024x.jpg?v=1685711739",
+      "https://www.enasport.com/cdn/shop/products/UltraMass_BigSize_vainilla2_1024x.jpg?v=1685711739",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_UltraMass_1_5y3kg-2_page-0001_1024x.jpg?v=1685711739",
+      "https://www.enasport.com/cdn/shop/products/UltraMass_BigSize_chocolate2_1024x.jpg?v=1685711739",
+      "https://www.enasport.com/cdn/shop/products/UltraMass_kilo_choco_1913e826-22c5-4585-802f-4b2e5f01caac_1024x.jpg?v=1685711737"
     ],
-    "category": "Aminoácidos",
+    "flavour": ["Vainilla", "Chocolate"],
+    "category": "Control de peso",
     "pre_description": [
-      "Mezcla perfecta de aminoácidos seleccionados",
-      "Acelera la recuperación",
-      "Maximiza el crecimiento muscular",
-      "Ayuda a mejorar el rendimiento",
-      "Proporciona los nutrientes necesarios para el desarrollo muscular"
+      "25gr de proteína, 70gr de carbohidratos",
+      "Ganador de peso",
+      "Ideal para el aumento de masa muscular y peso"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "description": "Ideal para aumento de peso y masa. Más energía, mejor recuperación. Ultra Mass es un alimento natural a base de proteínas de alto valor biológico, carbohidratos, vitaminas, minerales, lipolíticos y grasas esenciales. Aumentar el tamaño de la masa múscular requiere del balance entre un entrenamiento duro y una nutrición de calidad. Ultra Mass provee de la suplementación necesaria para complementar una dieta balanceada. Te provee con las herramientas que necesitas para aumentar tu volumen y ayudarte a desarrollar el físico que siempre quisiste.",
+    "dose": "Se deben tomar 2 a 3 medidas a media mañana y 2 o 3 a media tarde, diluidas en 200-250 cm3 de leche o agua. Lo ideal es consumir con el vaso "
   },
   {
     "id": "004",
-    "name": "TrueMade Amino Full",
-    "price": 9453.0,
-    "size": "146gr",
+    "name": "Colágeno Sport",
+    "price": 24000,
+    "size": "407 grs",
+    "stock": 109,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Colageno_Sport_1024x.jpg?v=1653074375",
+      "https://www.enasport.com/cdn/shop/files/7792981067051-2_1000x1000_0a75ae1e-69f2-48f0-af72-b1b5b46c3edf_1024x.jpg?v=1700596537",
+      "https://www.enasport.com/cdn/shop/products/Performance_ColagenoSport_page-0001_1024x.jpg?v=1700596537"
+    ],
+    "flavour": ["Naranja", "Fruit punch"],
+    "category": "Proteína",
+    "pre_description": [
+      "10 grs de colágeno, 500mgrs de vitamina C por cada medida",
+      "Reduce el riesgo de lesiones en las articulaciones",
+      "Ideal para rehabilitar lesiones del tejido conectivo",
+      "Contiene magnesio, cúrcuma y ácido hialurónico en su fórmula"
+    ],
+
+    "description": "Suplemento a base de colágeno hidrolizado y vitamina C, ideal para prevenir y rehabilitar lesiones del tejido conectivo. La suplementación con 10 grs de colágeno hidrolizado (péptidos bio-activos) y 500 mgrs de vitamina C es ideal para aumentar la síntesis del tejido conectivo, como por ejemplo ligamentos y tendones. La ingesta diaria y periódica de Colágeno Sport limita las molestias, así como el riesgo de lesiones relacionadas con las articulaciones, estimulando las células locales para que podruzcan más fibras de colágeno. Es por esta razón que en el marco del alto rendimiento deportivo se convierte en una herramienta clave para prevenir y rehabilitar lesiones en estos tipos de tejidos. Colágeno Sport contiene por dosis 10 gr de colágeno hidrolizado, 500 mg de vitamina C, magnesio, cúrcuma y ácido hialurónico",
+    "dose": "Disolver 1 scoop bien colmado (aprox. 13.54 gr) en un vaso de agua a temperatura ambiente (200 ml). Revolver unos minutos hasta su completa disolución. Consumir en cualquier momento del día."
+  },
+  {
+    "id": "005",
+    "name": "100% Whey Protein",
+    "price": 24000,
+    "size": "900 grs",
     "stock": 10,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/100__Whey_choco_1024x.jpg?v=1640025757",
+      "https://www.enasport.com/cdn/shop/products/100__Whey_vainilla_1024x.jpg?v=1640025757",
+      "https://www.enasport.com/cdn/shop/products/Performance_100Whey_2Lb_page-0001_1024x.jpg?v=1642533107"
+    ],
+    "flavour": ["Vainilla", "Chocolate"],
+    "category": "Proteína",
+    "pre_description": [
+      "20 grs de proteína por medida (scoop)",
+      "Favorece en el desarrollo muscular",
+      "Ayuda en la recuperación de los músculos"
+    ],
+    "description": "Complementá tu alimentación con 100% WHEY, una proteína diseñada para tu consumo diario. La suplementación con proteínas de suero (WHey Protein) es ideal para complementar tus desayunos, tus meriendas y tu snack recovery post entreno. Los 20 grs de proteína por porción 100% Whey la posicionan como una gran opción para toda la población físicamente activa, tanto hombres como mujeres. La calidad 100% Whey es ideal para fvorecr la síntesis de masa muscular, ya que es rica en aminoácidos ramificados conocidos BCAA.",
+    "dose": "Colocar una medida (scoop) en un shaker y agregar 200 cm3 de agua o leche (preferentemente descremada), agitar y consumir en tus desayunos o meriendas."
+  },
+  {
+    "id": "006",
+    "name": "Isoprot",
+    "price": 52000,
+    "size": "907 grs",
+    "stock": 107,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/Isoprot-Chocolate_1024x.jpg?v=1698326182",
+      "https://www.enasport.com/cdn/shop/files/Isoprot-Vainilla_1024x.jpg?v=1698326182",
+      "https://www.enasport.com/cdn/shop/files/7792981005060-2_1024x.jpg?v=1698326861",
+      "https://www.enasport.com/cdn/shop/files/7792981005060-1_1024x.jpg?v=1698326868"
+    ],
+    "flavour": ["Vanilla Caramel", "Chocolate Mousse"],
+    "category": "Proteína",
+    "pre_description": [
+      "Proteína 100% aislada",
+      "27 grs de proteína por porción (scoop)",
+      "Ayuda a acelerar el crecimiento y la recuperación muscular",
+      "Elevada concentración de aminoácidos ramificados",
+      "Más proteínas, menos carbohidratos y menos calorías"
+    ],
+    "description": "Más proteínas, menos carbohidratos y menos calorías. Proteína de rápida asimilación, potencia el crecimiento y la recuperación muscular. Contiene alta concentración de aminoácidos ramificados (BCAA) que promueven el crecimento muscualr, elevando la energía utilizada para tu entrenamiento, logrando así una mayor pérdida de grasa en el cuerpo.",
+    "dose": "Mezclar una cucharada con 200 cm3 de leche o agua, agitar/mezclar y consumir."
+  },
+  {
+    "id": "007",
+    "name": "Plant Protein",
+    "price": 16000,
+    "size": "375 grs",
+    "stock": 120,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Plant_Protein_1024x.jpg?v=1640087079",
+      "https://www.enasport.com/cdn/shop/products/ProteinSeries_PlantProtein_page-0001_1024x.jpg?v=1649248859"
+    ],
+    "flavour": ["Vanilla Caramel"],
+    "category": "Proteína",
+    "pre_description": [
+      "Proteína de arvejas",
+      "20 grs de proteína por porción",
+      "Favorece la recuperación y aumento de masa muscular",
+      "Apto vegano",
+      "Proteína de alta calidad",
+      "Sin conservantes"
+    ],
+    "description": "Proteína vegetal de máxima calidad, elaborada a base de proteína de arvejas. Ideal para quienes eligen una alimentación vegana o vegetariana o para complementar cualquier dieta con deficiencia proteíca. -Libre de lactosa. -Libre de soja. -Sin azúcar agregada. -Sin conservantes. Aporta 20 grs de proteína por toma.",
+    "dose": "Mezclar 4 scoops (25 grs) en un shaker con 200/250 cm3 de agua. Rinde 15 porciones."
+  },
+  {
+    "id": "008",
+    "name": "Starter Protein",
+    "price": 15000,
+    "size": "400 grs",
+    "stock": 145,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/Starter_Protein_Cafe_1000x.jpg?v=1683732623",
+      "https://www.enasport.com/cdn/shop/products/StarterProtein_page-0001_1000x.jpg?v=1683732623"
+    ],
+    "flavour": ["Coffee"],
+    "category": "Proteína",
+    "pre_description": [
+      "20 grs de proteína por porción (2 scoop",
+      "Optimiza tus rendimientos diarios",
+      "Favorece la recuperación y desarrollo muscular",
+      "Contiene cafeína, guaraná y té verdes que aportan energía"
+    ],
+    "description": "Breakfast shake. Starter Protein es un suplemento a base de proteína de suero de leche combinado con extractos de café y te verde sabor a café con leche. Su fórmula lo posiciona como una excelente opción para mejorar la calidad de tus desayunos o meriendas. Incorpora proteínas de la más alta calidad junto con los mejores energizantes naturales para optimizar tu rendimiento diario y alcanzar tus objetivos.",
+    "dose": "Disolver un medida (16 grs) de Starte Protein en 200cm3 de agua o leche parcialmente descremada fría, agitar y consumir. Se puede consumir a temperaturas que no superen los 70ºC"
+  },
+  {
+    "id": "009",
+    "name": "Protein",
+    "price": 15600,
+    "size": "12 sobres",
+    "stock": 163,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Caja_protein_chocolate_500x.jpg?v=1652799514",
+      "https://www.enasport.com/cdn/shop/products/Caja_protein_vainilla_1024x.jpg?v=1652799516",
+      "https://www.enasport.com/cdn/shop/products/Protein_page-0001_1024x.jpg?v=1652799514"
+    ],
+    "flavour": ["Chocolate", "Vainilla"],
+    "category": "Proteína",
+    "pre_description": [
+      "20 grs de proteína por sobre",
+      "Recuperación muscular rápida y efectiva",
+      "Cómodo y práctico para llevar y consumir en cualquier momento",
+      "Sin conservantes, ni azúcar agregada"
+    ],
+    "description": "Disolución instantánea, increíble sabor. Protein es un batido proteíco a base de proteínas de suero de leche de alta calidad, su fórmula comnbina proteína de suero de leche concentrada y aislada, ofreciendo una mejor experiencia de consumo. Su portabiidad hace de proteín una excelente opción para llevar a todos lados y tener acceso a tu porción de  proteínas en cualquier lugar y momento del día.",
+    "dose": "Disolver un sobre (25 grs) de Protein en un shaker y agregar 160/200 cm3 de agua o leche (preferiblemente descremada), agitar y consumir."
+  },
+  {
+    "id": "010",
+    "name": "Creatina Micronizada",
+    "price": 28900,
+    "size": "300 grs",
+    "stock": 178,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Creatina_Micronizada_neutra_1000x.jpg?v=1669206077",
+      "https://www.enasport.com/cdn/shop/products/Creatina_Micronizada_fruit_1024x.jpg?v=1669206077",
+      "https://www.enasport.com/cdn/shop/products/Performance_Creatina_page-0001_1024x.jpg?v=1642533383"
+    ],
+    "flavour": ["Fruit punch", "Neutro"],
+    "category": "Creatina",
+    "pre_description": [
+      "Fórmula pura. Monohidratada",
+      "5gr de creatina pura por porción",
+      "Favorece el crecimiento y desarrollo de los músculos",
+      "Fácil disolución",
+      "Reduce la fátiga múscular",
+      "Mejora el rendimiento físico"
+    ],
+    "description": "Nuestra Creatina Micronizada es un excelente suplemento pre entrenamiento ya que colabora en la formación de los componentes energéticos, mejor la potencia muscular y retrasa la fatiga muscular, preparando al cuerpo para un mejor rendimiento físico. Ha sido demostrado que apoya al crecimiento del tamaño de los músculos, y el aumento de fuerza y poder cuando se la combina con actividades de alta intensidad. Beneficios: -Formula pura con un solo ingrediente: creatina micronizada. -Ideal para personas que realizan ejercicios de fuerza. -Disminuye la fatiga luego de la actividad. -Ayuda al aumento de la fuerza muscular para el aumento de los músculos. -Se absorbe de manera rápida brindando al organismo energía inmediata.",
+    "dose": "Ingesta diaria: 6.5gr por día (1 medida sin colmar aprox) en 200cm3 de agua para creatina micronizada CON SABOR. 5gr por día (1 cuchara de té colmada) en 200cm3 de agua o jugos para sabor NEUTRO"
+  },
+  {
+    "id": "011",
+    "name": "TrueMade Amino Full",
+    "price": 14500,
+    "size": "146 grs",
+    "stock": 225,
     "image": [
       "https://www.enasport.com/cdn/shop/files/Truemade_Amino_Full_0c56c67e-45fd-4b6f-8bc6-c18db5ec5750_500x.jpg?v=1685712300",
       "https://www.enasport.com/cdn/shop/products/Performance_TrueMadeAminoFull2023_1_1024x.jpg?v=1685712295"
@@ -90,157 +263,424 @@
       "Ideal para entrenamientos de resistencia y alta intensidad",
       "Aporta 100mg de cafeína"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "005",
-    "name": "Ultra Mass",
-    "price": 17185.0,
-    "size": "1,5kg",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/UltraMass_kilo_vainilla_500x.jpg?v=1685711739",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_UltraMass_1_5y3kg-2_page-0001_1024x.jpg?v=1685711739"
-    ],
-    "flavour": ["Vainilla", "Chocolate"],
-    "category": "Control de peso",
-    "pre_description": [
-      "25gr de proteína, 70gr de carbohidratos",
-      "Ganador de peso",
-      "Ideal para el aumento de masa muscular y peso"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "006",
-    "name": "Ultra Mass",
-    "price": 19155.0,
-    "size": "3kg",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/UltraMass_kilo_vainilla_500x.jpg?v=1685711739",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_UltraMass_1_5y3kg-2_page-0001_1024x.jpg?v=1685711739"
-    ],
-    "flavour": ["Vainilla", "Chocolate"],
-    "category": "Control de peso",
-    "pre_description": [
-      "25gr de proteína, 70gr de carbohidratos",
-      "Ganador de peso",
-      "Ideal para el aumento de masa muscular y peso"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "007",
-    "name": "Colágeno Sport",
-    "price": 18410.0,
-    "size": "407gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Colageno_Sport_500x.jpg?v=1653074375",
-      "https://www.enasport.com/cdn/shop/products/Performance_ColagenoSport_page-0001_1024x.jpg?v=1700596537"
-    ],
-    "flavour": ["Naranja", "Fruit punch"],
-    "category": "Proteína",
-    "pre_description": [
-      "10grs de colágeno, 500mgrs de vitamina C por cada medida",
-      "Reduce el riesgo de lesiones en las articulaciones",
-      "Ideal para rehabilitar lesiones del tejido conectivo",
-      "Contiene magnesio, cúrcuma y ácido hialurónico en su fórmula"
-    ],
-
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "008",
-    "name": "100% Whey Protein",
-    "price": 19026.0,
-    "size": "900gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/100__Whey_choco_500x.jpg?v=1640025757",
-      "https://www.enasport.com/cdn/shop/products/Performance_100Whey_2Lb_page-0001_1024x.jpg?v=1642533107"
-    ],
-    "flavour": ["Vainilla", "Chocolate"],
-    "category": "Proteína",
-    "pre_description": [
-      "20grs de proteína por medida (scoop)",
-      "Favorece en el desarrollo muscular",
-      "Ayuda en la recuperación de los músculos"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "009",
-    "name": "Isoprot",
-    "price": 38350.0,
-    "size": "907gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/Isoprot-Chocolate_500x.jpg?v=1698326182",
-      "https://www.enasport.com/cdn/shop/files/7792981005060-2_1024x.jpg?v=1698326861"
-    ],
-    "flavour": ["Vanilla Caramel", "Chocolate Mousse"],
-    "category": "Proteína",
-    "pre_description": [
-      "Proteína 100% aislada",
-      "27grs de proteína por porción (scoop)",
-      "Ayuda a acelerar el crecimiento y la recuperación muscular",
-      "Elevada concentración de aminoácidos ramificados",
-      "Más proteínas, menos carbohidratos y menos calorías"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "010",
-    "name": "Plant Protein",
-    "price": 11815.0,
-    "size": "375gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Plant_Protein_1024x.jpg?v=1640087079",
-      "https://www.enasport.com/cdn/shop/products/ProteinSeries_PlantProtein_page-0001_1024x.jpg?v=1649248859"
-    ],
-    "flavour": ["Vanilla Caramel"],
-    "category": "Proteína",
-    "pre_description": [
-      "Proteína de arvejas",
-      "20grs de proteína por porción",
-      "Favorece la recuperación y aumento de masa muscular",
-      "Apto vegano",
-      "Proteína de alta calidad",
-      "Sin conservantes"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "011",
-    "name": "Starter Protein",
-    "price": 10740.0,
-    "size": "400gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/Starter_Protein_Cafe_1000x.jpg?v=1683732623",
-      "https://www.enasport.com/cdn/shop/products/StarterProtein_page-0001_1000x.jpg?v=1683732623"
-    ],
-    "flavour": ["Coffee"],
-    "category": "Proteína",
-    "pre_description": [
-      "20 grs de proteína por porción (2 scoop",
-      "Optimiza tus rendimientos diarios",
-      "Favorece la recuperación y desarrollo muscular",
-      "Contiene cafeína, guaraná y té verdes que aportan energía"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "description": "AMINOÁCIDOS + CAFEÍNA + ELECTROLITOS. Amino Full contiene una combinación de aminoácidos de cadena ramificada (Leucina, Isoleucina, Valina) en un ratio 2:1:1; que son indispensables para el desarrollo y una mejor y más rápida recuperación de la masa muscular. La fórmula de complementa con L-Citrulina y L-Glutamina, ayudando a reducir la fatiga, ya que mantienen a las células en buen estado y trabajan sobre la reparación de tejidos; ideales para mejorar el rendimiento, ganar fuerza y masa muscular. Además, Amino Full aporta 100mg de cafeína para respaldar la energía y el enfoque, ideal tanto en entrenamientos de resistencia como en ejercicios de alta intensidad. -5gr de aminoácidos para crecimiento y recuperación muscular. -100mg de cafeína para rendimiento y enfoque. -Electrólitos para energía y rehidratación. -0% de grasas y azúcares. -Uso pre-entreno o post-entrenamiento. -Ayuda a las funciones metabólicas",
+    "dose": "Disolver 1 scoop colmado (7.30 gr aprox) en 300ml de agua agitar unos segundos y consumir antes y después del entrenamiento."
   },
   {
     "id": "012",
+    "name": "Glutamina",
+    "price": 14000,
+    "size": "150 grs",
+    "stock": 126,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Glutamine_Micronized_1024x.jpg?v=1640023671",
+      "https://www.enasport.com/cdn/shop/products/Performance_Glutamina_page-0001_1024x.jpg?v=1686242509"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "100% pura, sin aditivos",
+      "5grs de L-glutamina por porción",
+      "Favorecer la recuperación",
+      "Promueve la regeneración de los tejidos musculares",
+      "Retrasa la fatiga post workout",
+      "Ayuda a reducir el daño muscular"
+    ],
+    "description": "La glutamina es el aminoácido más abundante en sangre y músculo. Es condicionalmente esencial debido al alto consumo que existe en el estrés crónico por el ejercicio. Durante prolongados períodos de ejercicio intenso, los niveles de Glutamina pueden disminuir, lo que limita la síntesis de proteínas. Ademas es considerado como una de las principales fuentes de energía de los linfocitos (protagonistas en el sistema inmunológico).",
+    "dose": "Consumir 5 gramos diarios (una medida) luego de los entrenamientos o bien antes de dormir."
+  },
+  {
+    "id": "013",
+    "name": "Beta Alanine",
+    "price": 9000,
+    "size": "60 Tabs",
+    "stock": 98,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Beta_Alanine_1024x.jpg?v=1640022549",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_BetaAlanine_page-0001_1024x.jpg?v=1642531365"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Mejora el rendimiento físico en actividades de alta intensidad",
+      "Aumenta la concentración de carnosina, retrasando la fatiga muscular",
+      "Mejora la resistencia durante los entrenamientos",
+      "Consumir previo a la actividad",
+      "Ideal para aquellos que buscan llevar su rendimiento al siguiente nivel y superar sus propios límites"
+    ],
+    "description": "Una ingesta de Beta Alanine te provee de 3 grs de pura Beta Alanina, para que logres entrenar más duro y más fuerte de lo que nunca pensaste. La suplementación con Beta Alanina aumenta la concentración de carnosina en los músculos. Beta Alanine te llevará al próximo nivel. Para aquellos que siempre tienen una frontera que cruzar, un límite que superar, un meta que demoler y más para lograr.",
+    "dose": "Consumir 4 tabletas (ingesta máxima) por día 30 minutos antes de los entrenamientos."
+  },
+  {
+    "id": "014",
+    "name": "Pre War",
+    "price": 23900,
+    "stock": 89,
+    "size": "400 grs",
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Prewar_Fruit_1024x.jpg?v=1640023916",
+      "https://www.enasport.com/cdn/shop/products/Prewar_Lemonade_1024x.jpg?v=1640023915",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_PREWAR_page-0001_1024x.jpg?v=1642531907"
+    ],
+    "flavour": ["Fruit punch", "Lemonade"],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "200 mg de cafeína por medida (scoop)",
+      "3 grs de creatina monohidrato",
+      "Energía inmediata",
+      "Cooncentración, resistencia y recuperación",
+      "Favorece el crecimiento y desarrollo de los músculos"
+    ],
+    "description": "Energía + Concentración + Resistencia. Pre War es la siguiente evolución en pre entrenamientos. Diseñado con precisión para desafiar tus límites, favorece la concentración, el aumento de energía, la fuerza, el tamaño muscular y la recuperación. Entrena con nuestro Pre work más completo y con fórmula mejorada con 200mg de cafeína por ingesta.",
+    "dose": "Consumir una medida (20 gramos) antes de entrenar. Para un excelente sabor, mezcla Pre War con 200 cm3 de agua fría en un shaker. Agitar energéticamente y consumir."
+  },
+  {
+    "id": "015",
+    "name": "Re Load",
+    "price": 16900,
+    "size": "220 grs",
+    "stock": 165,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Reload_Fruit_1024x.jpg?v=1683514967",
+      "https://www.enasport.com/cdn/shop/products/Reload_Lemonade_1024x.jpg?v=1683514967",
+      "https://www.enasport.com/cdn/shop/products/Performance_ReloadBCAA2.1.1_page-0001_1024x.jpg?v=1683514967"
+    ],
+    "flavour": ["Fruit punch", "Lemonade"],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Mejora la recuperación",
+      "Potencia los beneficios de tu entrenamiento",
+      "Ratio 2:1:1 de BCAA (Leucina, Isoleucina y valina)",
+      "Aminoácidos cruciales para la sintesis de proteína",
+      "Diseñado para consumirse después del entrenamiento"
+    ],
+    "description": "Re Load es lo último en post entrenamiento. Ideal para después de un entrenamiento intenso. Te traemos el mejor ratio de BCAA (2:1:1) con la cantidad exacta que necesitas para recuperarte más rápido y volver nuevamente al juego.",
+    "dose": "Consumir una medida (2 scoops) después de entrenar. Para un excelente sabor, mezcla Reload con 350/400 cm3 de agua fría en un shaker. Agitar energéticamente durante 30 segundos y consumir."
+  },
+  {
+    "id": "016",
+    "name": "Muscle Max",
+    "price": 10000,
+    "size": "90 Tabs",
+    "stock": 147,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/MuscleMax_1024x.jpg?v=1699268710",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_MuscleMax_page-0001_1024x.jpg?v=1699874026"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Mejora la recuperación",
+      "Favorece el aumento de masa muscular",
+      "Contiene arginina, ornitina y lisina",
+      "Mejora el metabolismo"
+    ],
+    "description": "Es un suplemento que combina 3 aminoácidos (l-arginina, l-lisina y l-ornitina) que son de gran importancia en la producción natural de la hormona de crecimiento y del óxido nítrico. Muscle Max favorece el crecimiento de los tejidos y músculos, el metabolismo del exceso de grasa, la reparación del sistema inmunológico y actúa como detoxificante.",
+    "dose": "Consumir 3 tabletas por día, preferentemente antes de acostarse."
+  },
+  {
+    "id": "017",
+    "name": "BCAA 12:1:1",
+    "price": 11500,
+    "size": "120 Tabs",
+    "stock": 77,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/BCAA_1211_1024x.jpg?v=1683514899",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_BCAA12.1.1_page-0001_1_1024x.jpg?v=1683514899"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Favorece la recuperación y aumento de masa muscular",
+      "Contiene L-Leucina, L-Isoleucina y L-valina",
+      "Aporta 1800mg de L-Leucina por porción",
+      "Optimiza el rendimiento deportivo",
+      "Promueve la síntesis de proteínas musculares"
+    ],
+    "description": "Diseñado para personas que realizan actividad física intensa, ya que colabora con la construcción, reparación y mantenimiento de los músculos. BCAA 12:1.1 es un excelente recuperador, elaborado con un súper ratio de aminoácidos ramificados, aportando 1800 mg de L-Leucina por porción, que mejoran el desarrollo muscular y disminuyen la degradación de proteínas durante los ejercicios.",
+    "dose": "Consumir 4 cápsulas diarias, 30 minutos después del entrenamiento."
+  },
+  {
+    "id": "018",
+    "name": "Amino 4500",
+    "price": 20500,
+    "size": "150 Tabs",
+    "stock": 231,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Amino_4500_500x.jpg?v=1640022423",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_Amino4500_page-0001_1024x.jpg?v=1650901494"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Mezcla perfecta de aminoácidos seleccionados",
+      "Acelera la recuperación",
+      "Maximiza el crecimiento muscular",
+      "Ayuda a mejorar el rendimiento",
+      "Proporciona los nutrientes necesarios para el desarrollo muscular"
+    ],
+    "description": "Favorece el crecimiento y la recuperación muscular post work. Es la perfecta mezcla de aminoácidos para ayudar a aquellos que quieren entrenar más fuerte y recuperarse más rápido. Usado después del entrenamiento, acelera la recuperación y maximiza el crecimiento muscular. Formulado con ingredientes de alta calidad, ayuda a todos los atletas a volverse fuertes, mantenerse saludables y en forma.",
+    "dose": "Ingesta diaria máxima: 10 tabletas. Tomar de 3 a 5 tabletas 2 horas antes del almuerzo y 3 a 5 tabletas 2 horas antes de la cena o bien antes y después de entrenar."
+  },
+  {
+    "id": "019",
+    "name": "Óxido nítrico",
+    "price": 19500,
+    "size": "210 grs",
+    "stock": 65,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/Oxido_Nitrico_1024x.jpg?v=1685712224",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_OxidoNitrico_page-0001_6f6c22e7-41c7-4fd2-b4f8-368733ce227b_1024x.jpg?v=1685712778"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Potente vaso dilatador",
+      "Mejora el rendimiento y la recuperación muscular",
+      "Retrasa la aparición de fatiga muscular",
+      "Ingredientes principales L-arginina y ceto glutarato"
+    ],
+    "description": "Potente vaso dilatador de masa muscular, rápida recuperación. Fórmula precursora de óxido nítrico, elaborado con arginina alfa ceto glutarato, ornitina y glucosa. El óxido nítrico es un compuesto muy importante para la fisiología de nuestro organismo. Actúa como vasodilatador haciendo que la sangre circule a mayor velocidad, aumentando así el aporte de oxígeno y de nutrientes a los músculos. Esto permite mejorar el rendimiento durante el entrenamiento, la recuperación del músculo y el aumento de su capacidad de crecimiento.",
+    "dose": "Puedes consumirlo mezclando una porción (7 g) en 200 cm3 de agua, 30  a 60 minutos antes del entrenamiento."
+  },
+  {
+    "id": "020",
+    "name": "BCAA 2:1:1",
+    "price": 10500,
+    "stock": 114,
+    "size": "90 Tabs",
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/BCAA_211_1024x.jpg?v=1683514389",
+      "https://www.enasport.com/cdn/shop/products/BCAA211_page-0001_1024x.jpg?v=1683514389"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Favorece la recuperación y aumento de la masa muscular",
+      "Contiene L-Leucina, L-Isoleucina y L-Valina",
+      "Los aminoácidos son esenciales en la síntesis de proteínas musculares",
+      "Optimiza el rendimiento físico"
+    ],
+    "description": "Diseñado para personas que realizan actividad física intensa, ya que colabora con la construcción, reparación y mantenimiento de los músculos. BCAA es un excelente recuperador, elaborado con aminoácidos ramificados, esenciales y cristalinos en forma de 'L' que mejoran el desarrollo muscular y disminuyen la degradación de proteínas durante los ejercicios.",
+    "dose": "Consumir 3 cápsulas diarias 30 minutos después del entrenamiento."
+  },
+  {
+    "id": "021",
+    "name": "ZMA",
+    "price": 9000,
+    "stock": 78,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/ENAZMAweb1000x1000_jpg_500x.jpg?v=1683515047",
+      "https://www.enasport.com/cdn/shop/files/CoreSeries_ZMAficha_1024x.jpg?v=1685712663"
+    ],
+    "category": "Aminoácidos",
+    "pre_description": [
+      "Potente mezcla de zinc, magnesio y vitamina B6",
+      "Mejora el rendimiento muscular",
+      "Ayuda a optimizar la recuperación muscular",
+      "Contribuye al desarrollo de la masa muscular"
+    ],
+    "description": "ZMA es un complemento nutricional formulado para aumentar la masa muscular con una potente mezcla de Zinc, Magnesio y Vitamina B6. El Zinc soporta la función celular, el Magnesio mejora la fuerza y resistencia y la Vitamina B6 ayuda a un mejor descanso. Adecuado para todos los niveles de actividad física desde levantamiento de pesas hasta deportes de resistencia.",
+    "dose": "Tomar 2 cápsulas antes de acostarse"
+  },
+  {
+    "id": "022",
+    "name": "Enargy Gel+ Con Cafeína",
+    "price": 12000,
+    "size": "12 Unidades",
+    "stock": 10,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/7792981070259-1_1_5cf0479f-5ae3-49dd-b590-00b4888a5880_1024x.jpg?v=1699873851",
+      "https://www.enasport.com/cdn/shop/files/7792981070273-1_1_fe20540c-a030-49d8-ba7d-505ca078cb02_1024x.jpg?v=1699874602",
+      "https://www.enasport.com/cdn/shop/files/7792981070266-1_1_63ee34e6-9bed-4dd0-ba1e-6b7caf3e13a9_1024x.jpg?v=1699873851",
+      "https://www.enasport.com/cdn/shop/products/Performance_GEL__page-0001_1024x.jpg?v=1699873851",
+      "https://www.enasport.com/cdn/shop/products/EnargyGel__Uva_41704172-9ee0-4a07-975f-97c7bd7b777b_1024x.jpg?v=1699873851",
+      "https://www.enasport.com/cdn/shop/products/EnargyGel__Vainilla_f83799d6-4496-4900-ab78-032d2985760e_1024x.jpg?v=1699873851",
+      "https://www.enasport.com/cdn/shop/files/7792981070266-2_1024x.jpg?v=1700065013"
+    ],
+    "flavour": ["Citrus", "Uva", "Vainilla Bean"],
+    "category": "Energía",
+    "pre_description": [
+      "Energía de rápida absorción",
+      "Fácil de transportar",
+      "Aporta nutrientes escenciales para el funcionamiento adecuado del cuerpo durante el ejercicio",
+      "Ideal para consumir antes o durante la actividad",
+      "Con cafeína"
+    ],
+    "description": "Enargy Gel+ Con Cafeína. - Aporte energía 'en movimiento'. - Ideal para todo trabajo aeróbico. - Con sales de rehidratación. - Aporta antioxidantes que actúan sobre los radicales libres. Energy Gel fue creado específicamente para optimizar el consumo de nutrientes de una manera conveniente, portable y con ricos sabores.",
+    "dose": "Se pueden consumir 2 Enargy Gel+. consumir uno 15 minutos antes de la actividad y otro después de iniciada la misma. Si estás en plena actividad, simplemente corta la parte superior del pack con la mano o la boca y procede a ingerirlo por completo. También podes consumirlo en entretiempos o momentos en donde haces una pausa en tu actividad."
+  },
+  {
+    "id": "023",
+    "name": "Carbo Energy",
+    "price": 9900,
+    "size": "540 grs",
+    "stock": 95,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Carbo_Energy_1024x.jpg?v=1699268678",
+      "https://www.enasport.com/cdn/shop/files/7792981002205_1000x1000_dd327d22-8372-47ff-bf6f-85898df926e7_1024x.jpg?v=1699873572",
+      "https://www.enasport.com/cdn/shop/products/Carbo_Energy_cc905183-6d35-4629-8c69-c12323d477ed_1024x.jpg?v=1699873572"
+    ],
+    "flavour": ["Fruit punch", "Blueberry"],
+    "category": "Energía",
+    "pre_description": [
+      "Mejora la performance y aporta energía durante la acitividad física",
+      "Energía inmediata y sostenida",
+      "Repone sales y minerales",
+      "Optimiza la recuperación",
+      "Excelente fuente de hidratación instantánea antes y durante la actividad física",
+      "Posee capacidad antioxidante gracias a su aporte de vitamina C"
+    ],
+    "description": "Carbo Energy es la bebida deportiva por excelencia. Su formula exclusiva mejora tu performance favoreciendo el aporte de energía durante la actividad física. Gracias a la tecnología de ultima generación lograras optimizar la recuperación y llegar a niveles que nunca pensaste. Viene en sabor Fruit Punch y Blueberrys.",
+    "dose": "Una scoop disuelta en 400 ml de agua."
+  },
+  {
+    "id": "024",
+    "name": "Enargy Gel- Sin Cafeína",
+    "price": 10800,
+    "size": "12 Unidades",
+    "stock": 114,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/7792981070235-1_1_a497cf62-e7e6-4d95-9e9c-eab929c0bdc0_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/files/7792981070204-1_1_b5533c29-9458-4330-9353-304d031745b8_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/files/7792981070242-1_1_1090096a-9fd2-4783-b441-87f2223edae6_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/products/Enargy_Gel_pages-to-jpg-0001_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/products/EnargyGel_frutilla_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/products/EnargyGel_limon_1024x.jpg?v=1699873751",
+      "https://www.enasport.com/cdn/shop/products/EnargyGel_vainilla_1024x.jpg?v=1699873751"
+    ],
+    "flavour": ["Frutilla", "Limón", "Vainilla Bean"],
+    "category": "Energía",
+    "pre_description": [
+      "Energía de rápida absorción",
+      "Fácil de transportar",
+      "Aporta nutrientes escenciales para el funcionamiento adecuado del cuerpo durante el ejercicio",
+      "Ideal para consumir antes o durante la actividad",
+      "Sin cafeína"
+    ],
+    "description": "Energy Gel es un repositor energético con sales de rehidratación creado para el entrenamiento diario y la competencia. Es rico en carbohidratos en un paquete portátil para mejorar resistencia y potencia. Es un suplemento dietario a base de carbohidratos, vitamina C, E y minerales, sin cafeína, que aportan energía en movimiento, ideal para todo trabajo aeróbico. Energy Gel fue creado específicamente para optimizar el consumo de nutrientes de una manera conveniente, portable y con ricos sabores. Aporta energía 'en movimiento'. Ideal para todo trabajo aeróbico. Con sales de rehidratación.",
+    "dose": "Ingesta diaria sugerida: 2 Enargy Gel. Consumir 1 Enargy Gel 15 minutos antes de la actividad física y 1 Enargy Gel 45 minutos después de iniciada la misma. Si estás en plena actividad, simplemente corta la parte superior del pack con la mano o la boca y procede a ingerirlo por completo. También podes consumirlo en entretiempos o momentos en donde haces una pausa en tu actividad."
+  },
+  {
+    "id": "025",
+    "name": "Multivitamin",
+    "price": 9900,
+    "size": "120 Tabs",
+    "stock": 93,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/BCAA_1211_1024x.jpg?v=1683514899",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_BCAA12.1.1_page-0001_1_1024x.jpg?v=1683514899"
+    ],
+    "category": "Energía",
+    "pre_description": [
+      "Contribuye a mejorar la resistencia al estrés físico y mental",
+      "Contiene cafeína para estimular la concentración y el rendimiento",
+      "Balance nutricional con 11 vitaminas y 4 minerales",
+      "Se recomienda consumir previo a la actividad"
+    ],
+    "description": "Multivitamin es un suplemento multivitamínico completo a base de vitaminas y minerales, especialmente formulado para ayudar a respaldar la salud física, con un plus de cafeína que estimula la concentración y el rendimiento. Su aporte de Vitaminas del complejo B, colabora para sostener los niveles de energía, reducir la sensación de cansancio y mejorar al resistencia al estrés físico y mental.",
+    "dose": "Tomas un comprimido a la mañana o previo a la actividad física, con abundante agua"
+  },
+  {
+    "id": "026",
+    "name": "Cafeína",
+    "price": 8000,
+    "size": "60 Tabs",
+    "stock": 156,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Cafeina_1024x.jpg?v=1683513707",
+      "https://www.enasport.com/cdn/shop/products/Wellness_CAFEINA_2023_1024x.jpg?v=1685712522"
+    ],
+    "category": "Energía",
+    "pre_description": [
+      "200 mg de cafeína",
+      "Proporciona un impulso de energía",
+      "Ayuda a aumentar el enfoque y la concentración durante el ejercicio",
+      "Reduce la sensación de fatiga"
+    ],
+    "description": "Suplemento a base de Cafeína. Concentra 200 mg de cafeína anhidra de extrema calidad, convirtíendose en un aliado ideal para potenciar los entrenamientos intensos. - Ayuda a mejorar la claridad mental y aumenta el enfoque. - Potencia la fuerza y la capacidad de ejercicio, aumentando el rendimiento. - Cero azúcar, cero calorías. - Alivia la fatiga y contribuye al crecimiento muscular. - Ayuda a la perdida de grasa",
+    "dose": "Una tableta diaria en conjunto con la comida."
+  },
+  {
+    "id": "027",
+    "name": "Carnitina 1500",
+    "price": 10000,
+    "size": "60 Tabs",
+    "stock": 78,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/Carnitina_1500_b51ccc10-5f28-459f-adcf-f7f27dd91c84_1024x.jpg?v=1699873485",
+      "https://www.enasport.com/cdn/shop/products/Performance_Carnitina1500_page-0001_1024x.jpg?v=1699873485"
+    ],
+    "category": "Control de peso",
+    "pre_description": [
+      "Mejora el metabolismo",
+      "Favorece la conversión de ácidos grasos en energía",
+      "Alta pureza"
+    ],
+    "description": "Mejora el metabolismo, aporta energía pre work. Es un producto superior esencial para quién está buscando reducir grasas y ganar más energía. Es de la más alta pureza, para asegurar los mejores resultados. CARNITINA 1500 MG es un producto que se consume previo a los entrenamientos, ya que al quemar grasas aporta la energía que necesitas para rendir al máximo.",
+    "dose": "Una tableta antes de entrenar"
+  },
+  {
+    "id": "028",
+    "name": "Hydroxy Max Black",
+    "price": 10500,
+    "size": "120 Tabs",
+    "stock": 124,
+    "image": [
+      "https://www.enasport.com/cdn/shop/files/7792981003424_1_e73038c0-601a-4834-962a-2f929cf10ddf_1024x.jpg?v=1699873943",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_HidroxyMaxBlack_page-0001_1024x.jpg?v=1699873943"
+    ],
+    "category": "Control de peso",
+    "pre_description": [
+      "Termogénica, favorece el metabolismo",
+      "Aumenta la saciedad",
+      "La cafeína aporta energía para tu entrenamiento"
+    ],
+    "description": "Potente termogénico, ayuda al descenso de peso. A base de garcinia, taurina, té verde, naranjas amargas, carnitina, tirosina, guaraná, ginseng siberiano, uva ursi y cafeína, una combinación nunca antes vista para ofrecerte una experiencia única. Junto con un intenso estallido de energía te ayuda a entrenar con máxima intensidad desde el primer día. Hydroxy max black es un poderoso termogénico que ayuda a aumentar tu tasa metabólica. Tiene todo lo necesario para entrenar más duro y esculpir el cuerpo que siempre has querido. Nunca has probado nada parecido garantizado!.",
+    "dose": "Ingesta diaria: 4 tabletas. Consumir 2 tabletas antes del desayuno y 2 30 minutos antes de entrenar."
+  },
+  {
+    "id": "029",
+    "name": "Ripped X",
+    "price": 9000,
+    "size": "60 Tabs",
+    "stock": 145,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/RippedX_500x.jpg?v=1699268766",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_RippedX_page-0001_9d5d098d-92b6-41a3-9341-4c1505644695_1024x.jpg?v=1699874053"
+    ],
+    "category": "Control de peso",
+    "pre_description": [
+      "Termogénica, favorece el metabolismo",
+      "Aumenta la saciedad",
+      "Ingredientes: Primiento, pimienta negra, té verde y vitamina B3"
+    ],
+    "description": "Ripped X ha sido desarrollado con la combinación perfecta de ingredientes naturales.",
+    "dose": "Consumir 2 capsulas por dia con abundante agua 30 minutos antes del almuerzo. Para un entrenamiento explosivo tomar 2 capsulas antes de entrenar. No exceder de 4 capsulas al dia."
+  },
+  {
+    "id": "030",
+    "name": "Hydroxy Max Night",
+    "price": 9500,
+    "size": "120 Tabs",
+    "stock": 145,
+    "image": [
+      "https://www.enasport.com/cdn/shop/products/Hydroxy_Night_0c4671d3-9434-42bc-aa2a-5855957d785e_1024x.jpg?v=1699268799",
+      "https://www.enasport.com/cdn/shop/products/CoreSeries_HidroxyMaxNight_page-0001_1024x.jpg?v=1699873996"
+    ],
+    "category": "Control de peso",
+    "pre_description": [
+      "Termogénica, favorece el metabolismo",
+      "Aumenta la saciedad",
+      "Contiene garcinina, taurina, té verde, naranjas amargas, carnitina, tirosina, guaraná, ginseng siberiano y uva ursi",
+      "Aumenta el metabolismo para favorecer la quema de grasa"
+    ],
+    "description": "Potente termogénico, ayuda al descenso de peso. A base de garcinia, taurina, té verde, naranjas amargas, carnitina, tirosina, guaraná, ginseng siberiano y uva ursi, una combinación nunca antes vista para ofrecerte una experiencia única. Junto con un intenso estallido de energía te ayuda a entrenar con máxima intensidad desde el primer día.",
+    "dose": "Ingesta diaria: 4 tabletas. Consumir 4 tabletas 30 minutos antes de la cena."
+  },
+  {
+    "id": "031",
     "name": "Protein bar",
-    "price": 11047.0,
+    "price": 19200,
     "size": "16 unidades",
     "stock": 10,
     "image": [
       "https://www.enasport.com/cdn/shop/files/ProteinBar_choco_caja_7ea0bdc3-d83e-4a0a-b341-063e31dd507c_1024x.jpg?v=1699874695",
+      "https://www.enasport.com/cdn/shop/files/ProteinBar_frutilla_caja_069c2dc5-ff97-40ae-93aa-b82149a97dfa_1024x.jpg?v=1699874695",
+      "https://www.enasport.com/cdn/shop/files/ProteinBar_split_caja_eecdc239-506d-4c72-b9ee-561789e37c6d_1024x.jpg?v=1699873012",
       "https://www.enasport.com/cdn/shop/products/Performance_PROTEINBAR_page-0001_1024x.jpg?v=1699874695"
     ],
     "flavour": [
@@ -256,211 +696,7 @@
       "Favorece la formación y el desarrollo de la masa muscular",
       "Ideal para consumir en cualquier momento y lugar"
     ],
-
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "013",
-    "name": "Creatina Micronizada",
-    "price": 27740.0,
-    "size": "300gr",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Creatina_Micronizada_neutra_1000x.jpg?v=1669206077",
-      "https://www.enasport.com/cdn/shop/products/Performance_Creatina_page-0001_1024x.jpg?v=1642533383"
-    ],
-    "flavour": ["Fruit punch", "Neutro"],
-    "category": "Creatina",
-    "pre_description": [
-      "Fórmula pura. Monohidratada",
-      "5gr de creatina pura por porción",
-      "Favorece el crecimiento y desarrollo de los músculos",
-      "Fácil disolución",
-      "Reduce la fátiga múscular",
-      "Mejora el rendimiento físico"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "014",
-    "name": "Enargy Gel - Sin Cafeína",
-    "price": 7900.0,
-    "size": "12 Unidades",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/7792981070259-1_1_5cf0479f-5ae3-49dd-b590-00b4888a5880_1000x.jpg?v=1699873851",
-      "https://www.enasport.com/cdn/shop/files/7792981070358-1_1_acc96137-0895-4577-a8a4-9589d76789cc_1000x.jpg?v=1699874602"
-    ],
-    "flavour": ["Frutilla", "Limón", "Vainilla Bean"],
-    "category": "Energía",
-    "pre_description": [
-      "Energía de rápida absorción",
-      "Fácil de transportar",
-      "Aporta nutrientes escenciales para el funcionamiento adecuado del cuerpo durante el ejercicio",
-      "Ideal para consumir antes o durante la actividad",
-      "Sin cafeína"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "015",
-    "name": "Enargy Gel+ Con Cafeína",
-    "price": 7900.0,
-    "size": "12 Unidades",
-    "stock": 10,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/7792981070273-1_1_fe20540c-a030-49d8-ba7d-505ca078cb02_1000x.jpg?v=1699874602",
-      "https://www.enasport.com/cdn/shop/files/7792981070372-1_1_a9552c6a-cebb-4d62-9c84-095e0c113781_1000x.jpg?v=1699873851"
-    ],
-    "flavour": ["Citrus", "Uva", "Vainilla Bean"],
-    "category": "Energía",
-    "pre_description": [
-      "Energía de rápida absorción",
-      "Fácil de transportar",
-      "Aporta nutrientes escenciales para el funcionamiento adecuado del cuerpo durante el ejercicio",
-      "Ideal para consumir antes o durante la actividad",
-      "Con cafeína"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "016",
-    "name": "Beta Alanine",
-    "price": 5735.0,
-    "size": "60 Tabs",
-    "stock": 25,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Beta_Alanine_1024x.jpg?v=1640022549",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_BetaAlanine_page-0001_1024x.jpg?v=1642531365"
-    ],
-    "category": "Aminoácidos",
-    "pre_description": [
-      "Mejora el rendimiento físico en actividades de alta intensidad",
-      "Aumenta la concentración de carnosina, retrasando la fatiga muscular",
-      "Mejora la resistencia durante los entrenamientos",
-      "Consumir previo a la actividad",
-      "Ideal para aquellos que buscan llevar su rendimiento al siguiente nivel y superar sus propios límites"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "017",
-    "name": "Hydroxy Max Night",
-    "price": 7345.0,
-    "size": "120 Tabs",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Hydroxy_Night_0c4671d3-9434-42bc-aa2a-5855957d785e_1024x.jpg?v=1699268799",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_HidroxyMaxNight_page-0001_1024x.jpg?v=1699873996"
-    ],
-    "category": "Control de peso",
-    "pre_description": [
-      "Termogénica, favorece el metabolismo",
-      "Aumenta la saciedad",
-      "Contiene garcinina, taurina, té verde, naranjas amargas, carnitina, tirosina, guaraná, ginseng siberiano y uva ursi",
-      "Aumenta el metabolismo para favorecer la quema de grasa"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "018",
-    "name": "Óxido nítrico",
-    "price": 8990.0,
-    "size": "210gr",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/files/Oxido_Nitrico_1024x.jpg?v=1685712224",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_OxidoNitrico_page-0001_6f6c22e7-41c7-4fd2-b4f8-368733ce227b_1024x.jpg?v=1685712778"
-    ],
-    "category": "Aminoácidos",
-    "pre_description": [
-      "Potente vaso dilatador",
-      "Mejora el rendimiento y la recuperación muscular",
-      "Retrasa la aparición de fatiga muscular",
-      "Ingredientes principales L-arginina y ceto glutarato"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "019",
-    "name": "Carbo Energy",
-    "price": 6595.0,
-    "size": "540gr",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/Carbo_Energy_1600x.jpg?v=1699268678",
-      "https://www.enasport.com/cdn/shop/products/Carbo_Energy_cc905183-6d35-4629-8c69-c12323d477ed_1024x.jpg?v=1699873572"
-    ],
-    "flavour": ["Fruit punch", "Blueberry"],
-    "category": "Energía",
-    "pre_description": [
-      "Mejora la performance y aporta energía durante la acitividad física",
-      "Energía inmediata y sostenida",
-      "Repone sales y minerales",
-      "Optimiza la recuperación",
-      "Excelente fuente de hidratación instantánea antes y durante la actividad física",
-      "Posee capacidad antioxidante gracias a su aporte de vitamina C"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "020",
-    "name": "BCAA 12:1:1",
-    "price": 7905.0,
-    "size": "120 Tabs",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/BCAA_1211_1024x.jpg?v=1683514899",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_BCAA12.1.1_page-0001_1_1024x.jpg?v=1683514899"
-    ],
-    "category": "Aminoácidos",
-    "pre_description": [
-      "Favorece la recuperación y aumento de masa muscular",
-      "Contiene L-Leucina, L-Isoleucina y L-valina",
-      "Aporta 1800mg de L-Leucina por porción",
-      "Optimiza el rendimiento deportivo",
-      "Promueve la síntesis de proteínas musculares"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "021",
-    "name": "Multivitamin",
-    "price": 7225.0,
-    "size": "120 Tabs",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/BCAA_1211_1024x.jpg?v=1683514899",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_BCAA12.1.1_page-0001_1_1024x.jpg?v=1683514899"
-    ],
-    "category": "Energía",
-    "pre_description": [
-      "Contribuye a mejorar la resistencia al estrés físico y mental",
-      "Contiene cafeína para estimular la concentración y el rendimiento",
-      "Balance nutricional con 11 vitaminas y 4 minerales",
-      "Se recomienda consumir previo a la actividad"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  },
-  {
-    "id": "022",
-    "name": "Re Load",
-    "price": 10850.0,
-    "size": "220gr",
-    "stock": 45,
-    "image": [
-      "https://www.enasport.com/cdn/shop/products/BCAA_1211_1024x.jpg?v=1683514899",
-      "https://www.enasport.com/cdn/shop/products/CoreSeries_BCAA12.1.1_page-0001_1_1024x.jpg?v=1683514899"
-    ],
-    "flavour": ["Fruit punch", "Lemonade"],
-    "category": "Aminoácidos",
-    "pre_description": [
-      "Mejora la recuperación",
-      "Potencia los beneficios de tu entrenamiento",
-      "Ratio 2:1:1 de BCAA (Leucina, Isoleucina, y valina)",
-      "Aminoácidos cruciales para la síntesis de proteína",
-      "Diseñado para consumirse después del entrenamiento"
-    ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    "description": "Protein Bar es el snack saludable para todos los días. Constituye una muy buena fuente de proteínas y carbohidratos ideal para completar una larga rutina de ejercicios, en un formato fácil de transportar y consumir. Dos barritas de Protein Bar aportan 30 gramos de proteína pura por día. Constituye un alimento funcional, que al estar reforzado con vitaminas y minerales, permite formar masa muscular al mismo tiempo que provee de energía.",
+    "dose": "Consumir luego de un entrenamiento intenso."
   }
 ]

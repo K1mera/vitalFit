@@ -1,22 +1,26 @@
 const { Op } = require("sequelize");
 const { Product, Category, Review } = require("../../db");
 const getProducts = async (
-  searchByName,
+  search,
   category,
   minPrice,
   maxPrice,
   sortByName,
   sortByPrice,
-  offer
+  offer,
+  status
 ) => {
   let filters = {};
 
-  if (searchByName) {
-    filters = { ...filters, name: { [Op.iLike]: `%${searchByName}%` } };
+  if (search) {
+    filters = { ...filters, name: { [Op.iLike]: `%${search}%` } };
   }
 
   if (offer) {
     filters = { ...filters, offer: true };
+  }
+  if (status) {
+    filters = { ...filters, status: { [Op.iLike]: status } };
   }
 
   if (category) {
@@ -41,17 +45,14 @@ const getProducts = async (
 
   let orderOptions = [];
 
-  if (sortByName === "ASC") {
-    orderOptions.push(["name", "ASC"]);
-  } else if (sortByName === "DESC") {
-    orderOptions.push(["name", "DESC"]);
+  if (sortByName && ["ASC", "DESC"].includes(sortByName.toUpperCase())) {
+    orderOptions.push(["name", sortByName.toUpperCase()]);
   }
 
-  if (sortByPrice === "ASC") {
-    orderOptions.push(["price", "ASC"]);
-  } else if (sortByPrice === "DESC") {
-    orderOptions.push(["price", "DESC"]);
+  if (sortByPrice && ["ASC", "DESC"].includes(sortByPrice.toUpperCase())) {
+    orderOptions.push(["price", sortByPrice.toUpperCase()]);
   }
+
   if (orderOptions.length === 0) {
     orderOptions.push(["id", "ASC"]);
   }
@@ -69,7 +70,12 @@ const getProducts = async (
 
   const nameCat = await finds.map((prod) => {
     const categoryName = prod.Category ? prod.Category.name : null;
-    return { ...prod.get(), Category: categoryName };
+    const arrayDescription = prod.description.split(". ");
+    return {
+      ...prod.get(),
+      Category: categoryName,
+      description: arrayDescription,
+    };
   });
 
   return nameCat;

@@ -1,9 +1,10 @@
 const putCategory = require("../../Controllers/Category/putCategory");
 
 async function putCategoryHandler(req, res) {
-  const { id, data } = req.body;
+  const { name } = req.body;
+  const { id } = req.params;
   try {
-    const response = await putCategory(id, data);
+    const response = await putCategory(id, name);
     res
       .status(200)
       .json({ message: "La categoria ha sido modificada con éxito" });

@@ -43,7 +43,7 @@ router.put("/activar-desactivar/:id", activarDesactivarHandler); //params & body
 //Categories
 router.get("/category", getCategoryHandler);
 router.post("/category", postCategoryHandler); //body
-router.put("/category", putCategoryHandler); //body
+router.put("/category/:id", putCategoryHandler); //body
 router.delete("/category/:id", deleteCategoryHandler); //params
 
 //Reviews

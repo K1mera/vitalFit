@@ -37,13 +37,16 @@ module.exports = (sequelize) => {
       description: {
         type: DataTypes.TEXT,
       },
-      status: {
-        type: DataTypes.ENUM(["Disable", "Active"]),
-        defaultValue: "Active",
+      active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
       offer: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+      },
+      dose: {
+        type: DataTypes.TEXT,
       },
     },
     { timestamps: false }

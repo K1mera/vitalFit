@@ -2,23 +2,25 @@ const getProducts = require("../../Controllers/Products/getProductController");
 
 async function getProductsHandler(req, res) {
   const {
-    searchByName,
+    search,
     category,
     minPrice,
     maxPrice,
     sortByName,
     sortByPrice,
     offer,
+    status,
   } = req.query;
   try {
     const response = await getProducts(
-      searchByName,
+      search,
       category,
       minPrice,
       maxPrice,
       sortByName,
       sortByPrice,
-      offer
+      offer,
+      status
     );
 
     res.status(200).json(response);

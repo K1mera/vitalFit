@@ -14,6 +14,7 @@ async function postProducts() {
         category,
         pre_description,
         description,
+        dose,
       }) => {
         const newProduct = await Product.create({
           name,
@@ -24,6 +25,7 @@ async function postProducts() {
           flavour,
           pre_description,
           description,
+          dose,
         });
 
         const [categoryDb, categoryCreated] = await Category.findOrCreate({
