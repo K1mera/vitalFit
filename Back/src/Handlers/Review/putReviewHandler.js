@@ -1,7 +1,7 @@
 const putReview = require("../../Controllers/Review/putReview");
 
 const putReviewHandler = async (req, res) => {
-  const { data } = req.body;
+  const data = req.body;
   const { id } = req.params;
   try {
     const response = await putReview(id, data);
