@@ -48,7 +48,7 @@ router.delete("/category/:id", deleteCategoryHandler); //params
 
 //Reviews
 router.post("/review", postReviewHandler); //body
-router.put("/review", putReviewHandler); //body
+router.put("/review/:id", putReviewHandler); //body
 router.get("/review", getReviewsHandler);
 router.delete("/review/:id", deleteReviewHandler); //params
 

@@ -1,7 +1,7 @@
 const putProduct = require("../../Controllers/Products/putProductController");
 
 async function putProductHandler(req, res) {
-  const { data } = req.body;
+  const data = req.body;
   const { id } = req.params;
   try {
     const response = await putProduct(id, data);
