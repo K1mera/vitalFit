@@ -10,7 +10,13 @@ const getProductsByIdController = async (id) => {
 
   if (!products) throw new Error("Éste producto no existe");
 
-  const nameCat = { ...products.get(), Category: products.Category.name };
+  const arrayDescription = products.description.split(". ");
+
+  const nameCat = {
+    ...products.get(),
+    Category: products.Category.name,
+    description: arrayDescription,
+  };
 
   return nameCat;
 };

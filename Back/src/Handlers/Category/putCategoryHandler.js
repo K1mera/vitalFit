@@ -9,7 +9,7 @@ async function putCategoryHandler(req, res) {
       .status(200)
       .json({ message: "La categoria ha sido modificada con éxito" });
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 

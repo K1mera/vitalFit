@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
       },
       price: {
         type: DataTypes.DECIMAL(8, 2),
@@ -19,6 +20,7 @@ module.exports = (sequelize) => {
       },
       size: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       stock: {
         type: DataTypes.INTEGER,
@@ -36,6 +38,7 @@ module.exports = (sequelize) => {
       },
       description: {
         type: DataTypes.TEXT,
+        allowNull: false,
       },
       active: {
         type: DataTypes.BOOLEAN,

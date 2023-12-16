@@ -8,7 +8,7 @@ async function deleteCategoryHandler(req, res) {
       .status(200)
       .json({ message: "La categoria ha sido eliminada con éxito" });
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 

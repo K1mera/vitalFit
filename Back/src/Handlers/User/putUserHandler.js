@@ -9,7 +9,7 @@ async function putUserHandler(req, res) {
       .status(200)
       .json({ message: "El usuario ha sido modificado con éxito" });
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(500).json({ error: error.message });
   }
 }
 
