@@ -2,6 +2,7 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationForm } from "./validations";
+import { useDispatch } from "react-redux";
 
 export const SingUpPage = () => {
   const [handleForm, setHandleForm] = useState({
@@ -12,6 +13,8 @@ export const SingUpPage = () => {
     confirmarContraseña: "",
   });
   const [errors, setErrors] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;

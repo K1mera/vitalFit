@@ -2,8 +2,20 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
 
 import { AppRouter } from './';
+import { useDispatch } from "react-redux";
+import {useEffect} from "react";
+import {getProducts} from "../store/slices";
 
 export const MainRouter = ({items,filter,allItems}) => {
+  
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getProducts( allItems ))
+
+  }, [])
+  
+
   return (
     <Routes>
       {/* rutas para generales */}

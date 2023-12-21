@@ -22,6 +22,7 @@ export default function ProductsPage({ items, allItems }) {
   const startIndex = (currentPage - 1) * 4;
 
   
+  // console.log(products);
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -93,6 +94,8 @@ export default function ProductsPage({ items, allItems }) {
         setBox2Check(!box2Check)
     }
   }
+
+ 
 
 
   return (

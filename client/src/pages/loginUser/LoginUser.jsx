@@ -1,6 +1,8 @@
-import { LogoIcon } from "../../icons";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { validationUser } from "./validations";
+import { LogoIcon } from "../../icons";
+import {loginWithEmail, startGoogle} from "../../store/slices";
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
@@ -8,6 +10,16 @@ export const LoginUser = () => {
     usuario: "",
     contraseña: "",
   });
+
+  const dispatch = useDispatch();
+
+  const onGoogle = () => {
+    dispatch(startGoogle())
+  }
+
+  const onCredentialsLogin = (user, pass) => {
+    dispatch(loginWithEmail(user, pass))
+  }
 
   const handleLogin = (event) => {
     const { name, value } = event.target;

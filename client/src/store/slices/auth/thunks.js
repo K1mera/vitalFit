@@ -18,7 +18,7 @@ export const loginWithEmail = (email, password) => {
         if (!ok) return dispatch(logout(errorCode));
 
         dispatch(login( {email, uid, photoURL, displayName} ))
-        console.log();
+        // console.log();
     }
 }
 
