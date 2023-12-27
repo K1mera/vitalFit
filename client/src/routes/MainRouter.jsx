@@ -19,7 +19,7 @@ export const MainRouter = ({items,filter,allItems}) => {
   return (
     <Routes>
       {/* rutas para generales */}
-      <Route path="/*" element={<AppRouter items={items} filter={filter} allItems={allItems}/>} />
+      <Route path="/*" element={<AppRouter />} />
       {/* rutas para login */}
       <Route path="/auth" element={"cambiar por el login comp"} />
       {/* rutas para admin  */}
