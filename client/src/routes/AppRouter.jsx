@@ -28,7 +28,7 @@ export const AppRouter = () => {
         {/* agreguen la ruta de las paginas que creen aquí abajo */}
         <Route path="/productspage" element={<ProductsPage />} />
 
-        <Route path="/detail" element={<DetailPage />} />
+        <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/loginUser" element={<LoginUser />} />
         <Route path="/signUpPage" element={<SingUpPage />} />
         <Route path="/loginPage" element={<LoginPage />} />

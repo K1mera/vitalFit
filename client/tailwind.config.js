@@ -23,12 +23,10 @@ export default {
       },
       backgroundImage: {
         foot: "url('./src/icons/rectangle.jpg')",
-        footerImg: "url('assets/footerImage.png')"
+        footerImg: "url('assets/footerImage.png')",
       },
     },
   },
-  plugins: [
-      
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };
 

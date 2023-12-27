@@ -1,9 +1,11 @@
 import { productsIns } from "../../../api";
 import {
   cleanEverything,
+  findbyProductById,
   handleShopList,
   itemsAdded,
   removeItem,
+  setCategories,
   setCurrentPage,
   setProducts,
   startLoading,
@@ -21,16 +23,25 @@ export const getProducts = (page = 1) => {
   };
 };
 
-export const onSearchProduct = ({ breed }) => {
+export const getProductById = (id) => {
   return async (dispatch) => {
-    const { data } = await dogIns.get("/dogs");
+   
+      dispatch(startLoading());
+      const { data } = await productsIns.get(`/product/${id}`);
 
-    const dogsMatching = data.filter((item) =>
-      item.name.toLowerCase().startsWith(breed.toLowerCase())
-    );
+      dispatch(findbyProductById(data));
+    
+  };
+};
 
-    dispatch(setProducts(dogsMatching));
-    dispatch(setCurrentPage(1));
+export const getCategories = () => {
+  return async (dispatch) => {
+    dispatch(startLoading());
+
+    const { data } = await productsIns.get("/category");
+    // console.log(data);
+
+    dispatch(setCategories(data));
   };
 };
 
@@ -51,6 +62,35 @@ export const addItems = (id) => {
 export const handlePages = (page = 1) => {
   return async (dispatch) => {
     dispatch(setCurrentPage(page));
+  };
+};
+
+export const onSearchProduct = (product) => {
+  return async (dispatch) => {
+    const { data } = await productsIns.get("/");
+    // console.log(product);
+
+    const productsMatching = data.filter((item) =>
+      item.name.toLowerCase().includes(product.toLowerCase())
+    );
+
+    dispatch(setProducts(productsMatching));
+    dispatch(setCurrentPage(1));
+  };
+};
+
+export const filteringProducts = (selectedFilters, products) => {
+  return async (dispatch) => {
+    // console.log(products);
+
+    const productsMatching = products.filter((product) =>
+      selectedFilters.every(
+        (selectedFilter) => product.Category === selectedFilter
+      )
+    );
+
+    dispatch(setProducts(productsMatching));
+    dispatch(setCurrentPage(1));
   };
 };
 

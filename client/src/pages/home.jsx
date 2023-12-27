@@ -4,10 +4,10 @@ import "./home.css";
 import { getProducts } from "../store";
 
 export const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProducts());
+  // }, []);
 
   return (
     <div className="homecontainer">
