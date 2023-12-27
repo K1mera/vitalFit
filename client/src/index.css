@@ -8,3 +8,11 @@
 .addButton {
     @apply flex text-lg px-8 py-2 bg-tertiary rounded-full font-bebas text-white transition-transform hover:scale-110 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2;
 }
+
+.inputFilters {
+    @apply text-base rounded border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50;
+}
+
+.inputBar {
+    @apply font-bebas inline-flex items-center w-full rounded-full border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
+}

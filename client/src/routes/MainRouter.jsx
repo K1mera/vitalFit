@@ -4,14 +4,15 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppRouter } from './';
 import { useDispatch } from "react-redux";
 import {useEffect} from "react";
-import {getProducts} from "../store/slices";
+import {getCategories, getProducts} from "../store/slices";
 
-export const MainRouter = ({items,filter,allItems}) => {
+export const MainRouter = () => {
   
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getProducts( allItems ))
+    dispatch(getProducts())
+    dispatch(getCategories())
 
   }, [])
   
@@ -19,7 +20,7 @@ export const MainRouter = ({items,filter,allItems}) => {
   return (
     <Routes>
       {/* rutas para generales */}
-      <Route path="/*" element={<AppRouter items={items} filter={filter} allItems={allItems}/>} />
+      <Route path="/*" element={<AppRouter />} />
       {/* rutas para login */}
       <Route path="/auth" element={"cambiar por el login comp"} />
       {/* rutas para admin  */}
