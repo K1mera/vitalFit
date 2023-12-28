@@ -5,19 +5,37 @@ import {
   handleShopList,
   itemsAdded,
   removeItem,
+  resetSorts,
+  resetFilters,
+  resetSearch,
   setCategories,
   setCurrentPage,
+  setFilters,
   setProducts,
+  setSearch,
+  setSorts,
   startLoading,
 } from "./productSlice";
+//import { filters } from "./productSlice";
 
 export const getProducts = (page = 1) => {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     dispatch(startLoading());
 
-    const { data } = await productsIns.get("/");
-    // console.log(data);
+    const { filters, search, sorts } = getState().product;
+    const { category, minPrice, maxPrice } = filters;
+    const { sortByName, sortByPrice } = sorts;
 
+    const { data } = await productsIns.get("/", {
+      params: {
+        search,
+        category,
+        minPrice,
+        maxPrice,
+        sortByName,
+        sortByPrice,
+      },
+    });
     dispatch(setProducts(data));
     dispatch(setCurrentPage(page));
   };
@@ -25,12 +43,10 @@ export const getProducts = (page = 1) => {
 
 export const getProductById = (id) => {
   return async (dispatch) => {
-   
-      dispatch(startLoading());
-      const { data } = await productsIns.get(`/product/${id}`);
+    dispatch(startLoading());
+    const { data } = await productsIns.get(`/product/${id}`);
 
-      dispatch(findbyProductById(data));
-    
+    dispatch(findbyProductById(data));
   };
 };
 
@@ -79,21 +95,11 @@ export const onSearchProduct = (product) => {
   };
 };
 
-export const filteringProducts = (selectedFilters, products) => {
+export const productsFilters = (filtros) => {
   return async (dispatch) => {
-    // console.log(products);
-
-    const productsMatching = products.filter((product) =>
-      selectedFilters.every(
-        (selectedFilter) => product.Category === selectedFilter
-      )
-    );
-
-    dispatch(setProducts(productsMatching));
-    dispatch(setCurrentPage(1));
+    dispatch(setFilters(filtros));
   };
 };
-
 export const removeCartItem = (id) => {
   return async (dispatch) => {
     dispatch(removeItem(id));
@@ -103,5 +109,31 @@ export const removeCartItem = (id) => {
 export const cleanShoppingCart = () => {
   return async (dispatch) => {
     dispatch(cleanEverything());
+  };
+};
+
+export const cleanFilters = () => {
+  return async (dispatch) => {
+    dispatch(resetFilters());
+  };
+};
+export const cleanSearch = () => {
+  return async (dispatch) => {
+    dispatch(resetSearch());
+  };
+};
+export const cleanSorts = () => {
+  return async (dispatch) => {
+    dispatch(resetSorts());
+  };
+};
+export const productsSorts = (sorts) => {
+  return async (dispatch) => {
+    dispatch(setSorts(sorts));
+  };
+};
+export const searchProduct = (search) => {
+  return async (dispatch) => {
+    dispatch(setSearch(search));
   };
 };
