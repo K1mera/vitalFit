@@ -53,7 +53,8 @@ export const openShopList = (value) => {
 
 export const addItems = (id) => {
   return async (dispatch) => {
-    const { data } = await shopIns.get(`/products/${id}`);
+    const { data } = await productsIns.get(`/product/${id}`);
+    // console.log(data);
 
     dispatch(itemsAdded(data));
   };
