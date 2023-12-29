@@ -14,6 +14,7 @@ export default function ProductsPage() {
     dispatch(getProducts());
   }, [dispatch, filters, sorts]);
 
+
   const startIndex = (currentPage - 1) * 8;
 
   const handlePreviousPage = () => {
@@ -48,6 +49,7 @@ export default function ProductsPage() {
               );
             })}
         </section>
+
         <section className="flex items-center justify-center gap-2 mr-5 mb-5">
           <button
             onClick={handlePreviousPage}
@@ -60,6 +62,7 @@ export default function ProductsPage() {
           <button
             onClick={handleNextPage}
             className="font-bebas p-2 hover:text-primary">
+
             next
           </button>
         </section>

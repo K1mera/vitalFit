@@ -5,6 +5,7 @@ import {ItemsAdded} from "./ItemsAdded";
 // import { finishOrder } from "../store/slices/orders/thunks";
 import { CloseIcon } from "../icons";
 import { handleShopList } from "../store/slices";
+import {TotalPrice} from "./TotalPrice";
 
 export const OrderModal = () => {
  const dispatch = useDispatch();
@@ -39,10 +40,10 @@ export const OrderModal = () => {
             <ItemsAdded
               key={items.id}
               id={items.id}
-              title={items.title}
+              title={items.name}
               price={items.price}
               description={items.description}
-              images={items.images}
+              image={items.image}
               count={items.count}
             />
           ))
@@ -50,12 +51,12 @@ export const OrderModal = () => {
           <h2 className="font-montserrat font-medium">Carrito vacio</h2>
         )}
       </section>
-      {/* <section className="fixed bottom-1 right-0  w-[400px]">
+      <section className="fixed bottom-1 right-0  w-[400px]">
       { shoppingCart.length > 0 ? 
         <TotalPrice /> :
         ''
       }
-        </section> */}
+        </section>
     </aside>
     </main>
   );
