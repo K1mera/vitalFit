@@ -7,9 +7,8 @@ import { useEffect } from "react";
 
 export default function ProductsPage() {
   const dispatch = useDispatch();
-  const { products, currentPage, totalPages, filters, sorts } = useSelector(
-    (state) => state.product
-  );
+  const { products, currentPage, totalPages, filters, sorts, shoppingCart } =
+    useSelector((state) => state.product);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -30,28 +29,41 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className={style.Container}>
+    <div className="flex h-full p-2 w-[ '97vw' ]">
       <Filter />
 
-      <div className={style.cardsContainer}>
-        {products
-          .slice(startIndex, startIndex + 8)
-          .map(({ id, name, price, image }) => {
-            return (
-              <Card key={id} id={id} name={name} price={price} image={image} />
-            );
-          })}
-        <div>
-          <section className="flex justify-between gap-2 absolute bottom-2">
-            <button onClick={handlePreviousPage} className="font-bebas p-2">
-              prev
-            </button>
-            <button onClick={handleNextPage} className="font-bebas p-2">
-              next
-            </button>
-          </section>
-        </div>
-      </div>
+      <main className="flex flex-1 flex-col justify-center gap-5 h-full ">
+        <section className={style.cardsContainer}>
+          {products
+            .slice(startIndex, startIndex + 8)
+            .map(({ id, name, price, image }) => {
+              return (
+                <Card
+                  key={id}
+                  id={id}
+                  name={name}
+                  price={price}
+                  image={image}
+                />
+              );
+            })}
+        </section>
+        <section className="flex items-center justify-center gap-2 mr-5 mb-5">
+          <button
+            onClick={handlePreviousPage}
+            className="font-bebas p-2 hover:text-primary">
+            prev
+          </button>
+          <span className="font-bebas text-primary text-xl mb-1">
+            {currentPage}
+          </span>
+          <button
+            onClick={handleNextPage}
+            className="font-bebas p-2 hover:text-primary">
+            next
+          </button>
+        </section>
+      </main>
     </div>
   );
 }
