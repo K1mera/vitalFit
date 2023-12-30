@@ -3,7 +3,6 @@ const activarDesactivarProducto = require("../../Controllers/Products/activarDes
 const activarDesactivarHandler = async (req, res) => {
   const { id } = req.params;
   const { active } = req.body;
-  console.log(id);
 
   try {
     await activarDesactivarProducto(id, active);

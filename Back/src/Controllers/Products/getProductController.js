@@ -8,7 +8,7 @@ const getProducts = async (
   sortByName,
   sortByPrice,
   offer,
-  status
+  active
 ) => {
   let filters = {};
 
@@ -23,8 +23,8 @@ const getProducts = async (
   }
 
   //busca productos activos o inactivos según el caso (true o false)
-  if (status) {
-    filters = { ...filters, status: { [Op.iLike]: status } };
+  if (active) {
+    filters = { ...filters, active: { [Op.iLike]: active } };
   }
 
   //busca los productos por categoría
@@ -33,15 +33,11 @@ const getProducts = async (
     const cat = await Category.findOne({
       where: { name: { [Op.iLike]: category } },
     });
-
     filters = { ...filters, CategoryId: cat.id };
   }
 
   //si están los dos es porque se estableció un rango de precios, se muestran los productos que cumplan con ese rango
   if (maxPrice && minPrice) {
-    console.log(maxPrice, "max");
-    console.log(minPrice, "min");
-
     filters = { ...filters, price: { [Op.between]: [minPrice, maxPrice] } };
 
     //con uno solo indica que solo se van a mostrar los productos cuyo precio sea mayor al mínimo, o menor al máximo

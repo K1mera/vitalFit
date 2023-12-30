@@ -13,6 +13,18 @@ export const productSlice = createSlice({
     shopListOpen: false,
     shoppingCart: [],
     countTotal: 0,
+    search: "",
+    filters: {
+      category: "",
+      minPrice: "",
+      maxPrice: "",
+      /*  offer: false,
+      active: true, */
+    },
+    sorts: {
+      sortByName: "",
+      sortByPrice: "",
+    },
   },
   reducers: {
     startLoading: (state /* action */) => {
@@ -71,6 +83,31 @@ export const productSlice = createSlice({
       state.shoppingCart = [];
       state.countTotal = 0;
     },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
+    },
+    setSorts: (state, action) => {
+      state.sorts = action.payload;
+    },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    resetFilters: (state, action) => {
+      state.filters = {
+        category: "",
+        minPrice: "",
+        maxPrice: "",
+      };
+    },
+    resetSearch: (state, action) => {
+      state.search = "";
+    },
+    resetSorts: (state, action) => {
+      state.sorts = {
+        sortByName: "",
+        sortByPrice: "",
+      };
+    },
   },
 });
 
@@ -85,4 +122,12 @@ export const {
   removeItem,
   setCurrentPage,
   cleanEverything,
+  setFilters,
+  resetFilters,
+  setSorts,
+  setSearch,
+  resetSorts,
+  resetSearch,
 } = productSlice.actions;
+
+//export const { filters } = productSlice.getInitialState();

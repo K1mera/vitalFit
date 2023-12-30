@@ -9,7 +9,7 @@ async function getProductsHandler(req, res) {
     sortByName,
     sortByPrice,
     offer,
-    status,
+    active,
   } = req.query;
   try {
     const response = await getProducts(
@@ -20,7 +20,7 @@ async function getProductsHandler(req, res) {
       sortByName,
       sortByPrice,
       offer,
-      status
+      active
     );
 
     res.status(200).json(response);
