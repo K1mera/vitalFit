@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { setCurrentPage } from "../../store/slices/products/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import {
   cleanFilters,
@@ -26,7 +25,6 @@ const Filter = () => {
   //CATEGORIES
   const handleFilterCategories = (e) => {
     dispatch(productsFilters({ ...filters, category: e.target.value }));
-    dispatch(setCurrentPage(1));
     if (!products.length)
       alert("No hay productos coincidentes con la búsqueda");
   };
@@ -48,7 +46,6 @@ const Filter = () => {
         maxPrice: prices.maxPrice,
       })
     );
-    dispatch(setCurrentPage(1));
     if (!products.length)
       alert("No hay productos coincidentes con la búsqueda");
   };
@@ -69,7 +66,6 @@ const Filter = () => {
     dispatch(cleanFilters());
     dispatch(cleanSorts());
     dispatch(searchProduct(searchInput));
-    dispatch(setCurrentPage(1));
     if (!products.length)
       alert("No hay productos coincidentes con la búsqueda");
   };
@@ -90,7 +86,6 @@ const Filter = () => {
           : { sortByName: "DESC", sortByPrice: "" };
     }
     dispatch(productsSorts(filtro));
-    dispatch(setCurrentPage(1));
   };
 
   //RESET
@@ -107,7 +102,6 @@ const Filter = () => {
     dispatch(cleanFilters());
     dispatch(cleanSearch());
     dispatch(cleanSorts());
-    dispatch(setCurrentPage(1));
   };
 
   return (
@@ -166,7 +160,21 @@ const Filter = () => {
             onChange={handleFilterPrice}
             className="w-24 border-none mx-2 rounded-xl focus:ring-0"
           />
-          <button onClick={handleSearchPrices}>Ir</button>
+          <button onClick={handleSearchPrices}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </button>
         </div>
 
         <div className="flex justify-baseline items-center mt-3">
@@ -193,7 +201,7 @@ const Filter = () => {
         </div> */}
         <button
           onClick={reset}
-          className="bg-teal-500 text-white text-xl w-32 p-1 rounded-xl mx-auto mt-3">
+          className="bg-teal-400 text-white text-xl w-32 p-1 rounded-xl mx-auto mt-3">
           Reset
         </button>
       </div>
