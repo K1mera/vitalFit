@@ -4,11 +4,20 @@ const fs = require("fs");
 const path = require("path");
 const { userInfo } = require("os");
 
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
-const sequelize = new Sequelize(
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
+
+//LOCAL
+/* const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/vitalfit`,
   { logging: false, native: false }
-);
+); */
+
+//DEPLOY
+const sequelize = new Sequelize(DB_DEPLOY, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  dialectModule: require("pg"),
+});
 
 const basename = path.basename(__filename);
 
