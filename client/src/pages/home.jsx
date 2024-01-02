@@ -15,7 +15,8 @@ export const Home = () => {
                 <div className="offer">
                     <div className="imagen"></div>
                     <div>
-                        <button className="boton-comprar transition hover:scale-110 duration-300 ">Agregar</button>
+                        <button className="boton-comprar border-2 border-transparent
+                     transition hover:scale-110 duration-300 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2 ">Agregar</button>
                     </div>
                 </div>
             </div>
@@ -41,7 +42,8 @@ export const Home = () => {
                     />
                     <span>PRE WORKOUT 400GR</span>
                     <span>$10.000</span>
-                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
+                    <button className="boton-comprar border-2 border-transparent
+                     transition hover:scale-110 duration-300 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2 ">Agregar</button>
                 </div>
                 <div className="producto-destacado">
                     <img
@@ -51,7 +53,8 @@ export const Home = () => {
                     />
                     <span>100% CAFFEINE MUSCLETECH</span>
                     <span>$12.000</span>
-                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
+                    <button className="boton-comprar border-2 border-transparent
+                     transition hover:scale-110 duration-300 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2">Agregar</button>
                 </div>
                 <div className="producto-destacado">
                     <img
@@ -61,7 +64,8 @@ export const Home = () => {
                     />
                     <span>CREATINE 500GR</span>
                     <span>$13.500</span>
-                    <button className="boton-comprar transition hover:scale-110 duration-300">Agregar</button>
+                    <button className="boton-comprar border-2 border-transparent
+                     transition hover:scale-110 duration-300 hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2">Agregar</button>
                 </div>
             </div>
             <div className="photos-container">
@@ -87,7 +91,8 @@ export const Home = () => {
                                 una ganancia muscular extremas, además de una
                                 mejor recuperación.{" "}
                             </p>
-                            <button className="boton-comprar-photo transition hover:scale-110 duration-300">
+                            <button className="boton-comprar-photo transition hover:scale-110 duration-300 border-2 border-transparent
+                     hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2">
                                 {" "}
                                 Agregar
                             </button>
@@ -116,7 +121,8 @@ export const Home = () => {
                                 reducir la sensación de cansancio y comenzar la
                                 recuperación lo antes posible.
                             </p>
-                            <button className="boton-comprar-photo transition hover:scale-110 duration-300">
+                            <button className="boton-comprar-photo transition hover:scale-110 duration-300 border-2 border-transparent
+                     hover:bg-white hover:text-tertiary hover:border-solid hover:border-tertiary hover:border-2">
                                 {" "}
                                 Agregar
                             </button>
@@ -228,65 +234,7 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-60 bg-black bg-foot bg-right bg-no-repeat ">
-                <div className="w-full h-full bg-opacity-75 pt-10 pl-20 flex items-start gap-52  bg-black  ">
-                    <div>
-                        <img src="images/logo.png" alt="" />
-                    </div>
-                    <div className="text-white">
-                        <p className="font-['Bebas_Neue'] text-2xl ">
-                            SITIO WEB
-                        </p>
-                        <ul className="font-['Montserrat']">
-                            <li>Productos</li>
-                            <li>Asesoria</li>
-                            <li>Ofertas</li>
-                            <li>Preguntas frecuentes</li>
-                            <li>Blog</li>
-                            <li>Contacto</li>
-                        </ul>
-                    </div>
-                    <div className="text-white h-full">
-                        <p className="font-['Bebas_Neue'] text-2xl">
-                            SOCIAL MEDIA
-                        </p>
-                        <ul className="font-['Montserrat']">
-                            <li className="flex  items-center gap-5 my-2">
-                                <img
-                                    src="images/facebooklogo.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">Facebook</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/instlogo.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">Instagram</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/youtube.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">YouTube</span>
-                            </li>
-                            <li className="flex h-5 items-center gap-5 my-2">
-                                <img
-                                    src="images/tiktok.png"
-                                    alt=""
-                                    className="h-5"
-                                />
-                                <span className="text-end">TikTok</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     );
 };

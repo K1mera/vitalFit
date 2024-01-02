@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import {ItemsAdded} from "./ItemsAdded";
 
 // import { finishOrder } from "../store/slices/orders/thunks";
 import { CloseIcon } from "../icons";
@@ -49,12 +50,12 @@ export const OrderModal = () => {
           <h2 className="font-montserrat font-medium">Carrito vacio</h2>
         )}
       </section>
-      <section className="fixed bottom-1 right-0  w-[400px]">
+      {/* <section className="fixed bottom-1 right-0  w-[400px]">
       { shoppingCart.length > 0 ? 
         <TotalPrice /> :
         ''
       }
-        </section>
+        </section> */}
     </aside>
     </main>
   );

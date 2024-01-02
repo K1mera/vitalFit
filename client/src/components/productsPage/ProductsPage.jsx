@@ -36,7 +36,7 @@ export default function ProductsPage({ items, allItems }) {
   };
   useEffect(() => {
     if (allItems.length > 0) {
-      const uniqueTypes = [...new Set(allItems.map((item) => item.type))];
+      const uniqueTypes = [...new Set(allItems.map((item) => item.category))];
       setTypes(uniqueTypes);
       //   setFilters(uniqueTypes);
       uniqueTypes.push("OFERTA");
@@ -72,7 +72,7 @@ export default function ProductsPage({ items, allItems }) {
         ? allItems
         : allItems.filter(
             (item) =>
-              filtered.includes(item.type) ||
+              filtered.includes(item.category) ||
               (item.offer === true && filtered.includes("OFERTA"))
           )
     ; if (box2Check) {

@@ -1,9 +1,18 @@
-import style from "./Card.module.css";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { addItems } from "../../store/slices";
 
-export default function Card({ name, price, image }) {
+import style from "./Card.module.css";
+
+export default function Card({ id, name, price, image }) {
   const handleAdd = () => {
     console.log(`Producto ${name} agregado al carrito.`);
+  };
+
+  const dispatch = useDispatch()
+
+  const onAddItem = (item) => {
+    dispatch(addItems(item));
   };
 
   return (
@@ -15,7 +24,7 @@ export default function Card({ name, price, image }) {
           </NavLink>
           <h3>{name.toUpperCase()}</h3>
           <p>{price}</p>
-          <button className={style.addButton} onClick={handleAdd}>
+          <button className={style.addButton} onClick={() => onAddItem(id)}>
             AGREGAR
           </button>
         </div>
