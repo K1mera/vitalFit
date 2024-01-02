@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Home, LoginPage, LoginUser, SingUpPage } from "../pages";
-import { NavBarComp } from "../components";
+import { NavBarComp, ResetPassword } from "../components";
 import ProductsPage from "../components/productsPage/ProductsPage.jsx";
 import { Detail } from "../components/DetailCard/detail.jsx";
 
@@ -10,7 +10,8 @@ export const AppRouter = ({ items, filter, allItems }) => {
   const showNavBar =
     rutaActual !== "/loginPage" &&
     rutaActual !== "/signUpPage" &&
-    rutaActual !== "/loginUser";
+    rutaActual !== "/loginUser" &&
+    rutaActual !== "/resetPass";
 
   return (
     <>
@@ -26,6 +27,7 @@ export const AppRouter = ({ items, filter, allItems }) => {
             }
           />
 
+          <Route path="/resetPass" element={<ResetPassword />} />
           <Route path="/detail" element={<Detail />} />
           <Route path="/loginUser" element={<LoginUser />} />
           <Route path="/signUpPage" element={<SingUpPage />} />

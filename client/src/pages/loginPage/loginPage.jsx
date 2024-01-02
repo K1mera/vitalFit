@@ -44,18 +44,20 @@ export const LoginPage = () => {
           src="src/icons/image-loginPage.jpeg"
         />
       </div>
-      <span
-        style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}
-      >
-        Soy
-      </span>
-      <span
-        style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-11 text-4xl"}
-      >
-        ADMIN
-      </span>
+      <NavLink to={"/loginUser"}>
+        <span
+          style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
+          className={"absolute top-10 right-14 text-3xl"}
+        >
+          Soy
+        </span>
+        <span
+          style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
+          className={"absolute top-20 right-11 text-4xl"}
+        >
+          ADMIN
+        </span>
+      </NavLink>
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
@@ -100,7 +102,7 @@ export const LoginPage = () => {
           ></input>
           {!emailValid && !formSubmitted
             ? ""
-            : email && <span className="text-red-400" >{emailValid}</span>}
+            : email && <span className="text-red-400">{emailValid}</span>}
           <br />
           <label
             style={{
@@ -124,7 +126,7 @@ export const LoginPage = () => {
           ></input>
           {!passwordValid && !formSubmitted
             ? ""
-            : email && <span className="text-red-400" >{passwordValid}</span>}
+            : email && <span className="text-red-400">{passwordValid}</span>}
           <br />
           <button
             type="submit"
