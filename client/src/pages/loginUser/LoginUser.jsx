@@ -1,6 +1,7 @@
 import { LogoIcon } from "../../icons";
 import { useState } from "react";
 import { validationUser } from "./validations";
+import { NavLink } from "react-router-dom";
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
@@ -27,18 +28,20 @@ export const LoginUser = () => {
           src="src/icons/image-loginPage.jpeg"
         />
       </div>
-      <span
-        style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}
-      >
-        Soy
-      </span>
-      <span
-        style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-10 text-4xl"}
-      >
-        USUARIO
-      </span>
+      <NavLink to={"/loginPage"}>
+        <span
+          style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
+          className={"absolute top-10 right-14 text-3xl"}
+        >
+          Soy
+        </span>
+        <span
+          style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
+          className={"absolute top-20 right-10 text-4xl"}
+        >
+          USUARIO
+        </span>
+      </NavLink>
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
@@ -123,6 +126,20 @@ export const LoginUser = () => {
             ENTRAR
           </button>
           <br />
+          <NavLink to={"/resetPass"}>
+            <h1
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "3%",
+                fontFamily: "Nueva Fuente, montserrat",
+                color: " #2FD6BD  ",
+              }}
+            >
+              Olvidé mi contraseña
+            </h1>
+          </NavLink>
         </div>
       </div>
     </div>
