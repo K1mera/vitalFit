@@ -6,11 +6,16 @@ import { userAuth } from "../../context/auth-context";
 import { doc, onSnapshot } from "firebase/firestore";
 import { firebaseDb } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
-import { current } from "@reduxjs/toolkit";
+import { CloseIcon } from "../../icons";
 
 const Cart = ({ setShowCart }) => {
-  const { currentUser, setProducts, products, productsLocalStorage } =
-    useContext(userAuth);
+  const {
+    currentUser,
+    setProducts,
+    products,
+    productsLocalStorage,
+    setProductsLocalStorage,
+  } = useContext(userAuth);
   const navigate = useNavigate();
 
   const gettingProducts = async () =>
@@ -30,7 +35,8 @@ const Cart = ({ setShowCart }) => {
       const updatedData = docSnapshot.data();
       const updatedProducts = updatedData.products || [];
 
-      const updatedVisible = updatedProducts.filter((p) => p.cantidad > 0);
+      const updatedVisible =
+        updatedProducts.length && updatedProducts.filter((p) => p.cantidad > 0);
 
       setProducts(updatedVisible);
     });
@@ -62,9 +68,12 @@ const Cart = ({ setShowCart }) => {
       </ul>
     );
 
-    totalAmount = products?.reduce((currentNumber, item) => {
-      return currentNumber + Number(item.price) * item.cantidad;
-    }, 0);
+    totalAmount = products.length
+      ? products.reduce(
+          (currentNumber, item) => currentNumber + item.price * item.cantidad,
+          0
+        )
+      : 0;
   } else {
     cartItems = (
       <ul>
@@ -85,10 +94,12 @@ const Cart = ({ setShowCart }) => {
         )}
       </ul>
     );
+
     totalAmount = productsLocalStorage.length
-      ? productsLocalStorage.reduce((currentNumber, item) => {
-          return currentNumber + Number(item.price) * item.cantidad;
-        })
+      ? productsLocalStorage.reduce(
+          (accumulation, item) => accumulation + item.price * item.cantidad,
+          0
+        )
       : 0;
   }
 
@@ -112,48 +123,41 @@ const Cart = ({ setShowCart }) => {
 
   return (
     <div>
-      {products?.length ? (
-        <summary>
-          {cartItems}
-          <article>
-            <div>
-              <span>Total:</span>
-              <span>${totalAmount}</span>
-            </div>
-            <section>
-              <button onClick={() => setShowCart(false)}>X</button>
-              {products?.length > 0 && (
-                <button onClick={checkoutClick}>Order</button>
-              )}
-            </section>
+      <aside className="sideMenuLayout">
+        <button onClick={() => setShowCart(false)} className="fixed right-6">
+          <CloseIcon
+            className={
+              "mb-1 text-red-700/90 w-8 transition hover:scale-125 hover:text-red-600"
+            }
+          />
+        </button>
+        {products?.length ? (
+          <article className="flex justify-between items-center">
+            {cartItems}
           </article>
-        </summary>
-      ) : productsLocalStorage?.length ? (
-        <summary>
-          {cartItems}
-          <article>
-            <div>
-              <span>Total:</span>
-              <span>${totalAmount}</span>
-            </div>
-            <section>
-              <button onClick={() => setShowCart(false)}>X</button>
-              {productsLocalStorage?.length > 0 && (
-                <button onClick={checkoutClick}>Order</button>
-              )}
-            </section>
-          </article>
-        </summary>
-      ) : (
-        <summary>
-          <section>
+        ) : productsLocalStorage?.length ? (
+          <article>{cartItems}</article>
+        ) : (
+          <section className="m-auto font-bebas text-3xl">
             <span>Carrito vacío</span>
           </section>
-          <section>
-            <button onClick={() => setShowCart(false)}></button>
-          </section>
-        </summary>
-      )}
+        )}
+        <section className="flex justify-between items-center bg-white fixed bottom-0 h-12 w-72">
+          <div className="fixed right-7 bottom-2 font-bebas text-2xl">
+            {totalAmount > 0 && (
+              <button
+                onClick={checkoutClick}
+                className=" bg-primary p-1 px-3 rounded-2xl">
+                Pagar
+              </button>
+            )}
+          </div>
+          <div className="relative left-3 font-bebas text-2xl">
+            <span>Total: </span>
+            <span>$ {totalAmount}</span>
+          </div>
+        </section>
+      </aside>
     </div>
   );
 };

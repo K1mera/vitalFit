@@ -1,4 +1,4 @@
-import CartIcon from "./CartIcon";
+import { ShoppingCartIcon } from "../../../icons";
 import React, { useContext, useEffect, useState } from "react";
 import { userAuth } from "../../../context/auth-context";
 import { doc, onSnapshot } from "firebase/firestore";
@@ -32,18 +32,27 @@ const CartButton = ({ setShowCart }) => {
   }, [currentUser]);
 
   const totalItems = productsLocalStorage.length
-    ? productsLocalStorage.reduce((total, product) => total + product.cantidad)
+    ? productsLocalStorage.reduce(
+        (total, product) => total + product.cantidad,
+        0
+      )
     : 0;
+
   return (
     <div>
       <button
         onClick={() => {
           setShowCart(true);
-        }}>
-        <span>
-          <CartIcon />
+        }}
+        className="relative">
+        <ShoppingCartIcon
+          className={
+            "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+          }
+        />
+        <span className="absolute flex justify-center items-center w-5 h-5 text-xs top-0 right-[-4px] font-montserrat text-white bg-primary/90 rounded-full">
+          {cartItemCount || totalItems || 0}
         </span>
-        <span>{cartItemCount || totalItems || 0}</span>
       </button>
     </div>
   );

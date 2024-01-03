@@ -8,9 +8,9 @@ import { firebaseDb } from "../../firebase/config";
 import { getProductById } from "../../store";
 import { useDispatch } from "react-redux";
 
-const CartItem = ({ name, price, image, id }) => {
+const CartItem = ({ name, price, image, id, amount }) => {
   const { currentUser, setProductsLocalStorage } = useContext(userAuth);
-  const [amount, setAmount] = useState(0);
+  const [amounts, setAmount] = useState(0);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const CartItem = ({ name, price, image, id }) => {
     });
 
     return () => unsubscribe();
-  }, [currentUser?.uid, id]);
+  }, [currentUser?.uid, id, amount]);
 
   //Si no hay usuario loggueado guarda los productos del carrito en el local storage
   //función para incrementar cantidad de productos en local storage
@@ -90,30 +90,44 @@ const CartItem = ({ name, price, image, id }) => {
   };
   return (
     <div>
-      <li>
-        <figure>
-          <img src={image} alt="foto de producto" width={150} />
-        </figure>
-        <article>
-          <h2>{name}</h2>
-          <section>
-            <span>{price}</span>
-            <span>{amount}</span>
-          </section>
-        </article>
-        <div>
-          {currentUser ? (
-            <button onClick={() => decreaseProduct(currentUser?.uid, id)}>
-              -
-            </button>
-          ) : (
-            <button onClick={() => decreaseAmountInLocalStorage(id)}>-</button>
-          )}
-          {currentUser ? (
-            <button onClick={increaseAmount}>+</button>
-          ) : (
-            <button onClick={() => increaseAmountInLocalStorage(id)}>+</button>
-          )}
+      <li className="flex border-b-slate-600 mb-2">
+        <div className="flex">
+          <figure>
+            <img src={image} alt="foto de producto" width={130} />
+          </figure>
+          <div>
+            <div className="font-bebas">
+              <h2 className="text-2xl mt-3">{name}</h2>
+              <span className="text-lg">Precio: ${price}</span>
+            </div>
+            <div>
+              <span className="font-bebas mr-6"> Cant: {amount}</span>
+              {currentUser ? (
+                <button
+                  onClick={() => decreaseProduct(currentUser?.uid, id)}
+                  className="mr-3 text-3xl text-primary font-bold">
+                  -
+                </button>
+              ) : (
+                <button
+                  className="mr-3 text-3xl text-primary font-bold"
+                  onClick={() => decreaseAmountInLocalStorage(id)}>
+                  -
+                </button>
+              )}
+              {currentUser ? (
+                <button onClick={increaseAmount} className="mr-3">
+                  +
+                </button>
+              ) : (
+                <button
+                  className="mr-3 text-2xl text-teal-600 font-bold"
+                  onClick={() => increaseAmountInLocalStorage(id)}>
+                  +
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       </li>
     </div>
