@@ -13,6 +13,13 @@ const postPreference = async ({ title, unit_price, quantity }) => {
                     quantity: Number(quantity)
                 }
             ],
+            back_urls: {
+                success: "http://localhost:5173/home",
+                failure : "http://localhost:5173/home",
+                pending : "http://localhost:5173/home"
+            },
+            auto_return : "approved"
+
         }
         console.log(body);
         const preference = new Preference(client)
