@@ -21,7 +21,7 @@ const postPreference = async ({ title, unit_price, quantity }) => {
             auto_return : "approved"
 
         }
-        console.log(body);
+        
         const preference = new Preference(client)
         const result = await preference.create({ body })
 
