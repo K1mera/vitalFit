@@ -14,7 +14,6 @@ export default function ProductsPage() {
     dispatch(getProducts());
   }, [dispatch, filters, sorts]);
 
-
   const startIndex = (currentPage - 1) * 8;
 
   const handlePreviousPage = () => {
@@ -37,7 +36,7 @@ export default function ProductsPage() {
         <section className={style.cardsContainer}>
           {products
             .slice(startIndex, startIndex + 8)
-            .map(({ id, name, price, image }) => {
+            .map(({ id, name, price, image, stock }) => {
               return (
                 <Card
                   key={id}
@@ -45,6 +44,7 @@ export default function ProductsPage() {
                   name={name}
                   price={price}
                   image={image}
+                  stock={stock}
                 />
               );
             })}
@@ -62,7 +62,6 @@ export default function ProductsPage() {
           <button
             onClick={handleNextPage}
             className="font-bebas p-2 hover:text-primary">
-
             next
           </button>
         </section>
