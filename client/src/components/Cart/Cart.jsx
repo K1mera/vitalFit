@@ -7,29 +7,32 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { firebaseDb } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { CloseIcon } from "../../icons";
+import { useDispatch } from "react-redux";
+import { checkOutOrder } from "../../store";
 
-const Cart = ({ setShowCart }) => {
-  const {
-    currentUser,
-    setProducts,
-    products,
-    productsLocalStorage,
-    setProductsLocalStorage,
-  } = useContext(userAuth);
+const Cart = ({ setShowCart, setShowOrder }) => {
+  const { currentUser, setProducts, products, productsLocalStorage } =
+    useContext(userAuth);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const gettingProducts = async () =>
     !currentUser ? [] : await getCartProducts(currentUser.uid);
 
   useEffect(() => {
+    //trae los productos agregados al carrito del usuario loggeado, sino, es un array vacío
     gettingProducts().then((data) => {
       setProducts(data);
     });
   }, []);
 
   useEffect(() => {
-    if (!currentUser) return;
+    //si no hay usuario loggeado, no hace nada
+    if (!currentUser) {
+      return;
+    }
 
+    //agrega un event listener(suscripción) al documento carrito para cuando haya cambios
     const cartDocRef = doc(firebaseDb, "carrito", currentUser.uid);
     const unsubscribe = onSnapshot(cartDocRef, (docSnapshot) => {
       const updatedData = docSnapshot.data();
@@ -50,6 +53,7 @@ const Cart = ({ setShowCart }) => {
   let totalAmount = null;
 
   if (currentUser) {
+    //si hay un usuario loggeado, la info la toma de "products"
     cartItems = (
       <ul>
         {products?.map(({ price, name, image, cantidad, stock, id }) => {
@@ -69,12 +73,15 @@ const Cart = ({ setShowCart }) => {
     );
 
     totalAmount = products.length
-      ? products.reduce(
-          (currentNumber, item) => currentNumber + item.price * item.cantidad,
-          0
-        )
+      ? products
+          .reduce(
+            (currentNumber, item) => currentNumber + item.price * item.cantidad,
+            0
+          )
+          .toFixed(2)
       : 0;
   } else {
+    //si no hay usuario loggeado, la info la toma de "productsLocalStorage"
     cartItems = (
       <ul>
         {productsLocalStorage?.map(
@@ -96,29 +103,18 @@ const Cart = ({ setShowCart }) => {
     );
 
     totalAmount = productsLocalStorage.length
-      ? productsLocalStorage.reduce(
-          (accumulation, item) => accumulation + item.price * item.cantidad,
-          0
-        )
+      ? productsLocalStorage
+          .reduce(
+            (accumulation, item) => accumulation + item.price * item.cantidad,
+            0
+          )
+          .toFixed(2)
       : 0;
   }
 
   const checkoutClick = () => {
-    if (!currentUser) return;
-
-    const totalProducts = [...new Set(products.map((p) => p.name))].map(
-      (name) => name
-    );
-
-    const productsId = [...new Set(products.map((p) => p.id))].map((id) => id);
-
-    const productStock = [...new Set(products.map((p) => p.stock))].map(
-      (stock) => stock
-    );
-    navigate(
-      `/rutapago/${totalAmount}/${totalProducts}/${productsId}/${productStock}`
-    );
     setShowCart(false);
+    setShowOrder(true);
   };
 
   return (
@@ -132,11 +128,9 @@ const Cart = ({ setShowCart }) => {
           />
         </button>
         {products?.length ? (
-          <article className="flex justify-between items-center">
-            {cartItems}
-          </article>
+          <article className="mb-10">{cartItems}</article>
         ) : productsLocalStorage?.length ? (
-          <article>{cartItems}</article>
+          <article className="mb-10">{cartItems}</article>
         ) : (
           <section className="m-auto font-bebas text-3xl">
             <span>Carrito vacío</span>
@@ -147,8 +141,8 @@ const Cart = ({ setShowCart }) => {
             {totalAmount > 0 && (
               <button
                 onClick={checkoutClick}
-                className=" bg-primary p-1 px-3 rounded-2xl">
-                Pagar
+                className=" bg-primary p-1 px-3 rounded-2xl text-white">
+                Comprar
               </button>
             )}
           </div>
