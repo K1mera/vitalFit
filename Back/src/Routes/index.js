@@ -32,6 +32,9 @@ const putUserHandler = require("../Handlers/User/putUserHandler");
 const putCategoryHandler = require("../Handlers/Category/putCategoryHandler");
 const deleteCategoryHandler = require("../Handlers/Category/deleteCategoryHandler");
 
+//MercadoPAgo
+const postPreferenceHandler = require("../Handlers/MercadoPago/postPreferenceHandler")
+
 //Products
 router.get("/", getProductsHandler);
 router.post("/", postProductHandler); //body
@@ -64,5 +67,8 @@ router.put("/user", putUserHandler); //body
 
 //Address
 router.post("/addres", postAddressHandler);
+
+//MercadoPago
+router.post("/create_preference",postPreferenceHandler)
 
 module.exports = router;

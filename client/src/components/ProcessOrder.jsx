@@ -1,18 +1,47 @@
-import React from "react";
-import { CloseIcon } from "../icons";
 import { useDispatch, useSelector } from "react-redux";
 import { ItemsCheckoutList } from "./ItemsCheckoutList";
 import { finishOrder } from "../store/slices/orders/thunks";
+import axios from "axios";
+import { useState } from "react";
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
 export const ProcessOrder = () => {
+  initMercadoPago("TEST-96d6884d-30e9-4fe8-a75f-16fdc52d9ddb");
+
   const dispatch = useDispatch();
   const { currentOrder, totalPriceOrder, orders } = useSelector(
     (state) => state.orders
   );
+  const [preferenceId, setPreferenceId] = useState(null);
 
   const orderId = orders.length + 1;
 
-  console.log(currentOrder);
+  console.log(totalPriceOrder);
+
+  const createPreference = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/create_preference",
+        {
+          title: "VitalFit",
+          quantity: 1,
+          unit_price: finalPrice,
+        }
+      );
+      const { id } = response.data;
+      return id;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleBuy = async () => {
+    const id = await createPreference();
+    if (id) {
+      setPreferenceId(id);
+    }
+    onCloseOrder(orderId, purchaseDate, currentOrder, finalPrice);
+  };
 
   const onCloseOrder = (id, date, order, totalAmount) => {
     dispatch(finishOrder(id, date, order, totalAmount));
@@ -64,12 +93,10 @@ export const ProcessOrder = () => {
       </div>
       <button
         className="bg-green-500 rounded-lg w-full py-3 text-white font-bold text-lg"
-        onClick={() =>
-          onCloseOrder(orderId, purchaseDate, currentOrder, finalPrice)
-        }
-      >
-        Confirm and close
+        onClick={() => handleBuy()}>
+        Confirm
       </button>
+      {preferenceId && <Wallet initialization={{ preferenceId }} />}
     </aside>
   );
 };
