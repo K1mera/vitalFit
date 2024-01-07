@@ -40,8 +40,8 @@ const PreCheckout = () => {
 
   const handleData = async (data) => {
     if (data) {
-      const current = { ...currentUser, data };
-      current.processCompleted = true;
+      const current = { ...currentUser };
+      current.dataCompleted = true;
       await updateUser(current);
     }
   };
@@ -315,7 +315,7 @@ const PreCheckout = () => {
       <div className="max-w-fit mx-auto">
         <button
           className=" text-white bg-primary p-2 px-5 rounded-xl"
-          onClick={handleSubmit()}>
+          onClick={handleSubmit(handleData)}>
           finalizar
         </button>
       </div>

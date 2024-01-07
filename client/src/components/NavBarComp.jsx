@@ -6,11 +6,13 @@ import { OrderModal, ProcessOrder } from "./";
 import { LogoIcon, FavoriteIcon, ShoppingCartIcon, UserIcon } from "../icons";
 import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
+import Order from "./Cart/Order";
 
 export const NavBarComp = () => {
   const dispatch = useDispatch();
 
   const [showCart, setShowCart] = useState(false);
+  const [showOrder, setShowOrder] = useState(false);
   const { orderWindow } = useSelector((state) => state.orders);
   const { shopListOpen, shoppingCart } = useSelector((state) => state.product);
 
@@ -109,7 +111,10 @@ export const NavBarComp = () => {
             </span>
           </button> */}
           <CartButton setShowCart={setShowCart} />
-          {showCart && <Cart setShowCart={setShowCart} />}
+          {showCart && (
+            <Cart setShowCart={setShowCart} setShowOrder={setShowOrder} />
+          )}
+          {showOrder && <Order setShowOrder={setShowOrder} />}
         </section>
       </nav>
     </>

@@ -13,6 +13,7 @@ const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [productsLocalStorage, setProductsLocalStorage] = useState([]);
   const [products, setProducts] = useState([]);
+  const [totalPay, setTotalPay] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, async (userFirebase) => {
@@ -54,6 +55,8 @@ const UserContext = ({ children }) => {
         setProductsLocalStorage,
         products,
         setProducts,
+        totalPay,
+        setTotalPay,
       }}>
       {children}
     </userAuth.Provider>
