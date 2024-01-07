@@ -2,6 +2,7 @@ import { LogoIconWhite } from "../icons"
 
 
 
+
 export const FooterComp = () => {
   return (
     <footer className="flex w-full h-[340px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">

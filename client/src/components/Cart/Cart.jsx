@@ -102,7 +102,7 @@ const Cart = ({ setShowCart, setShowOrder }) => {
       </ul>
     );
 
-    totalAmount = productsLocalStorage.length
+    totalAmount = productsLocalStorage
       ? productsLocalStorage
           .reduce(
             (accumulation, item) => accumulation + item.price * item.cantidad,

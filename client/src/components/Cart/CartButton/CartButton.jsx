@@ -34,7 +34,7 @@ const CartButton = ({ setShowCart }) => {
     return () => unsuscribe();
   }, [currentUser]);
 
-  const totalItems = productsLocalStorage.length
+  const totalItems = productsLocalStorage
     ? productsLocalStorage.reduce(
         (total, product) => total + product.cantidad,
         0
