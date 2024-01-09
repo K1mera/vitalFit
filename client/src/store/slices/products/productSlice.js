@@ -4,6 +4,7 @@ export const productSlice = createSlice({
   name: "product",
   initialState: {
     products: [],
+    copyProducts: [],
     categories: [],
     product: {},
     loading: true,
@@ -32,6 +33,7 @@ export const productSlice = createSlice({
     },
     setProducts: (state, action) => {
       state.products = action.payload;
+      {if(!state.copyProducts.length) state.copyProducts= action.payload}
       state.totalPages = Math.ceil(action.payload.length / 8);
       state.loading = false;
     },

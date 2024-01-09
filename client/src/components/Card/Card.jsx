@@ -39,6 +39,7 @@ export default function Card({ id, name, price, image, stock }) {
         increaseProduct(currentUser.uid, id);
       } else {
         const existing = JSON.parse(localStorage.getItem("products")) || [];
+        console.log(existing);
         const exists = existing.find((p) => p.id == id);
         if (exists) {
           if (exists.cantidad >= stock) {
