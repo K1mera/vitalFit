@@ -20,7 +20,7 @@ import {
 
 export const getProducts = (page = 1) => {
   return async (dispatch, getState) => {
-    dispatch(startLoading());
+    // dispatch(startLoading());
 
     const { filters, search, sorts } = getState().product;
     const { category, minPrice, maxPrice } = filters;
@@ -52,7 +52,7 @@ export const getProductById = (id) => {
 
 export const getCategories = () => {
   return async (dispatch) => {
-    dispatch(startLoading());
+    // dispatch(startLoading());
 
     const { data } = await productsIns.get("/category");
     // console.log(data);
