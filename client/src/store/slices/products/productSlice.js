@@ -6,7 +6,7 @@ export const productSlice = createSlice({
     products: [],
     categories: [],
     product: {},
-    loading: false,
+    loading: true,
     currentPage: 1,
     itemsPerPage: 8,
     totalPages: 0,

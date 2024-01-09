@@ -32,7 +32,7 @@ export default function ProductsPage() {
     <div className="flex h-full p-2 w-[ '97vw' ]">
       <Filter />
 
-      <main className="flex flex-1 flex-col justify-center gap-5 h-full ">
+      <main className="flex flex-1 flex-col justify-center gap-20 h-full ">
         <section className={style.cardsContainer}>
           {products
             .slice(startIndex, startIndex + 8)
