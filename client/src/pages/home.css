@@ -1,9 +1,5 @@
-.homecontainer {
-    border: 1px solid black;
-}
-
-.text-image-container {
-    /* border: 1px solid red; */
+/* .text-image-container {
+    
     display: flex;
     width: 100%;
     height: 80%;
@@ -15,26 +11,24 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 420px;
-}
-.text {
-    /* border: 1px solid orange; */
+} */
+/* .text {
+   
     display: flex;
     align-items: center;
     color: white;
     font-family: "Montserrat";
     font-size: 34px;
     font-weight: 250;
-}
+} */
 
-.offer {
-    /* border: 1px solid orange; */
+/* .offer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
-.imagen {
-    /* border: 1px solid pink; */
+/* .imagen {
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -42,10 +36,9 @@
     background-position: center;
     background-size: contain;
     margin-bottom: 15px;
-}
+} */
 
-.boton-comprar {
-    /* border: 1px solid pink; */
+/* .boton-comprar {
     color: white;
     background-color: #2fd6bd;
     text-align: center;
@@ -54,37 +47,37 @@
     padding: 5px;
     font-size: 20px;
     width: 100%;
-}
+} */
 
-.categorias-container {
+/* .categorias-container {
     display: flex;
     justify-content: center;
     background-color: #d9d9d9;
     padding: 20px 0px;
-}
+} */
 
-.buttons-container {
+/* .buttons-container {
     display: flex;
     gap: 50px;
-}
+} */
 
-.button-categoria {
+/* .button-categoria {
     color: white;
     background-color: #d74545;
     border-radius: 20px;
     padding: 5px 30px;
     font-family: "Bebas Neue";
     font-size: 24px;
-}
+} */
 
-.destacados-text {
+/* .destacados-text {
     text-align: center;
     font-family: "Bebas Neue";
     font-size: 40px;
     padding: 30px 0px 0px;
-}
+} */
 
-.destacados-container {
+/* .destacados-container {
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
@@ -100,17 +93,17 @@
 
 .images-destacados {
     width: 200px;
-}
+} */
 
-.photos-container {
+/* .photos-container {
     display: flex;
     justify-content: space-evenly;
     margin-top: 60px;
     height: 600px;
     margin-bottom: 60px;
-}
+} */
 
-.photo-div1 {
+/* .photo-div1 {
     background: url(/images/menconcapucha.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -120,9 +113,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
+} */
 
-.photo-div2 {
+/* .photo-div2 {
     background: url(/images/mujersogas.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -133,9 +126,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-}
+} */
 
-.motivation-container {
+/* .motivation-container {
     background-color: #d9d9d9eb;
     width: 90%;
     border-radius: 20px;
@@ -144,16 +137,16 @@
     padding: 10px 20px;
     margin-top: 15px;
     text-align: center;
-}
+} */
 
-.product-buy {
+/* .product-buy {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     height: 50%;
-}
+} */
 
-.product-div {
+/* .product-div {
     background-color: white;
     display: flex;
     align-items: center;
@@ -162,20 +155,20 @@
     border-radius: 20px;
     margin-bottom: 8%;
     position: relative;
-}
+} */
 
-.parrafo-producto-photo {
+/* .parrafo-producto-photo {
     font-family: "Montserrat";
     font-size: small;
     font-weight: 600;
     margin: 5%;
-}
+} */
 
-.images-inphoto {
-    height: 80%;
-}
+/* .images-inphoto {
+    height: 80%
+} */
 
-.boton-comprar-photo {
+/* .boton-comprar-photo {
     color: white;
     background-color: #2fd6bd;
     text-align: center;
@@ -187,36 +180,35 @@
     position: absolute;
     top: 90%;
     left: 40%;
-}
+} */
 
-.why-container {
+/* .why-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 80px;
     margin-top: 30px;
     margin-bottom: 90px;
-}
+} */
 
-.h6 {
+/* .h6 {
     font-family: "Bebas Neue";
     font-size: 24px;
 }
 
 .carac-vitalfit-container {
-    /* border: 3px solid red; */
     width: 350px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
+} */
 
-.vaso-container {
+/* .vaso-container {
     width: 40%;
-}
+} */
 
-.noestasseguro-container {
+/* .noestasseguro-container {
     width: 30%;
     background-color: #d9d9d9;
     font-family: "Bebas neue";
@@ -225,17 +217,17 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
+} */
 
-.noestasseguro-p {
+/* .noestasseguro-p {
     width: 40%;
-}
+} */
 
-#notepreocupes {
+/* #notepreocupes {
     font-family: "montserrat";
     font-size: 20px;
-}
+} */
 
-#separaunaasesoria {
+/* #separaunaasesoria {
     width: 100%;
-}
+} */

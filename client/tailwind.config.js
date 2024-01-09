@@ -24,7 +24,7 @@ export default {
         montserrat: "'Montserrat', sans-serif",
       },
       backgroundImage: {
-        foot: "url('./src/icons/rectangle.jpg')",
+        foot: "url('images/Rectangle.jpg')",
         footerImg: "url('assets/footerImage.png')",
       },
     },

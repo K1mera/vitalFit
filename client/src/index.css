@@ -16,3 +16,7 @@
 .inputBar {
     @apply font-bebas inline-flex items-center w-full rounded-full border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50
 }
+
+.categoriesButton {
+    @apply text-white bg-primary rounded-[20px] py-[5px] px-[30px] font-bebas text-2xl transition hover:scale-110 duration-300
+}
