@@ -43,7 +43,7 @@ export const getProducts = (page = 1) => {
 
 export const getProductById = (id) => {
   return async (dispatch) => {
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { data } = await productsIns.get(`/product/${id}`);
 
     dispatch(findbyProductById(data));
