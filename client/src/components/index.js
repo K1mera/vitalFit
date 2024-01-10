@@ -1,7 +1,6 @@
 
 
-export * from './AddProduct'
-export * from './AdminOption'
+
 export * from './ItemsAdded'
 export * from './FooterComp'
 export * from './NavBarComp'

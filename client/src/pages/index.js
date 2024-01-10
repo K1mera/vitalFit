@@ -1,4 +1,4 @@
-export * from "./AdminDashboard";
+
 
 export * from "./DetailPage";
 export * from "./home";
