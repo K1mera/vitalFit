@@ -1,20 +1,83 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../store";
+import { useContext } from "react";
+import { userAuth } from "../context/auth-context";
+import addProductToCart from "../firebase/addProductToCart";
+import increaseProduct from "../firebase/increaseProduct";
 
 export const DetailPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { product } = useSelector((state) => state.product);
+  const [amount, setAmount] = useState(1)
+  const { currentUser, productsLocalStorage, setProductsLocalStorage } =
+    useContext(userAuth);
+    const { name, price, image, stock } = product
 
   useEffect(() => {
     dispatch(getProductById(id));
   }, [id]);
 
+  const addProduct = () => {
+    if (stock > 0) {
+        if (currentUser) {
+            const existing = productsLocalStorage.find((p) => p.id == id);
+            if (existing) {
+                existing.cantidad += amount;
+                setProductsLocalStorage([...productsLocalStorage]);
+            } else {
+                addProductToCart(currentUser.uid, {
+                    name: name,
+                    price: price,
+                    image: image[0],
+                    stock: stock,
+                    cantidad: amount,
+                    id: id,
+                });
+            }
+            increaseProduct(currentUser.uid, id);
+        } else {
+            const existing =
+                JSON.parse(localStorage.getItem("products")) || [];
+            console.log(existing);
+            const exists = existing.find((p) => p.id == id);
+            if (exists) {
+                if (exists.cantidad >= stock) {
+                    return;
+                }
+                exists.cantidad += amount;
+                localStorage.setItem("products", JSON.stringify(existing));
+                setProductsLocalStorage(existing);
+            } else {
+                existing.push({
+                    name: name,
+                    price: price,
+                    image: image,
+                    cantidad: amount,
+                    id: id,
+                    stock: stock,
+                });
+
+                localStorage.setItem("products", JSON.stringify(existing));
+                setProductsLocalStorage(existing);
+            }
+        }
+    }
+};
+
+  const increaseAmount = () => {
+    setAmount (amount + 1)
+  }
+
+  const decreaseAmount = () => {
+    setAmount(amount - 1)
+  }
+
   const lengthReviews = product.Reviews;
 
-  console.log(lengthReviews);
+//   console.log(lengthReviews);
 
   return (
     <main className="w-auto h-full flex flex-col items-center mt-10 mx-8 gap-16">
@@ -41,15 +104,15 @@ export const DetailPage = () => {
           </section>
           <section className="flex items-center h-12 gap-2.5 mt-1">
             <figure className="flex px-3 py-2 items-center gap-2 font-bebas rounded-full border-solid border-2 border-black text-black">
-              <button className="transition hover:scale-150 hover:text-primary px-2">
+              <button className="transition hover:scale-150 hover:text-primary px-2" onClick={decreaseAmount}>
                 -
               </button>
-              1
-              <button className="transition hover:scale-150 hover:text-primary px-2">
+              {amount}
+              <button className="transition hover:scale-150 hover:text-primary px-2" onClick={increaseAmount}>
                 +
               </button>
             </figure>
-            <button className="addButton">AGREGAR</button>
+            <button className="addButton" onClick={addProduct}>AGREGAR</button>
           </section>
           <section className="flex flex-col py-2.5 gap-2.5 font-montserrat">
             <dd>
