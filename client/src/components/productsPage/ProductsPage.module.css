@@ -17,7 +17,8 @@
     justify-content:space-around;
     flex-wrap: wrap;
     height: auto;
-    width: 75vw;
+    gap: 50px;
+    /* width: 75vw; */
 }
 
 .controls {
@@ -124,6 +125,7 @@
     justify-content:space-around;
     flex-wrap: wrap;
     height: 100vh;
+    width: 80vw;
     /* margin-top: 5px; */
 }
 

@@ -1,0 +1,14 @@
+.NavbarInvent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: #47515757;
+}
+.NavbarInvent li {
+  margin-right: 90px; /* Espacio entre elementos li (ajusta según tus necesidades) */
+}
+
+.products {
+  width: 50%;
+}

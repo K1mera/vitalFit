@@ -1,21 +1,15 @@
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
+import { store } from "./store";
+
 import { MainRouter } from "./routes";
-
-import {getProducts, store} from "./store";
-import {useEffect} from "react";
-
-import data from './Data.js';
-
+import UserContext from "./context/auth-context";
 
 export const VitalFitApp = () => {
-
-    
-    const allItems = data;
-    
-
-    return (
-        <Provider store={ store }>
-            <MainRouter   allItems={allItems}/>
-        </Provider>
-    );  
+  return (
+    <Provider store={store}>
+      <UserContext>
+        <MainRouter />
+      </UserContext>
+    </Provider>
+  );
 };
