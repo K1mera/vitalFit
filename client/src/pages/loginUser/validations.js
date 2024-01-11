@@ -1,14 +1,15 @@
 export const validationUser = (values) => {
   let errors = {};
-  let expresionPassword = /^(?=.*[A-Z])(?=.*\d).+/;
+  let expresionPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+  let regexEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
-  if (!values.usuario) {
-    errors.usuario = "El usuario debe ser requerido";
+  if (!regexEmail.test(values.correo)) {
+    errors.correo = "El correo es invalido";
   }
 
   if (!expresionPassword.test(values.contraseña)) {
     errors.contraseña =
-      "Debe tener al menos un número y una letra en mayúscula";
+      "La contraseña debe tener mayusculas, numeros y letras, al menos 6 caracteres";
   }
 
   return errors;

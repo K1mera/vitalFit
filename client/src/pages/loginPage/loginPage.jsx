@@ -1,42 +1,87 @@
 import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { useForm } from "../../hooks";
-
-const formValidations = {
-  email: [(value) => value.includes("@"), "El correo no es valido"],
-  password: [
-    (value) => /[A-Z]/.test(value) && /\d/.test(value),
-    "La contraseña debe tener una mayúscula y al menos un número",
-  ],
-};
+import { validationUser } from "./validations";
+import Swal from "sweetalert2";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export const LoginPage = () => {
   const [formSubmitted, setformSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [login, setLogin] = useState({
+    correo: "",
+    contraseña: "",
+  });
 
-  const {
-    email,
-    password,
-    emailValid,
-    passwordValid,
-    isFormValid,
-    onInputChange,
-  } = useForm(
-    {
-      email: "",
-      password: "",
-    },
-    formValidations
-  );
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-    setformSubmitted(true);
-    if (isFormValid) return;
+  const handleLogin = (event) => {
+    const { name, value } = event.target;
+    setLogin({
+      ...login,
+      [name]: value,
+    });
+    setErrors(validationUser({ ...login, [name]: value }));
   };
 
+  const auth = getAuth();
+
+  const signUpWithPasswordAndEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userLogin = await signInWithEmailAndPassword(
+        auth,
+        login.correo,
+        login.contraseña
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: `Bienvenido ${userLogin.user.email}`,
+      });
+
+      setLogin({
+        correo: "",
+        contraseña: "",
+      });
+    } catch (error) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: `Usuario no encontrado, email o contraseña incorrectos`,
+      });
+    }
+  };
+
+  const validationFormLogin = () => {
+    return (
+      errors.correo || errors.contraseña || !login.correo || !login.contraseña
+    );
+  };
+
+
   return (
-    <form className="relative" onSubmit={onSubmit}>
+    <form className="relative" onSubmit={signUpWithPasswordAndEmail}>
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
@@ -44,18 +89,20 @@ export const LoginPage = () => {
           src="src/icons/image-loginPage.jpeg"
         />
       </div>
-      <span
-        style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}
-      >
-        Soy
-      </span>
-      <span
-        style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-11 text-4xl"}
-      >
-        ADMIN
-      </span>
+      <NavLink to={"/loginUser"}>
+        <span
+          style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
+          className={"absolute top-10 right-14 text-3xl"}
+        >
+          Soy
+        </span>
+        <span
+          style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
+          className={"absolute top-20 right-11 text-4xl"}
+        >
+          ADMIN
+        </span>
+      </NavLink>
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
@@ -92,15 +139,13 @@ export const LoginPage = () => {
           <input
             className="w-full h-9"
             style={{ borderRadius: "10px", marginBottom: "10px" }}
-            name="email"
+            name="correo"
             type="text"
             placeholder=" Correo..."
-            value={email}
-            onChange={onInputChange}
+            value={login.correo}
+            onChange={handleLogin}
           ></input>
-          {!emailValid && !formSubmitted
-            ? ""
-            : email && <span className="text-red-400" >{emailValid}</span>}
+          {errors.correo && <p className="text-red-400">{errors.correo}</p>}
           <br />
           <label
             style={{
@@ -116,18 +161,19 @@ export const LoginPage = () => {
           <input
             className="w-full h-9"
             style={{ borderRadius: "10px", marginBottom: "10px" }}
-            name="password"
+            name="contraseña"
             type="password"
             placeholder=" Contraseña..."
-            value={password}
-            onChange={onInputChange}
+            value={login.contraseña}
+            onChange={handleLogin}
           ></input>
-          {!passwordValid && !formSubmitted
-            ? ""
-            : email && <span className="text-red-400" >{passwordValid}</span>}
+          {errors.contraseña && (
+            <p className="text-red-400">{errors.contraseña}</p>
+          )}
           <br />
           <button
-            type="submit"
+            disabled={validationFormLogin}
+            onClick={signUpWithPasswordAndEmail}
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",

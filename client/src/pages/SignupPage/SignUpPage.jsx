@@ -2,7 +2,18 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationForm } from "./validations";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import Swal from "sweetalert2";
+import { FcGoogle } from "react-icons/fc";
+
 import { useDispatch } from "react-redux";
+
 
 export const SingUpPage = () => {
   const [handleForm, setHandleForm] = useState({
@@ -12,9 +23,105 @@ export const SingUpPage = () => {
     contraseña: "",
     confirmarContraseña: "",
   });
+
   const [errors, setErrors] = useState({});
 
+
+  const auth = getAuth();
+
+  const validationDisabledButton = () => {
+    return (
+      errors.nombre ||
+      errors.dni ||
+      errors.correo ||
+      errors.contraseña ||
+      errors.confirmarContraseña ||
+      !handleForm.nombre ||
+      !handleForm.dni ||
+      !handleForm.correo ||
+      !handleForm.contraseña ||
+      !handleForm.confirmarContraseña
+    );
+  };
+
+  const submit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        handleForm.correo,
+        handleForm.contraseña
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: `Usuario creado con exito: ${userCredential.user.email} `,
+      });
+    } catch (error) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: `Ups, ocurrio un error, intenta un nuevo email`,
+      });
+    }
+
+    setHandleForm({
+      nombre: "",
+      dni: "",
+      correo: "",
+      contraseña: "",
+      confirmarContraseña: "",
+    });
+  };
+
+  const singInWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      const responseGoogle = new GoogleAuthProvider();
+      return await signInWithPopup(auth, responseGoogle);
+    } catch (error) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: ` Upss! Ocurrio un error, intentalo más tarde`,
+      });
+    }
+  };
+
   const dispatch = useDispatch();
+
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -26,7 +133,7 @@ export const SingUpPage = () => {
   };
 
   return (
-    <div className="relative">
+    <form className="relative">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center">
         <img
@@ -177,6 +284,8 @@ export const SingUpPage = () => {
             <p className="text-red-400">{errors.confirmarContraseña}</p>
           )}
           <button
+            disabled={validationDisabledButton()}
+            onClick={submit}
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
@@ -192,6 +301,29 @@ export const SingUpPage = () => {
             }}
           >
             CREAR
+          </button>
+          <br />
+          <button
+            onClick={singInWithGoogle}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginLeft: "19%",
+              background: "#D74545",
+              padding: "2.5%",
+              borderRadius: "9px",
+            }}
+          >
+            <FcGoogle />{" "}
+            <span
+              style={{
+                marginLeft: "8px",
+                fontFamily: "NuevaFuente, montserrat",
+                color: "white",
+              }}
+            >
+              Inicia sesión con Google
+            </span>
           </button>
           <br />
           <span
@@ -218,6 +350,6 @@ export const SingUpPage = () => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
