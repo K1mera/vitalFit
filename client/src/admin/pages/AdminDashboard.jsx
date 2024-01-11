@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { LogoIcon } from "../../icons";
-import { AddProduct, AdminOption } from "../components";
+import { AddProduct, AdminOption, Inventario } from "../components";
 
 import bgImage from "../../icons/image-loginPage.jpeg";
 
@@ -15,7 +15,8 @@ export const AdminDashboard = () => {
     switch (componentSelected) {
       case "Agregar producto":
         return <AddProduct />;
-      
+      case "Inventario":
+        return <Inventario />;
 
       default:
         return null; // Render nothing if no option is selected

@@ -138,3 +138,11 @@ export const searchProduct = (search) => {
     dispatch(setSearch(search));
   };
 };
+
+export const deleteProduct = (id) => {
+  return async () => {
+    const response = await productsIns.delete(`/product/${id}`);
+
+    console.log(response);
+  };
+};
