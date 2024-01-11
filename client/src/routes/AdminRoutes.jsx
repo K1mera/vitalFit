@@ -1,7 +1,14 @@
-import React from 'react'
+
+import { Navigate, Route, Routes } from "react-router-dom";
+import { AdminDashboard } from "../admin/pages";
 
 export const AdminRoutes = () => {
   return (
-    <div>AdminRoutes</div>
-  )
-}
+    <>
+      <Routes>
+        <Route path="dasboard" element={<AdminDashboard />} />
+        <Route path="/*" element={<Navigate to="/admin/dasboard" />} />
+      </Routes>
+    </>
+  );
+};
