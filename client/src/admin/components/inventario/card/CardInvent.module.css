@@ -1,0 +1,13 @@
+/* CardInvent.module.css */
+.Card {
+  /* Ajusta el estilo del contenedor principal según tus necesidades */
+}
+
+.ImageContainer {
+  flex-shrink: 0; /* Evita que la imagen se estire */
+}
+
+.Image {
+  width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: auto;
+}
