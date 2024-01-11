@@ -140,9 +140,11 @@ export const searchProduct = (search) => {
 };
 
 export const deleteProduct = (id) => {
-  return async () => {
+  return async (dispatch) => {
     const response = await productsIns.delete(`/product/${id}`);
 
     console.log(response);
+
+    dispatch(getProducts());
   };
 };
