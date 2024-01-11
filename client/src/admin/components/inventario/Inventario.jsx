@@ -38,7 +38,7 @@ export const Inventario = () => {
       <NavbarInvent />
       <section>
         {products
-          .slice(startIndex, startIndex + 8)
+          .slice(startIndex, startIndex + 3)
           .map(({ id, name, price, image, stock }) => {
             return (
               <CardInvent

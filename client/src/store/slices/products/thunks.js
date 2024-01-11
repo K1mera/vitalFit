@@ -144,7 +144,7 @@ export const deleteProduct = (id) => {
     const response = await productsIns.delete(`/product/${id}`);
 
     console.log(response);
-
+    // aca despachamos la accion para obtener los productos actualizados
     dispatch(getProducts());
   };
 };

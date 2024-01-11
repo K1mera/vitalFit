@@ -3,6 +3,7 @@ import style from "./CardInvent.module.css"; // Asegúrate de importar el archiv
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../../../store";
+import borrar from "./delete.svg";
 
 export default function CardInvent({ id, name, price, image, stock }) {
   const { products } = useSelector((state) => state.product);
@@ -20,12 +21,13 @@ export default function CardInvent({ id, name, price, image, stock }) {
       <div className={style.ImageContainer}>
         <img src={image} alt="IMG" className={style.Image} />
       </div>
-      <div className="flex flex-col justify-center items-start">
-        <h3 className="font-bebas text-lg">{name}</h3>
-        <p className="text-black">${price}</p>
-        <p className="text-black">Stock: {stock}</p>
-        <button onClick={() => handlerDelete(id)}>delete</button>
-        <button></button>
+      <div className={style.contenedor}>
+        <h3 className={style.infoname}>{name}</h3>
+        <p className={style.info}> {stock}</p>
+        <p className={style.info}>${price}</p>
+        <button className={style.info} onClick={() => handlerDelete(id)}>
+          <img src={borrar} alt="" />
+        </button>
       </div>
     </section>
   );
