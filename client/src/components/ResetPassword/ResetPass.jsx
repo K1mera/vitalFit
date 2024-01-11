@@ -3,33 +3,54 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { validationEmail } from "./validation";
 import Swal from "sweetalert2";
+import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 export const ResetPassword = () => {
   const [correo, setCorreo] = useState("");
   const [isSend, setIsSend] = useState(false);
   const [errors, setErrors] = useState("");
+  const auth = getAuth();
 
-  const handleOnSubmit = (event) => {
-    event.preventDefault();
+  const changePassword = async (e) => {
+    e.preventDefault();
 
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "top-end",
-      showConfirmButton: false,
-      timer: 5000,
-      timerProgressBar: true,
-      didOpen: (toast) => {
-        toast.onmouseenter = Swal.stopTimer;
-        toast.onmouseleave = Swal.resumeTimer;
-      },
-    });
-    Toast.fire({
-      icon: "success",
-      title: "Revisa tu correo",
-    });
+    try {
+      const password = await sendPasswordResetEmail(auth, correo);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: "Revisa tu correo",
+      });
 
-    setCorreo("");
-    setIsSend(true);
+      setCorreo("");
+      setIsSend(true);
+    } catch (error) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: "Ups! Ocurrió un error, intentalo más tarde",
+      });
+    }
   };
 
   const handlePass = (event) => {
@@ -39,7 +60,7 @@ export const ResetPassword = () => {
   };
 
   return (
-    <form onSubmit={handleOnSubmit} className="relative">
+    <form onSubmit={changePassword} className="relative">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
@@ -80,7 +101,17 @@ export const ResetPassword = () => {
             placeholder="  Aquí tu correo..."
             onChange={handlePass}
           ></input>
-          {errors ? <p>{errors}</p> : null}
+          {errors ? (
+            <p
+              className="text-red-400"
+              style={{
+                marginTop: "10px",
+                marginLeft: "5px",
+              }}
+            >
+              {errors}
+            </p>
+          ) : null}
           <div
             style={{
               display: "flex",
@@ -108,8 +139,8 @@ export const ResetPassword = () => {
               </NavLink>
             ) : (
               <button
-                disabled={errors}
-                type="submit"
+                disabled={!correo || errors}
+                onClick={changePassword}
                 style={{
                   background: "#D74545",
                   padding: "3%",

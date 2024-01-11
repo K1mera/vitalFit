@@ -2,13 +2,16 @@ import { LogoIcon } from "../../icons";
 import { useState } from "react";
 import { validationUser } from "./validations";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
-    usuario: "",
+    correo: "",
     contraseña: "",
   });
+  console.log(login.correo);
 
   const handleLogin = (event) => {
     const { name, value } = event.target;
@@ -19,8 +22,65 @@ export const LoginUser = () => {
     setErrors(validationUser({ ...login, [name]: value }));
   };
 
+  const auth = getAuth();
+
+  const signUpWithPasswordAndEmail = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userLogin = await signInWithEmailAndPassword(
+        auth,
+        login.correo,
+        login.contraseña
+      );
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "success",
+        title: `Bienvenido ${userLogin.user.email}`,
+      });
+
+      setLogin({
+        correo: "",
+        contraseña: "",
+      });
+    } catch (error) {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: `Usuario no encontrado, email o contraseña incorrectos`,
+      });
+    }
+  };
+
+  const validationFormLogin = () => {
+    return (
+      errors.correo || errors.contraseña || !login.correo || !login.contraseña
+    );
+  };
+
   return (
-    <div className="relative">
+    <form onSubmit={signUpWithPasswordAndEmail} className="relative">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
@@ -72,19 +132,19 @@ export const LoginUser = () => {
               fontSize: "1.5rem",
             }}
           >
-            USUARIO
+            CORREO
           </label>
           <br />
           <input
             className="w-full h-9"
             style={{ borderRadius: "10px", marginBottom: "25px" }}
-            name="usuario"
+            name="correo"
             type="text"
-            placeholder=" Usuario..."
-            value={login.usuario}
+            placeholder=" Correo..."
+            value={login.correo}
             onChange={handleLogin}
           ></input>
-          {errors.usuario && <p className="text-red-400">{errors.usuario}</p>}
+          {errors.correo && <p className="text-red-400">{errors.correo}</p>}
           <br />
           <label
             style={{
@@ -110,6 +170,8 @@ export const LoginUser = () => {
           )}
           <br />
           <button
+            disabled={validationFormLogin()}
+            onClick={signUpWithPasswordAndEmail}
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
@@ -142,6 +204,6 @@ export const LoginUser = () => {
           </NavLink>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

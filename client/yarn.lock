@@ -2401,6 +2401,11 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
+react-icons@^4.12.0:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.12.0.tgz#54806159a966961bfd5cdb26e492f4dafd6a8d78"
+  integrity sha512-IBaDuHiShdZqmfc/TwHu6+d6k2ltNCf3AszxNmjJc1KUfXdEeRJOKyNvLmAHaarhzGmTSVygNdyu8/opXv2gaw==
+
 react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -2435,6 +2440,14 @@ react@^18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+reactfire@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/reactfire/-/reactfire-4.2.3.tgz#efdbc7fa8cf698245d772c63dbd7a0593bc95689"
+  integrity sha512-FG75b586r8dId7EGIyVi/nKokth++BIvdRO1BRIBkM7BGe2v753olcNpUHBLGdBPap7t67vq2FA0P22Pu8rT3Q==
+  dependencies:
+    rxfire "^6.0.3"
+    rxjs "^6.6.3 || ^7.0.1"
 
 read-cache@^1.0.0:
   version "1.0.0"
@@ -2539,6 +2552,18 @@ run-parallel@^1.1.9:
   integrity sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==
   dependencies:
     queue-microtask "^1.2.2"
+
+rxfire@^6.0.3:
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/rxfire/-/rxfire-6.0.5.tgz#02035400b150dd730353c786ffa15283f0389dd4"
+  integrity sha512-ycBsANGbya3GNtOBKzZVATLEV+0S9gUrlTfwnN15TCXtgG8OgIMAuv2k9+kMeVaevp/DRp1KT+vYf6Wkop6gvw==
+
+"rxjs@^6.6.3 || ^7.0.1":
+  version "7.8.1"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
+  integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
+  dependencies:
+    tslib "^2.1.0"
 
 safe-array-concat@^1.0.1:
   version "1.0.1"
