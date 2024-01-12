@@ -3,8 +3,9 @@ import { userAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
+import BackIcon from "../../icons/BackIcon";
 
-const Order = ({ setShowOrder }) => {
+const Order = ({ setShowOrder, setShowCart }) => {
   initMercadoPago("TEST-96d6884d-30e9-4fe8-a75f-16fdc52d9ddb");
   const navigate = useNavigate();
   const { currentUser, products, productsLocalStorage, setTotalPay, totalPay } =
@@ -110,10 +111,21 @@ const Order = ({ setShowOrder }) => {
     navigate("/preCheckout");
   };
 
+  const handleBack = () => {
+    setShowOrder(false);
+    setShowCart(true);
+  };
   return (
     <div>
       <aside className="sideMenuLayout">
         <section>
+          <button onClick={handleBack}>
+            <BackIcon
+              className={
+                "mb-1 text-teal-700/90 w-7 transition hover:scale-125 hover:text-teal-600"
+              }
+            />
+          </button>
           {products?.length ? (
             <article className="mb-10">{cartItems}</article>
           ) : productsLocalStorage?.length ? (
@@ -151,7 +163,10 @@ const Order = ({ setShowOrder }) => {
 
         <section className="flex justify-between items-center bg-white fixed bottom-0 h-14 w-72">
           <div className="font-bebas text-2xl mb-2">
-            <p className="text-base mt-2">Sub-total: {totalAmount}</p>
+            <p className="text-base mt-2 w-96 bg-white">
+              Sub-total: {totalAmount}
+            </p>
+
             <span>Total: </span>
 
             <span>$ {totalPay}</span>

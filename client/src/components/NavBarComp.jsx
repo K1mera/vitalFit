@@ -107,7 +107,9 @@ export const NavBarComp = () => {
           {showCart && (
             <Cart setShowCart={setShowCart} setShowOrder={setShowOrder} />
           )}
-          {showOrder && <Order setShowOrder={setShowOrder} />}
+          {showOrder && (
+            <Order setShowOrder={setShowOrder} setShowCart={setShowCart} />
+          )}
         </section>
       </nav>
     </>
