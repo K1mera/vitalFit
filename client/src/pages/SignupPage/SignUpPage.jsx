@@ -11,9 +11,7 @@ import {
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
-
 import { useDispatch } from "react-redux";
-import { credentialSignUp } from "../../firebase/providers";
 
 export const SingUpPage = () => {
   const [handleForm, setHandleForm] = useState({

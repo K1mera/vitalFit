@@ -16,7 +16,6 @@ export const LoginUser = () => {
     correo: "",
     contraseña: "",
   });
-  console.log(login.correo);
 
   const dispatch = useDispatch();
 

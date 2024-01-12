@@ -3,6 +3,7 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { validationEmail } from "./validation";
 import Swal from "sweetalert2";
+import { getAuth  } from "firebase/auth";
 import { resetPassword } from "../../firebase/providers";
 import getUsers from "../../store/slices/auth/getDocs";
 

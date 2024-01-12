@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, getDocs } from "firebase/firestore";
 import { firebaseDb } from "../../../firebase/config";
 
 const getUsers = async () => {
@@ -12,7 +12,6 @@ const getUsers = async () => {
     });
 
     const arrayUsers = usersData.map((item) => item.email);
-    console.log(arrayUsers);
 
     return arrayUsers;
   } catch (error) {
@@ -21,4 +20,3 @@ const getUsers = async () => {
 };
 
 export default getUsers;
-
