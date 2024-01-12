@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import addProductToCart from "../firebase/addProductToCart";
+import { registerUserBDD } from "../firebase/registerUserBDD";
 import { firebaseAuth } from "../firebase/config";
 import getUser from "../firebase/getUser";
 
@@ -20,13 +21,23 @@ const UserContext = ({ children }) => {
       if (userFirebase) {
         setCurrentUser(userFirebase);
         //verifica si el usuario está en bdd
+        await registerUserBDD({
+          role: "user",
+          status: "active",
+          photoURL: currentUser.photoURL,
+          id: currentUser.uid,
+          email: currentUser.email,
+          displayName: currentUser.displayName,
+        });
         const user = await getUser(userFirebase?.uid);
+
         if (user) {
           setUser(user);
           setIsRegistered(true);
           //si el producto está registrado toma los productos del carrito
           //guardados en el local storage y los agrega al carrito
           //asociado al usuario
+
           await addProductToCart(
             userFirebase?.uid,
             JSON.parse(window.localStorage.getItem("products"))
