@@ -5,8 +5,12 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { firebaseDb } from "../../../firebase/config";
 
 const CartButton = ({ setShowCart }) => {
-  const { currentUser, productsLocalStorage, setProductsLocalStorage } =
-    useContext(userAuth);
+  const {
+    currentUser,
+    productsLocalStorage,
+    setProductsLocalStorage,
+    products,
+  } = useContext(userAuth);
   const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
@@ -15,11 +19,12 @@ const CartButton = ({ setShowCart }) => {
       setProductsLocalStorage(products);
       return;
     }
-    const cartDocRef = doc(firebaseDb, "carrito", currentUser.uid);
+
+    const cartDocRef = doc(firebaseDb, "carritos", currentUser.uid);
     const unsuscribe = onSnapshot(cartDocRef, (docSnapshot) => {
       if (docSnapshot.exists()) {
         const cartData = docSnapshot.data();
-        const cartProducts = cartData.products || [];
+        const cartProducts = cartData.productos || [];
 
         const itemCount = cartProducts.reduce(
           (total, product) => total + product.cantidad,
@@ -39,6 +44,8 @@ const CartButton = ({ setShowCart }) => {
         (total, product) => total + product.cantidad,
         0
       )
+    : products
+    ? products.reduce((total, product) => total + product.cantidad, 0)
     : 0;
 
   return (

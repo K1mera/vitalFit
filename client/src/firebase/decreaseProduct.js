@@ -3,13 +3,13 @@ import { firebaseDb } from "./config";
 
 const decreaseProduct = async (uid, productID) => {
   try {
-    const cartDocRef = doc(firebaseDb, "carrito", uid);
+    const cartDocRef = doc(firebaseDb, "carritos", uid);
 
     const cartDoc = await getDoc(cartDocRef);
 
     if (cartDoc.exists()) {
       const cartData = cartDoc.data();
-      const products = cartData.products;
+      const products = cartData.productos;
 
       const index = products.findIndex((p) => p.id === productID);
       if (index !== -1) {
@@ -24,7 +24,7 @@ const decreaseProduct = async (uid, productID) => {
 
           //actualiza el documento del carrito
           await updateDoc(cartDocRef, {
-            products: products,
+            productos: products,
           });
           console.log("Cantidad disminuida con éxito");
         }

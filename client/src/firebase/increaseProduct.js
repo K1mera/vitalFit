@@ -4,7 +4,7 @@ import { firebaseDb } from "./config";
 const increaseProduct = async (uid, productID) => {
   try {
     //Referencia al documento de carrito
-    const cartDocRef = doc(firebaseDb, "carrito", uid);
+    const cartDocRef = doc(firebaseDb, "carritos", uid);
 
     //Obtiene el documento del carrito
     const cartDoc = await getDoc(cartDocRef);
@@ -12,10 +12,10 @@ const increaseProduct = async (uid, productID) => {
     if (cartDoc.exists()) {
       //si el carrito existe, obtenemos los productos
       const cartData = cartDoc.data();
-      const products = cartData.products;
+      const products = cartData.productos;
 
       //Encuentra el índice del producto en el array para poder modificarlo
-      const index = products.findIndex((p) => p.id === productID);
+      const index = products?.findIndex((p) => p.id === productID);
 
       if (index !== -1) {
         //findIndex retorna -1 cuando no hay coincidencias
@@ -24,7 +24,7 @@ const increaseProduct = async (uid, productID) => {
 
         //Actualiza el documento del carrito con la cantidad de productos actualizada
         await updateDoc(cartDocRef, {
-          products: products,
+          productos: products,
         });
       } else {
         console.log("El producto no existe en el carrito");
