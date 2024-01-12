@@ -2,18 +2,15 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationForm } from "./validations";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
+import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
 
 export const SingUpPage = () => {
   const [handleForm, setHandleForm] = useState({
     nombre: "",
+    apellido: "",
     dni: "",
     correo: "",
     contraseña: "",
@@ -27,6 +24,7 @@ export const SingUpPage = () => {
   const validationDisabledButton = () => {
     return (
       errors.nombre ||
+      errors.apellido ||
       errors.dni ||
       errors.correo ||
       errors.contraseña ||
@@ -43,47 +41,53 @@ export const SingUpPage = () => {
     e.preventDefault();
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
+      const nombreCompleto = handleForm.nombre + " " + handleForm.apellido;
+      const userCredential = await credentialSignUp(
         handleForm.correo,
-        handleForm.contraseña
+        handleForm.contraseña,
+        nombreCompleto
       );
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: `Usuario creado con exito: ${userCredential.user.email} `,
-      });
+      if (userCredential.ok === true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: `Usuario creado con exito: ${userCredential.email} `,
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: `Ups, ocurrio un error, intenta un nuevo email`,
+        });
+      }
     } catch (error) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: `Ups, ocurrio un error, intenta un nuevo email`,
-      });
+      console.log(error.message, "mensaje");
     }
 
     setHandleForm({
       nombre: "",
+      apellido: "",
       dni: "",
       correo: "",
       contraseña: "",
@@ -91,27 +95,32 @@ export const SingUpPage = () => {
     });
   };
 
-  const singInWithGoogle = async (e) => {
+  const singInWithGooglePage = async (e) => {
     e.preventDefault();
     try {
       const responseGoogle = new GoogleAuthProvider();
-      return await signInWithPopup(auth, responseGoogle);
+      const authWithGoogle = await signInWithGoogle(auth, responseGoogle);
+      if (authWithGoogle.ok === false) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: ` Upss! Ocurrio un error, intentalo más tarde`,
+        });
+      } else {
+        return authWithGoogle;
+      }
     } catch (error) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: ` Upss! Ocurrio un error, intentalo más tarde`,
-      });
+      console.log(error.message, "mensaje");
     }
   };
 
@@ -147,13 +156,14 @@ export const SingUpPage = () => {
       </span>
       <div className="w-100% flex items-center justify-center">
         <div
-          className="absolute top-40 z-20 justify-center"
+          className="absolute top-20 z-20 justify-center"
           style={{
             background: "rgba(71, 81, 87, 0.8)",
             padding: "15px",
             borderRadius: "25px",
             boxShadow: "0 4px 6px rgba(10, 10, 10, 0.7)",
             width: "400px",
+            marginTop: "3%"
           }}
         >
           <h1
@@ -188,6 +198,27 @@ export const SingUpPage = () => {
             onChange={handleFormLogin}
           ></input>
           {errors.nombre && <p className="text-red-400">{errors.nombre}</p>}
+          <br />
+          <label
+            style={{
+              fontFamily: "NuevaFuente, bebas neue",
+              color: " #D9D9D9",
+              fontSize: "1.4rem",
+            }}
+          >
+            APELLIDO
+          </label>
+          <br />
+          <input
+            className="w-full h-9"
+            style={{ borderRadius: "10px", marginBottom: "10px" }}
+            name="apellido"
+            type="text"
+            placeholder=" Apellido..."
+            value={handleForm.apellido}
+            onChange={handleFormLogin}
+          ></input>
+          {errors.apellido && <p className="text-red-400">{errors.apellido}</p>}
           <br />
           <label
             style={{
@@ -296,7 +327,7 @@ export const SingUpPage = () => {
           </button>
           <br />
           <button
-            onClick={singInWithGoogle}
+            onClick={singInWithGooglePage}
             style={{
               display: "flex",
               alignItems: "center",

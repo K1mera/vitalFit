@@ -3,10 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { loginWithEmailAndPass } from "../../firebase/providers";
 
 export const LoginPage = () => {
-  const [formSubmitted, setformSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
     correo: "",
@@ -22,54 +21,55 @@ export const LoginPage = () => {
     setErrors(validationUser({ ...login, [name]: value }));
   };
 
-  const auth = getAuth();
-
   const signUpWithPasswordAndEmail = async (e) => {
     e.preventDefault();
 
     try {
-      const userLogin = await signInWithEmailAndPassword(
-        auth,
+      const userLogin = await loginWithEmailAndPass(
         login.correo,
         login.contraseña
       );
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: `Bienvenido ${userLogin.user.email}`,
-      });
+      if (userLogin.ok === true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: `Bienvenido ${userLogin.displayName}`,
+        });
 
-      setLogin({
-        correo: "",
-        contraseña: "",
-      });
+        setLogin({
+          correo: "",
+          contraseña: "",
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: `Usuario no encontrado, email o contraseña incorrectos`,
+        });
+      }
     } catch (error) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: `Usuario no encontrado, email o contraseña incorrectos`,
-      });
+      console.log(error.message, "mensaje");
     }
   };
 
@@ -78,7 +78,6 @@ export const LoginPage = () => {
       errors.correo || errors.contraseña || !login.correo || !login.contraseña
     );
   };
-
 
   return (
     <form className="relative" onSubmit={signUpWithPasswordAndEmail}>
@@ -172,7 +171,7 @@ export const LoginPage = () => {
           )}
           <br />
           <button
-            disabled={validationFormLogin}
+            disabled={validationFormLogin()}
             onClick={signUpWithPasswordAndEmail}
             style={{
               fontFamily: "NuevaFuente, bebas neue",

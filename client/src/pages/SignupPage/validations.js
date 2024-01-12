@@ -7,6 +7,10 @@ export const validationForm = (values) => {
   if (!values.nombre) {
     errors.nombre = "El nombre debe ser requerido";
   }
+  
+  if (!values.apellido) {
+    errors.apellido = "El apellido debe ser requerido";
+  }
 
   if (!expresionRegular.test(values.dni)) {
     errors.dni = "El DNI debe contener sólo numeros";
