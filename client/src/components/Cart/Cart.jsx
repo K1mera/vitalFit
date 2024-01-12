@@ -33,10 +33,10 @@ const Cart = ({ setShowCart, setShowOrder }) => {
     }
 
     //agrega un event listener(suscripción) al documento carrito para cuando haya cambios
-    const cartDocRef = doc(firebaseDb, "carrito", currentUser.uid);
+    const cartDocRef = doc(firebaseDb, "carritos", currentUser.uid);
     const unsubscribe = onSnapshot(cartDocRef, (docSnapshot) => {
       const updatedData = docSnapshot.data();
-      const updatedProducts = updatedData.products || [];
+      const updatedProducts = updatedData.productos || [];
 
       const updatedVisible =
         updatedProducts.length && updatedProducts.filter((p) => p.cantidad > 0);
@@ -56,19 +56,20 @@ const Cart = ({ setShowCart, setShowOrder }) => {
     //si hay un usuario loggeado, la info la toma de "products"
     cartItems = (
       <ul>
-        {products?.map(({ price, name, image, cantidad, stock, id }) => {
-          return (
-            <CartItem
-              key={id}
-              id={id}
-              name={name}
-              price={price}
-              image={image}
-              amount={cantidad}
-              stock={stock}
-            />
-          );
-        })}
+        {products.length &&
+          products.map(({ price, name, image, cantidad, stock, id }) => {
+            return (
+              <CartItem
+                key={id}
+                id={id}
+                name={name}
+                price={price}
+                image={image}
+                amount={cantidad}
+                stock={stock}
+              />
+            );
+          })}
       </ul>
     );
 

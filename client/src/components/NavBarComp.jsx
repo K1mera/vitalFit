@@ -1,30 +1,23 @@
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { openShopList } from "../store/slices/products/thunks";
-import { useState } from "react";
-import { OrderModal, ProcessOrder } from "./";
-import { LogoIcon, FavoriteIcon, ShoppingCartIcon, UserIcon } from "../icons";
+import { useEffect, useState, useContext } from "react";
+import { userAuth } from "../context/auth-context";
+import { LogoIcon, FavoriteIcon, UserIcon } from "../icons";
 import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
 import Order from "./Cart/Order";
+import addCarrito from "../firebase/addCarrito";
 
 export const NavBarComp = () => {
-  const dispatch = useDispatch();
+  const { currentUser } = useContext(userAuth);
 
   const [showCart, setShowCart] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
-  const { orderWindow } = useSelector((state) => state.orders);
-  const { shopListOpen, shoppingCart } = useSelector((state) => state.product);
 
-  const onShopList = () => {
-    if (shopListOpen !== false) return dispatch(openShopList(false));
-    dispatch(openShopList(true));
-  };
-
+  useEffect(() => {
+    currentUser && addCarrito(currentUser.uid);
+  }, [currentUser]);
   return (
     <>
-      {!shopListOpen ? "" : <OrderModal />}
-      {!orderWindow ? "" : <ProcessOrder />}
       <nav className="flex w-full bg-primaryLight h-24 items-center py-5 px-10 justify-between">
         <LogoIcon className={"w-[34px] h-[69px] mr-[128px]"} />
         <section className="font-bebas flex gap-2 text-2xl">
