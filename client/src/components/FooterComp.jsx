@@ -1,10 +1,12 @@
 import { LogoIconWhite } from "../icons"
 
 
+import bgFooter from '/assets/footerImage.png'
 
 export const FooterComp = () => {
   return (
-    <footer className="flex w-full h-[340px] py-10 px-20 gap-20 bg-footerImg bg-no-repeat bg-cover ">
+    <footer className="flex w-full h-[340px] py-10 px-20 gap-20 relative">
+      <img  className='w-full absolute -z-50 top-0 left-0' src={ bgFooter } alt="" />
       <figure>
         <LogoIconWhite className={"w-[75px] h-[151px]"} />
       </figure>

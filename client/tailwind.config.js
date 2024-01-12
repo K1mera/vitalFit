@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -22,13 +24,11 @@ export default {
         montserrat: "'Montserrat', sans-serif",
       },
       backgroundImage: {
-        foot: "url('./src/icons/rectangle.jpg')",
-        footerImg: "url('assets/footerImage.png')"
+        foot: "url('images/Rectangle.jpg')",
+        footerImg: "url('assets/footerImage.png')",
       },
     },
   },
-  plugins: [
-      
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };
 

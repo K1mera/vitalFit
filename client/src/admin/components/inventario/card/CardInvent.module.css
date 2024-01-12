@@ -1,0 +1,28 @@
+/* CardInvent.module.css */
+
+.ImageContainer {
+  flex-shrink: 0; /* Evita que la imagen se estire */
+}
+
+.Image {
+  width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  /* height: auto; */
+}
+.contenedor {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.info {
+  margin-right: 90px; /* Espacio entre elementos li (ajusta según tus necesidades) */
+  text-align: center;
+}
+
+.infoname {
+  align-items: center;
+  text-align: center;
+  margin-right: 212px;
+  max-width: 10px;
+}

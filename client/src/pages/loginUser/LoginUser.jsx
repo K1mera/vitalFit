@@ -1,9 +1,14 @@
-import { LogoIcon } from "../../icons";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { validationUser } from "./validations";
+
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { loginWithEmailAndPass } from "../../firebase/providers";
+
+import { LogoIcon } from "../../icons";
+import {loginWithEmail, startGoogle} from "../../store/slices";
+
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
@@ -12,6 +17,16 @@ export const LoginUser = () => {
     contraseña: "",
   });
   console.log(login.correo);
+
+  const dispatch = useDispatch();
+
+  const onGoogle = () => {
+    dispatch(startGoogle())
+  }
+
+  const onCredentialsLogin = (user, pass) => {
+    dispatch(loginWithEmail(user, pass))
+  }
 
   const handleLogin = (event) => {
     const { name, value } = event.target;

@@ -1,17 +1,30 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
+import { AppRouter } from "./";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getCategories, getProducts } from "../store/slices";
 
-import { AppRouter } from './';
+import { useSelector } from "react-redux";
+import { AdminRoutes } from "./AdminRoutes";
 
-export const MainRouter = ({items,filter,allItems}) => {
+export const MainRouter = () => {
+  const { status } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+    dispatch(getCategories());
+  }, []);
+
   return (
     <Routes>
-      {/* rutas para generales */}
-      <Route path="/*" element={<AppRouter items={items} filter={filter} allItems={allItems}/>} />
-      {/* rutas para login */}
-      <Route path="/auth" element={"cambiar por el login comp"} />
-      {/* rutas para admin  */}
-      <Route path="/admin" element={"cambiar por el login comp"} />
+      {status === "admin" ? (
+        <Route path="admin/*" element={<AdminRoutes />} />
+      ) : (
+        <Route path="/*" element={<AppRouter />} />
+      )}
     </Routes>
   );
-}
+};

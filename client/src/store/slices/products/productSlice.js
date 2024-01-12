@@ -1,17 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const productSlice = createSlice({
   name: "product",
   initialState: {
     products: [],
-    loading: false,
+    copyProducts: [],
+    categories: [],
+    product: {},
+    loading: true,
     currentPage: 1,
     itemsPerPage: 8,
     totalPages: 0,
     shopListOpen: false,
     shoppingCart: [],
     countTotal: 0,
-    
+    search: "",
+    filters: {
+      category: "",
+      minPrice: "",
+      maxPrice: "",
+      /*  offer: false,
+      active: true, */
+    },
+    sorts: {
+      sortByName: "",
+      sortByPrice: "",
+    },
   },
   reducers: {
     startLoading: (state /* action */) => {
@@ -19,18 +33,19 @@ export const productSlice = createSlice({
     },
     setProducts: (state, action) => {
       state.products = action.payload;
+      {if(!state.copyProducts.length) state.copyProducts= action.payload}
       state.totalPages = Math.ceil(action.payload.length / 8);
       state.loading = false;
+    },
+    setCategories: (state, action) => {
+      state.categories = action.payload;
     },
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    findbyProductByName: (state, action) => {
-      state.dogs = action.payload;
-      state.loading = false;
-    },
+
     findbyProductById: (state, action) => {
-      state.dogs = action.payload;
+      state.product = action.payload;
       state.loading = false;
     },
     itemsAdded: (state, action) => {
@@ -70,9 +85,51 @@ export const productSlice = createSlice({
       state.shoppingCart = [];
       state.countTotal = 0;
     },
+    setFilters: (state, action) => {
+      state.filters = action.payload;
+    },
+    setSorts: (state, action) => {
+      state.sorts = action.payload;
+    },
+    setSearch: (state, action) => {
+      state.search = action.payload;
+    },
+    resetFilters: (state, action) => {
+      state.filters = {
+        category: "",
+        minPrice: "",
+        maxPrice: "",
+      };
+    },
+    resetSearch: (state, action) => {
+      state.search = "";
+    },
+    resetSorts: (state, action) => {
+      state.sorts = {
+        sortByName: "",
+        sortByPrice: "",
+      };
+    },
   },
 });
 
-
 // Action creators are generated for each case reducer function
-export const { setProducts, startLoading, handleShopList, itemsAdded, removeItem, setCurrentPage, cleanEverything } =  productSlice.actions;
+export const {
+  setProducts,
+  setCategories,
+  startLoading,
+  findbyProductById,
+  handleShopList,
+  itemsAdded,
+  removeItem,
+  setCurrentPage,
+  cleanEverything,
+  setFilters,
+  resetFilters,
+  setSorts,
+  setSearch,
+  resetSorts,
+  resetSearch,
+} = productSlice.actions;
+
+//export const { filters } = productSlice.getInitialState();

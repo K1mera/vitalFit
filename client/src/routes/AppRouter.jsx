@@ -1,11 +1,17 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Home, LoginPage, LoginUser, SingUpPage, DetailPage } from "../pages";
+
 import { FooterComp, NavBarComp, ResetPassword } from "../components";
-import ProductsPage from "../components/productsPage/ProductsPage.jsx";
+
 // import { Detail } from "../components/DetailCard/detail.jsx";
 
+import ProductsPage from "../pages/ProductsPage";
+import PreCheckout from "../pages/Pre-checkout/PreCheckout";
 
-export const AppRouter = ({ items, filter, allItems }) => {
+
+// import { Detail } from "../components/DetailCard/detail.jsx";
+
+export const AppRouter = () => {
   const location = useLocation();
   const rutaActual = location.pathname;
   const showNavBar =
@@ -21,12 +27,9 @@ export const AppRouter = ({ items, filter, allItems }) => {
       <Routes>
         <Route path="home" element={<Home />} />
         {/* agreguen la ruta de las paginas que creen aquí abajo */}
-        <Route
-          path="/productspage"
-          element={
-            <ProductsPage items={items} filter={filter} allItems={allItems} />
-          }
-        />
+        <Route path="/productspage" element={<ProductsPage />} />
+        <Route path="/preCheckout" element={<PreCheckout />} />
+
 
         <Route path="/resetPass" element={<ResetPassword />} />
         <Route path="/detail" element={<DetailPage />} />
@@ -34,8 +37,10 @@ export const AppRouter = ({ items, filter, allItems }) => {
         <Route path="/signUpPage" element={<SingUpPage />} />
         <Route path="/loginPage" element={<LoginPage />} />
         <Route path="/*" element={<Navigate to="/home" />} />
+          //<Route path="/detail/:id" element={<DetailPage />} />
       </Routes>
       {showNavBar && <FooterComp />}
     </>
   );
+
 };

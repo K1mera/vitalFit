@@ -22,7 +22,7 @@ export const orderSlice = createSlice({
     },
     saveOrder: (state, action) => {
       state.orders = [action.payload, ...state.orders];
-      state.orderWindow = false;
+    //   state.orderWindow = false;
     },
     passTotalPrice: (state, action) => {
       state.totalPriceOrder = action.payload;
