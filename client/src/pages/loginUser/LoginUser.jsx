@@ -4,7 +4,7 @@ import { validationUser } from "./validations";
 
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { loginWithEmailAndPass } from "../../firebase/providers";
 
 import { LogoIcon } from "../../icons";
 import {loginWithEmail, startGoogle} from "../../store/slices";
@@ -16,7 +16,6 @@ export const LoginUser = () => {
     correo: "",
     contraseña: "",
   });
-  console.log(login.correo);
 
   const dispatch = useDispatch();
 
@@ -37,54 +36,54 @@ export const LoginUser = () => {
     setErrors(validationUser({ ...login, [name]: value }));
   };
 
-  const auth = getAuth();
-
   const signUpWithPasswordAndEmail = async (e) => {
     e.preventDefault();
 
     try {
-      const userLogin = await signInWithEmailAndPassword(
-        auth,
+      const userLogin = await loginWithEmailAndPass(
         login.correo,
         login.contraseña
       );
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: `Bienvenido ${userLogin.user.email}`,
-      });
-
-      setLogin({
-        correo: "",
-        contraseña: "",
-      });
+      if (userLogin.ok === true) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: `Bienvenido ${userLogin.displayName}`,
+        });
+        setLogin({
+          correo: "",
+          contraseña: "",
+        });
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: `Usuario no encontrado, email o contraseña incorrectos`,
+        });
+      }
     } catch (error) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "error",
-        title: `Usuario no encontrado, email o contraseña incorrectos`,
-      });
+      console.log(error.message, "mensaje");
     }
   };
 

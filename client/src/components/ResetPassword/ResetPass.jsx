@@ -3,37 +3,59 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { validationEmail } from "./validation";
 import Swal from "sweetalert2";
-import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth  } from "firebase/auth";
+import { resetPassword } from "../../firebase/providers";
+import getUsers from "../../store/slices/auth/getDocs";
 
 export const ResetPassword = () => {
   const [correo, setCorreo] = useState("");
   const [isSend, setIsSend] = useState(false);
   const [errors, setErrors] = useState("");
-  const auth = getAuth();
 
   const changePassword = async (e) => {
     e.preventDefault();
 
     try {
-      const password = await sendPasswordResetEmail(auth, correo);
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 5000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.onmouseenter = Swal.stopTimer;
-          toast.onmouseleave = Swal.resumeTimer;
-        },
-      });
-      Toast.fire({
-        icon: "success",
-        title: "Revisa tu correo",
-      });
+      const responseFirebase = await getUsers();
+      if (responseFirebase.includes(correo)) {
+        const password = await resetPassword(correo);
+        if (password.ok === true) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Revisa tu correo",
+          });
 
-      setCorreo("");
-      setIsSend(true);
+          setCorreo("");
+          setIsSend(true);
+        }
+      } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 5000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "error",
+          title: "Ups! Correo no encontrado",
+        });
+      }
     } catch (error) {
       const Toast = Swal.mixin({
         toast: true,
