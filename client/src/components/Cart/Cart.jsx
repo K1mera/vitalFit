@@ -5,16 +5,17 @@ import { useContext, useEffect } from "react";
 import { userAuth } from "../../context/auth-context";
 import { doc, onSnapshot } from "firebase/firestore";
 import { firebaseDb } from "../../firebase/config";
-import { useNavigate } from "react-router-dom";
 import { CloseIcon } from "../../icons";
-import { useDispatch } from "react-redux";
-import { checkOutOrder } from "../../store";
 
-const Cart = ({ setShowCart, setShowOrder }) => {
-  const { currentUser, setProducts, products, productsLocalStorage } =
-    useContext(userAuth);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+const Cart = ({}) => {
+  const {
+    currentUser,
+    setProducts,
+    products,
+    productsLocalStorage,
+    setShowCart,
+    setShowOrder,
+  } = useContext(userAuth);
 
   const gettingProducts = async () =>
     !currentUser ? [] : await getCartProducts(currentUser.uid);
