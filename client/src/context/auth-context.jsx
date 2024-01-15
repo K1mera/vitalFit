@@ -63,7 +63,6 @@ const UserContext = ({ children }) => {
     <userAuth.Provider
       value={{
         currentUser,
-        setCurrentUser,
         isRegistered,
         loading,
         setLoading,

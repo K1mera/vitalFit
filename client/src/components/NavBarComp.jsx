@@ -17,13 +17,12 @@ export const NavBarComp = () => {
   
 
   
-  const { currentUser, showCart, showOrder, setShowOrder, setShowCart, setCurrentUser, setProductsLocalStorage, setProducts } = useContext(userAuth);
+  const { currentUser, showCart, showOrder, setShowOrder, setShowCart, setProductsLocalStorage, setProducts } = useContext(userAuth);
 
 
   const logOut = async () => {
     const respuesta = await logOutUser();
     if (respuesta) {
-      setCurrentUser(null);
       setProductsLocalStorage([]);
       setProducts([]);
     }
