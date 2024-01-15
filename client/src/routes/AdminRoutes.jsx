@@ -7,7 +7,7 @@ export const AdminRoutes = () => {
     <>
       <Routes>
         <Route path="dasboard" element={<AdminDashboard />} />
-        <Route path="/*" element={<Navigate to="/admin/dasboard" />} />
+        <Route path="/*" element={<Navigate to="/dasboard" />} />
       </Routes>
     </>
   );
