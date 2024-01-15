@@ -16,7 +16,7 @@ export const MainRouter = () => {
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getCategories());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Routes>

@@ -1,3 +1,4 @@
+import {useMemo} from "react";
 import { useSelector } from "react-redux";
 import Card from "../components/Card/Card";
 import "./home.css";
@@ -10,8 +11,8 @@ export const Home = () => {
     const { copyProducts, loading, filters } = useSelector(
         (state) => state.product
     );
-    const destacados = seleccionarElementosAleatorios(copyProducts, 5);
-    const productoHeader = seleccionarElementoAleatorio(copyProducts);
+    const destacados = useMemo(() => seleccionarElementosAleatorios(copyProducts, 5),[copyProducts]) ;
+    const productoHeader = useMemo(() => seleccionarElementoAleatorio(copyProducts), [copyProducts])
     const product1 = seleccionarElementoAleatorio(copyProducts);
     const product2 = seleccionarElementoAleatorio(copyProducts);
     const dispatch = useDispatch();
@@ -310,4 +311,4 @@ export const Home = () => {
             )}
         </div>
     );
-};
+}
