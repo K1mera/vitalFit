@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-<<<<<<< HEAD
 import {
   Home,
   LoginPage,
@@ -8,9 +7,6 @@ import {
   DetailPage,
   Succesfull,
 } from "../pages";
-=======
-import { Home, DetailPage } from "../pages";
->>>>>>> 19b93c0355968392be5c57af120a9f36ee8b7391
 
 import { FooterComp, NavBarComp, ResetPassword } from "../components";
 
@@ -32,7 +28,7 @@ export const AppRouter = () => {
 
   return (
     <>
-     <NavBarComp />
+      <NavBarComp />
 
       <Routes>
         <Route path="home" element={<Home />} />
@@ -42,9 +38,7 @@ export const AppRouter = () => {
         <Route path="checkout/successfull" element={<Succesfull />} />
         <Route path="/resetPass" element={<ResetPassword />} />
         <Route path="/detail" element={<DetailPage />} />
-        
         <Route path="/*" element={<Navigate to="/home" />} />
-        //
         <Route path="/detail/:id" element={<DetailPage />} />
       </Routes>
       <FooterComp />
