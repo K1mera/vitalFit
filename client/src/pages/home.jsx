@@ -4,36 +4,66 @@ import "./home.css";
 import { Link } from "react-router-dom";
 import { productsFilters } from "../store";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { Loading } from "../components";
 
 export const Home = () => {
-    const { copyProducts, loading, filters } = useSelector((state) => state.product);
-    const destacados = copyProducts.slice(2, 7);
+    const { copyProducts, loading, filters } = useSelector(
+        (state) => state.product
+    );
+    const destacados = seleccionarElementosAleatorios(copyProducts, 5);
+    const productoHeader = seleccionarElementoAleatorio(copyProducts);
+    const product1 = seleccionarElementoAleatorio(copyProducts);
+    const product2 = seleccionarElementoAleatorio(copyProducts);
     const dispatch = useDispatch();
 
     const navToCategory = (e) => {
-        console.log(e.target.value);
         dispatch(productsFilters({ ...filters, category: e.target.value }));
     };
-    
+
+    function seleccionarElementoAleatorio(array) {
+        const indiceAleatorio = Math.floor(Math.random() * array.length);
+        return array[indiceAleatorio];
+    }
+
+    function seleccionarElementosAleatorios(array, cantidad) {
+        if (array.length === 0 || cantidad <= 0 || cantidad > array.length) {
+            return [];
+        }
+
+        const copiaArray = array.slice();
+        const elementosSeleccionados = [];
+
+        for (let i = 0; i < cantidad; i++) {
+            const indiceAleatorio = Math.floor(
+                Math.random() * copiaArray.length
+            );
+            const elementoSeleccionado = copiaArray.splice(
+                indiceAleatorio,
+                1
+            )[0];
+            elementosSeleccionados.push(elementoSeleccionado);
+        }
+
+        return elementosSeleccionados;
+    }
 
     return (
         <div>
             {/* Aqui abajo pongan el componente que van a trbajar */}
             {loading ? (
-                <p>Cargando...</p>
+                <Loading/>
             ) : (
                 <>
                     <div className=" bg-[url('/images/Rectangle.jpg')] bg-center bg-no-repeat bg-cover">
                         <section className="header flex w-full h-[420px] justify-evenly bg-black/60">
                             <section className="textHeader flex items-center text-white font-montserrat text-4xl font-extralight	">
                                 <span>
-                                    Vuelvete imparable con el <br /> Nuevo combo{" "}
-                                    <strong>Beast</strong>
+                                    Vuelvete imparable con el <br /> Nuevo {" "}
+                                    <strong>{productoHeader.name}</strong>
                                 </span>
                             </section>
                             <section className="offerCard flex justify-center items-center">
-                                <Card {...copyProducts[0]} />
+                                <Card {...productoHeader} />
                             </section>
                         </section>
                     </div>
@@ -97,23 +127,24 @@ export const Home = () => {
                             </section>
                             <section className="productSection flex justify-center items-end h-1/2">
                                 <div className="productDescription bg-white flex items-center w-[70%] h-1/2 rounded-[20px] mb-[8%] relative">
-                                    <Link to={`/detail/${copyProducts[20].id}`}>
-                                        <img
-                                            src={copyProducts[20].image}
-                                            alt=""
-                                            className="images-inphoto"
-                                        />
-                                    </Link>
-                                    <p className="parrafoProducto font-montserrat text-xs font-semibold m-[5%]">
-                                        ZMA es un complemento nutricional
-                                        formulado para aumentar la masa muscular
-                                        con una potente mezcla de Zinc, Magnesio
-                                        y Vitamina B6El Zinc soporta la función
-                                        celular, el Magnesio mejora la fuerza y
-                                        resistencia y la Vitamina B6 ayuda a un
-                                        mejor descanso
-                                    </p>
-                                    <Link to={`/detail/${copyProducts[20].id}`}>
+                                    <section className="w-1/4 overflow-hidden ml-[5px]">
+                                        <Link
+                                            to={`/detail/${product1.id}`}
+                                            className="w-full"
+                                        >
+                                            <img
+                                                src={product1.image}
+                                                alt=""
+                                                className="images-inphoto"
+                                            />
+                                        </Link>
+                                    </section>
+                                    <section className="w-3/4">
+                                        <p className="parrafoProducto font-montserrat text-xs font-semibold m-[5%] line-clamp-5">
+                                            {product1.description}
+                                        </p>
+                                    </section>
+                                    <Link to={`/detail/${product1.id}`}>
                                         <button className="addButton absolute top-[90%] left-[40%] ">
                                             Ver detalles
                                         </button>
@@ -131,22 +162,24 @@ export const Home = () => {
                             </section>
                             <section className="productSection flex justify-center items-end h-1/2">
                                 <div className="productDescription bg-white flex items-center w-[70%] h-1/2 rounded-[20px] mb-[8%] relative">
-                                    <Link
-                                        to={`/detail/${copyProducts[9].id}`}
-                                        className="h-full w-full flex justify-center items-center"
-                                    >
-                                        <img src={copyProducts[9].image} alt="" />
-                                    </Link>
-                                    <p className="parrafoProducto font-montserrat text-xs font-semibold m-[5%]">
-                                        Nuestra Creatina Micronizada es un
-                                        excelente suplemento pre entrenamiento
-                                        ya que colabora en la formación de los
-                                        componentes energéticos, mejor la
-                                        potencia muscular y retrasa la fatiga
-                                        muscular, preparando al cuerpo para un
-                                        mejor rendimiento físico
-                                    </p>
-                                    <Link to={`/detail/${copyProducts[9].id}`}>
+                                <section className="w-1/4 overflow-hidden ml-[5px]">
+                                        <Link
+                                            to={`/detail/${product2.id}`}
+                                            className="w-full"
+                                        >
+                                            <img
+                                                src={product2.image}
+                                                alt=""
+                                                className="images-inphoto"
+                                            />
+                                        </Link>
+                                    </section>
+                                    <section className="w-3/4">
+                                        <p className="parrafoProducto font-montserrat text-xs font-semibold m-[5%] line-clamp-5">
+                                            {product2.description}
+                                        </p>
+                                    </section>
+                                    <Link to={`/detail/${product2.id}`}>
                                         <button className="addButton absolute top-[90%] left-[40%] ">
                                             Ver detalles
                                         </button>
