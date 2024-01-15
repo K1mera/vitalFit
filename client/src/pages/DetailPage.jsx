@@ -6,11 +6,12 @@ import { useContext } from "react";
 import { userAuth } from "../context/auth-context";
 import addProductToCart from "../firebase/addProductToCart";
 import increaseProduct from "../firebase/increaseProduct";
+import { Loading } from "../components";
 
 export const DetailPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { product } = useSelector((state) => state.product);
+  const { product, loading } = useSelector((state) => state.product);
   const [amount, setAmount] = useState(1);
   const { currentUser, productsLocalStorage, setProductsLocalStorage } =
     useContext(userAuth);
@@ -18,6 +19,7 @@ export const DetailPage = () => {
 
   useEffect(() => {
     dispatch(getProductById(id));
+    window.scrollTo(0, 0)
   }, [id]);
 
   const addProduct = () => {
@@ -80,7 +82,9 @@ export const DetailPage = () => {
 
   return (
     <main className="w-auto h-full flex flex-col items-center mt-10 mx-8 gap-16">
-      <section className="flex flex-row items-center gap-2 h-full">
+        {loading
+        ? <Loading/>
+        :   <><section className="flex flex-row items-center gap-2 h-full">
         <figure className="flex-1 h-full flex items-center w-auto justify-center gap-10">
           {/* <div className="w-[20%] h-full flex flex-col gap-2">
             <div className="bg-primaryLight/25 h-[94px] w-[94px]">foto 1</div>
@@ -189,6 +193,9 @@ export const DetailPage = () => {
       </section>
       {/* destacados */}
       <section></section>
+      </>
+        }
+      
     </main>
   );
 };
