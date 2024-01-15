@@ -33,7 +33,9 @@ export const productSlice = createSlice({
     },
     setProducts: (state, action) => {
       state.products = action.payload;
-      {if(!state.copyProducts.length) state.copyProducts= action.payload}
+      if (!state.copyProducts.length) {
+             state.copyProducts= action.payload
+        }
       state.totalPages = Math.ceil(action.payload.length / 8);
       state.loading = false;
     },
