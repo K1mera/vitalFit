@@ -4,8 +4,14 @@ import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
 import { loginWithEmailAndPass } from "../../firebase/providers";
+import {useDispatch} from "react-redux";
+import {loginWithEmail} from "../../store";
 
 export const LoginPage = () => {
+
+  const dispatch = useDispatch();
+
+
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
     correo: "",
@@ -25,10 +31,10 @@ export const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const userLogin = await loginWithEmailAndPass(
+      const userLogin = await dispatch(loginWithEmail(
         login.correo,
         login.contraseña
-      );
+      ));
 
       if (userLogin.ok === true) {
         const Toast = Swal.mixin({
@@ -200,7 +206,7 @@ export const LoginPage = () => {
           >
             No tienes cuenta?
           </span>
-          <NavLink to={"/signUpPage"}>
+          <NavLink to={"/auth/signUpPage"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",

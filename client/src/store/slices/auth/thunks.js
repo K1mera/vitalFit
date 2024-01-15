@@ -1,5 +1,7 @@
+import { collection, setDoc, doc } from "firebase/firestore"
 import {credentialSignUp, loginWithEmailAndPass, resetPassword, signInWithGoogle} from "../../../firebase/providers"
 import {checkingCredentials, checkingGoogleCredentials, login, logout, resetPasswordEmail} from "./authSlice"
+import {firebaseDb} from "../../../firebase/config"
 
 export const getLogout = () => {
     return async( dispatch ) => {
@@ -16,8 +18,9 @@ export const loginWithEmail = (email, password) => {
         );
 
         if (!ok) return dispatch(logout(errorCode));
+        
 
-        dispatch(login( {email, uid, photoURL, displayName} ))
+        dispatch(login( {email, uid, photoURL, displayName, role} ))
         // console.log();
     }
 }
@@ -27,20 +30,34 @@ export const startGoogle = () => {
         dispatch(checkingGoogleCredentials());
         const result = await signInWithGoogle();
         if ( !result.ok ) return dispatch(logout())
+         const modifiedResult = {
+           ...result,
+           role: "user", 
+         };
+        console.log(modifiedResult);
         
-        dispatch(login(result))
+        dispatch(login(modifiedResult))
         
     }
 }
 
-export const startCreateUser = (displayName, email, password) => {
+export const startCreateUser = ( email, password, displayName, role='user') => {
     return async( dispatch) => {
         dispatch(checkingCredentials());
 
-        const { ok, uid, photoURL, errorCode } = await credentialSignUp( email, password, displayName )
-        
+        const { ok, uid, photoURL, errorCode } = await credentialSignUp( email, password, displayName, role )
+        const newUser = doc(collection(firebaseDb, `/users/${ uid }/user`));
+        const loadUser = await setDoc(newUser, {
+          email,
+          uid,
+          photoURL,
+          displayName,
+          role,
+        });
+
+
         if (!ok) return dispatch(logout(errorCode))
-        dispatch(login({ email, uid, photoURL, displayName }))
+        dispatch(login({ email, uid, photoURL, displayName, role }))
         
     }
 }

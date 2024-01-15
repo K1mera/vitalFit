@@ -80,7 +80,7 @@ export const NavBarComp = () => {
         <section className="flex gap-2 w-[160px]">
           {/* // todo  */}
           {/* change the icon if the user is logged */}
-          <NavLink to={"/loginPage"}>
+          <NavLink to={"auth/loginPage"}>
             <UserIcon
               className={
                 "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"

@@ -12,8 +12,11 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
 import { useDispatch } from "react-redux";
+import {startCreateUser, startGoogle} from "../../store";
 
 export const SingUpPage = () => {
+
+  const dispatch = useDispatch();
   const [handleForm, setHandleForm] = useState({
     nombre: "",
     apellido: "",
@@ -47,12 +50,13 @@ export const SingUpPage = () => {
     e.preventDefault();
 
     try {
-      const nombreCompleto = handleForm.nombre + " " + handleForm.apellido;
-      const userCredential = await credentialSignUp(
+      const displayName = handleForm.nombre + " " + handleForm.apellido;
+      const userCredential = await dispatch( startCreateUser(
         handleForm.correo,
         handleForm.contraseña,
-        nombreCompleto
-      );
+        displayName
+      ));
+
       console.log(userCredential);
 
       if (userCredential.ok === true) {
@@ -105,8 +109,8 @@ export const SingUpPage = () => {
   const singInWithGooglePage = async (e) => {
     e.preventDefault();
     try {
-      const responseGoogle = new GoogleAuthProvider();
-      const authWithGoogle = await signInWithGoogle(auth, responseGoogle);
+      // const responseGoogle = new GoogleAuthProvider();
+      const authWithGoogle = await dispatch( startGoogle() )
       if (authWithGoogle.ok === false) {
         const Toast = Swal.mixin({
           toast: true,
@@ -131,7 +135,7 @@ export const SingUpPage = () => {
     }
   };
 
-  const dispatch = useDispatch();
+  console.log(handleForm.correo);
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -351,7 +355,7 @@ export const SingUpPage = () => {
             }}>
             Ya tienes cuenta?
           </span>
-          <NavLink to={"/loginUser"}>
+          <NavLink to={"/auth/loginUser"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",
