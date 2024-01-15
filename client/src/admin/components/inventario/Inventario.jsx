@@ -1,4 +1,4 @@
-import NavbarInvent from "./NavbarInvent";
+import NavbarInvent from "./navBar/NavbarInvent";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts, handlePages } from "../../../store";

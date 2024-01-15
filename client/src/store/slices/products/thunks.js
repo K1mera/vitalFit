@@ -148,3 +148,9 @@ export const deleteProduct = (id) => {
     dispatch(getProducts());
   };
 };
+
+export const postProduct = (productData) => {
+  return async (dispatch) => {
+    const response = await productsIns.post("/", productData);
+  };
+};
