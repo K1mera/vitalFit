@@ -4,28 +4,35 @@ import style from "./Card.module.css";
 import { useContext, useState } from "react";
 import addProductToCart from "../../firebase/addProductToCart";
 import increaseProduct from "../../firebase/increaseProduct";
+import getCartProducts from "../../firebase/getCartProducts";
 
 export default function Card({ id, name, price, image, stock }) {
   const { currentUser, productsLocalStorage, setProductsLocalStorage } =
     useContext(userAuth);
 
-  const addProduct = () => {
+  const addProduct = async () => {
     if (stock > 0) {
       if (currentUser) {
         const existing = productsLocalStorage?.find((p) => p.id == id);
         if (existing) {
           existing.cantidad += 1;
           setProductsLocalStorage([...productsLocalStorage]);
-          addProductToCart(currentUser.uid, {
-            name: name,
-            price: price,
-            image: image[0],
-            stock: stock,
-            cantidad: 1,
-            id: id,
-          });
+        } else {
+          const existingBDD = await getCartProducts(currentUser.uid);
+          const filtered = existingBDD?.find((p) => p.id == id);
+          if (filtered) {
+            increaseProduct(currentUser.uid, id);
+          } else {
+            addProductToCart(currentUser.uid, {
+              name: name,
+              price: price,
+              image: image[0],
+              stock: stock,
+              cantidad: 1,
+              id: id,
+            });
+          }
         }
-        increaseProduct(currentUser.uid, id);
       } else {
         const existing = JSON.parse(localStorage.getItem("products")) || [];
         console.log(existing);

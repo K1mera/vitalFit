@@ -1,12 +1,10 @@
 import React, { useContext, useState } from "react";
 import { userAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
-import axios from "axios";
 import BackIcon from "../../icons/BackIcon";
+import MercadoPago from "../MercadoPago/MercadoPago";
 
-const Order = ({}) => {
-  initMercadoPago("TEST-96d6884d-30e9-4fe8-a75f-16fdc52d9ddb");
+const Order = () => {
   const navigate = useNavigate();
   const {
     currentUser,
@@ -18,27 +16,12 @@ const Order = ({}) => {
     setShowOrder,
     setShowCart,
   } = useContext(userAuth);
-  const [preferenceId, setPreferenceId] = useState(null);
+  const [itemsToPay, setItemsToPay] = useState(null);
+  const [disabled, setDisabled] = useState(false);
   const envio = 4500;
   let cartItems;
   let totalAmount;
   let envioGratis = false;
-  const createPreference = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/create_preference",
-        {
-          title: "VitalFit",
-          quantity: 1,
-          unit_price: totalPay,
-        }
-      );
-      const { id } = response.data;
-      return id;
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   if (products.length) {
     cartItems = (
@@ -107,14 +90,25 @@ const Order = ({}) => {
     setTotalPay(totalAmount);
   }
 
+  let arrayItems =
+    products &&
+    products.map(({ id, name, price, cantidad, image }) => {
+      return {
+        id: id,
+        title: name,
+        unit_price: Math.round(price),
+        quantity: cantidad,
+        picture_url: image,
+      };
+    });
+
   const handlePay = async () => {
     if (!currentUser) navigate("/loginUser");
 
     if (user.dataCompleted) {
-      const id = await createPreference();
-      if (id) {
-        setPreferenceId(id);
-      }
+      setItemsToPay(arrayItems);
+      setDisabled(true);
+
       return;
     }
     navigate("/preCheckout");
@@ -172,24 +166,38 @@ const Order = ({}) => {
 
         <section className="flex justify-between items-center bg-white fixed bottom-0 h-14 w-72">
           <div className="font-bebas text-2xl mb-2">
-            <p className="text-base mt-2 w-96 bg-white">
-              Sub-total: {totalAmount}
-            </p>
+            {!disabled && (
+              <div>
+                <p className="text-base mt-2 w-96 bg-white">
+                  Sub-total: {totalAmount}
+                </p>
 
-            <span>Total: </span>
+                <span>Total: </span>
 
-            <span>$ {totalPay}</span>
+                <span>$ {totalPay}</span>
+              </div>
+            )}
           </div>
           <div className="fixed right-7 bottom-2 font-bebas text-2xl">
-            {totalAmount > 0 && (
+            {totalAmount > 0 && !disabled && (
               <button
                 onClick={handlePay}
                 className=" bg-primary p-1 px-3 rounded-2xl text-white">
                 Pagar
               </button>
             )}
-            {preferenceId && <Wallet initialization={{ preferenceId }} />}
+            <div className="relative right-7">
+              {itemsToPay && user.dataCompleted && (
+                <MercadoPago
+                  userId={currentUser.uid}
+                  userEmail={currentUser.email}
+                  arrayItems={arrayItems}
+                  totalPay={totalPay}
+                />
+              )}
+            </div>
           </div>
+          <div></div>
         </section>
       </aside>
     </div>
