@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { userAuth } from "../context/auth-context";
+import { useDispatch } from "react-redux";
 import { LogoIcon, FavoriteIcon, UserIcon } from "../icons";
+import { cleanFilters, cleanSorts, cleanSearch } from "../store";
 import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
 import Order from "./Cart/Order";
@@ -10,10 +12,13 @@ import { BiLogOutCircle } from "react-icons/bi";
 import logOutUser from "../firebase/logOut";
 
 export const NavBarComp = () => {
-  const { currentUser, setCurrentUser, setProductsLocalStorage, setProducts } = useContext(userAuth);
 
-  const [showCart, setShowCart] = useState(false);
-  const [showOrder, setShowOrder] = useState(false);
+    const dispatch = useDispatch()
+  
+
+  
+  const { currentUser, showCart, showOrder, setShowOrder, setShowCart, setCurrentUser, setProductsLocalStorage, setProducts } = useContext(userAuth);
+
 
   const logOut = async () => {
     const respuesta = await logOutUser();
@@ -27,6 +32,14 @@ export const NavBarComp = () => {
   useEffect(() => {
     currentUser && addCarrito(currentUser.uid);
   }, [currentUser]);
+
+  const resetFilters = () => {
+    console.log("resetFilterOn");
+    dispatch(cleanFilters())
+    dispatch(cleanSorts())
+    dispatch(cleanSearch())
+  }
+
   return (
     <>
       <nav className="flex w-full bg-primaryLight h-24 items-center py-5 px-10 justify-between">
@@ -53,10 +66,10 @@ export const NavBarComp = () => {
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
             }
-          >
+            onClick={resetFilters}>
             Productos
           </NavLink>
-          <NavLink
+           <NavLink
             to="training"
             className={({ isActive }) =>
               `hover:text-tertiary ${
@@ -68,7 +81,7 @@ export const NavBarComp = () => {
           >
             Training
           </NavLink>
-          <NavLink
+          {/*<NavLink
             to="blog"
             className={({ isActive }) =>
               `hover:text-tertiary ${
@@ -91,7 +104,7 @@ export const NavBarComp = () => {
             }
           >
             Asesorias
-          </NavLink>
+          </NavLink> */}
         </section>
         <section className="flex gap-2 w-[195px]">
           {/* // todo  */}

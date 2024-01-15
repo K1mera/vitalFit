@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { userAuth } from "../../context/auth-context";
 import style from "./Card.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import addProductToCart from "../../firebase/addProductToCart";
 import increaseProduct from "../../firebase/increaseProduct";
 
@@ -16,7 +16,6 @@ export default function Card({ id, name, price, image, stock }) {
         if (existing) {
           existing.cantidad += 1;
           setProductsLocalStorage([...productsLocalStorage]);
-        } else {
           addProductToCart(currentUser.uid, {
             name: name,
             price: price,

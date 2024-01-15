@@ -15,21 +15,17 @@ const UserContext = ({ children }) => {
   const [productsLocalStorage, setProductsLocalStorage] = useState([]);
   const [products, setProducts] = useState([]);
   const [totalPay, setTotalPay] = useState(null);
+  const [showCart, setShowCart] = useState(false);
+  const [showOrder, setShowOrder] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, async (userFirebase) => {
       if (userFirebase) {
         setCurrentUser(userFirebase);
         //verifica si el usuario está en bdd
-        await registerUserBDD({
-          role: "user",
-          status: "active",
-          photoURL: currentUser.photoURL,
-          id: currentUser.uid,
-          email: currentUser.email,
-          displayName: currentUser.displayName,
-        });
+
         const user = await getUser(userFirebase?.uid);
+        console.log(user);
 
         if (user) {
           setUser(user);
@@ -47,8 +43,17 @@ const UserContext = ({ children }) => {
           localStorage.removeItem("products");
           setProductsLocalStorage([]);
         } else {
-          setIsRegistered(false);
+          await registerUserBDD({
+            role: "user",
+            status: "active",
+            photoURL: currentUser.photoURL,
+            id: currentUser.uid,
+            email: currentUser.email,
+            displayName: currentUser.displayName,
+          });
+          setIsRegistered(true);
         }
+        setIsRegistered(false);
       }
       setLoading(false);
     });
@@ -63,6 +68,10 @@ const UserContext = ({ children }) => {
         loading,
         setLoading,
         user,
+        showCart,
+        setShowCart,
+        showOrder,
+        setShowOrder,
         productsLocalStorage,
         setProductsLocalStorage,
         products,
