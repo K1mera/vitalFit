@@ -5,11 +5,19 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import BackIcon from "../../icons/BackIcon";
 
-const Order = ({ setShowOrder, setShowCart }) => {
+const Order = ({}) => {
   initMercadoPago("TEST-96d6884d-30e9-4fe8-a75f-16fdc52d9ddb");
   const navigate = useNavigate();
-  const { currentUser, products, productsLocalStorage, setTotalPay, totalPay } =
-    useContext(userAuth);
+  const {
+    currentUser,
+    user,
+    products,
+    productsLocalStorage,
+    setTotalPay,
+    totalPay,
+    setShowOrder,
+    setShowCart,
+  } = useContext(userAuth);
   const [preferenceId, setPreferenceId] = useState(null);
   const envio = 4500;
   let cartItems;
@@ -101,7 +109,8 @@ const Order = ({ setShowOrder, setShowCart }) => {
 
   const handlePay = async () => {
     if (!currentUser) navigate("/loginUser");
-    if (currentUser.dataCompleted) {
+
+    if (user.dataCompleted) {
       const id = await createPreference();
       if (id) {
         setPreferenceId(id);
@@ -152,9 +161,9 @@ const Order = ({ setShowOrder, setShowCart }) => {
             </p>
           ) : null}
         </div>
-        {currentUser && currentUser.calle && currentUser.altura && (
+        {currentUser && user.calle && user.altura && (
           <div>
-            <span>{`La dirección de envío registrada es ${currentUser.calle} ${currentUser.altura}`}</span>
+            <span>{`La dirección de envío registrada es ${user.calle} ${user.altura}`}</span>
             <a href="/preCheckout">
               <p> Cambiar la dirección</p>
             </a>
