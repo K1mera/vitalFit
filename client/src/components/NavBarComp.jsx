@@ -1,13 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { userAuth } from "../context/auth-context";
+import { useDispatch } from "react-redux";
 import { LogoIcon, FavoriteIcon, UserIcon } from "../icons";
+import { cleanFilters, cleanSorts, cleanSearch } from "../store";
 import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
 import Order from "./Cart/Order";
 import addCarrito from "../firebase/addCarrito";
 
 export const NavBarComp = () => {
+    const dispatch = useDispatch()
   const { currentUser } = useContext(userAuth);
 
   const [showCart, setShowCart] = useState(false);
@@ -16,6 +19,14 @@ export const NavBarComp = () => {
   useEffect(() => {
     currentUser && addCarrito(currentUser.uid);
   }, [currentUser]);
+
+  const resetFilters = () => {
+    console.log("resetFilterOn");
+    dispatch(cleanFilters())
+    dispatch(cleanSorts())
+    dispatch(cleanSearch())
+  }
+
   return (
     <>
       <nav className="flex w-full bg-primaryLight h-24 items-center py-5 px-10 justify-between">
@@ -40,10 +51,11 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+            onClick={resetFilters}>
             Productos
           </NavLink>
-          <NavLink
+           <NavLink
             to="training"
             className={({ isActive }) =>
               `hover:text-tertiary ${
@@ -54,7 +66,7 @@ export const NavBarComp = () => {
             }>
             Training
           </NavLink>
-          <NavLink
+          {/*<NavLink
             to="blog"
             className={({ isActive }) =>
               `hover:text-tertiary ${
@@ -75,7 +87,7 @@ export const NavBarComp = () => {
               }`
             }>
             Asesorias
-          </NavLink>
+          </NavLink> */}
         </section>
         <section className="flex gap-2 w-[160px]">
           {/* // todo  */}
