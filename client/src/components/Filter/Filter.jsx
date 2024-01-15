@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     cleanFilters,
@@ -10,6 +10,7 @@ import {
 } from "../../store/slices";
 
 const Filter = () => {
+    const regexSoloNumeros= /^([0-9])*$/
     const dispatch = useDispatch();
     const { filters, categories, products } = useSelector(
         (state) => state.product
@@ -22,12 +23,15 @@ const Filter = () => {
 
     const [searchInput, setSearchInput] = useState("");
 
+    const [error, setError] = useState("")
+
     //CATEGORIES
     const handleFilterCategories = (e) => {
         console.log(e.target.value);
+        dispatch(cleanSearch())
         dispatch(productsFilters({ ...filters, category: e.target.value }));
-        if (!products.length)
-            alert("No hay productos coincidentes con la búsqueda");
+        // if (!products.length)
+        //     alert("No hay productos coincidentes con la búsqueda");
     };
 
     //PRICES
@@ -37,7 +41,10 @@ const Filter = () => {
         setPrices({ ...prices, [name]: value });
     };
 
-    const handleSearchPrices = (e) => {
+    const handleSearchPrices = () => {
+        if(!regexSoloNumeros.test(prices.minPrice) || !regexSoloNumeros.test(prices.maxPrice)) {
+            return setError("Por favor introducir solo números")
+        }
         dispatch(cleanFilters());
         dispatch(cleanSorts());
         dispatch(
@@ -47,14 +54,16 @@ const Filter = () => {
                 maxPrice: prices.maxPrice,
             })
         );
-        if (!products.length)
-            alert("No hay productos coincidentes con la búsqueda");
+        setError("")
+        // if (!products.length)
+        //     alert("No hay productos coincidentes con la búsqueda");
     };
 
     //SEARCH
     const handleSearchInput = (e) => {
         setSearchInput(e.target.value);
     };
+
     const handleSearch = () => {
         const orders = document.getElementById("orders");
         const categories = document.getElementById("categories");
@@ -67,8 +76,9 @@ const Filter = () => {
         dispatch(cleanFilters());
         dispatch(cleanSorts());
         dispatch(searchProduct(searchInput));
-        if (!products.length)
-            alert("No hay productos coincidentes con la búsqueda");
+        setSearchInput("")
+        // if (!products.length)
+        //     alert("No hay productos coincidentes con la búsqueda");
     };
 
     //SORTS
@@ -105,6 +115,19 @@ const Filter = () => {
         dispatch(cleanSorts());
     };
 
+    const handleEnterSearch = (e) => {
+        if (e.key ==="Enter"){
+            handleSearch()
+        }
+    }
+
+    const handleEnterPrices = (e) => {
+        if (e.key ==="Enter"){
+            handleSearchPrices()
+        }
+    }
+
+
     return (
         <div className="mt-2 font-bebas">
             <div className="h-40 flex flex-col items-center w-full bg-primaryLight rounded-xl p-5">
@@ -115,6 +138,7 @@ const Filter = () => {
                     placeholder="Ingrese el nombre de un producto"
                     value={searchInput}
                     onChange={handleSearchInput}
+                    onKeyDown={handleEnterSearch}
                 />
                 <button
                     onClick={handleSearch}
@@ -130,7 +154,7 @@ const Filter = () => {
                         id="categories"
                         onChange={handleFilterCategories}
                         className=" appearance-none focus:ring-0 border-none rounded-xl w-44 ml-10 focus:outline-none  hover:bg-slate-100 cursor-pointer"
-                        value={filters.category? filters.category : ""}
+                        value={filters.category ? filters.category : ""}
                     >
                         <option
                             value=""
@@ -155,6 +179,7 @@ const Filter = () => {
                         value={prices.minPrice}
                         onChange={handleFilterPrice}
                         className="w-24 border-none mx-2 rounded-xl focus:ring-0"
+                        onKeyDown={handleEnterPrices}
                     />
                     <span> - </span>
                     <input
@@ -164,6 +189,7 @@ const Filter = () => {
                         value={prices.maxPrice}
                         onChange={handleFilterPrice}
                         className="w-24 border-none mx-2 rounded-xl focus:ring-0"
+                        onKeyDown={handleEnterPrices}
                     />
                     <button onClick={handleSearchPrices}>
                         <svg
@@ -182,7 +208,7 @@ const Filter = () => {
                         </svg>
                     </button>
                 </div>
-
+                {error && <div className="flex justify-center text-red-600 mt-3">{error}</div>}           
                 <div className="flex justify-baseline items-center mt-3">
                     <h3 className="text-xl">Ordenar por</h3>
                     <select
