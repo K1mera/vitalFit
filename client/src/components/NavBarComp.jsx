@@ -8,10 +8,8 @@ import Order from "./Cart/Order";
 import addCarrito from "../firebase/addCarrito";
 
 export const NavBarComp = () => {
-  const { currentUser } = useContext(userAuth);
-
-  const [showCart, setShowCart] = useState(false);
-  const [showOrder, setShowOrder] = useState(false);
+  const { currentUser, showCart, showOrder, setShowOrder, setShowCart } =
+    useContext(userAuth);
 
   useEffect(() => {
     currentUser && addCarrito(currentUser.uid);
