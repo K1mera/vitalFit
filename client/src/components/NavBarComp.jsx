@@ -6,12 +6,23 @@ import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
 import Order from "./Cart/Order";
 import addCarrito from "../firebase/addCarrito";
+import { BiLogOutCircle } from "react-icons/bi";
+import logOutUser from "../firebase/logOut";
 
 export const NavBarComp = () => {
-  const { currentUser } = useContext(userAuth);
+  const { currentUser, setCurrentUser, setProductsLocalStorage, setProducts } = useContext(userAuth);
 
   const [showCart, setShowCart] = useState(false);
   const [showOrder, setShowOrder] = useState(false);
+
+  const logOut = async () => {
+    const respuesta = await logOutUser();
+    if (respuesta) {
+      setCurrentUser(null);
+      setProductsLocalStorage([]);
+      setProducts([]);
+    }
+  };
 
   useEffect(() => {
     currentUser && addCarrito(currentUser.uid);
@@ -29,7 +40,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Home
           </NavLink>
           <NavLink
@@ -40,7 +52,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Productos
           </NavLink>
           <NavLink
@@ -51,7 +64,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Training
           </NavLink>
           <NavLink
@@ -62,7 +76,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Blog
           </NavLink>
           <NavLink
@@ -73,13 +88,26 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Asesorias
           </NavLink>
         </section>
-        <section className="flex gap-2 w-[160px]">
+        <section className="flex gap-2 w-[195px]">
           {/* // todo  */}
           {/* change the icon if the user is logged */}
+          <BiLogOutCircle
+            onClick={logOut}
+            style={{
+              width: "19%",
+              height: "19%",
+              marginTop: "2.5%",
+            }}
+            className={
+              "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+            }
+          />
+
           <NavLink to={"/loginPage"}>
             <UserIcon
               className={
