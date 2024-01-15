@@ -2,6 +2,8 @@ import { collection, setDoc, doc } from "firebase/firestore"
 import {credentialSignUp, loginWithEmailAndPass, resetPassword, signInWithGoogle} from "../../../firebase/providers"
 import {checkingCredentials, checkingGoogleCredentials, login, logout, resetPasswordEmail} from "./authSlice"
 import {firebaseDb} from "../../../firebase/config"
+import {registerUserBDD} from "../../../firebase/registerUserBDD"
+import getUser from "../../../firebase/getUser"
 
 export const getLogout = () => {
     return async( dispatch ) => {
@@ -16,6 +18,9 @@ export const loginWithEmail = (email, password) => {
           email,
           password
         );
+        const data = await getUser(uid);
+        const role = data.role || 'user'
+        
 
         if (!ok) return dispatch(logout(errorCode));
         
@@ -29,14 +34,9 @@ export const startGoogle = () => {
     return async( dispatch ) => {
         dispatch(checkingGoogleCredentials());
         const result = await signInWithGoogle();
-        if ( !result.ok ) return dispatch(logout())
-         const modifiedResult = {
-           ...result,
-           role: "user", 
-         };
-        console.log(modifiedResult);
         
-        dispatch(login(modifiedResult))
+        
+        dispatch(login(result))
         
     }
 }
@@ -46,10 +46,9 @@ export const startCreateUser = ( email, password, displayName, role='user') => {
         dispatch(checkingCredentials());
 
         const { ok, uid, photoURL, errorCode } = await credentialSignUp( email, password, displayName, role )
-        const newUser = doc(collection(firebaseDb, `/users/${ uid }/user`));
-        const loadUser = await setDoc(newUser, {
+        const user = await registerUserBDD({
           email,
-          uid,
+          id: uid,
           photoURL,
           displayName,
           role,

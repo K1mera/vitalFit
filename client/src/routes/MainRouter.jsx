@@ -12,7 +12,7 @@ import { Home } from "../pages";
 export const MainRouter = () => {
   const { status, user } = useSelector((state) => state.auth);
 
-  // console.log(user);
+ 
 
   const dispatch = useDispatch();
 
@@ -23,14 +23,16 @@ export const MainRouter = () => {
 
   return (
     <Routes>
-      {status === "online" && <Route path="/*" element={<AppRouter />} />}
+
+      { user.role === "admin" ?
+        <Route path="/*" element={<AdminRoutes />} /> :
+        <Route path="/*" element={<AppRouter />} />
+      }
+
       {status !== "online" && (
         <>
           <Route path="auth/*" element={<AuthRoutes />} />
-          {user.role === "admin" && (
-            <Route path="admin/*" element={<AdminRoutes />} />
-          )}
-          {status !== "admin" && <Route path="/*" element={<AppRouter />} />}
+          <Route path="/*" element={<AppRouter />} />
         </>
       )}
     </Routes>
