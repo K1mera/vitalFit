@@ -7,6 +7,8 @@ import { loginWithEmailAndPass } from "../../firebase/providers";
 import {useDispatch} from "react-redux";
 import {loginWithEmail} from "../../store";
 
+import bgImage from "/assets/image-loginPage.jpeg";
+
 export const LoginPage = () => {
 
   const dispatch = useDispatch();
@@ -91,7 +93,7 @@ export const LoginPage = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
+          src={ bgImage }
         />
       </div>
       <NavLink to={"/loginUser"}>

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const LogoIcon = ({ className }) => {
   return (
-    <NavLink to="home">
+    <NavLink to="/home">
       <svg
         className={className}
         viewBox="0 0 290 578"

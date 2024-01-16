@@ -2,7 +2,7 @@ import { useState } from "react";
 import { LogoIcon } from "../../icons";
 import { AddProduct, AdminOption, Inventario } from "../components";
 
-import bgImage from "../../icons/image-loginPage.jpeg";
+import bgImage from "/assets/image-loginPage.jpeg";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
