@@ -120,7 +120,7 @@ export const NavBarComp = () => {
             }
           />
 
-          <NavLink to={"/loginPage"}>
+          <NavLink to={"auth/loginPage"}>
             <UserIcon
               className={
                 "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"

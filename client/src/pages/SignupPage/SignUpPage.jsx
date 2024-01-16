@@ -13,8 +13,11 @@ import { FcGoogle } from "react-icons/fc";
 import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
 import { useDispatch } from "react-redux";
 import { registerUserBDD } from "../../firebase/registerUserBDD";
+import {startCreateUser, startGoogle} from "../../store";
 
 export const SingUpPage = () => {
+
+  const dispatch = useDispatch();
   const [handleForm, setHandleForm] = useState({
     nombre: "",
     apellido: "",
@@ -46,12 +49,14 @@ export const SingUpPage = () => {
     e.preventDefault();
 
     try {
-      const nombreCompleto = handleForm.nombre + " " + handleForm.apellido;
-      const userCredential = await credentialSignUp(
+      const displayName = handleForm.nombre + " " + handleForm.apellido;
+      const userCredential = dispatch( startCreateUser(
         handleForm.correo,
         handleForm.contraseña,
-        nombreCompleto
-      );
+        displayName
+      ));
+
+      console.log(userCredential);
 
       if (userCredential.ok === true) {
         await registerUserBDD({
@@ -111,8 +116,8 @@ export const SingUpPage = () => {
   const singInWithGooglePage = async (e) => {
     e.preventDefault();
     try {
-      const responseGoogle = new GoogleAuthProvider();
-      const authWithGoogle = await signInWithGoogle(auth, responseGoogle);
+      // const responseGoogle = new GoogleAuthProvider();
+      const authWithGoogle = dispatch( startGoogle() )
       if (authWithGoogle.ok === false) {
         const Toast = Swal.mixin({
           toast: true,
@@ -137,7 +142,7 @@ export const SingUpPage = () => {
     }
   };
 
-  const dispatch = useDispatch();
+  console.log(handleForm.correo);
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -154,7 +159,7 @@ export const SingUpPage = () => {
       <div className="flex items-center justify-center">
         <img
           className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
+          src="../src/icons/image-loginPage.jpeg"
         />
       </div>
       <span
@@ -374,7 +379,7 @@ export const SingUpPage = () => {
           >
             Ya tienes cuenta?
           </span>
-          <NavLink to={"/loginUser"}>
+          <NavLink to={"/auth/loginUser"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",

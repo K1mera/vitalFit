@@ -1,4 +1,4 @@
-
-
-export * from './AppRouter'
-export * from './MainRouter'
+export * from "./AdminRoutes";
+export * from "./AppRouter";
+export * from "./AuthRoutes";
+export * from "./MainRouter";
