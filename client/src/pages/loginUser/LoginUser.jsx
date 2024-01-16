@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 import { loginWithEmailAndPass } from "../../firebase/providers";
 
 import { LogoIcon } from "../../icons";
-import {loginWithEmail, startGoogle} from "../../store/slices";
-
+import { loginWithEmail, startGoogle } from "../../store/slices";
+import emailjs from "emailjs-com";
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
@@ -20,12 +20,12 @@ export const LoginUser = () => {
   const dispatch = useDispatch();
 
   const onGoogle = () => {
-    dispatch(startGoogle())
-  }
+    dispatch(startGoogle());
+  };
 
   const onCredentialsLogin = (user, pass) => {
-    dispatch(loginWithEmail(user, pass))
-  }
+    dispatch(loginWithEmail(user, pass));
+  };
 
   const handleLogin = (event) => {
     const { name, value } = event.target;
@@ -38,6 +38,17 @@ export const LoginUser = () => {
 
   const signUpWithPasswordAndEmail = async (e) => {
     e.preventDefault();
+
+    const estructuraCorreo = {
+      from_name: "Camila!",
+      from_email: "cami562ggh@gmail.com",
+      message: "Compra en proceso, esta todo preparado...",
+    };
+
+    const serviceID = "default_service";
+    const templateID = "template_flad8yt";
+
+    emailjs.init("lTi_nnDwvw5mcjwSf");
 
     try {
       const userLogin = await loginWithEmailAndPass(
@@ -65,6 +76,16 @@ export const LoginUser = () => {
           correo: "",
           contraseña: "",
         });
+
+        emailjs
+          .send(serviceID, templateID, estructuraCorreo)
+          .then((response) => {
+            alert("send!");
+            console.log("Correo electrónico enviado con éxito:", response);
+          })
+          .catch((error) => {
+            console.error("Error al enviar el correo electrónico:", error);
+          });
       } else {
         const Toast = Swal.mixin({
           toast: true,
