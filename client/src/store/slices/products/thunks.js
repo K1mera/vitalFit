@@ -18,10 +18,9 @@ import {
 } from "./productSlice";
 //import { filters } from "./productSlice";
 
-
 export const getProducts = (page = 1) => {
   return async (dispatch, getState) => {
-     dispatch(startLoading());
+    dispatch(startLoading());
 
     const { filters, search, sorts } = getState().product;
     const { category, minPrice, maxPrice } = filters;
@@ -44,7 +43,7 @@ export const getProducts = (page = 1) => {
 
 export const getProductById = (id) => {
   return async (dispatch) => {
-     dispatch(startLoading());
+    dispatch(startLoading());
     const { data } = await productsIns.get(`/product/${id}`);
 
     dispatch(findbyProductById(data));
@@ -153,5 +152,12 @@ export const deleteProduct = (id) => {
 export const postProduct = (productData) => {
   return async (dispatch) => {
     const response = await productsIns.post("/", productData);
+  };
+};
+
+export const putProduct = (productData, id) => {
+  return async (dispatch) => {
+    const response = await productsIns.put(`/product/${id}`, productData);
+    // dispatch(getProducts());
   };
 };
