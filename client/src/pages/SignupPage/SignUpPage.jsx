@@ -2,21 +2,19 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationForm } from "./validations";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
-import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
+
 import { useDispatch } from "react-redux";
+import { startCreateUser, startGoogle } from "../../store";
 import { registerUserBDD } from "../../firebase/registerUserBDD";
-import {startCreateUser, startGoogle} from "../../store";
+
+import bgImage from "/assets/image-loginPage.jpeg";
+
+
+
 
 export const SingUpPage = () => {
-
   const dispatch = useDispatch();
   const [handleForm, setHandleForm] = useState({
     nombre: "",
@@ -27,7 +25,7 @@ export const SingUpPage = () => {
     confirmarContraseña: "",
   });
   const [errors, setErrors] = useState({});
-  const auth = getAuth();
+
 
   const validationDisabledButton = () => {
     return (
@@ -50,11 +48,9 @@ export const SingUpPage = () => {
 
     try {
       const displayName = handleForm.nombre + " " + handleForm.apellido;
-      const userCredential = await dispatch( startCreateUser(
-        handleForm.correo,
-        handleForm.contraseña,
-        displayName
-      ));
+      const userCredential = await dispatch(
+        startCreateUser(handleForm.correo, handleForm.contraseña, displayName)
+      );
 
       console.log(userCredential);
 
@@ -117,7 +113,7 @@ export const SingUpPage = () => {
     e.preventDefault();
     try {
       // const responseGoogle = new GoogleAuthProvider();
-      const authWithGoogle = await dispatch( startGoogle() )
+      const authWithGoogle = await dispatch(startGoogle());
       if (authWithGoogle.ok === false) {
         const Toast = Swal.mixin({
           toast: true,
@@ -142,7 +138,6 @@ export const SingUpPage = () => {
     }
   };
 
-  console.log(handleForm.correo);
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -154,13 +149,11 @@ export const SingUpPage = () => {
   };
 
   return (
-    <form className="relative">
+    <form className=" h-[calc(100vh+35vh)]">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
-      <div className="flex items-center justify-center">
-        <img
-          className="w-full h-full object-cover"
-          src="../src/icons/image-loginPage.jpeg"
-        />
+
+      <div className="flex items-center justify-center h-full">
+        <img className="w-full h-full object-cover object-center" src={bgImage} />
       </div>
       <span
         style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
@@ -379,7 +372,7 @@ export const SingUpPage = () => {
           >
             Ya tienes cuenta?
           </span>
-          <NavLink to={"/auth/loginUser"}>
+          <NavLink to={"/auth/loginPage"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",

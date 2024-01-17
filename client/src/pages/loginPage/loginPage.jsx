@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
-import { loginWithEmailAndPass } from "../../firebase/providers";
+
 import {useDispatch} from "react-redux";
 import {loginWithEmail} from "../../store";
+
+import bgImage from "/assets/image-loginPage.jpeg";
 
 export const LoginPage = () => {
 
@@ -91,10 +93,10 @@ export const LoginPage = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src="../src/icons/image-loginPage.jpeg"
+          src={ bgImage }
         />
       </div>
-      <NavLink to={"/loginUser"}>
+      {/* <NavLink to={"/loginUser"}>
         <span
           style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
           className={"absolute top-10 right-14 text-3xl"}
@@ -107,7 +109,7 @@ export const LoginPage = () => {
         >
           ADMIN
         </span>
-      </NavLink>
+      </NavLink> */}
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
