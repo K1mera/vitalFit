@@ -50,7 +50,7 @@ export const SingUpPage = () => {
 
     try {
       const displayName = handleForm.nombre + " " + handleForm.apellido;
-      const userCredential = dispatch( startCreateUser(
+      const userCredential = await dispatch( startCreateUser(
         handleForm.correo,
         handleForm.contraseña,
         displayName
@@ -117,7 +117,7 @@ export const SingUpPage = () => {
     e.preventDefault();
     try {
       // const responseGoogle = new GoogleAuthProvider();
-      const authWithGoogle = dispatch( startGoogle() )
+      const authWithGoogle = await dispatch( startGoogle() )
       if (authWithGoogle.ok === false) {
         const Toast = Swal.mixin({
           toast: true,
