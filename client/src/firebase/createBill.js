@@ -7,10 +7,16 @@ const generateUniqueBillNumber = () => {
   return `${timestamp}${randomNumber}`; // Combinar la marca de tiempo y el número aleatorio
 };
 
+const generateDate = () => {
+  const tiempo = Date.now();
+  const fecha = new Date(tiempo).toLocaleDateString();
+  return fecha;
+};
 const createBill = async (userId, billData) => {
   try {
     // Generar un número de factura único
     const billNumber = generateUniqueBillNumber();
+    const fecha = generateDate();
 
     // Crear una referencia al documento de factura en la colección de facturas del usuario
     const userBillRef = collection(firebaseDb, "users", userId, "facturas");
@@ -19,6 +25,7 @@ const createBill = async (userId, billData) => {
     // Guardar la factura en Firestore
     await setDoc(billRef, {
       billNumber,
+      fecha,
       data: billData,
       // Otros detalles de la factura
     });
