@@ -7,7 +7,10 @@ const server = express();
 
 server.use(morgan("dev"));
 server.use(express.json());
-server.use(cors({ methods: ["GET", "POST", "PUT", "DELETE"] }));
+server.use(cors({ origin: [
+      "*"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"] }));
 
 
 server.use("/", router);
