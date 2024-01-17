@@ -60,6 +60,7 @@ export default function EditProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(putProduct(productData, id));
+    
   };
 
   return (

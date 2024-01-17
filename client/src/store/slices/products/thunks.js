@@ -158,6 +158,7 @@ export const postProduct = (productData) => {
 export const putProduct = (productData, id) => {
   return async (dispatch) => {
     const response = await productsIns.put(`/product/${id}`, productData);
+    console.log(response.data);
     // dispatch(getProducts());
   };
 };
