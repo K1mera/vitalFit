@@ -39,17 +39,6 @@ export const LoginUser = () => {
   const signUpWithPasswordAndEmail = async (e) => {
     e.preventDefault();
 
-    const estructuraCorreo = {
-      from_name: "Camila!",
-      from_email: "cami562ggh@gmail.com",
-      message: "Compra en proceso, esta todo preparado...",
-    };
-
-    const serviceID = "default_service";
-    const templateID = "template_flad8yt";
-
-    emailjs.init("lTi_nnDwvw5mcjwSf");
-
     try {
       const userLogin = await loginWithEmailAndPass(
         login.correo,
@@ -77,15 +66,27 @@ export const LoginUser = () => {
           contraseña: "",
         });
 
+        const estructuraCorreo = {
+          from_name: "Camila!",
+          from_email: "cami562ggh@gmail.com",
+          message: "Compra en proceso, esta todo preparado...",
+        };
+        
+        const serviceID = "service_b7x0yxk";
+        const templateID = "template_flad8yt";
+        
+        emailjs.init("NAmw66C0MvdblO1rC");
+        
         emailjs
-          .send(serviceID, templateID, estructuraCorreo)
+          .send(serviceID, templateID, estructuraCorreo, "NAmw66C0MvdblO1rC")
           .then((response) => {
-            alert("send!");
+            alert("¡Enviado!");
             console.log("Correo electrónico enviado con éxito:", response);
           })
           .catch((error) => {
             console.error("Error al enviar el correo electrónico:", error);
           });
+        
       } else {
         const Toast = Swal.mixin({
           toast: true,
