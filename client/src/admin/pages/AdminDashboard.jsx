@@ -3,6 +3,7 @@ import { LogoIcon } from "../../icons";
 import { AddProduct, AdminOption, Inventario } from "../components";
 
 import bgImage from "../../icons/image-loginPage.jpeg";
+import AddProducts from "../components/addProduct/AddProducts";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
@@ -13,8 +14,8 @@ export const AdminDashboard = () => {
 
   const renderSelectedComponent = () => {
     switch (componentSelected) {
-      case "Agregar producto":
-        return <AddProduct />;
+      case "Agregar productos":
+        return <AddProducts />;
       case "Inventario":
         return <Inventario />;
 
@@ -38,7 +39,7 @@ export const AdminDashboard = () => {
           />
           <AdminOption
             title={"control de inventario"}
-            options={["Agregar producto", "Inventario"]}
+            options={["Agregar productos", "Inventario"]}
             handleOptionSelect={handleOptionSelect}
           />
           <AdminOption
