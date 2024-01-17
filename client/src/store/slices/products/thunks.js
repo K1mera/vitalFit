@@ -151,7 +151,12 @@ export const deleteProduct = (id) => {
 
 export const postProduct = (productData) => {
   return async (dispatch) => {
-    const response = await productsIns.post("/", productData);
+    try {
+      const response = await productsIns.post("/", productData);
+      console.log(response);
+    } catch (error) {
+      console.log("Error:", error.message);
+    }
   };
 };
 
