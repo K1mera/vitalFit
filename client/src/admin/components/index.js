@@ -1,9 +1,12 @@
 export * from "./AdminOption";
-// export * from "./AddProduct";
+
 export * from "./inventario/Inventario";
-export * from "./addProduct/AddProduct";
+
+export * from "./addProduct/AddProducts";
+
 
 export * from './UserCardComp'
 
 export * from "./inventario/editProduct/editProduct";
+
 
