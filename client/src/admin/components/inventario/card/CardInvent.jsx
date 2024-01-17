@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../../../store";
 import borrar from "./delete.svg";
+import { Link } from "react-router-dom";
 
 export default function CardInvent({ id, name, price, image, stock }) {
   const { products } = useSelector((state) => state.product);
@@ -28,6 +29,9 @@ export default function CardInvent({ id, name, price, image, stock }) {
         <button className={style.info} onClick={() => handlerDelete(id)}>
           <img src={borrar} alt="" />
         </button>
+        <Link to={`editproduct/${id}`}>
+          <button>Editar</button>
+        </Link>
       </div>
     </section>
   );

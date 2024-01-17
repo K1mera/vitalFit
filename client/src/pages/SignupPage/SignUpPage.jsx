@@ -2,20 +2,19 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationForm } from "./validations";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
-import { signInWithGoogle, credentialSignUp } from "../../firebase/providers";
+
 import { useDispatch } from "react-redux";
-import {startCreateUser, startGoogle} from "../../store";
+import { startCreateUser, startGoogle } from "../../store";
+import { registerUserBDD } from "../../firebase/registerUserBDD";
+
+import bgImage from "/assets/image-loginPage.jpeg";
+
+
+
 
 export const SingUpPage = () => {
-
   const dispatch = useDispatch();
   const [handleForm, setHandleForm] = useState({
     nombre: "",
@@ -25,10 +24,8 @@ export const SingUpPage = () => {
     contraseña: "",
     confirmarContraseña: "",
   });
-
   const [errors, setErrors] = useState({});
 
-  const auth = getAuth();
 
   const validationDisabledButton = () => {
     return (
@@ -51,15 +48,21 @@ export const SingUpPage = () => {
 
     try {
       const displayName = handleForm.nombre + " " + handleForm.apellido;
-      const userCredential = await dispatch( startCreateUser(
-        handleForm.correo,
-        handleForm.contraseña,
-        displayName
-      ));
+      const userCredential = await dispatch(
+        startCreateUser(handleForm.correo, handleForm.contraseña, displayName)
+      );
 
       console.log(userCredential);
 
       if (userCredential.ok === true) {
+        await registerUserBDD({
+          role: "user",
+          status: "active",
+          id: userCredential.uid,
+          email: userCredential.email,
+          displayName: userCredential.displayName,
+        });
+
         const Toast = Swal.mixin({
           toast: true,
           position: "top-end",
@@ -110,7 +113,7 @@ export const SingUpPage = () => {
     e.preventDefault();
     try {
       // const responseGoogle = new GoogleAuthProvider();
-      const authWithGoogle = await dispatch( startGoogle() )
+      const authWithGoogle = await dispatch(startGoogle());
       if (authWithGoogle.ok === false) {
         const Toast = Swal.mixin({
           toast: true,
@@ -135,7 +138,6 @@ export const SingUpPage = () => {
     }
   };
 
-  console.log(handleForm.correo);
 
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
@@ -147,22 +149,22 @@ export const SingUpPage = () => {
   };
 
   return (
-    <form className="relative">
+    <form className=" h-[calc(100vh+35vh)]">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
-      <div className="flex items-center justify-center">
-        <img
-          className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
-        />
+
+      <div className="flex items-center justify-center h-full">
+        <img className="w-full h-full object-cover object-center" src={bgImage} />
       </div>
       <span
         style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}>
+        className={"absolute top-10 right-14 text-3xl"}
+      >
         Soy
       </span>
       <span
         style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-11 text-4xl"}>
+        className={"absolute top-20 right-11 text-4xl"}
+      >
         ADMIN
       </span>
       <div className="w-100% flex items-center justify-center">
@@ -174,7 +176,7 @@ export const SingUpPage = () => {
             borderRadius: "25px",
             boxShadow: "0 4px 6px rgba(10, 10, 10, 0.7)",
             width: "400px",
-            marginTop: "3%"
+            marginTop: "3%",
           }}
         >
           <h1
@@ -184,7 +186,8 @@ export const SingUpPage = () => {
               fontSize: "1.4rem",
               marginBottom: "8px",
             }}
-            className="text-lg font-bold text-64x43">
+            className="text-lg font-bold text-64x43"
+          >
             CREAR CUENTA
           </h1>
 
@@ -193,7 +196,8 @@ export const SingUpPage = () => {
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.4rem",
-            }}>
+            }}
+          >
             NOMBRE
           </label>
           <br />
@@ -204,7 +208,8 @@ export const SingUpPage = () => {
             type="text"
             placeholder=" Nombre..."
             value={handleForm.nombre}
-            onChange={handleFormLogin}></input>
+            onChange={handleFormLogin}
+          ></input>
           {errors.nombre && <p className="text-red-400">{errors.nombre}</p>}
           <br />
           <label
@@ -233,7 +238,8 @@ export const SingUpPage = () => {
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.5rem",
-            }}>
+            }}
+          >
             DNI
           </label>
           <br />
@@ -244,7 +250,8 @@ export const SingUpPage = () => {
             type="text"
             placeholder=" DNI..."
             value={handleForm.dni}
-            onChange={handleFormLogin}></input>
+            onChange={handleFormLogin}
+          ></input>
           {errors.dni && <p className="text-red-400">{errors.dni}</p>}
           <br />
           <label
@@ -252,7 +259,8 @@ export const SingUpPage = () => {
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.5rem",
-            }}>
+            }}
+          >
             CORREO
           </label>
           <input
@@ -262,7 +270,8 @@ export const SingUpPage = () => {
             type="text"
             placeholder=" Email..."
             value={handleForm.correo}
-            onChange={handleFormLogin}></input>
+            onChange={handleFormLogin}
+          ></input>
           {errors.correo && <p className="text-red-400">{errors.correo}</p>}
           <label
             style={{
@@ -270,7 +279,8 @@ export const SingUpPage = () => {
               color: " #D9D9D9",
               fontSize: "1.5rem",
               marginTop: "10px",
-            }}>
+            }}
+          >
             CONTRASEÑA
           </label>
           <input
@@ -283,7 +293,8 @@ export const SingUpPage = () => {
             type="password"
             placeholder=" Contraseña..."
             value={handleForm.contraseña}
-            onChange={handleFormLogin}></input>
+            onChange={handleFormLogin}
+          ></input>
           {errors.contraseña && (
             <p className="text-red-400">{errors.contraseña}</p>
           )}
@@ -292,7 +303,8 @@ export const SingUpPage = () => {
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
               fontSize: "1.5rem",
-            }}>
+            }}
+          >
             CONFIRMAR CONTRASEÑA
           </label>
           <input
@@ -302,7 +314,8 @@ export const SingUpPage = () => {
             type="password"
             placeholder=" Confirmar contraseña..."
             value={handleForm.confirmarContraseña}
-            onChange={handleFormLogin}></input>
+            onChange={handleFormLogin}
+          ></input>
           {errors.confirmarContraseña && (
             <p className="text-red-400">{errors.confirmarContraseña}</p>
           )}
@@ -321,7 +334,8 @@ export const SingUpPage = () => {
               marginBottom: "15px",
               marginTop: "12px",
               marginLeft: "145px",
-            }}>
+            }}
+          >
             CREAR
           </button>
           <br />
@@ -334,14 +348,16 @@ export const SingUpPage = () => {
               background: "#D74545",
               padding: "2.5%",
               borderRadius: "9px",
-            }}>
+            }}
+          >
             <FcGoogle />{" "}
             <span
               style={{
                 marginLeft: "8px",
                 fontFamily: "NuevaFuente, montserrat",
                 color: "white",
-              }}>
+              }}
+            >
               Inicia sesión con Google
             </span>
           </button>
@@ -352,17 +368,19 @@ export const SingUpPage = () => {
               color: " #D9D9D9",
               fontSize: "0.9rem",
               marginLeft: "80px",
-            }}>
+            }}
+          >
             Ya tienes cuenta?
           </span>
-          <NavLink to={"/auth/loginUser"}>
+          <NavLink to={"/auth/loginPage"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",
                 color: " #2FD6BD  ",
                 marginLeft: "5px",
                 fontSize: "0.9rem",
-              }}>
+              }}
+            >
               Inicia sesión.
             </span>
           </NavLink>

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { userAuth } from "../../context/auth-context";
 import { userDirectionBDD } from "../../firebase/userDirectionBDD";
 import { useNavigate } from "react-router-dom";
+
 const PreCheckout = () => {
   const { currentUser, user, loading, setShowCart } = useContext(userAuth);
   const [provincias, setProvincias] = useState([]);
