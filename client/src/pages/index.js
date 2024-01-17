@@ -5,3 +5,4 @@ export * from "./SignupPage/SignUpPage";
 export * from "./loginPage/loginPage";
 export * from "./Checkout/Succesfull";
 export * from "./Pre-checkout/PreCheckout";
+export * from "./Profile/Components/Profile_Reviews";
