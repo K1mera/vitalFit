@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { LogoIcon } from "../../icons";
-import { AddProduct, AdminOption, Inventario } from "../components";
-
-
-import AddProducts from "../components/addProduct/AddProducts";
+import { AdminOption, Inventario } from "../components";
+import { UsersManagement } from "../views";
 
 import bgImage from "/assets/image-loginPage.jpeg";
-import {UsersManagement} from "../views";
-
+import AddProducts from "../components/addProduct/AddProducts";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");

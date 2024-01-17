@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getProductById, putProduct } from "../../../../store";
 import { useEffect, useState } from "react";
 
@@ -19,7 +19,7 @@ export default function EditProduct() {
     stock: product.stock,
     image: [],
     flavour: product.flavour,
-    description: product.description,
+    description: product.description[0],
     pre_description: product.pre_description,
   });
 
@@ -60,7 +60,6 @@ export default function EditProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(putProduct(productData, id));
-    
   };
 
   return (
@@ -182,10 +181,10 @@ export default function EditProduct() {
           </label>
           <textarea
             id="description"
-            value={productData.description.join("\n")}
+            value={productData.description}
             name="description"
-            onChange={(e) =>
-              handleChange("description", e.target.value.split("\n"))
+            onChange={
+              handleChange
             }
             className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
           />
@@ -216,6 +215,9 @@ export default function EditProduct() {
           Editar producto
         </button>
       </form>
+      <Link to='/dasboard'>
+        Volver
+      </Link>
     </div>
   );
 }
