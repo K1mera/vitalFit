@@ -1,11 +1,46 @@
+import { useEffect, useState } from "react";
+import { firebaseDb } from "../../firebase/config";
+import { doc, updateDoc, getDoc } from "firebase/firestore";
 
+export const UserCardComp = ({ user }) => {
+    const [botonStatus, setBotonStatus] = useState(user.disabled);
+    const { displayName, email, role, id } = user;
+  
 
-export const UserCardComp = () => {
-  return (
-    <main className="py-2 px-4 bg-white/70 rounded-xl flex gap-5 font-montserrat">
-      <h2 className="w-[50%]">Juan Lopera</h2>
-      <p className="w-[40%]">correo@gmail.com</p>
-      <span className="text-red-500">user</span>
-    </main>
-  );
-}
+    useEffect(() => {
+        setBotonStatus(user.disabled);
+    }, [user.disabled]);
+
+    const inhabilitarUsuario = async (uid) => {
+        const usuarioRef = doc(firebaseDb, "users", uid);
+        const usuarioDoc = await getDoc(usuarioRef);
+        const currentDisabledStatus = usuarioDoc.data().disabled;
+        try {
+            await updateDoc(usuarioRef, {
+                disabled: !currentDisabledStatus,
+            });
+            setBotonStatus(!botonStatus);
+            console.log("Usuario inhabilitado en Firestore");
+        } catch (error) {
+            console.error("Error al inhabilitar usuario", error);
+        }
+    };
+
+    return (
+        <main className="py-2 px-4 bg-white/70 rounded-xl flex gap-5 font-montserrat">
+            <h2 className="w-[50%]">{displayName}</h2>
+            <p className="w-[40%]">{email}</p>
+            <span className="text-red-500">{role}</span>
+            <button
+                onClick={() => inhabilitarUsuario(id)}
+                className={`py-1 px-2 rounded ${
+                    botonStatus
+                        ? "bg-red-500 hover:bg-red-700 text-white"
+                        : "bg-green-500 hover:bg-green-700 text-white"
+                }`}
+            >
+                {botonStatus ? "inhabilitado" : "habilitado"}
+            </button>
+        </main>
+    );
+};
