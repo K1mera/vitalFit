@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
-import { loginWithEmailAndPass } from "../../firebase/providers";
+
 import {useDispatch} from "react-redux";
 import {loginWithEmail} from "../../store";
 
@@ -96,7 +96,7 @@ export const LoginPage = () => {
           src={ bgImage }
         />
       </div>
-      <NavLink to={"/loginUser"}>
+      {/* <NavLink to={"/loginUser"}>
         <span
           style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
           className={"absolute top-10 right-14 text-3xl"}
@@ -109,7 +109,7 @@ export const LoginPage = () => {
         >
           ADMIN
         </span>
-      </NavLink>
+      </NavLink> */}
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
