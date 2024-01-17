@@ -6,9 +6,15 @@ import {
   SingUpPage,
   DetailPage,
   Succesfull,
+  Profile_Reviews,
 } from "../pages";
 
-import { FooterComp, NavBarComp, ResetPassword } from "../components";
+import {
+  FooterComp,
+  NavBarComp,
+  ResetPassword,
+  CreateReview,
+} from "../components";
 
 // import { Detail } from "../components/DetailCard/detail.jsx";
 
@@ -40,6 +46,7 @@ export const AppRouter = () => {
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/*" element={<Navigate to="/home" />} />
         <Route path="/detail/:id" element={<DetailPage />} />
+        <Route path="/review" element={<Profile_Reviews />} />
       </Routes>
       <FooterComp />
     </>
