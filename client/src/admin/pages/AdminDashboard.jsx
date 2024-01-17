@@ -3,6 +3,7 @@ import { LogoIcon } from "../../icons";
 import { AddProduct, AdminOption, Inventario } from "../components";
 
 import bgImage from "../../icons/image-loginPage.jpeg";
+import TablaUsuarios from "../components/tablaUsuarios/tablaUsuarios.jsx";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
@@ -17,6 +18,8 @@ export const AdminDashboard = () => {
         return <AddProduct />;
       case "Inventario":
         return <Inventario />;
+        case "Usuarios":
+            return <TablaUsuarios />
 
       default:
         return null; // Render nothing if no option is selected
@@ -44,6 +47,8 @@ export const AdminDashboard = () => {
           <AdminOption
             title={"gestion de usuarios"}
             options={["Usuarios", "Borrar usuarios"]}
+            handleOptionSelect={handleOptionSelect}
+
           />
         </aside>
         <section className="bg-primaryLight w-full h-full rounded-xl p-5">

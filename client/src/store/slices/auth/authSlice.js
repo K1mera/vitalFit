@@ -4,7 +4,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: {
     status: "offline",
-    user: {},
+    user: "",
     errorMessage: null,
     resetPasswordMessage: null,
   },
