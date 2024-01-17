@@ -12,17 +12,20 @@ export default function AddProducts() {
   } = useForm();
   const dispatch = useDispatch();
   const [file, setFile] = useState([]);
+  const [fileViewed, setfileViewed] = useState([])
   //   const [fileUrl, setFileUrl] = useState([]);
   const fileUrlRef = useRef([]);
 
   const hanldeFileChange = (e) => {
     const selectedFiles = e.target.files;
-    const selectedFilesArray = Array.from(selectedFiles).map((file, index) => ({
+    const selectedFilesArray = Array.from(selectedFiles)
+    const review = selectedFilesArray.map((file, index) => ({
       id: index,
       file: file,
       previewUrl: URL.createObjectURL(file), //crea una url de vista previa
     }));
     setFile((prevFiles) => [...prevFiles, ...selectedFilesArray]);
+    setfileViewed((prevFiles) => [...prevFiles, ...review]);
   };
 
   const handleSubmitFile = async (e) => {
@@ -41,7 +44,6 @@ export default function AddProducts() {
     data.pre_description = data.pre_description
       .split(",")
       .map((item) => item.trim());
-    data.description = data.description.split(".").map((item) => item.trim());
     data.stock = Number(data.stock);
     data.image = fileUrlRef.current;
     data.categoryId = Number(data.categoryId);
@@ -137,7 +139,7 @@ export default function AddProducts() {
             onChange={hanldeFileChange}
           />
           <div className="mt-2 flex space-x-2">
-            {file.map((file, index) => (
+            {fileViewed.map((file, index) => (
               <div key={index}>
                 <img
                   src={file.previewUrl}
