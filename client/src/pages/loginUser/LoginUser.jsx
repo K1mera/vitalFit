@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 import { loginWithEmailAndPass } from "../../firebase/providers";
 
 import { LogoIcon } from "../../icons";
-import {loginWithEmail, startGoogle} from "../../store/slices";
-
+import { loginWithEmail, startGoogle } from "../../store/slices";
+import emailjs from "emailjs-com";
 
 export const LoginUser = () => {
   const [errors, setErrors] = useState({});
@@ -20,12 +20,12 @@ export const LoginUser = () => {
   const dispatch = useDispatch();
 
   const onGoogle = () => {
-    dispatch(startGoogle())
-  }
+    dispatch(startGoogle());
+  };
 
   const onCredentialsLogin = (user, pass) => {
-    dispatch(loginWithEmail(user, pass))
-  }
+    dispatch(loginWithEmail(user, pass));
+  };
 
   const handleLogin = (event) => {
     const { name, value } = event.target;
@@ -65,6 +65,28 @@ export const LoginUser = () => {
           correo: "",
           contraseña: "",
         });
+
+        const estructuraCorreo = {
+          from_name: "Camila!",
+          from_email: "cami562ggh@gmail.com",
+          message: "Compra en proceso, esta todo preparado...",
+        };
+        
+        const serviceID = "service_b7x0yxk";
+        const templateID = "template_flad8yt";
+        
+        emailjs.init("NAmw66C0MvdblO1rC");
+        
+        emailjs
+          .send(serviceID, templateID, estructuraCorreo, "NAmw66C0MvdblO1rC")
+          .then((response) => {
+            alert("¡Enviado!");
+            console.log("Correo electrónico enviado con éxito:", response);
+          })
+          .catch((error) => {
+            console.error("Error al enviar el correo electrónico:", error);
+          });
+        
       } else {
         const Toast = Swal.mixin({
           toast: true,
@@ -99,7 +121,7 @@ export const LoginUser = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
+          src="../src/icons/image-loginPage.jpeg"
         />
       </div>
       <NavLink to={"/loginPage"}>

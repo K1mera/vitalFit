@@ -91,7 +91,7 @@ export const LoginPage = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
+          src="../src/icons/image-loginPage.jpeg"
         />
       </div>
       <NavLink to={"/loginUser"}>
