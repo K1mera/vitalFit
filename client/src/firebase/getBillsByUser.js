@@ -16,10 +16,7 @@ export const getBillsByUser = async (userId, id) => {
 
     //Itera a través de los resultados y almacena las facturas en un arreglo
     const bills = [];
-    querySearch.forEach((doc) =>
-      bills.push(doc.data().data, { ...doc.data() })
-    );
-
+    querySearch.forEach((doc) => bills.push(doc.data()));
     return bills;
   } catch (error) {
     console.log("Error al obtener las facturas del usuario:", error.message);
