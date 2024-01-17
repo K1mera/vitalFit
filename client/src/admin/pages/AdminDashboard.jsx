@@ -43,7 +43,7 @@ export const AdminDashboard = () => {
           />
           <AdminOption
             title={"gestion de usuarios"}
-            options={["Usuarios", "Borrar usuarios"]}
+            options={["Usuarios", "Borrar usuarios"]}    
           />
         </aside>
         <section className="bg-primaryLight w-full h-full rounded-xl p-5">

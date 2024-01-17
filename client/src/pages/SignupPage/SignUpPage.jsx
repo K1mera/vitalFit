@@ -6,14 +6,13 @@ import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
 import { useDispatch } from "react-redux";
-<<<<<<< HEAD
 import { startCreateUser, startGoogle } from "../../store";
+import { registerUserBDD } from "../../firebase/registerUserBDD";
 
 import bgImage from "/assets/image-loginPage.jpeg";
-=======
-import { registerUserBDD } from "../../firebase/registerUserBDD";
-import {startCreateUser, startGoogle} from "../../store";
->>>>>>> 3cf4af316548e4296f472f8639ec23c3169241e1
+
+
+
 
 export const SingUpPage = () => {
   const dispatch = useDispatch();
@@ -26,12 +25,7 @@ export const SingUpPage = () => {
     confirmarContraseña: "",
   });
   const [errors, setErrors] = useState({});
-<<<<<<< HEAD
 
-
-=======
-  const auth = getAuth();
->>>>>>> 3cf4af316548e4296f472f8639ec23c3169241e1
 
   const validationDisabledButton = () => {
     return (
@@ -157,16 +151,9 @@ export const SingUpPage = () => {
   return (
     <form className=" h-[calc(100vh+35vh)]">
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
-<<<<<<< HEAD
+
       <div className="flex items-center justify-center h-full">
         <img className="w-full h-full object-cover object-center" src={bgImage} />
-=======
-      <div className="flex items-center justify-center">
-        <img
-          className="w-full h-full object-cover"
-          src="../src/icons/image-loginPage.jpeg"
-        />
->>>>>>> 3cf4af316548e4296f472f8639ec23c3169241e1
       </div>
       <span
         style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
