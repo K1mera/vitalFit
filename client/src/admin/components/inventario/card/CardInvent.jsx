@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../../../store";
 // import borrar from "./delete.svg";
 import { Link } from "react-router-dom";
-import {DeleteIcon} from "../../../../icons";
+import { DeleteIcon } from "../../../../icons";
 
 export default function CardInvent({ id, name, price, image, stock }) {
   const { products } = useSelector((state) => state.product);
@@ -27,11 +27,11 @@ export default function CardInvent({ id, name, price, image, stock }) {
         <h3 className="w-[50%]">{name}</h3>
         <p className="w-[10%]"> {stock}</p>
         <p className="w-[20%]">${price}</p>
-        <button className='w-[10%]' onClick={() => handlerDelete(id)}>
+        <button className="w-[10%]" onClick={() => handlerDelete(id)}>
           <DeleteIcon className={"w-[22px] hover:fill-red-600"} />
         </button>
         <Link to={`editproduct/${id}`}>
-          <button>Editar</button>
+          <button className="font-bold hover:text-cyan-500">Editar</button>
         </Link>
       </div>
     </section>
