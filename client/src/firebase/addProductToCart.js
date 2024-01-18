@@ -36,7 +36,7 @@ const addProductToCart = async (uid, product) => {
         //actualiza el carrito con los productos agregados
         added &&
           (await updateDoc(cartDocRef, {
-            productos: added,
+            productos: added.flat(),
           }));
       } else {
         console.log("not existing");
