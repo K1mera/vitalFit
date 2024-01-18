@@ -4,6 +4,7 @@ import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import createBill from "../../firebase/createBill";
 import { updateBillMP } from "../../firebase/updateBillMP";
+import sendEmail from "../../sendEmail/sendEmail";
 
 const MercadoPago = ({ userId, userEmail, arrayItems, totalPay }) => {
   const [preferenceId, setPreferenceId] = useState();
@@ -28,7 +29,9 @@ const MercadoPago = ({ userId, userEmail, arrayItems, totalPay }) => {
       const { id } = data;
       if (id) setPreferenceId(id);
       await updateBillMP(userId, orderId, { orderMP: id });
-
+      sendEmail(userEmail,
+        `te enviamos este correo para contarte que tu compra esta siendo procesada y todo está saliendo genial! Tu numero de orden de compra es: ${orderId}`, 
+        "Gracias por preferirnos!")
       return;
     } catch (error) {
       console.log(error);

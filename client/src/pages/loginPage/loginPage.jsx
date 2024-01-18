@@ -4,15 +4,13 @@ import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
 
-import {useDispatch} from "react-redux";
-import {loginWithEmail} from "../../store";
-
+import { useDispatch } from "react-redux";
+import { loginWithEmail } from "../../store";
+import getUsers from "../../store/slices/auth/getDocs";
 import bgImage from "/assets/image-loginPage.jpeg";
 
 export const LoginPage = () => {
-
   const dispatch = useDispatch();
-
 
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
@@ -33,32 +31,52 @@ export const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const userLogin = await dispatch(loginWithEmail(
-        login.correo,
-        login.contraseña
-      ));
+      const users = await getUsers();
+      const findUser = users.find((user) => user.email === login.correo);
 
-      if (userLogin.ok === true) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 5000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "success",
-          title: `Bienvenido ${userLogin.displayName}`,
-        });
+      if (findUser) {
+        if (findUser.disabled) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "error",
+            title: `Usuario bloqueado, comunicate con soporte`,
+          });
+        } else {
+          const userLogin = await dispatch(
+            loginWithEmail(login.correo, login.contraseña)
+          );
 
-        setLogin({
-          correo: "",
-          contraseña: "",
-        });
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: `Bienvenido ${userLogin.displayName}`,
+          });
+
+          setLogin({
+            correo: "",
+            contraseña: "",
+          });
+        }
       } else {
         const Toast = Swal.mixin({
           toast: true,
@@ -91,10 +109,7 @@ export const LoginPage = () => {
     <form className="relative" onSubmit={signUpWithPasswordAndEmail}>
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
-        <img
-          className="w-full h-full object-cover"
-          src={ bgImage }
-        />
+        <img className="w-full h-full object-cover" src={bgImage} />
       </div>
       {/* <NavLink to={"/loginUser"}>
         <span
@@ -218,6 +233,20 @@ export const LoginPage = () => {
               }}
             >
               Registrate.
+            </span>
+          </NavLink>
+          <br />
+          <NavLink to={"/resetPass"}>
+            <span
+              style={{
+                fontFamily: "NuevaFuente, montserrat",
+                color: " #2FD6BD  ",
+                marginLeft: "5px",
+                fontSize: "0.9rem",
+                marginLeft: "27.5%",
+              }}
+            >
+              Olvide mi contraseña
             </span>
           </NavLink>
         </div>
