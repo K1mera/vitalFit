@@ -51,7 +51,7 @@ export const AdminDashboard = () => {
             handleOptionSelect={handleOptionSelect}
           />
         </aside>
-        <section className="bg-primaryLight w-full h-full rounded-xl p-5">
+        <section className="overFlow-hidden bg-primaryLight w-full h-full rounded-xl p-5">
           {/* render selected option */}
           {renderSelectedComponent()}
         </section>
