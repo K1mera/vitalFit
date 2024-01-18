@@ -4,6 +4,7 @@ import { getBillsByUser } from "../../../firebase/getBillsByUser";
 import UserOrders from "../../../components/userOrders/UserOrders";
 import DeliveryIcon from "../../../icons/DeliveryIcon";
 import LoadingOrder from "../../../icons/LoadingOrder";
+import ProcessingIcon from "../../../icons/ProcessingIcon";
 
 const Profile_Orders = () => {
   const { currentUser } = useContext(userAuth);
@@ -74,18 +75,26 @@ const Profile_Orders = () => {
                       </article>
                       <article className="">
                         {i.status == "send" ? (
-                          <div>
+                          <div className="flex text-sm items-center text-slate-700">
                             <DeliveryIcon className="mb-1 fill-primary w-10 " />
-                            <p>Tu compra está en camino</p>
+                            <p className="ml-3">Tu compra está en camino</p>
                           </div>
                         ) : i.status == "succesfull" ? (
-                          <div className="flex text-sm">
-                            <LoadingOrder className="mb-1 fill-primary w-6 " />
+                          <div className="flex text-sm items-center">
+                            <ProcessingIcon className="mb-1  w-10" />
+
                             <p className="ml-3 text-slate-700">
-                              Tu compra está en proceso
+                              Estamos preparando tu orden
                             </p>
                           </div>
-                        ) : null}
+                        ) : (
+                          <div className="flex text-sm items-center">
+                            <LoadingOrder className="mb-1 fill-primary w-9 " />
+                            <p className="ml-3 text-slate-700">
+                              Tu orden aún no ha sido procesada
+                            </p>
+                          </div>
+                        )}
                       </article>
                     </article>
                   </div>

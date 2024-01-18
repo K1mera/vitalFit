@@ -28,11 +28,11 @@ const UserOrders = ({ setShowOrders, fecha, status, products, id }) => {
         justify-center
         items-center
         m-auto
-        w-min  
+        w-fit 
         p-5
       
       ">
-        <section className=" w-96  text-right">
+        <section className=" w-full  text-right">
           <button onClick={() => setShowOrders()}>
             <CloseIcon
               className={
@@ -41,32 +41,36 @@ const UserOrders = ({ setShowOrders, fecha, status, products, id }) => {
             />
           </button>
         </section>
-        <section className=" w-full mb-2">
+        <section className=" w-full mb-2 ">
           <h3 className="justify-start">Compra #{id.slice(-6)}</h3>
         </section>
-        {products &&
-          products.map((i, index) => (
-            <div key={index} className="w-full">
-              <div className="flex items-center justify-start">
-                <img src={i.picture_url} alt={i.title} width={70} />
-                <h2 className="font-bebas text-2xl">
-                  {i.title}{" "}
-                  <span className="text-teal-600 font-montserrat text-xl ml-3">
-                    X {i.quantity}
-                  </span>
-                </h2>
+        <section className="grid grid-cols-3">
+          {products &&
+            products.map((i, index) => (
+              <div key={index} className="w-full">
+                <div className="flex items-center justify-start">
+                  <img src={i.picture_url} alt={i.title} width={70} />
+                  <h2 className="font-bebas text-2xl">
+                    {i.title}{" "}
+                    <span className="text-teal-600 font-montserrat text-xl ml-3">
+                      X {i.quantity}
+                    </span>
+                  </h2>
+                </div>
               </div>
-            </div>
-          ))}
-        <h4>Fecha de compra: {fecha}</h4>
+            ))}
+        </section>
+        <h4 className="mt-3">Fecha de compra: {fecha}</h4>
         <h4>
           Estado de compra:{" "}
           {status == "succesfull" ? (
             <span>En proceso</span>
           ) : status == "send" ? (
             <span>En camino</span>
-          ) : (
+          ) : status == "received" ? (
             <span>Recibido!</span>
+          ) : (
+            <span>En proceso</span>
           )}
         </h4>
         <div className="flex mt-2">
