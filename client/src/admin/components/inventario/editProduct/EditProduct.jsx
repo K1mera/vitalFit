@@ -146,7 +146,7 @@ export default function EditProduct() {
             htmlFor="size"
             className="block text-sm font-medium text-gray-600"
           >
-            TamaÃ±o
+            Tamaño
           </label>
           <input
             type="text"
