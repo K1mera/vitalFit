@@ -10,6 +10,8 @@ import { Loading } from "../components";
 import getAllReviews from "../firebase/getAllReviews";
 import Review from "../components/Review/Review";
 import getCartProducts from "../firebase/getCartProducts";
+import Swal from "sweetalert2";
+
 
 export const DetailPage = () => {
   const dispatch = useDispatch();
@@ -90,6 +92,17 @@ export const DetailPage = () => {
         }
       }
     }
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
+      });
+      Toast.fire({
+        icon: "success",
+        title: `Producto agregado al carrito`,
+      });
   };
 
   const increaseAmount = () => {
