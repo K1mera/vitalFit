@@ -23,7 +23,6 @@ const PreCheckout = () => {
   const {
     getValues,
     register,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -51,6 +50,7 @@ const PreCheckout = () => {
   const handleData = async (data) => {
     if (data) {
       await userDirectionBDD(currentUser.uid, data);
+      navigate("/home");
       setShowCart(true);
     }
   };
@@ -66,76 +66,6 @@ const PreCheckout = () => {
             obligatorios
           </p>
           <div className="max-w-fit mx-auto">
-            <div className="m-2">
-              <label htmlFor="nombre" className="m-5">
-                <span className="text-primary text-2xl mr-1">*</span>
-                Nombre:
-              </label>
-              <input
-                id="name"
-                {...register("name", {
-                  required: {
-                    value: true,
-                    message: "El campo es obligatorio",
-                  },
-                  maxLength: {
-                    value: 15,
-                    message: "Debe tener menos de 15 caracteres",
-                  },
-                  pattern: {
-                    value:
-                      /^[A-Z][A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-\s]+$/,
-                    message:
-                      "Ingresa un nombre valido, la primera letra debe ser mayúscula",
-                  },
-
-                  value: user.name || "",
-                })}
-                onChange={(e) => setValue("name", e.target.value)}
-                type="text"
-                className={`p-1.5 w-72 font-montserrat  border-x-transparent  border-t-transparent border-b-2 focus:ring-0 focus:border-transparent focus:border-b-red-500${
-                  errors.name ? `bg-red-200` : ""
-                } border-zinc-600`}
-                placeholder="nombre"
-              />
-              <p className=" text-red-500 font-medium">
-                {errors.name?.message}
-              </p>
-            </div>
-            <div className="m-2">
-              <label htmlFor="apellido" className="m-5">
-                <span className="text-primary text-2xl mr-1">*</span>
-                Apellido:
-              </label>
-              <input
-                id="apellido"
-                {...register("apellido", {
-                  required: {
-                    value: true,
-                    message: "El campo es obligatorio",
-                  },
-                  maxLength: {
-                    value: 15,
-                    message: "Debe tener menos de 15 caracteres",
-                  },
-                  pattern: {
-                    value:
-                      /^[A-Z][A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ.-\s]+$/,
-                    message:
-                      "Ingresa un apellido valido, la primera letra debe ser mayúscula",
-                  },
-                  value: user.apellido || "",
-                })}
-                type="text"
-                className={`p-1.5 w-72 font-montserrat  border-x-transparent  border-t-transparent border-b-2 focus:ring-0 focus:border-transparent focus:border-b-red-500${
-                  errors.apellido ? `bg-red-200` : ""
-                } border-zinc-600`}
-                placeholder="apellido"
-              />
-              <p className=" text-red-500 font-medium">
-                {errors.apellido?.message}
-              </p>
-            </div>
             <div className="m-2">
               <label htmlFor="documento" className="m-5">
                 <span className="text-primary text-2xl mr-1">*</span>

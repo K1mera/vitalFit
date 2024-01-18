@@ -3,8 +3,8 @@ import { CreateReview } from "../../../components/Review/CreateReview";
 import { getBillsByUser } from "../../../firebase/getBillsByUser";
 import { userAuth } from "../../../context/auth-context";
 
-const Profile_Reviews = () => {
-  const { user } = useContext(userAuth);
+export const Profile_Reviews = () => {
+  const { currentUser } = useContext(userAuth);
   const [showReview, setShowReview] = useState(false);
   const [shopping, setShopping] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,26 +13,34 @@ const Profile_Reviews = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const billsByUser = await getBillsByUser(user?.id);
-        if (billsByUser) {
-          const billsToArray = billsByUser.map((e) => Object.values(e));
-          const billsFiltered = billsToArray
-            .map((e) => e.filter((item) => item.hasOwnProperty("name")))
-            .flat();
-          const uniqueObject = {};
-          const billsSinDuplicados = billsFiltered.filter((obj) => {
-            const clave = obj.name;
-            if (!uniqueObject[clave]) {
-              uniqueObject[clave] = true;
-              return true;
-            }
-            return false;
-          });
-          setShopping(billsSinDuplicados);
-        } else {
-          setShopping([]);
+        if (currentUser) {
+          const billsByUser = await getBillsByUser(currentUser?.uid);
+
+          let products = [];
+          if (billsByUser) {
+            const billsSuccesfull = billsByUser
+              .filter((e) => e.status == "succesfull")
+              .map((e) => e.data)
+              .flat();
+            const uniqueObjetos = {};
+            const sinDuplicados = billsSuccesfull.filter((obj) => {
+              // Genera una clave única para cada objeto basada en sus propiedades
+              const clave = obj.title;
+
+              // Si la clave no existe en el objeto auxiliar, marca el objeto como único
+              if (!uniqueObjetos[clave]) {
+                uniqueObjetos[clave] = true;
+                return true;
+              }
+
+              return false; // Si la clave ya existe, el objeto es duplicado
+            });
+            setShopping(sinDuplicados);
+          } else {
+            setShopping([]);
+          }
+          setLoading(false);
         }
-        setLoading(false);
       } catch (error) {
         console.log("Error al obtener las compras del usuario:", error.message);
         setLoading(false);
@@ -40,7 +48,7 @@ const Profile_Reviews = () => {
     };
 
     fetchData();
-  }, [user]);
+  }, [currentUser]);
 
   const handleOpenReviewModal = (product) => {
     setSelectedItem(product);
@@ -50,40 +58,43 @@ const Profile_Reviews = () => {
   const handleCloseReviewModal = () => {
     setShowReview(false);
   };
+
   return (
     <div>
       {loading ? (
         <p>Cargando...</p>
       ) : (
-        <div>
-          <h2>Reviews de tus compras</h2>
-          <table>
-            <thead>
-              <th>Imágen</th>
-              <th>Nombre</th>
-              <th>Precio</th>
-            </thead>
-            <tbody>
-              {shopping.map((e, index) => (
-                <tr key={index}>
-                  <td>
-                    <img src={e.image[0]} alt="" width={25} />
-                  </td>
-                  <td>{e.name}</td>
-                  <td>{e.price}</td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        handleOpenReviewModal(e.name);
-                      }}>
-                      Agregar reseña
-                    </button>
-                  </td>
-                </tr>
+        <div className=" max-w-max mx-auto p-10 mt-16">
+          <h2 className="text-3xl font-bebas mb-10 text-center">
+            Estos son los productos que has comprado!
+          </h2>
+          <div className=" mx-auto">
+            {shopping &&
+              shopping.map((e, index) => (
+                <section
+                  key={index}
+                  className="flex min-w-max justify-between p-3 text-xl font-montserrat">
+                  <article>
+                    <img src={e.picture_url} alt="" width={67} />
+                  </article>
+                  <article className="w-52 ml-4 my-auto font-semibold">
+                    {e.title}
+                  </article>
+
+                  <article className="w-20 mr-5 my-auto font-semibold">
+                    ${e.unit_price}
+                  </article>
+                  <button
+                    className="bg-primary p-2 text-lg rounded font-bebas text-white h-min my-auto"
+                    onClick={() => {
+                      handleOpenReviewModal(e);
+                    }}>
+                    Agregar reseña
+                  </button>
+                </section>
               ))}
-            </tbody>
-          </table>
-          {showReview && (
+          </div>
+          {showReview && selectedItem && (
             <div>
               <div>
                 <CreateReview
@@ -98,5 +109,3 @@ const Profile_Reviews = () => {
     </div>
   );
 };
-
-export default Profile_Reviews;

@@ -56,7 +56,7 @@ export default function AddProducts() {
 
   console.log(file);
   return (
-    <div className="max-w-md mx-auto p-6 bg-gray-100 mt-10 rounded-md shadow-md">
+    <div className="w-full h-[90%] overflow-scroll mx-auto p-6 bg-gray-100 mt-10 rounded-md shadow-md">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
