@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { putProduct } from "../../../../store";
 import { useState, useRef } from "react";
 import { uploadfiles } from "../../../../firebase/config";
@@ -11,6 +11,7 @@ export default function EditProduct() {
   const [file, setFile] = useState([]);
   const [fileViewed, setfileViewed] = useState([]);
   const fileUrlRef = useRef([]);
+  const navigate = useNavigate();
 
   const productFilter = products.filter((prod) => prod.id == id);
   const product = productFilter[0];
@@ -98,13 +99,21 @@ export default function EditProduct() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(putProduct(productData, id));
+    await dispatch(putProduct(productData, id));
+    navigate("/dasboard");
   };
 
   return (
     <div className="max-w-md mx-auto my-8 p-4 bg-white rounded shadow-md">
+      <Link
+        className="fixed right-[93%] mb-4 bg-primary text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+        to="/dasboard"
+      >
+        Volver
+      </Link>
+
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label
@@ -146,7 +155,7 @@ export default function EditProduct() {
             htmlFor="size"
             className="block text-sm font-medium text-gray-600"
           >
-            TamaÃ±o
+            Tamaño
           </label>
           <input
             type="text"
@@ -272,7 +281,6 @@ export default function EditProduct() {
           Editar producto
         </button>
       </form>
-      <Link to="/dasboard">Volver</Link>
     </div>
   );
 }
