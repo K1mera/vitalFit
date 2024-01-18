@@ -17,7 +17,6 @@ const Order = () => {
     setShowCart,
   } = useContext(userAuth);
   const [itemsToPay, setItemsToPay] = useState(null);
-  const [userToPay, setUserToPay] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const envio = 4500;
   let cartItems;
@@ -93,38 +92,21 @@ const Order = () => {
 
   let arrayItems =
     products &&
-    products.map(({ id, name, price, cantidad, image, stock }) => {
+    products.map(({ id, name, price, cantidad, image }) => {
       return {
         id: id,
         title: name,
         unit_price: Math.round(price),
         quantity: cantidad,
         picture_url: image,
-        newStock: Number(stock - cantidad),
       };
     });
 
   const handlePay = async () => {
     if (!currentUser) navigate("/auth/loginUser");
 
-    console.log(user);
     if (user.dataCompleted) {
-      console.log("entró");
-
       setItemsToPay(arrayItems);
-      setUserToPay({
-        id: user.id,
-        email: user.email,
-        name: user.displayName,
-        documento: user.documento,
-        telefono: user.telefono,
-        provincia: user.provincia,
-        municipio: user.municipio,
-        ciudad: user.ciudad,
-        calle: user.calle,
-        altura: user.altura,
-        pisoDpto: user.pisoDpto || "",
-      });
       setDisabled(true);
 
       return;
@@ -176,27 +158,21 @@ const Order = () => {
           ) : null}
         </div>
         {currentUser && user.calle && user.altura && (
-          <div className="mb-24 font-montserrat font-medium w-full text-end">
-            <span>
-              Enviar a{" "}
-              <span className="text-primary">
-                {user.calle} {user.altura}
-              </span>
-            </span>
+          <div>
+            <span>{`La dirección de envío registrada es ${user.calle} ${user.altura}`}</span>
             <a href="/preCheckout">
-              <p className="text-sm text-teal-600 font-semibold">
-                {" "}
-                Cambiar dirección
-              </p>
+              <p> Cambiar la dirección</p>
             </a>
           </div>
         )}
 
-        <section className="flex justify-between items-center fixed bottom-0 w-full h-28 bg-white">
-          <div className="font-bebas text-3xl mb-2">
+        <section className="flex justify-between items-center bg-white fixed bottom-0 h-14 w-72">
+          <div className="font-bebas text-2xl mb-2">
             {!disabled && (
               <div>
-                <p className="text-xl mt-2">Sub-total: ${totalAmount}</p>
+                <p className="text-base mt-2 w-96 bg-white">
+                  Sub-total: {totalAmount}
+                </p>
 
                 <span>Total: </span>
 
@@ -204,7 +180,7 @@ const Order = () => {
               </div>
             )}
           </div>
-          <div className="fixed right-7 bottom-9 font-bebas text-2xl">
+          <div className="fixed right-7 bottom-2 font-bebas text-2xl">
             {totalAmount > 0 && !disabled && (
               <button
                 onClick={handlePay}
@@ -214,17 +190,16 @@ const Order = () => {
             )}
             <div className="relative right-7">
               {itemsToPay && user.dataCompleted && (
-                <div className="w-fit mx-auto">
-                  <MercadoPago
-                    userId={currentUser.uid}
-                    userEmail={currentUser.email}
-                    arrayItems={arrayItems}
-                    userData={userToPay}
-                  />
-                </div>
+                <MercadoPago
+                  userId={currentUser.uid}
+                  userEmail={currentUser.email}
+                  arrayItems={arrayItems}
+                  totalPay={totalPay}
+                />
               )}
             </div>
           </div>
+          <div></div>
         </section>
       </aside>
     </div>

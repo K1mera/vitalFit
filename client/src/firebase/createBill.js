@@ -12,7 +12,7 @@ const generateDate = () => {
   const fecha = new Date(tiempo).toLocaleDateString();
   return fecha;
 };
-const createBill = async (userId, billData, userData) => {
+const createBill = async (userId, billData) => {
   try {
     // Generar un número de factura único
     const billNumber = generateUniqueBillNumber();
@@ -27,8 +27,6 @@ const createBill = async (userId, billData, userData) => {
       billNumber,
       fecha,
       data: billData,
-      userData: userData,
-      status: "pending",
       // Otros detalles de la factura
     });
 

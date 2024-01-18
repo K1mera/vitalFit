@@ -36,7 +36,6 @@ const logOutUser = async () => {
       icon: "success",
       title: `Sesión cerrada exitosamente`,
     });
-    window.location.reload();
     return true;
   } else {
     console.log("No se pudo cerrar sesion");

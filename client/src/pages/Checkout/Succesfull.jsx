@@ -3,8 +3,6 @@ import clearCart from "../../firebase/clearCart";
 import { getBillsByUser } from "../../firebase/getBillsByUser";
 import { updateBillMP } from "../../firebase/updateBillMP";
 import { userAuth } from "../../context/auth-context";
-import { useDispatch } from "react-redux";
-import { putProduct } from "../../store";
 
 export const Succesfull = () => {
   const { currentUser, loading } = useContext(userAuth);
@@ -12,7 +10,6 @@ export const Succesfull = () => {
   const paymentId = searchParams.get("payment_id");
   const arrayExternalData = searchParams.get("external_reference").split("-_");
   const externalReference = arrayExternalData[0];
-  const dispatch = useDispatch();
 
   // console.log(paymentId, "paymentID"); //payment id de mercado pago
   // console.log(paymentResult, "external"); //order id de bdd
@@ -32,19 +29,10 @@ export const Succesfull = () => {
     return;
   };
 
-  const handleStock = () => {
-    paymentResult?.map((i) =>
-      dispatch(putProduct({ stock: i.newStock }, i.id))
-    );
-    return;
-  };
   useEffect(() => {
     localStorage.removeItem("products");
-    if (currentUser) {
-      handlePayment();
-      handleStock();
-    }
-  }, [currentUser, paymentResult]);
+    if (currentUser) handlePayment();
+  }, [currentUser]);
 
   let totalPay = paymentResult?.reduce(
     (total, item) => total + item.unit_price * item.quantity,
@@ -56,46 +44,30 @@ export const Succesfull = () => {
       {loading ? (
         <p>Cargando...</p>
       ) : (
-        <div className="text-center mt-6 font-montserrat font-medium text-xl indent-3">
-          <h1 className="text-primary font-bebas text-5xl font-normal mb-3">
-            ¡Pago exitoso!
-          </h1>
-          <h1 className="mb-2">Gracias por confiar en nosotros!</h1>
-          <p className="mb-2">
+        <div>
+          <h1>Pago exitoso!</h1>
+          <h1>Gracias por confiar en nosotros!</h1>
+          <p>
             Tu compra ha sido procesada y te estaremos informando cuando esté en
             camino!
           </p>
-          <p className="mb-2">Disfruta del producto y gracias por comprar!</p>
+          <p>Disfruta del producto y gracias por comprar!</p>
           <div>
-            <p className="mb-14">Los productos de tu compra son:</p>
+            <p>Tu compra fue:</p>
             {paymentResult &&
               paymentResult.map((i, index) => (
-                <div
-                  key={index}
-                  className=" w-fit mx-auto flex items-center mb-14">
-                  <img src={i.picture_url} width={85} alt="" className="mr-4" />
-                  <h1 className="mr-10 font-bebas text-3xl">
-                    {i.title}{" "}
-                    <span className="font-montserrat text-2xl ml-3 text-teal-600">
-                      X {i.quantity}
-                    </span>
+                <div key={index}>
+                  <h1>
+                    {i.title} X {i.quantity}
                   </h1>
-                  <p>
-                    Precio unit:{" "}
-                    <span className="ml-3 text-teal-600 font-semibold">
-                      ${i.unit_price}
-                    </span>
-                  </p>
+                  <img src={i.picture_url} width={45} alt="" />
+                  <p>Precio unit: {i.unit_price}</p>
                 </div>
               ))}
-            <div className="mb-5">
-              <p>
-                El total de tu compra fue:{" "}
-                <span className="ml-3 font-semibold  text-primary ">
-                  {" "}
-                  ${paymentResult && totalPay}
-                </span>
-              </p>
+            <div>
+              <span>
+                El total de tu compra fue: {paymentResult && totalPay}
+              </span>
             </div>
           </div>
         </div>

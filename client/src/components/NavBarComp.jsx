@@ -10,26 +10,20 @@ import Order from "./Cart/Order";
 import addCarrito from "../firebase/addCarrito";
 import { BiLogOutCircle } from "react-icons/bi";
 import logOutUser from "../firebase/logOut";
-import ReviewsIcon from "../icons/ReviewsIcon";
 
 export const NavBarComp = () => {
-  const dispatch = useDispatch();
 
-  const {
-    currentUser,
-    showCart,
-    showOrder,
-    setShowOrder,
-    setShowCart,
-    setCurrentUser,
-    setProductsLocalStorage,
-    setProducts,
-  } = useContext(userAuth);
+    const dispatch = useDispatch()
+  
+
+  
+  const { currentUser, showCart, showOrder, setShowOrder, setShowCart, setCurrentUser, setProductsLocalStorage, setProducts } = useContext(userAuth);
+
 
   const logOut = async () => {
     const respuesta = await logOutUser();
     if (respuesta) {
-      setCurrentUser(null);
+      setCurrentUser(null)
       setProductsLocalStorage([]);
       setProducts([]);
     }
@@ -41,10 +35,10 @@ export const NavBarComp = () => {
 
   const resetFilters = () => {
     console.log("resetFilterOn");
-    dispatch(cleanFilters());
-    dispatch(cleanSorts());
-    dispatch(cleanSearch());
-  };
+    dispatch(cleanFilters())
+    dispatch(cleanSorts())
+    dispatch(cleanSearch())
+  }
 
   return (
     <>
@@ -59,7 +53,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Home
           </NavLink>
           <NavLink
@@ -74,7 +69,7 @@ export const NavBarComp = () => {
             onClick={resetFilters}>
             Productos
           </NavLink>
-          <NavLink
+           <NavLink
             to="training"
             className={({ isActive }) =>
               `hover:text-tertiary ${
@@ -82,7 +77,8 @@ export const NavBarComp = () => {
                   ? "text-black"
                   : "text-primary underline decoration-primary underline-offset-4"
               }`
-            }>
+            }
+          >
             Training
           </NavLink>
           {/*<NavLink
@@ -113,32 +109,31 @@ export const NavBarComp = () => {
         <section className="flex gap-2 w-[195px]">
           {/* // todo  */}
           {/* change the icon if the user is logged */}
-          {currentUser && (
-            <BiLogOutCircle
-              onClick={logOut}
-              style={{
-                width: "19%",
-                height: "19%",
-                marginTop: "2.5%",
-              }}
+          <BiLogOutCircle
+            onClick={logOut}
+            style={{
+              width: "19%",
+              height: "19%",
+              marginTop: "2.5%",
+            }}
+            className={
+              "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+            }
+          />
+
+          <NavLink to={"auth/loginPage"}>
+            <UserIcon
               className={
                 "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
               }
             />
-          )}
+          </NavLink>
 
-          {!currentUser && (
-            <NavLink to={"auth/loginPage"}>
-              <UserIcon
-                className={
-                  "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
-                }
-              />
-            </NavLink>
-          )}
-
-          {currentUser && <ReviewsIcon />}
-
+          <FavoriteIcon
+            className={
+              "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+            }
+          />
           {/*  <button onClick={() => onShopList()} className="relative">
             <ShoppingCartIcon
               className={

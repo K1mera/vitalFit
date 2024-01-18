@@ -4,8 +4,6 @@ import addProductToCart from "../firebase/addProductToCart";
 import { registerUserBDD } from "../firebase/registerUserBDD";
 import { firebaseAuth } from "../firebase/config";
 import getUser from "../firebase/getUser";
-import getCartProducts from "../firebase/getCartProducts";
-import addCarrito from "../firebase/addCarrito";
 
 export const userAuth = createContext();
 
@@ -36,15 +34,10 @@ const UserContext = ({ children }) => {
           //guardados en el local storage y los agrega al carrito
           //asociado al usuario
 
-          const cart = await getCartProducts();
-          if (!cart) {
-            await addCarrito(userFirebase?.uid);
-          }
-          const productsLS = JSON.parse(
-            window.localStorage.getItem("products")
+          await addProductToCart(
+            userFirebase?.uid,
+            JSON.parse(window.localStorage.getItem("products"))
           );
-
-          await addProductToCart(userFirebase?.uid, productsLS);
 
           //elimina los productos del carrito del local storage
           localStorage.removeItem("products");
@@ -70,6 +63,7 @@ const UserContext = ({ children }) => {
     <userAuth.Provider
       value={{
         currentUser,
+        setCurrentUser,
         isRegistered,
         loading,
         setLoading,
