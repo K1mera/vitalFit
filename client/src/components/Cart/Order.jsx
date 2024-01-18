@@ -176,21 +176,27 @@ const Order = () => {
           ) : null}
         </div>
         {currentUser && user.calle && user.altura && (
-          <div>
-            <span>{`La dirección de envío registrada es ${user.calle} ${user.altura}`}</span>
+          <div className="mb-24 font-montserrat font-medium w-full text-end">
+            <span>
+              Enviar a{" "}
+              <span className="text-primary">
+                {user.calle} {user.altura}
+              </span>
+            </span>
             <a href="/preCheckout">
-              <p> Cambiar la dirección</p>
+              <p className="text-sm text-teal-600 font-semibold">
+                {" "}
+                Cambiar dirección
+              </p>
             </a>
           </div>
         )}
 
-        <section className="flex justify-between items-center bg-white fixed bottom-0 h-14 w-72">
-          <div className="font-bebas text-2xl mb-2">
+        <section className="flex justify-between items-center fixed bottom-0 w-full h-28 bg-white">
+          <div className="font-bebas text-3xl mb-2">
             {!disabled && (
               <div>
-                <p className="text-base mt-2 w-96 bg-white">
-                  Sub-total: {totalAmount}
-                </p>
+                <p className="text-xl mt-2">Sub-total: ${totalAmount}</p>
 
                 <span>Total: </span>
 
@@ -198,7 +204,7 @@ const Order = () => {
               </div>
             )}
           </div>
-          <div className="fixed right-7 bottom-2 font-bebas text-2xl">
+          <div className="fixed right-7 bottom-9 font-bebas text-2xl">
             {totalAmount > 0 && !disabled && (
               <button
                 onClick={handlePay}
@@ -208,16 +214,17 @@ const Order = () => {
             )}
             <div className="relative right-7">
               {itemsToPay && user.dataCompleted && (
-                <MercadoPago
-                  userId={currentUser.uid}
-                  userEmail={currentUser.email}
-                  arrayItems={arrayItems}
-                  userData={userToPay}
-                />
+                <div className="w-fit mx-auto">
+                  <MercadoPago
+                    userId={currentUser.uid}
+                    userEmail={currentUser.email}
+                    arrayItems={arrayItems}
+                    userData={userToPay}
+                  />
+                </div>
               )}
             </div>
           </div>
-          <div></div>
         </section>
       </aside>
     </div>

@@ -9,7 +9,6 @@ import { productsIns } from "../../api/productsInstance";
 
 import sendEmail from "../../sendEmail/sendEmail";
 
-
 const MercadoPago = ({ userId, userEmail, arrayItems, userData }) => {
   const [preferenceId, setPreferenceId] = useState();
   initMercadoPago("TEST-96d6884d-30e9-4fe8-a75f-16fdc52d9ddb");
@@ -18,7 +17,7 @@ const MercadoPago = ({ userId, userEmail, arrayItems, userData }) => {
     try {
       const orderId = await createBill(userId, arrayItems, userData);
       //   const { data } = await productsIns.post("/create_preference", {
-      const { data } = await productsIns.post("create_preference", {
+      const { data } = await productsIns.post("/create_preference", {
         userId: userId,
         userEmail: userEmail,
         items: arrayItems,
@@ -28,9 +27,11 @@ const MercadoPago = ({ userId, userEmail, arrayItems, userData }) => {
       const { id } = data;
       if (id) setPreferenceId(id);
       await updateBillMP(userId, orderId, { orderMP: id });
-      sendEmail(userEmail,
-        `te enviamos este correo para contarte que tu compra esta siendo procesada y todo está saliendo genial! Tu numero de orden de compra es: ${orderId}`, 
-        "Gracias por preferirnos!")
+      sendEmail(
+        userEmail,
+        `te enviamos este correo para contarte que tu compra esta siendo procesada y todo está saliendo genial! Tu numero de orden de compra es: ${orderId}`,
+        "Gracias por preferirnos!"
+      );
       return;
     } catch (error) {
       console.log(error);
