@@ -51,6 +51,7 @@ const PreCheckout = () => {
   const handleData = async (data) => {
     if (data) {
       await userDirectionBDD(currentUser.uid, data);
+      navigate("/home");
       setShowCart(true);
     }
   };

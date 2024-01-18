@@ -9,13 +9,14 @@ const addProductToCart = async (uid, product) => {
     const cartDoc = await getDoc(cartDocRef);
 
     //verifica product es un array
-    if (product) {
+    if (Array.isArray(product)) {
       //verfica si hay productos anteriores en el carrito
       const existingProducts = cartDoc.data().productos;
 
       if (existingProducts.length > 0) {
         //si hay productos anteriores, los junta con los productos agregados
         const combined = [...existingProducts, product];
+        console.log("existing");
 
         //nuevo array con todos los productos
         const added = [];
@@ -38,15 +39,17 @@ const addProductToCart = async (uid, product) => {
             productos: added,
           }));
       } else {
+        console.log("not existing");
         cartDoc.exists() &&
           product &&
-          (await updateDoc(cartDocRef, { productos: arrayUnion(product) }));
+          (await updateDoc(cartDocRef, { productos: arrayUnion(...product) }));
       }
-    } /* else {
+    } else {
+      console.log(product);
       cartDoc.exists() &&
         product &&
-        (await updateDoc(cartDocRef, { productos: arrayUnion(...product) }));
-    } */
+        (await updateDoc(cartDocRef, { productos: arrayUnion(product) }));
+    }
   } catch (error) {
     console.log("Error al agregar producto al carrito", error.message);
   }
