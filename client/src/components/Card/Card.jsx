@@ -5,6 +5,8 @@ import { useContext, useState } from "react";
 import addProductToCart from "../../firebase/addProductToCart";
 import increaseProduct from "../../firebase/increaseProduct";
 import getCartProducts from "../../firebase/getCartProducts";
+import Swal from "sweetalert2";
+
 
 export default function Card({ id, name, price, image, stock }) {
   const { currentUser, productsLocalStorage, setProductsLocalStorage } =
@@ -59,6 +61,17 @@ export default function Card({ id, name, price, image, stock }) {
         }
       }
     }
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true
+      });
+      Toast.fire({
+        icon: "success",
+        title: `Producto agregado al carrito`,
+      });
   };
 
   return (
