@@ -149,26 +149,28 @@ export const deleteProduct = (id) => {
   };
 };
 
-export const postProduct = (productData) => {
+export const postProduct = (productData, setCargaExitosa) => {
   return async (dispatch) => {
     try {
       const response = await productsIns.post("/", productData);
+      setCargaExitosa(true);
       console.log(response);
     } catch (error) {
       console.log("Error:", error.message);
+      setCargaExitosa(false);
     }
   };
 };
 
 export const putProduct = (productData, id) => {
   return async (dispatch) => {
-   try {
-     const response = await productsIns.put(`/product/${id}`, productData);
-     console.log(response.data);
-    //  dispatch(getProducts());
-   } catch (error) {
-    console.log("Error:", error.message);
-   }
-    // 
+    try {
+      const response = await productsIns.put(`/product/${id}`, productData);
+      console.log(response.data);
+      //  dispatch(getProducts());
+    } catch (error) {
+      console.log("Error:", error.message);
+    }
+    //
   };
 };
