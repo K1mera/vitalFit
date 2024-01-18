@@ -25,7 +25,7 @@ const Cart = ({}) => {
     gettingProducts().then((data) => {
       setProducts(data);
     });
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     //si no hay usuario loggeado, no hace nada
