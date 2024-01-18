@@ -31,7 +31,7 @@ export default function CardInvent({ id, name, price, image, stock }) {
           <DeleteIcon className={"w-[22px] hover:fill-red-600"} />
         </button>
         <Link to={`editproduct/${id}`}>
-          <button>Editar</button>
+          <button className="font-bold hover:text-cyan-500">Editar</button>
         </Link>
       </div>
     </section>
