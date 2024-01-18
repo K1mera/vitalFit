@@ -8,35 +8,29 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch } from "react-redux";
 import { startCreateUser, startGoogle } from "../../store";
 import { registerUserBDD } from "../../firebase/registerUserBDD";
+import sendEmail from "../../sendEmail/sendEmail";
 
 import bgImage from "/assets/image-loginPage.jpeg";
-
-
-
 
 export const SingUpPage = () => {
   const dispatch = useDispatch();
   const [handleForm, setHandleForm] = useState({
     nombre: "",
     apellido: "",
-    dni: "",
     correo: "",
     contraseña: "",
     confirmarContraseña: "",
   });
   const [errors, setErrors] = useState({});
 
-
   const validationDisabledButton = () => {
     return (
       errors.nombre ||
       errors.apellido ||
-      errors.dni ||
       errors.correo ||
       errors.contraseña ||
       errors.confirmarContraseña ||
       !handleForm.nombre ||
-      !handleForm.dni ||
       !handleForm.correo ||
       !handleForm.contraseña ||
       !handleForm.confirmarContraseña
@@ -47,6 +41,12 @@ export const SingUpPage = () => {
     e.preventDefault();
 
     try {
+       sendEmail(
+        handleForm.correo,
+        "te enviamos este correo para contarte que tu registro fue exitoso!",
+        "Bienvenido! Espero disfrutes de nuestro viaje juntos!"
+      );
+      console.log(sendEmail, "aqui email ");
       const displayName = handleForm.nombre + " " + handleForm.apellido;
       const userCredential = await dispatch(
         startCreateUser(handleForm.correo, handleForm.contraseña, displayName)
@@ -102,7 +102,6 @@ export const SingUpPage = () => {
     setHandleForm({
       nombre: "",
       apellido: "",
-      dni: "",
       correo: "",
       contraseña: "",
       confirmarContraseña: "",
@@ -138,7 +137,6 @@ export const SingUpPage = () => {
     }
   };
 
-
   const handleFormLogin = (event) => {
     const { name, value } = event.target;
     setHandleForm({
@@ -153,7 +151,10 @@ export const SingUpPage = () => {
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
 
       <div className="flex items-center justify-center h-full">
-        <img className="w-full h-full object-cover object-center" src={bgImage} />
+        <img
+          className="w-full h-full object-cover object-center"
+          src={bgImage}
+        />
       </div>
       <span
         style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
@@ -224,7 +225,7 @@ export const SingUpPage = () => {
           <br />
           <input
             className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "10px" }}
+            style={{ borderRadius: "10px", marginBottom: "1px" }}
             name="apellido"
             type="text"
             placeholder=" Apellido..."
@@ -232,27 +233,6 @@ export const SingUpPage = () => {
             onChange={handleFormLogin}
           ></input>
           {errors.apellido && <p className="text-red-400">{errors.apellido}</p>}
-          <br />
-          <label
-            style={{
-              fontFamily: "NuevaFuente, bebas neue",
-              color: " #D9D9D9",
-              fontSize: "1.5rem",
-            }}
-          >
-            DNI
-          </label>
-          <br />
-          <input
-            className="w-full h-9"
-            style={{ borderRadius: "10px", marginBottom: "10px" }}
-            name="dni"
-            type="text"
-            placeholder=" DNI..."
-            value={handleForm.dni}
-            onChange={handleFormLogin}
-          ></input>
-          {errors.dni && <p className="text-red-400">{errors.dni}</p>}
           <br />
           <label
             style={{

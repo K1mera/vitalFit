@@ -25,6 +25,7 @@ export const Succesfull = () => {
 
     await clearCart(currentUser.uid);
     setPaymentResult(response[0]);
+    sendEmail(currentUser.email, "te enviamos este correo para que sepas que tu compra fue finalizada y todo salió existoso!", "Esperamos disfrutes tu compra, gracias por preferirnos!")
     return;
   };
 
