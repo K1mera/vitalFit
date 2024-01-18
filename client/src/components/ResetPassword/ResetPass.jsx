@@ -3,7 +3,6 @@ import { LogoIcon } from "../../icons";
 import { NavLink } from "react-router-dom";
 import { validationEmail } from "./validation";
 import Swal from "sweetalert2";
-import { getAuth  } from "firebase/auth";
 import { resetPassword } from "../../firebase/providers";
 import getUsers from "../../store/slices/auth/getDocs";
 
@@ -16,8 +15,11 @@ export const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const responseFirebase = await getUsers();
-      if (responseFirebase.includes(correo)) {
+      const usersGet = await getUsers()
+      const usersEmail = usersGet.map((item) => item.email)
+      console.log(usersEmail, "aqui usuarios");
+
+      if (usersEmail.includes(correo)) {
         const password = await resetPassword(correo);
         if (password.ok === true) {
           const Toast = Swal.mixin({
@@ -87,7 +89,7 @@ export const ResetPassword = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img
           className="w-full h-full object-cover"
-          src="src/icons/image-loginPage.jpeg"
+          src="../assets/image-loginPage.jpeg"
         />
       </div>
       <div className="w-100% flex items-center justify-center">
