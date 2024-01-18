@@ -155,18 +155,7 @@ export const SingUpPage = () => {
       <div className="flex items-center justify-center h-full">
         <img className="w-full h-full object-cover object-center" src={bgImage} />
       </div>
-      <span
-        style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}
-      >
-        Soy
-      </span>
-      <span
-        style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-11 text-4xl"}
-      >
-        ADMIN
-      </span>
+  
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-20 z-20 justify-center"

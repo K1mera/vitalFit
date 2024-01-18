@@ -91,25 +91,9 @@ export const LoginPage = () => {
     <form className="relative" onSubmit={signUpWithPasswordAndEmail}>
       <LogoIcon className={"w-[34px] h-[69px] absolute top-10 left-10"} />
       <div className="flex items-center justify-center h-screen overflow-hidden">
-        <img
-          className="w-full h-full object-cover"
-          src={ bgImage }
-        />
+        <img className="w-full h-full object-cover" src={bgImage} />
       </div>
-      {/* <NavLink to={"/loginUser"}>
-        <span
-          style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-          className={"absolute top-10 right-14 text-3xl"}
-        >
-          Soy
-        </span>
-        <span
-          style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-          className={"absolute top-20 right-11 text-4xl"}
-        >
-          ADMIN
-        </span>
-      </NavLink> */}
+
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
@@ -180,7 +164,7 @@ export const LoginPage = () => {
           <br />
           <button
             disabled={validationFormLogin()}
-            onClick={signUpWithPasswordAndEmail}
+            type="submit"
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
@@ -193,6 +177,7 @@ export const LoginPage = () => {
               marginBottom: "10px",
               marginTop: "12px",
               marginLeft: "145px",
+              cursor: "pointer",
             }}
           >
             ENTRAR
