@@ -24,7 +24,7 @@ export const MainRouter = () => {
   return (
     <Routes>
 
-      { user === "admin" ?
+      { user.role === "admin" ?
         <Route path="/*" element={<AdminRoutes />} /> :
         <Route path="/*" element={<AppRouter />} />
       }
