@@ -11,9 +11,7 @@ const getUsers = async () => {
       usersData.push(userData);
     });
 
-    const arrayUsers = usersData.map((item) => item.email);
-
-    return arrayUsers;
+    return usersData;
   } catch (error) {
     console.log(error.message, "aaaa");
   }
