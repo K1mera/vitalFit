@@ -24,16 +24,16 @@ export const Succesfull = () => {
     const response = await getBillsByUser(currentUser.uid, externalReference);
 
     await clearCart(currentUser.uid);
-    setPaymentResult(response[0]);
+    setPaymentResult(response[0].data);
     return;
   };
 
   useEffect(() => {
     localStorage.removeItem("products");
-    handlePayment();
+    if (currentUser) handlePayment();
   }, [currentUser]);
 
-  let totalPay = paymentResult.reduce(
+  let totalPay = paymentResult?.reduce(
     (total, item) => total + item.unit_price * item.quantity,
     0
   );

@@ -103,9 +103,7 @@ const Order = () => {
     });
 
   const handlePay = async () => {
-    if (!currentUser) {
-      navigate("/loginUser");
-    }
+    if (!currentUser) navigate("/auth/loginUser");
 
     if (user.dataCompleted) {
       setItemsToPay(arrayItems);
@@ -114,8 +112,8 @@ const Order = () => {
       return;
     }
     navigate("/preCheckout");
-    setShowCart(false);
     setShowOrder(false);
+    setShowCart(false);
   };
 
   const handleBack = () => {

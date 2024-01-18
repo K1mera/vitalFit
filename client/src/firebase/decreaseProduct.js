@@ -11,7 +11,7 @@ const decreaseProduct = async (uid, productID) => {
       const cartData = cartDoc.data();
       const products = cartData.productos;
 
-      const index = products.findIndex((p) => p.id === productID);
+      const index = products.findIndex((p) => p.id == productID);
       if (index !== -1) {
         //si el índice es mayor a cero, disminuye su cantidad
         if (products[index].cantidad > 0) {
