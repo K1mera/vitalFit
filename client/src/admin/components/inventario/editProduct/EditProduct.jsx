@@ -1,35 +1,76 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getProductById, putProduct } from "../../../../store";
-import { useEffect, useState } from "react";
+import { putProduct } from "../../../../store";
+import { useState, useRef } from "react";
+import { uploadfiles } from "../../../../firebase/config";
 
 export default function EditProduct() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { products } = useSelector((state) => state.product);
+  const [file, setFile] = useState([]);
+  const [fileViewed, setfileViewed] = useState([]);
+  const fileUrlRef = useRef([]);
 
   const productFilter = products.filter((prod) => prod.id == id);
   const product = productFilter[0];
-  console.log(product.flavour);
+  console.log(product);
 
   const [productData, setProductData] = useState({
     name: product.name,
     price: product.price,
     size: product.size,
     stock: product.stock,
-    image: [],
+    image: product.image,
     flavour: product.flavour,
     description: product.description[0],
     pre_description: product.pre_description,
   });
 
+  const handleSubmitFile = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await Promise.all(file.map((file) => uploadfiles(file)));
+      fileUrlRef.current = response;
+
+      console.log(fileUrlRef.current);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const hanldeFileChange = async (e) => {
+    const selectedFiles = e.target.files;
+    const selectedFilesArray = Array.from(selectedFiles);
+    const review = selectedFilesArray.map((file, index) => ({
+      id: index,
+      file: file,
+      previewUrl: URL.createObjectURL(file), //crea una url de vista previa
+    }));
+
+    try {
+      const response = await Promise.all(selectedFilesArray.map(uploadfiles));
+      fileUrlRef.current = response;
+
+      setFile((prevFiles) => [...prevFiles, ...selectedFilesArray]);
+      setfileViewed((prevFiles) => [...prevFiles, ...review]);
+
+      // Actualizar productData.image con la primera URL de la lista de URLs
+      setProductData({
+        ...productData,
+        image: fileUrlRef.current.length > 0 ? [fileUrlRef.current[0]] : [],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleChange = (e) => {
     if (e.target.name === productData.image) {
       //guardar en un array las referencias de imagenes cargadas
-      const selectedImage = Array.from(e.target.files);
+      //   const selectedImage = Array.from(e.target.files);
       setProductData({
         ...productData,
-        [e.target.name]: selectedImage,
+        [e.target.name]: fileUrlRef.current,
       });
     } else if (e.target.name === productData.flavour) {
       const selectedFlavour = e.target.value
@@ -105,7 +146,7 @@ export default function EditProduct() {
             htmlFor="size"
             className="block text-sm font-medium text-gray-600"
           >
-            Tamaño
+            TamaÃ±o
           </label>
           <input
             type="text"
@@ -150,9 +191,27 @@ export default function EditProduct() {
             type="file"
             id="image"
             name="image"
-            onChange={handleChange}
+            onChange={hanldeFileChange}
             className="p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
           />
+          <div className="mt-2 flex space-x-2">
+            {fileViewed.map((file, index) => (
+              <div key={index}>
+                <img
+                  src={file.previewUrl}
+                  alt={`Preview ${index}`}
+                  className="max-w-20 max-h-20"
+                />
+              </div>
+            ))}
+          </div>
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded focus:outline-none focus:ring focus:border-blue-300"
+            onClick={handleSubmitFile}
+          >
+            {" "}
+            Subir imagen{" "}
+          </button>
         </div>
 
         <div className="mb-4">
@@ -183,9 +242,7 @@ export default function EditProduct() {
             id="description"
             value={productData.description}
             name="description"
-            onChange={
-              handleChange
-            }
+            onChange={handleChange}
             className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
@@ -215,9 +272,7 @@ export default function EditProduct() {
           Editar producto
         </button>
       </form>
-      <Link to='/dasboard'>
-        Volver
-      </Link>
+      <Link to="/dasboard">Volver</Link>
     </div>
   );
 }
