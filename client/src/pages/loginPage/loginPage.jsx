@@ -69,7 +69,7 @@ export const LoginPage = () => {
           });
           Toast.fire({
             icon: "success",
-            title: `Bienvenido ${userLogin.displayName}`,
+            title: `Bienvenido`,
           });
 
           setLogin({
