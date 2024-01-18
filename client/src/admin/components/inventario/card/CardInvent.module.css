@@ -16,13 +16,15 @@
 }
 
 .info {
-  margin-right: 90px; /* Espacio entre elementos li (ajusta según tus necesidades) */
-  text-align: center;
+  margin-right: 90px;
+  text-align: right;
 }
 
 .infoname {
+  font-size: 80%;
+  /* width: 10%; */
   align-items: center;
-  text-align: center;
+  text-align: left;
   margin-right: 212px;
-  max-width: 10px;
+  /* max-width: 10px; */
 }
