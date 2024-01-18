@@ -17,6 +17,7 @@ const Order = () => {
     setShowCart,
   } = useContext(userAuth);
   const [itemsToPay, setItemsToPay] = useState(null);
+  const [userToPay, setUserToPay] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const envio = 4500;
   let cartItems;
@@ -92,21 +93,38 @@ const Order = () => {
 
   let arrayItems =
     products &&
-    products.map(({ id, name, price, cantidad, image }) => {
+    products.map(({ id, name, price, cantidad, image, stock }) => {
       return {
         id: id,
         title: name,
         unit_price: Math.round(price),
         quantity: cantidad,
         picture_url: image,
+        newStock: Number(stock - cantidad),
       };
     });
 
   const handlePay = async () => {
     if (!currentUser) navigate("/auth/loginUser");
 
+    console.log(user);
     if (user.dataCompleted) {
+      console.log("entró");
+
       setItemsToPay(arrayItems);
+      setUserToPay({
+        id: user.id,
+        email: user.email,
+        name: user.displayName,
+        documento: user.documento,
+        telefono: user.telefono,
+        provincia: user.provincia,
+        municipio: user.municipio,
+        ciudad: user.ciudad,
+        calle: user.calle,
+        altura: user.altura,
+        pisoDpto: user.pisoDpto || "",
+      });
       setDisabled(true);
 
       return;
@@ -194,7 +212,7 @@ const Order = () => {
                   userId={currentUser.uid}
                   userEmail={currentUser.email}
                   arrayItems={arrayItems}
-                  totalPay={totalPay}
+                  userData={userToPay}
                 />
               )}
             </div>
