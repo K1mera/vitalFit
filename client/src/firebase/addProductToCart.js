@@ -25,7 +25,7 @@ const addProductToCart = async (uid, product) => {
           //si en el nuevo array "added" existe el producto se le modifica la cantidad
           //si no existe, se pushea el producto nuevo
           const exist = added.find((p) => p.id == product.id);
-          console.log(exist);
+
           if (exist) {
             exist.cantidad += product.cantidad;
           } else {

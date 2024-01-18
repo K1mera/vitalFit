@@ -38,19 +38,16 @@ const UserContext = ({ children }) => {
 
           const cart = await getCartProducts();
           if (!cart) {
-            console.log("entró");
-
             await addCarrito(userFirebase?.uid);
           }
           const productsLS = JSON.parse(
             window.localStorage.getItem("products")
           );
-          console.log(productsLS, "productsLS");
 
           await addProductToCart(userFirebase?.uid, productsLS);
 
           //elimina los productos del carrito del local storage
-          //        localStorage.removeItem("products");
+          localStorage.removeItem("products");
           setProductsLocalStorage([]);
         } else {
           await registerUserBDD({
@@ -67,7 +64,7 @@ const UserContext = ({ children }) => {
       }
       setLoading(false);
     });
-  }, [currentUser]);
+  }, []);
 
   return (
     <userAuth.Provider
