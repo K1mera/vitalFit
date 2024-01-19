@@ -11,6 +11,8 @@ const UserOrders = ({ setShowOrders, fecha, status, products, id }) => {
   const handleReceived = async () => {
     await updateBillMP(currentUser.uid, id, { status: "received" });
     setDisable(true);
+    setShowOrders();
+    location.reload();
     return;
   };
   const handleReview = () => {

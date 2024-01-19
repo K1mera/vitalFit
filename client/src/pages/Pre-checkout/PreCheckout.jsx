@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../../components/Loading/Loading";
 
 const PreCheckout = () => {
-  const { currentUser, user, loading, setShowCart } = useContext(userAuth);
+  const { currentUser, user, loading, setShowOrder } = useContext(userAuth);
   const [provincias, setProvincias] = useState([]);
   const [municipios, setMunicipios] = useState([]);
 
@@ -51,9 +51,8 @@ const PreCheckout = () => {
   const handleData = async (data) => {
     if (data) {
       await userDirectionBDD(currentUser.uid, data);
-      navigate("/home");
-      setShowCart(true);
     }
+    setShowOrder(true);
   };
 
   return (
