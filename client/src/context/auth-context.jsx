@@ -25,8 +25,12 @@ const UserContext = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(firebaseAuth, async (userFirebase) => {
+      if (!userFirebase) {
+        setIsRegistered(false);
+      }
       if (userFirebase) {
         setCurrentUser(userFirebase);
+
         //verifica si el usuario está en bdd
 
         const user = await getUser(userFirebase?.uid);
@@ -65,7 +69,6 @@ const UserContext = ({ children }) => {
           });
           setIsRegistered(true);
         }
-        setIsRegistered(false);
       }
       setLoading(false);
     });

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userAuth } from "../../../context/auth-context";
 import { getBillsByUser } from "../../../firebase/getBillsByUser";
-import UserOrders from "../../../components/userOrders/UserOrders";
+import UserOrders from "../../../components/UserOrders/UserOrders";
 import DeliveryIcon from "../../../icons/DeliveryIcon";
 import LoadingOrder from "../../../icons/LoadingOrder";
 import ProcessingIcon from "../../../icons/ProcessingIcon";

@@ -7,8 +7,8 @@ import { Loading } from "../../../components/Loading/Loading";
 import Swal from "sweetalert2";
 const Profile_userReviews = () => {
   const [userRevs, setUserRevs] = useState(null);
-  const [deleted, setDeleted] = useState(null);
   const { currentUser, loading } = useContext(userAuth);
+  const [aux, setAux] = useState(true);
   useEffect(() => {
     const fetchReviews = async () => {
       if (currentUser) {
@@ -19,10 +19,11 @@ const Profile_userReviews = () => {
       }
     };
     fetchReviews();
-  }, [currentUser, deleted]);
+  }, [currentUser, aux]);
 
   const handleDelete = async (review) => {
     await deleteReview(currentUser?.uid, review);
+    setAux(!aux);
     const Toast = Swal.mixin({
       toast: true,
       position: "top-end",
@@ -38,9 +39,6 @@ const Profile_userReviews = () => {
       icon: "success",
       title: `La review ha sido eliminada con éxito`,
     });
-    setTimeout(() => {
-      location.reload();
-    }, 2000);
   };
   return (
     <div>
