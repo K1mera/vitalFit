@@ -5,7 +5,7 @@ import { UsersManagement } from "../views";
 
 import bgImage from "/assets/image-loginPage.jpeg";
 import AddProducts from "../components/addProduct/AddProducts";
-import Orders from "../components/orders/orders";
+import Orders from "../components/orders/Orders";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
