@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { userAuth } from "../../context/auth-context";
 import { userDirectionBDD } from "../../firebase/userDirectionBDD";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../../components/Loading/Loading";
 
 const PreCheckout = () => {
   const { currentUser, user, loading, setShowCart } = useContext(userAuth);
@@ -58,7 +59,7 @@ const PreCheckout = () => {
   return (
     <div>
       {loading ? (
-        <p>loading...</p>
+        <Loading />
       ) : (
         <form className="flex-row my-2 mx-auto w-[50vw] font-bebas text-xl">
           <p>
