@@ -16,7 +16,7 @@ const CardOrders = ({ orderId, arrayData, fecha, status, quantityItems }) => {
       ? arrayData.reduce((t, item) => t + item.unit_price * item.quantity, 0)
       : arrayData[0].unit_price * arrayData[0].quantity;
   return (
-    <Link to={`detail/${orderId}`} target="blank">
+    <Link to={`detail/${orderId}`}>
       <div className="p-4 font-montserrat transition hover:scale-[101%]">
         {/*   <span className="w-[30%]">#{newOrder}</span>
       <span className="w-[30%]">
