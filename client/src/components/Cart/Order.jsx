@@ -3,6 +3,7 @@ import { userAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../../icons/BackIcon";
 import MercadoPago from "../MercadoPago/MercadoPago";
+import createBill from "../../firebase/createBill";
 
 const Order = () => {
   const navigate = useNavigate();
@@ -107,10 +108,7 @@ const Order = () => {
   const handlePay = async () => {
     if (!currentUser) navigate("/auth/loginUser");
 
-    console.log(user);
     if (user.dataCompleted) {
-      console.log("entró");
-
       setItemsToPay(arrayItems);
       setUserToPay({
         id: user.id,
