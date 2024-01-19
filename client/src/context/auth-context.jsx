@@ -8,6 +8,7 @@ import getCartProducts from "../firebase/getCartProducts";
 import addCarrito from "../firebase/addCarrito";
 import { getReviewsByUser } from "../firebase/getReviewsByUser";
 import { updateBillMP } from "../firebase/updateBillMP";
+import getAllBills from "../firebase/getAllBills";
 
 export const userAuth = createContext();
 
@@ -29,6 +30,9 @@ const UserContext = ({ children }) => {
         //verifica si el usuario está en bdd
 
         const user = await getUser(userFirebase?.uid);
+        const bills = await getAllBills();
+
+        console.log(user);
 
         if (user) {
           setUser(user);

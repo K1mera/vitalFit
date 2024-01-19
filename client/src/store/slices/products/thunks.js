@@ -38,6 +38,7 @@ export const getProducts = (page = 1) => {
     });
     dispatch(setProducts(data));
     dispatch(setCurrentPage(page));
+    return data;
   };
 };
 
@@ -168,6 +169,17 @@ export const putProduct = (productData, id) => {
       const response = await productsIns.put(`/product/${id}`, productData);
       console.log(response.data);
       //  dispatch(getProducts());
+    } catch (error) {
+      console.log("Error:", error.message);
+    }
+    //
+  };
+};
+export const borradoLogico = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await productsIns.put(`/activar-desactivar/${id}`);
+      console.log(response.data);
     } catch (error) {
       console.log("Error:", error.message);
     }
