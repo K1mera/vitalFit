@@ -13,6 +13,7 @@ import {
 import ProductsPage from "../pages/ProductsPage";
 import PreCheckout from "../pages/Pre-checkout/PreCheckout";
 import Profile_Orders from "../pages/Profile/Components/Profile_Orders";
+import Profile_userReviews from "../pages/Profile/Components/Profile_userReviews";
 
 // import { Detail } from "../components/DetailCard/detail.jsx";
 
@@ -34,7 +35,8 @@ export const AppRouter = () => {
         {/* agreguen la ruta de las paginas que creen aquí abajo */}
         <Route path="/productspage" element={<ProductsPage />} />
         <Route path="/preCheckout" element={<PreCheckout />} />
-        <Route path="checkout/successfull" element={<Succesfull />} />
+        <Route path="/checkout/successfull" element={<Succesfull />} />
+        <Route path="/reviews" element={<Profile_userReviews />} />
         <Route path="/resetPass" element={<ResetPassword />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/*" element={<Navigate to="/home" />} />

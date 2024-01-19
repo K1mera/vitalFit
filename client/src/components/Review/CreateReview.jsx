@@ -3,6 +3,7 @@ import { FaStar } from "react-icons/fa";
 import { createReview } from "../../firebase/createReview";
 import { userAuth } from "../../context/auth-context";
 import { CloseIcon } from "../../icons/CloseIcon";
+import Swal from "sweetalert2";
 
 export const CreateReview = ({ setShowReview, selectedItem }) => {
   const { currentUser } = useContext(userAuth);
@@ -22,16 +23,49 @@ export const CreateReview = ({ setShowReview, selectedItem }) => {
   const handleRatingHover = (value) => setHoveredRating(value);
   const handleRatingLeave = () => setHoveredRating(undefined);
 
-  const handleFeedbackChange = (e) => setFeedback(e.target.value);
+  const handleFeedbackChange = (e) => {
+    if (feedback.length < 250) {
+      setFeedback(e.target.value);
+    }
+    return;
+  };
 
   const saveData = async (e) => {
     e.preventDefault();
     if (!feedback.trim()) {
-      alert("Por favor ingresa tu comentario antes de enviar la valoración");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: `Por favor, ingresa tu comentario antes de enviar`,
+      });
       return;
     }
     if (!selectedRating) {
-      alert("Por favor selecciona un rating");
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        },
+      });
+      Toast.fire({
+        icon: "error",
+        title: `Por favor, ingresa una puntuación`,
+      });
       return;
     }
     await createReview(currentUser?.uid, {
@@ -40,9 +74,24 @@ export const CreateReview = ({ setShowReview, selectedItem }) => {
       itemId: selectedItem.id,
       userReview,
       rating: selectedRating,
+      itemImg: selectedItem.picture_url,
     });
     setShowReview(false);
-    window.alert("gracias por tu valoración");
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: `Gracias por tus comentarios!`,
+    });
   };
 
   return (
@@ -50,17 +99,18 @@ export const CreateReview = ({ setShowReview, selectedItem }) => {
       <div
         className="bg-white
         rounded
-        mt-36
+        mt-20
         flex
         flex-col
         justify-center
         items-center
         m-auto
-        w-min  
+        w-[50vw]
+        h-auto 
         p-5
       
       ">
-        <section className=" w-96  text-right">
+        <section className=" w-[45vw]  text-right">
           <button onClick={() => setShowReview()}>
             <CloseIcon
               className={
@@ -71,7 +121,7 @@ export const CreateReview = ({ setShowReview, selectedItem }) => {
         </section>
         <span className="font-bebas text-3xl">
           {" "}
-          Review para <span className="text-primary">{selectedItem.name}</span>
+          Review para <span className="text-primary">{selectedItem.title}</span>
         </span>
         <div>
           <div className="flex my-3">
@@ -93,10 +143,11 @@ export const CreateReview = ({ setShowReview, selectedItem }) => {
         </div>
         <div>
           <textarea
-            className="w-96 font-montserrat border-slate-400 resize-none h-56 focus:ring-0 focus:border-slate-400"
+            className="w-[40vw] font-montserrat border-slate-400 resize-none h-36 focus:ring-0 focus:border-slate-400"
             placeholder="Escribe tu opinión del producto recibido"
             value={feedback}
             onChange={handleFeedbackChange}></textarea>
+          <p className=" text-end  text-slate-600">{feedback.length}/250</p>
           <div className="text-center">
             <button
               className="bg-primary p-2 rounded font-bebas text-white text-xl mt-2"

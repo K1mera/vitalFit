@@ -4,6 +4,9 @@ import { getBillsByUser } from "../../../firebase/getBillsByUser";
 import UserOrders from "../../../components/userOrders/UserOrders";
 import DeliveryIcon from "../../../icons/DeliveryIcon";
 import LoadingOrder from "../../../icons/LoadingOrder";
+import ProcessingIcon from "../../../icons/ProcessingIcon";
+import { Loading } from "../../../components/Loading/Loading";
+import CheckIcon from "../../../icons/CheckIcon";
 
 const Profile_Orders = () => {
   const { currentUser } = useContext(userAuth);
@@ -16,7 +19,11 @@ const Profile_Orders = () => {
       try {
         if (currentUser) {
           const billsByUser = await getBillsByUser(currentUser?.uid);
-          if (billsByUser) setOrders(billsByUser);
+
+          if (billsByUser) {
+            const filtered = billsByUser.filter((e) => e.status !== "pending");
+            setOrders(filtered);
+          }
           setLoading(false);
           return;
         }
@@ -37,9 +44,9 @@ const Profile_Orders = () => {
   return (
     <div>
       {loading ? (
-        <p>Cargando...</p>
+        <Loading />
       ) : (
-        <div className=" max-w-max mx-auto p-10 mt-16">
+        <div className=" max-w-max mx-auto p-10 mt-4">
           <h2 className="text-3xl font-bebas mb-10 text-center">Tus compras</h2>
           <div className="mx-auto grid grid-cols-2">
             {orders &&
@@ -65,7 +72,7 @@ const Profile_Orders = () => {
                         <p>
                           {i.data[0].title}
                           {i.data.length - 1 > 0 && (
-                            <span>y {i.data.length - 1} productos más</span>
+                            <span> y {i.data.length - 1} productos más</span>
                           )}
                         </p>
                       </article>
@@ -74,18 +81,33 @@ const Profile_Orders = () => {
                       </article>
                       <article className="">
                         {i.status == "send" ? (
-                          <div>
+                          <div className="flex text-sm items-center text-slate-700">
                             <DeliveryIcon className="mb-1 fill-primary w-10 " />
-                            <p>Tu compra está en camino</p>
+                            <p className="ml-3">Tu compra está en camino</p>
                           </div>
-                        ) : i.status == "succesfull" ? (
-                          <div className="flex text-sm">
-                            <LoadingOrder className="mb-1 fill-primary w-6 " />
+                        ) : i.status == "accept" ? (
+                          <div className="flex text-sm items-center">
+                            <ProcessingIcon className="mb-1  w-10" />
+
                             <p className="ml-3 text-slate-700">
-                              Tu compra está en proceso
+                              Estamos preparando tu orden
                             </p>
                           </div>
-                        ) : null}
+                        ) : i.status == "received" ? (
+                          <div className="flex text-sm items-center">
+                            <CheckIcon className="mb-1 text-primary w-9 " />
+                            <p className="ml-3 text-slate-700">
+                              Indicaste que recibiste tu pedido!
+                            </p>
+                          </div>
+                        ) : (
+                          <div className="flex text-sm items-center">
+                            <LoadingOrder className="mb-1 fill-primary w-9 " />
+                            <p className="ml-3 text-slate-700">
+                              Tu orden aún no ha sido procesada
+                            </p>
+                          </div>
+                        )}
                       </article>
                     </article>
                   </div>

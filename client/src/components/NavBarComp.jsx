@@ -40,7 +40,6 @@ export const NavBarComp = () => {
   }, [currentUser]);
 
   const resetFilters = () => {
-    console.log("resetFilterOn");
     dispatch(cleanFilters());
     dispatch(cleanSorts());
     dispatch(cleanSearch());
@@ -74,41 +73,6 @@ export const NavBarComp = () => {
             onClick={resetFilters}>
             Productos
           </NavLink>
-          <NavLink
-            to="training"
-            className={({ isActive }) =>
-              `hover:text-tertiary ${
-                !isActive
-                  ? "text-black"
-                  : "text-primary underline decoration-primary underline-offset-4"
-              }`
-            }>
-            Training
-          </NavLink>
-          {/*<NavLink
-            to="blog"
-            className={({ isActive }) =>
-              `hover:text-tertiary ${
-                !isActive
-                  ? "text-black"
-                  : "text-primary underline decoration-primary underline-offset-4"
-              }`
-            }
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            to="asesorias"
-            className={({ isActive }) =>
-              `hover:text-tertiary ${
-                !isActive
-                  ? "text-black"
-                  : "text-primary underline decoration-primary underline-offset-4"
-              }`
-            }
-          >
-            Asesorias
-          </NavLink> */}
         </section>
         <section className="flex gap-2 w-[195px]">
           {/* // todo  */}
@@ -122,7 +86,7 @@ export const NavBarComp = () => {
                 marginTop: "2.5%",
               }}
               className={
-                "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+                "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary cursor-pointer"
               }
             />
           )}

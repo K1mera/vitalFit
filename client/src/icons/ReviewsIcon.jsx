@@ -1,7 +1,9 @@
 import React from "react";
 import { FavoriteIcon } from "./FavoriteIcon";
+import { useNavigate } from "react-router-dom";
 
 const ReviewsIcon = () => {
+  const navigate = useNavigate();
   return (
     <div className="group inline-block ">
       <button className="outline-none focus:outline-none  px-3 py-1  rounded-sm flex items-center min-w-32 max-sm:w-screen">
@@ -18,10 +20,15 @@ const ReviewsIcon = () => {
 transition duration-150 ease-in-out origin-top min-w-32 z-10">
         <ul>
           <li className="rounded-sm px-3 py-1 hover:bg-gray-100 font-montserrat">
-            <a href="/orders">Mis compras</a>
+            <button onClick={() => navigate("/orders")}>Mis compras</button>
           </li>
           <li className="rounded-sm px-3 py-1 hover:bg-gray-100 font-montserrat">
-            <a href="/createReviews">Agregar reviews</a>
+            <button onClick={() => navigate("/createReviews")}>
+              Agregar review
+            </button>
+          </li>
+          <li className="rounded-sm px-3 py-1 hover:bg-gray-100 font-montserrat">
+            <button onClick={() => navigate("/reviews")}>Mis reviews</button>
           </li>
         </ul>
       </ul>
