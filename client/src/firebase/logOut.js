@@ -25,7 +25,7 @@ const logOutUser = async () => {
       toast: true,
       position: "top-end",
       showConfirmButton: false,
-      timer: 5000,
+      timer: 2000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.onmouseenter = Swal.stopTimer;
@@ -36,7 +36,10 @@ const logOutUser = async () => {
       icon: "success",
       title: `Sesión cerrada exitosamente`,
     });
-    window.location.reload();
+    setTimeout(() => {
+      window.location.href = "/home";
+    }, 2000);
+
     return true;
   } else {
     console.log("No se pudo cerrar sesion");

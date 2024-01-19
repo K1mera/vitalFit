@@ -45,7 +45,6 @@ const addProductToCart = async (uid, product) => {
           (await updateDoc(cartDocRef, { productos: arrayUnion(...product) }));
       }
     } else {
-      console.log(product);
       cartDoc.exists() &&
         product &&
         (await updateDoc(cartDocRef, { productos: arrayUnion(product) }));
