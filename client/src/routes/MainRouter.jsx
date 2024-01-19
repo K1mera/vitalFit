@@ -1,10 +1,4 @@
-import {
-  Navigate,
-  Route,
-  useLocation,
-  Routes,
-  HashRouter,
-} from "react-router-dom";
+import { Navigate, Route, useLocation, Routes } from "react-router-dom";
 
 import { AppRouter, AuthRoutes } from "./";
 import { useDispatch } from "react-redux";
@@ -26,21 +20,19 @@ export const MainRouter = () => {
   }, [dispatch]);
 
   return (
-    <HashRouter>
-      <Routes>
-        {user.role === "admin" ? (
-          <Route path="/*" element={<AdminRoutes />} />
-        ) : (
-          <Route path="/*" element={<AppRouter />} />
-        )}
+    <Routes>
+      {user.role === "admin" ? (
+        <Route path="/*" element={<AdminRoutes />} />
+      ) : (
+        <Route path="/*" element={<AppRouter />} />
+      )}
 
-        {status !== "online" && (
-          <>
-            <Route path="auth/*" element={<AuthRoutes />} />
-            <Route path="/*" element={<AppRouter />} />
-          </>
-        )}
-      </Routes>
-    </HashRouter>
+      {status !== "online" && (
+        <>
+          <Route path="auth/*" element={<AuthRoutes />} />
+          <Route path="/*" element={<AppRouter />} />
+        </>
+      )}
+    </Routes>
   );
 };
