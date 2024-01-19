@@ -14,6 +14,7 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./slider.css";
 import BackIcon from "../icons/BackIcon";
+import Swal from "sweetalert2";
 
 export const DetailPage = () => {
   const dispatch = useDispatch();
@@ -101,6 +102,17 @@ export const DetailPage = () => {
         }
       }
     }
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+    });
+    Toast.fire({
+      icon: "success",
+      title: `Producto agregado al carrito`,
+    });
   };
 
   const increaseAmount = () => {
