@@ -2,7 +2,8 @@ import {
   Navigate,
   Route,
   useLocation,
-  HashRouter as Routes,
+  Routes,
+  HashRouter,
 } from "react-router-dom";
 
 import { AppRouter, AuthRoutes } from "./";
@@ -25,19 +26,21 @@ export const MainRouter = () => {
   }, [dispatch]);
 
   return (
-    <Routes>
-      {user.role === "admin" ? (
-        <Route path="/*" element={<AdminRoutes />} />
-      ) : (
-        <Route path="/*" element={<AppRouter />} />
-      )}
-
-      {status !== "online" && (
-        <>
-          <Route path="auth/*" element={<AuthRoutes />} />
+    <HashRouter>
+      <Routes>
+        {user.role === "admin" ? (
+          <Route path="/*" element={<AdminRoutes />} />
+        ) : (
           <Route path="/*" element={<AppRouter />} />
-        </>
-      )}
-    </Routes>
+        )}
+
+        {status !== "online" && (
+          <>
+            <Route path="auth/*" element={<AuthRoutes />} />
+            <Route path="/*" element={<AppRouter />} />
+          </>
+        )}
+      </Routes>
+    </HashRouter>
   );
 };
