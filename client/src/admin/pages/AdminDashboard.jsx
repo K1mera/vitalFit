@@ -8,7 +8,7 @@ import AddProducts from "../components/addProduct/AddProducts";
 
 import {useDispatch} from "react-redux";
 import {getLogout} from "../../store";
-import Orders from "../components/orders/orders";
+import Orders from "../components/orders/Orders";
 
 
 export const AdminDashboard = () => {
