@@ -24,7 +24,9 @@ export const NavBarComp = () => {
     setCurrentUser,
     setProductsLocalStorage,
     setProducts,
+    isRegistered,
   } = useContext(userAuth);
+  console.log(isRegistered);
 
   const logOut = async () => {
     const respuesta = await logOutUser();
