@@ -37,7 +37,7 @@ export const AppRouter = () => {
         <Route path="/preCheckout" element={<PreCheckout />} />
         <Route path="/checkout/successfull" element={<Succesfull />} />
         <Route path="/reviews" element={<Profile_userReviews />} />
-        <Route path="/resetPass" element={<ResetPassword />} />
+        
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/*" element={<Navigate to="/home" />} />
         <Route path="/detail/:id" element={<DetailPage />} />

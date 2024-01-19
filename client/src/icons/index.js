@@ -7,4 +7,5 @@ export * from './LogoIconWhite'
 export * from './ShoppingCartIcon'
 export * from './UserIcon'
 export * from './DeleteIcon'
+export * from './DeleteImageIcon'
 

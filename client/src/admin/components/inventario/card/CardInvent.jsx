@@ -18,10 +18,10 @@ export default function CardInvent({ id, name, price, image, stock }) {
 
   return (
     <section
-      className={`flex gap-4 p-4 my-3 shadow-md rounded-xl transition hover:scale-[101%] bg-white ${style.Card}`}
+      className={`flex h-18 gap-4 p-4 my-3 shadow-md rounded-xl transition hover:scale-[101%] bg-white ${style.Card}`}
     >
-      <div className={style.ImageContainer}>
-        <img src={image} alt="IMG" className="w-[50px]" />
+      <div className="h-[80%] w-[50px] ">
+        <img src={image} alt="IMG" className="object-cover " />
       </div>
       <div className="flex gap-2 w-full justify-center items-center ">
         <h3 className="w-[50%]">{name}</h3>

@@ -3,12 +3,14 @@ import getUsers from "../../firebase/getUsers";
 import { UserCardComp } from "../components";
 
 export const UsersManagement = () => {
+
     const [listUsers, setListUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const startIndex = (currentPage - 1) * 7;
     const userPaginate = listUsers.slice(startIndex, startIndex + 7);
     const pages = Math.ceil(listUsers.length / 7);
     const [aux, setAux] = useState(true);
+
 
     useEffect(() => {
         const users = async () => {
@@ -25,6 +27,7 @@ export const UsersManagement = () => {
             setCurrentPage(currentPage + 1);
         }
     };
+
 
     const actualizarPadre = ()=> {
         setAux(!aux)
@@ -68,3 +71,4 @@ export const UsersManagement = () => {
         </main>
     );
 };
+
