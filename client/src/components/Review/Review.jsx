@@ -1,9 +1,9 @@
 import React from "react";
 
-const Review = ({ name, feedback, rating }) => {
+const Review = ({ name, feedback, rating, fecha }) => {
   return (
-    <div className="w-[400px] mx-auto relative bg-gradient-to-r from-red-400 to-slate-400 text-white rounded-lg overflow-hidden shadow-lg mb-5 flex p-4">
-      <div className="p-1 rounded-full shadow-md">
+    <div className="w-[450px] mx-auto relative bg-gradient-to-r from-slate-200 to-slate-300 text-black rounded-lg overflow-hidden shadow-lg mb-5 flex p-4">
+      <div className="p-1 rounded-full shadow-md h-fit">
         <img
           src={
             "https://i0.wp.com/digitalhealthskills.com/wp-content/uploads/2022/11/3da39-no-user-image-icon-27.png?fit=500%2C500&ssl=1"
@@ -28,7 +28,10 @@ const Review = ({ name, feedback, rating }) => {
             ))}
           </div>
         </div>
-        <p className="text-white text-sm mt-2 font-montserrat">{feedback}</p>
+        <p className=" text-sm mt-2 font-montserrat font-medium text-slate-900">
+          {feedback}
+        </p>
+        <p className="text-end text-slate-600 mt-2">{fecha}</p>
       </div>
     </div>
   );

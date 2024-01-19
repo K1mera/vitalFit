@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { CreateReview } from "../../../components/Review/CreateReview";
 import { getBillsByUser } from "../../../firebase/getBillsByUser";
 import { userAuth } from "../../../context/auth-context";
+import { Loading } from "../../../components/Loading/Loading";
 
 export const Profile_Reviews = () => {
   const { currentUser } = useContext(userAuth);
@@ -62,13 +63,13 @@ export const Profile_Reviews = () => {
   return (
     <div>
       {loading ? (
-        <p>Cargando...</p>
+        <Loading />
       ) : (
-        <div className=" max-w-max mx-auto p-10 mt-16">
+        <div className=" max-w-max mx-auto p-10 mt-18">
           <h2 className="text-3xl font-bebas mb-10 text-center">
             Estos son los productos que has comprado!
           </h2>
-          <div className=" mx-auto">
+          <div className={shopping.length < 3 ? "mb-40 mx-auto" : "mx-auto"}>
             {shopping &&
               shopping.map((e, index) => (
                 <section
