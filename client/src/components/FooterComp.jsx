@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import { LogoIconWhite } from "../icons"
 
 
@@ -13,21 +14,17 @@ export const FooterComp = () => {
       <section className="h-full">
         <h1 className="text-2xl font-bebas text-white">Sitio Web</h1>
         <ul className="text-white mt-2">
-          <li className="hover:text-primary">Productos</li>
-          <li className="hover:text-primary">Asesorías</li>
-          <li className="hover:text-primary">Ofertas</li>
-          <li className="hover:text-primary">Preguntas frecuentes</li>
-          <li className="hover:text-primary">Blog</li>
-          <li className="hover:text-primary">Contacto</li>
+          <li className="hover:text-primary cursor-pointer"><Link to='/productsPage'>Productos</Link></li>
+          {/* <li className="hover:text-primary cursor-pointer">Contacto</li> */}
         </ul>
       </section>
       <section className="h-full text-white ">
         <h1 className="text-2xl font-bebas">Social Media</h1>
         <ul className="text-white mt-2">
-          <li className="hover:text-primary">Facebook</li>
-          <li className="hover:text-primary">Instagram</li>
-          <li className="hover:text-primary">Youtube</li>
-          <li className="hover:text-primary">TikTok</li>
+          <li className="hover:text-primary cursor-pointer">Facebook</li>
+          <li className="hover:text-primary cursor-pointer">Instagram</li>
+          <li className="hover:text-primary cursor-pointer">Youtube</li>
+          <li className="hover:text-primary cursor-pointer">TikTok</li>
         </ul>
       </section>
     </footer>

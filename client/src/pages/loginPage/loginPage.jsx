@@ -4,13 +4,14 @@ import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginWithEmail } from "../../store";
 import getUsers from "../../store/slices/auth/getDocs";
 import bgImage from "/assets/image-loginPage.jpeg";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
 
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
@@ -67,37 +68,45 @@ export const LoginPage = () => {
               toast.onmouseleave = Swal.resumeTimer;
             },
           });
-          Toast.fire({
-            icon: "success",
-            title: `Bienvenido ${userLogin.displayName}`,
-          });
+          if (userLogin.displayName) {
+            Toast.fire({
+              icon: "success",
+              title: `Bienvenido ${userLogin.displayName}`,
+            });
 
-          setLogin({
-            correo: "",
-            contraseña: "",
-          });
+            setLogin({
+              correo: "",
+              contraseña: "",
+            });
+          } else {
+            Toast.fire({
+              icon: "error",
+              title: `Usuario no encontrado, email o contraseña incorrectos`,
+            });
+          }  
         }
-      } else {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 5000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: `Usuario no encontrado, email o contraseña incorrectos`,
-        });
-      }
-    } catch (error) {
+      } } catch (error) {
       console.log(error.message, "mensaje");
     }
-  };
+  }
+        
+  //     } else {
+
+  //       const Toast = Swal.mixin({
+  //         toast: true,
+  //         position: "top-end",
+  //         showConfirmButton: false,
+  //         timer: 5000,
+  //         timerProgressBar: true,
+  //         didOpen: (toast) => {
+  //           toast.onmouseenter = Swal.stopTimer;
+  //           toast.onmouseleave = Swal.resumeTimer;
+  //         },
+  //       });
+        
+  //     }
+    
+  // };
 
   const validationFormLogin = () => {
     return (
@@ -111,20 +120,7 @@ export const LoginPage = () => {
       <div className="flex items-center justify-center h-screen overflow-hidden">
         <img className="w-full h-full object-cover" src={bgImage} />
       </div>
-      {/* <NavLink to={"/loginUser"}>
-        <span
-          style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-          className={"absolute top-10 right-14 text-3xl"}
-        >
-          Soy
-        </span>
-        <span
-          style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-          className={"absolute top-20 right-11 text-4xl"}
-        >
-          ADMIN
-        </span>
-      </NavLink> */}
+
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-1/4 z-20"
@@ -194,8 +190,8 @@ export const LoginPage = () => {
           )}
           <br />
           <button
-            disabled={validationFormLogin()}
-            onClick={signUpWithPasswordAndEmail}
+            
+            type="submit"
             style={{
               fontFamily: "NuevaFuente, bebas neue",
               color: " #D9D9D9",
@@ -208,7 +204,10 @@ export const LoginPage = () => {
               marginBottom: "10px",
               marginTop: "12px",
               marginLeft: "145px",
+              cursor: "pointer",
             }}
+            disabled={status === "checking"}
+            className="disabled:opacity-70"
           >
             ENTRAR
           </button>
@@ -236,7 +235,7 @@ export const LoginPage = () => {
             </span>
           </NavLink>
           <br />
-          <NavLink to={"/resetPass"}>
+          <NavLink to={"/auth/resetPass"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",

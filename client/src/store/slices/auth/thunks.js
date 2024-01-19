@@ -18,14 +18,12 @@ export const loginWithEmail = (email, password) => {
           email,
           password
         );
+        if (!ok) return dispatch(logout(errorCode));
+
         const data = await getUser(uid);
         const role = data.role || 'user'
         
-
-        if (!ok) return dispatch(logout(errorCode));
-        
-
-        dispatch(login( {email, uid, photoURL, displayName, role} ))
+        dispatch(login( { email, uid, photoURL, displayName, role} ))
         // console.log();
     }
 }
@@ -34,6 +32,7 @@ export const startGoogle = () => {
     return async( dispatch ) => {
         dispatch(checkingGoogleCredentials());
         const result = await signInWithGoogle();
+        if (!result.ok) return dispatch(logout(result.errorMessage));
         
         
         dispatch(login(result))

@@ -142,9 +142,10 @@ export const searchProduct = (search) => {
 
 export const deleteProduct = (id) => {
   return async (dispatch) => {
+    dispatch(startLoading())
     const response = await productsIns.delete(`/product/${id}`);
 
-    console.log(response);
+    // console.log(response);
     // aca despachamos la accion para obtener los productos actualizados
     dispatch(getProducts());
   };

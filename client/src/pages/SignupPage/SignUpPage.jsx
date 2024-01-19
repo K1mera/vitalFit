@@ -5,7 +5,7 @@ import { validationForm } from "./validations";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { startCreateUser, startGoogle } from "../../store";
 import { registerUserBDD } from "../../firebase/registerUserBDD";
 import sendEmail from "../../sendEmail/sendEmail";
@@ -14,6 +14,7 @@ import bgImage from "/assets/image-loginPage.jpeg";
 
 export const SingUpPage = () => {
   const dispatch = useDispatch();
+  const { status } = useSelector( state => state.auth )
   const [handleForm, setHandleForm] = useState({
     nombre: "",
     apellido: "",
@@ -156,18 +157,7 @@ export const SingUpPage = () => {
           src={bgImage}
         />
       </div>
-      <span
-        style={{ fontFamily: "NuevaFuente, montserrat", color: "#D9D9D9" }}
-        className={"absolute top-10 right-14 text-3xl"}
-      >
-        Soy
-      </span>
-      <span
-        style={{ fontFamily: "NuevaFuente, bebas neue", color: "#D74545 " }}
-        className={"absolute top-20 right-11 text-4xl"}
-      >
-        ADMIN
-      </span>
+
       <div className="w-100% flex items-center justify-center">
         <div
           className="absolute top-20 z-20 justify-center"
@@ -300,7 +290,7 @@ export const SingUpPage = () => {
             <p className="text-red-400">{errors.confirmarContraseña}</p>
           )}
           <button
-            disabled={validationDisabledButton()}
+            disabled={ status === "checking" }
             onClick={submit}
             style={{
               fontFamily: "NuevaFuente, bebas neue",
@@ -315,6 +305,7 @@ export const SingUpPage = () => {
               marginTop: "12px",
               marginLeft: "145px",
             }}
+            className="disabled:opacity-70"
           >
             CREAR
           </button>
@@ -329,6 +320,8 @@ export const SingUpPage = () => {
               padding: "2.5%",
               borderRadius: "9px",
             }}
+            disabled={status === "checking"}
+            className="disabled:opacity-70"
           >
             <FcGoogle />{" "}
             <span

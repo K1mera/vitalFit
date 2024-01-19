@@ -98,7 +98,7 @@ export const Inventario = () => {
     }
   };
   return (
-    <main>
+    <main className="h-full">
       <NavbarInvent />
       <section>
         {newProducts?.map(({ id, name, price, image, stock, active }) => {
