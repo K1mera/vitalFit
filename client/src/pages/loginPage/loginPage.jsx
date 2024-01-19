@@ -68,37 +68,45 @@ export const LoginPage = () => {
               toast.onmouseleave = Swal.resumeTimer;
             },
           });
-          Toast.fire({
-            icon: "success",
-            title: `Bienvenido ${userLogin.displayName}`,
-          });
+          if (userLogin.displayName) {
+            Toast.fire({
+              icon: "success",
+              title: `Bienvenido ${userLogin.displayName}`,
+            });
 
-          setLogin({
-            correo: "",
-            contraseña: "",
-          });
+            setLogin({
+              correo: "",
+              contraseña: "",
+            });
+          } else {
+            Toast.fire({
+              icon: "error",
+              title: `Usuario no encontrado, email o contraseña incorrectos`,
+            });
+          }  
         }
-      } else {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 5000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          },
-        });
-        Toast.fire({
-          icon: "error",
-          title: `Usuario no encontrado, email o contraseña incorrectos`,
-        });
-      }
-    } catch (error) {
+      } } catch (error) {
       console.log(error.message, "mensaje");
     }
-  };
+  }
+        
+  //     } else {
+
+  //       const Toast = Swal.mixin({
+  //         toast: true,
+  //         position: "top-end",
+  //         showConfirmButton: false,
+  //         timer: 5000,
+  //         timerProgressBar: true,
+  //         didOpen: (toast) => {
+  //           toast.onmouseenter = Swal.stopTimer;
+  //           toast.onmouseleave = Swal.resumeTimer;
+  //         },
+  //       });
+        
+  //     }
+    
+  // };
 
   const validationFormLogin = () => {
     return (

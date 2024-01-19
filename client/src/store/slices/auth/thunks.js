@@ -23,7 +23,7 @@ export const loginWithEmail = (email, password) => {
         const data = await getUser(uid);
         const role = data.role || 'user'
         
-        dispatch(login( {email, uid, photoURL, displayName, role} ))
+        dispatch(login( { email, uid, photoURL, displayName, role} ))
         // console.log();
     }
 }
