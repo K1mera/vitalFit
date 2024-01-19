@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { firebaseDb } from "../../firebase/config";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 
-export const UserCardComp = ({ user }) => {
+export const UserCardComp = ({ user, actualizarPadre }) => {
     const [botonStatus, setBotonStatus] = useState(user.disabled);
     const { displayName, email, role, id } = user;
-  
+
 
     useEffect(() => {
         setBotonStatus(user.disabled);
@@ -20,6 +20,7 @@ export const UserCardComp = ({ user }) => {
                 disabled: !currentDisabledStatus,
             });
             setBotonStatus(!botonStatus);
+            actualizarPadre()
             console.log("Usuario inhabilitado en Firestore");
         } catch (error) {
             console.error("Error al inhabilitar usuario", error);
