@@ -6,6 +6,7 @@ import { userAuth } from "../../context/auth-context";
 import { useDispatch } from "react-redux";
 import { putProduct } from "../../store";
 import { Loading } from "../../components/Loading/Loading";
+import sendEmail from "../../SendEmail/SendEmail";
 
 export const Succesfull = () => {
   const { currentUser, loading } = useContext(userAuth);

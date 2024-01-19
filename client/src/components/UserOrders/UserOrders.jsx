@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { CloseIcon } from "../../icons/CloseIcon";
 import { userAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";

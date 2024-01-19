@@ -8,13 +8,13 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { startCreateUser, startGoogle } from "../../store";
 import { registerUserBDD } from "../../firebase/registerUserBDD";
-import sendEmail from "../../sendEmail/sendEmail";
+import sendEmail from "../../SendEmail/SendEmail";
 
 import bgImage from "/assets/image-loginPage.jpeg";
 
 export const SingUpPage = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector( state => state.auth )
+  const { status } = useSelector((state) => state.auth);
   const [handleForm, setHandleForm] = useState({
     nombre: "",
     apellido: "",
@@ -42,7 +42,7 @@ export const SingUpPage = () => {
     e.preventDefault();
 
     try {
-       sendEmail(
+      sendEmail(
         handleForm.correo,
         "te enviamos este correo para contarte que tu registro fue exitoso!",
         "Bienvenido! Espero disfrutes de nuestro viaje juntos!"
@@ -290,7 +290,7 @@ export const SingUpPage = () => {
             <p className="text-red-400">{errors.confirmarContraseña}</p>
           )}
           <button
-            disabled={ status === "checking" }
+            disabled={status === "checking"}
             onClick={submit}
             style={{
               fontFamily: "NuevaFuente, bebas neue",
