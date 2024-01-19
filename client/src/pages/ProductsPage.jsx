@@ -11,6 +11,7 @@ export default function ProductsPage() {
   const { products, currentPage, totalPages, filters, sorts, loading } =
     useSelector((state) => state.product);
 
+  const filtered = products.filter((e) => e.active === true);
   useEffect(() => {
     dispatch(getProducts());
     window.scrollTo(0, 0);
@@ -41,8 +42,8 @@ export default function ProductsPage() {
           <Loading />
         ) : (
           <section className={style.cardsContainer}>
-            {products.length ? (
-              products
+            {filtered.length ? (
+              filtered
                 .slice(startIndex, startIndex + 8)
                 .map(({ id, name, price, image, stock }) => {
                   return (
@@ -64,7 +65,7 @@ export default function ProductsPage() {
           </section>
         )}
 
-        {products.length > 0 && (
+        {filtered.length > 0 && (
           <section className="flex items-center justify-center gap-2 mr-5 mb-5">
             <button
               onClick={handlePreviousPage}
