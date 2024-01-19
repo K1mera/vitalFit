@@ -5,6 +5,7 @@ import { updateBillMP } from "../../firebase/updateBillMP";
 import { userAuth } from "../../context/auth-context";
 import { useDispatch } from "react-redux";
 import { putProduct } from "../../store";
+import sendEmail from "../../sendEmail/sendEmail";
 
 export const Succesfull = () => {
   const { currentUser, loading } = useContext(userAuth);
@@ -28,7 +29,8 @@ export const Succesfull = () => {
 
     await clearCart(currentUser.uid);
     setPaymentResult(response[0].data);
-    sendEmail(currentUser.email, "te enviamos este correo para que sepas que tu compra fue finalizada y todo salió existoso!", "Esperamos disfrutes tu compra, gracias por preferirnos!")
+    const { email } = currentUser;
+    sendEmail(email, "te enviamos este correo para que sepas que tu compra fue finalizada y todo salió existoso! Pronto llegará tu pedido a la puerta de tu casa!", "Esperamos disfrutes tu compra, gracias por preferirnos!")
     return;
   };
 
@@ -44,7 +46,7 @@ export const Succesfull = () => {
       handlePayment();
       handleStock();
     }
-  }, [currentUser, paymentResult]);
+  }, [currentUser]);
 
   let totalPay = paymentResult?.reduce(
     (total, item) => total + item.unit_price * item.quantity,
