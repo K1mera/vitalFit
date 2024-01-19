@@ -19,7 +19,7 @@ export const Inventario = () => {
 
   useEffect(() => {}, [products]);
 
-  const startIndex = (currentPage - 1) * 8;
+  const startIndex = (currentPage - 1) * 4;
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -34,11 +34,11 @@ export const Inventario = () => {
   };
 
   return (
-    <main>
+    <main className="h-full">
       <NavbarInvent />
-      <section>
+      <section className="h-auto">
         {products
-          .slice(startIndex, startIndex + 3)
+          .slice(startIndex, startIndex + 4)
           .map(({ id, name, price, image, stock }) => {
             return (
               <CardInvent
@@ -55,7 +55,8 @@ export const Inventario = () => {
       <section className="flex items-center justify-center gap-2 mr-5 mb-5">
         <button
           onClick={handlePreviousPage}
-          className="font-bebas p-2 hover:text-primary"
+          disabled={currentPage <= 1}
+          className="font-bebas p-2 hover:text-primary disabled:opacity-25 disabled:hover:text-black"
         >
           prev
         </button>
@@ -64,7 +65,8 @@ export const Inventario = () => {
         </span>
         <button
           onClick={handleNextPage}
-          className="font-bebas p-2 hover:text-primary"
+          disabled={currentPage === totalPages}
+          className="font-bebas p-2 hover:text-primary disabled:opacity-25 disabled:hover:text-black"
         >
           next
         </button>

@@ -1,10 +1,5 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import {
-  Home,
-  DetailPage,
-  Succesfull,
-  Profile_Reviews,
-} from "../pages";
+import { Home, DetailPage, Succesfull, Profile_Reviews } from "../pages";
 
 import {
   FooterComp,
@@ -17,6 +12,8 @@ import {
 
 import ProductsPage from "../pages/ProductsPage";
 import PreCheckout from "../pages/Pre-checkout/PreCheckout";
+import Profile_Orders from "../pages/Profile/Components/Profile_Orders";
+import Profile_userReviews from "../pages/Profile/Components/Profile_userReviews";
 
 // import { Detail } from "../components/DetailCard/detail.jsx";
 
@@ -38,12 +35,14 @@ export const AppRouter = () => {
         {/* agreguen la ruta de las paginas que creen aquí abajo */}
         <Route path="/productspage" element={<ProductsPage />} />
         <Route path="/preCheckout" element={<PreCheckout />} />
-        <Route path="checkout/successfull" element={<Succesfull />} />
-        <Route path="/resetPass" element={<ResetPassword />} />
+        <Route path="/checkout/successfull" element={<Succesfull />} />
+        <Route path="/reviews" element={<Profile_userReviews />} />
+        
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/*" element={<Navigate to="/home" />} />
         <Route path="/detail/:id" element={<DetailPage />} />
-        <Route path="/review" element={<Profile_Reviews />} />
+        <Route path="/createReviews" element={<Profile_Reviews />} />
+        <Route path="/orders" element={<Profile_Orders />} />
       </Routes>
       <FooterComp />
     </>

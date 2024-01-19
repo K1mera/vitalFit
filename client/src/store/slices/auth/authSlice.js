@@ -13,10 +13,10 @@ export const authSlice = createSlice({
         state.status = "online";
         state.user = action.payload;
     },
-    logout: (state, action) => {
+    logout: (state, { payload }) => {
       state.status = "offline";
       state.user = {};
-      state.errorMessage = action.payload
+      state.errorMessage = payload?.errorMessage;
     },
     checkingCredentials: (state, action) => {
       state.status = 'checking';

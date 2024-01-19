@@ -13,62 +13,67 @@ export default function ProductsPage() {
 
   useEffect(() => {
     dispatch(getProducts());
-    window.scrollTo(0, 0)
-  }, [dispatch, filters, sorts ]);
+    window.scrollTo(0, 0);
+  }, [dispatch, filters, sorts]);
 
   const startIndex = (currentPage - 1) * 8;
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       dispatch(handlePages(currentPage - 1));
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
   };
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       dispatch(handlePages(currentPage + 1));
-      window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
     }
   };
 
   return (
-    <div className="flex h-full p-2 w-[ '97vw' ]">
+    <div className="flex h-full p-2 w-[ '98vw' ]">
       <Filter />
 
-      <main className="flex flex-1 flex-col justify-center gap-20 h-full ">
-        {loading
-        ? <Loading/>
-        : <section className={style.cardsContainer}>
-        {products.length
-        ? products
-          .slice(startIndex, startIndex + 8)
-          .map(({ id, name, price, image, stock }) => {
-            return (
-              <Card
-                key={id}
-                id={id}
-                name={name}
-                price={price}
-                image={image}
-                stock={stock}
-              />
-            )
-          })
-      : <p className="text-2xl mt-[10%]">Ups! No hay productos que coincidan con tu búsqueda.</p>
-      }
-      </section>
-    }
+      <main className="flex flex-1 flex-col justify-center h-full ">
+        {loading ? (
+          <Loading />
+        ) : (
+          <section className={style.cardsContainer}>
+            {products.length ? (
+              products
+                .slice(startIndex, startIndex + 8)
+                .map(({ id, name, price, image, stock }) => {
+                  return (
+                    <Card
+                      key={id}
+                      id={id}
+                      name={name}
+                      price={price}
+                      image={image}
+                      stock={stock}
+                    />
+                  );
+                })
+            ) : (
+              <p className="text-2xl mt-[10%]">
+                Ups! No hay productos que coincidan con tu búsqueda.
+              </p>
+            )}
+          </section>
+        )}
 
-        {products.length>0 && (
-            <section className="flex items-center justify-center gap-2 mr-5 mb-5">
+        {products.length > 0 && (
+          <section className="flex items-center justify-center gap-2 mr-5 mb-5">
             <button
               onClick={handlePreviousPage}
               className="font-bebas p-2 hover:text-primary">
               prev
             </button>
             <span className="font-bebas text-primary text-xl mb-1">
-              {currentPage}  <span className=" text-gray-800">/ {totalPages}</span>
+              {currentPage}{" "}
+              <span className=" text-gray-800">/ {totalPages}</span>
             </span>
             <button
               onClick={handleNextPage}
