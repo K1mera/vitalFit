@@ -224,7 +224,7 @@ export const LoginPage = () => {
             </span>
           </NavLink>
           <br />
-          <NavLink to={"/resetPass"}>
+          <NavLink to={"/auth/resetPass"}>
             <span
               style={{
                 fontFamily: "NuevaFuente, montserrat",

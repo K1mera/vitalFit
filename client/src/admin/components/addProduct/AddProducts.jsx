@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postProduct } from "../../../store";
 import { uploadfiles } from "../../../firebase/config";
 import Swal from "sweetalert2";
+import {CloseIcon, DeleteImageIcon} from "../../../icons";
 
 export default function AddProducts() {
   const {
@@ -62,10 +63,10 @@ export default function AddProducts() {
     setfileViewed((prevFiles) => [...prevFiles, ...review]);
   };
 
-  const deleteFile = (id) => {
-    const filtro = fileViewed.filter((file) => file.id !== id);
-    setfileViewed(filtro);
-    setFile(filtro);
+  const deleteFile = (index) => {
+    const filteredFiles = fileViewed.filter((file, i) => i !== index);
+    setfileViewed(filteredFiles);
+    setFile(filteredFiles);
   };
 
   const handleSubmitFile = async (e) => {
@@ -102,7 +103,7 @@ export default function AddProducts() {
 
   console.log(file);
   return (
-    <div className=" font-bebas text-gray-700 relative w-full h-[90%] overflow-scroll bg-primaryLight px-5 py-2 rounded-xl">
+    <div className=" font-bebas text-gray-700 relative w-full h-[90%] overflow-y-scroll bg-primaryLight px-5 py-2 rounded-xl">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block  text-sm font-bold mb-2 ">
@@ -229,19 +230,19 @@ export default function AddProducts() {
             })}
             onChange={hanldeFileChange}
           />
-          <div className="mt-2 flex space-x-2">
+          <div className="mt-2 py-4 flex space-x-2">
             {fileViewed.map((file, index) => (
-              <div key={index}>
+              <div key={index} className="relative px-2 h-16">
                 <img
                   src={file.previewUrl}
                   // alt={`Preview ${index}`}
-                  className="max-w-20 max-h-20"
+                  className="h-full"
                 />
                 <button
-                  className="absolute bg-red-500 text-white p-1 rounded"
+                  className="absolute top-0 left-0 text-white px-2 py-1 rounded"
                   onClick={() => deleteFile(index)}
                 >
-                  x
+                  <DeleteImageIcon className={'w-6 fill-red-500'}/>
                 </button>
               </div>
             ))}
