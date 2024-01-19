@@ -5,6 +5,7 @@ import { UsersManagement } from "../views";
 
 import bgImage from "/assets/image-loginPage.jpeg";
 import AddProducts from "../components/addProduct/AddProducts";
+import Orders from "../components/orders/orders";
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
@@ -21,9 +22,10 @@ export const AdminDashboard = () => {
         return <Inventario />;
       case "Control de usuarios":
         return <UsersManagement />;
-
+      case "Ordenes":
+        return <Orders />;
       default:
-        return null; // Render nothing if no option is selected
+        return <Orders />; // Render nothing if no option is selected
     }
   };
 
@@ -34,11 +36,12 @@ export const AdminDashboard = () => {
         className="w-full h-full object-cover absolute top-0 left-0"
         src={bgImage}
       />
-      <section className="flex gap-5 justify-between items-center h-[70%] w-[80%] z-40">
-        <aside className="bg-[#475157F2] h-full gap-1 w-[30%] rounded-xl flex flex-col p-5">
+      <section className="flex gap-5 justify-between items-center h-[70%] w-[80%] z-40 over">
+        <aside className="bg-[#475157F2] h-full gap-1 w-[30%] rounded-xl flex flex-col p-5 ">
           <AdminOption
             title={"ordenes"}
-            options={["Ordenes pendientes", "Ordenes enviadas"]}
+            options={["Ordenes"]}
+            handleOptionSelect={handleOptionSelect}
           />
           <AdminOption
             title={"control de inventario"}
@@ -51,7 +54,7 @@ export const AdminDashboard = () => {
             handleOptionSelect={handleOptionSelect}
           />
         </aside>
-        <section className="overFlow-hidden bg-primaryLight w-full h-full rounded-xl p-5">
+        <section className="overflow-scroll overflow-x-hidden bg-primaryLight w-full h-full rounded-xl p-5">
           {/* render selected option */}
           {renderSelectedComponent()}
         </section>

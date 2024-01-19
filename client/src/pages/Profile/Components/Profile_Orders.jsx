@@ -30,6 +30,8 @@ const Profile_Orders = () => {
       } catch (error) {}
     };
     fetchData();
+
+    return () => fetchData();
   }, [currentUser]);
 
   const handleOpenOrder = (order) => {
@@ -70,9 +72,14 @@ const Profile_Orders = () => {
                       </article>
                       <article className="mb-1">
                         <p>
-                          {i.data[0].title}
+                          {i.data[0].title}{" "}
                           {i.data.length - 1 > 0 && (
-                            <span> y {i.data.length - 1} productos más</span>
+                            <span>
+                              y {i.data.length - 1}
+                              {i.data.length == 2
+                                ? " producto más"
+                                : " productos más"}
+                            </span>
                           )}
                         </p>
                       </article>

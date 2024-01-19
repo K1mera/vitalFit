@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { userAuth } from "../../context/auth-context";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../../icons/BackIcon";
 import MercadoPago from "../MercadoPago/MercadoPago";
 import createBill from "../../firebase/createBill";
+import getUser from "../../firebase/getUser";
 
 const Order = () => {
   const navigate = useNavigate();
   const {
     currentUser,
-    user,
     products,
     productsLocalStorage,
     setTotalPay,
@@ -20,11 +20,21 @@ const Order = () => {
   const [itemsToPay, setItemsToPay] = useState(null);
   const [userToPay, setUserToPay] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [user, setUser] = useState(null);
   const envio = 4500;
   let cartItems;
   let totalAmount;
   let envioGratis = false;
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (currentUser) {
+        const fetch = await getUser(currentUser?.uid);
+        setUser(fetch);
+      }
+    };
+    fetchUser();
+  }, [currentUser]);
   if (products.length) {
     cartItems = (
       <ul>
@@ -105,10 +115,12 @@ const Order = () => {
       };
     });
 
+  console.log(user);
+
   const handlePay = async () => {
     if (!currentUser) navigate("/auth/loginUser");
 
-    if (user.dataCompleted) {
+    if (user?.dataCompleted) {
       setItemsToPay(arrayItems);
       setUserToPay({
         id: user.id,
@@ -124,12 +136,11 @@ const Order = () => {
         pisoDpto: user.pisoDpto || "",
       });
       setDisabled(true);
-
       return;
     }
     navigate("/preCheckout");
-    setShowOrder(false);
     setShowCart(false);
+    setShowOrder(false);
   };
 
   const handleBack = () => {
@@ -173,12 +184,12 @@ const Order = () => {
             </p>
           ) : null}
         </div>
-        {currentUser && user.calle && user.altura && (
+        {currentUser && user?.calle && user?.altura && (
           <div className="mb-24 font-montserrat font-medium w-full text-end">
             <span>
               Enviar a{" "}
               <span className="text-primary">
-                {user.calle} {user.altura}
+                {user?.calle} {user?.altura}
               </span>
             </span>
             <a href="/preCheckout">
@@ -211,7 +222,7 @@ const Order = () => {
               </button>
             )}
             <div className="relative right-7">
-              {itemsToPay && user.dataCompleted && (
+              {itemsToPay && user?.dataCompleted && (
                 <div className="w-fit mx-auto">
                   <MercadoPago
                     userId={currentUser.uid}
