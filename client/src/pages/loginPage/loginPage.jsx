@@ -4,13 +4,14 @@ import { useState } from "react";
 import { validationUser } from "./validations";
 import Swal from "sweetalert2";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginWithEmail } from "../../store";
 import getUsers from "../../store/slices/auth/getDocs";
 import bgImage from "/assets/image-loginPage.jpeg";
 
 export const LoginPage = () => {
   const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
 
   const [errors, setErrors] = useState({});
   const [login, setLogin] = useState({
@@ -181,7 +182,7 @@ export const LoginPage = () => {
           )}
           <br />
           <button
-            disabled={validationFormLogin()}
+            
             type="submit"
             style={{
               fontFamily: "NuevaFuente, bebas neue",
@@ -197,6 +198,8 @@ export const LoginPage = () => {
               marginLeft: "145px",
               cursor: "pointer",
             }}
+            disabled={status === "checking"}
+            className="disabled:opacity-70"
           >
             ENTRAR
           </button>

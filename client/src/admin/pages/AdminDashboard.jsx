@@ -36,10 +36,10 @@ export const AdminDashboard = () => {
       />
       <section className="flex gap-5 justify-between items-center h-[70%] w-[80%] z-40">
         <aside className="bg-[#475157F2] h-full gap-1 w-[30%] rounded-xl flex flex-col p-5">
-          <AdminOption
+          {/* <AdminOption
             title={"ordenes"}
             options={["Ordenes pendientes", "Ordenes enviadas"]}
-          />
+          /> */}
           <AdminOption
             title={"control de inventario"}
             options={["Agregar productos", "Inventario"]}

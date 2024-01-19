@@ -52,7 +52,7 @@ export const Inventario = () => {
             );
           })}
       </section>
-      <section className="flex items-center justify-center gap-2 mr-5 mb-5">
+      <section className="flex items-center justify-center gap-2  w-full">
         <button
           onClick={handlePreviousPage}
           disabled={currentPage <= 1}

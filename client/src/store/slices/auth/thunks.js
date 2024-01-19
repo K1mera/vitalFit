@@ -32,6 +32,7 @@ export const startGoogle = () => {
     return async( dispatch ) => {
         dispatch(checkingGoogleCredentials());
         const result = await signInWithGoogle();
+        if (!result.ok) return dispatch(logout(result.errorMessage));
         
         
         dispatch(login(result))
