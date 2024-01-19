@@ -4,7 +4,6 @@ import { AppRouter, AuthRoutes } from "./";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getCategories, getProducts } from "../store/slices";
-
 import { useSelector } from "react-redux";
 import { AdminRoutes } from "./AdminRoutes";
 import { Home } from "../pages";
