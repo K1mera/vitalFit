@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AdminDashboard } from "../admin/pages";
-import EditProduct from "../admin/components/inventario/editProduct/editProduct";
-import EditProduct2 from "../admin/components/inventario/editProduct/EditProduct2";
+import EditProduct from "../admin/components/inventario/editProduct/EditProduct";
 import OrderDetail from "../admin/pages/OrderDetail";
 
 export const AdminRoutes = () => {
