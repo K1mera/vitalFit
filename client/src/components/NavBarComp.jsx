@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { userAuth } from "../context/auth-context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LogoIcon, FavoriteIcon, UserIcon } from "../icons";
-import { cleanFilters, cleanSorts, cleanSearch } from "../store";
+import { cleanFilters, cleanSorts, cleanSearch, getLogout } from "../store";
 import CartButton from "./Cart/CartButton/CartButton";
 import Cart from "./Cart/Cart";
 import Order from "./Cart/Order";
@@ -14,6 +14,8 @@ import ReviewsIcon from "../icons/ReviewsIcon";
 
 export const NavBarComp = () => {
   const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
+  console.log(user);
 
   const {
     currentUser,
@@ -29,12 +31,10 @@ export const NavBarComp = () => {
   console.log(isRegistered);
 
   const logOut = async () => {
-    const respuesta = await logOutUser();
-    if (respuesta) {
-      setCurrentUser(null);
-      setProductsLocalStorage([]);
-      setProducts([]);
-    }
+    dispatch(getLogout());
+    setCurrentUser(null);
+    setProductsLocalStorage([]);
+    setProducts([]);
   };
 
   useEffect(() => {
@@ -77,9 +77,16 @@ export const NavBarComp = () => {
           </NavLink>
         </section>
         <section className="flex gap-2 w-[195px]">
-          {/* // todo  */}
-          {/* change the icon if the user is logged */}
-          {currentUser && (
+
+          {
+            !user.displayName ?
+            <NavLink to={"auth/loginPage"}>
+              <UserIcon
+                className={
+                  "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
+                }
+              />
+            </NavLink> :
             <BiLogOutCircle
               onClick={logOut}
               style={{
@@ -91,19 +98,11 @@ export const NavBarComp = () => {
                 "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary cursor-pointer"
               }
             />
-          )}
 
-          {!currentUser && (
-            <NavLink to={"auth/loginPage"}>
-              <UserIcon
-                className={
-                  "w-10 transition fill-primaryDark hover:scale-125 hover:fill-primary"
-                }
-              />
-            </NavLink>
-          )}
+          }
+          
 
-          {currentUser && <ReviewsIcon />}
+          {user.displayName && <ReviewsIcon />}
 
           {/*  <button onClick={() => onShopList()} className="relative">
             <ShoppingCartIcon

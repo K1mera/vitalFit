@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 
 const CardOrders = ({ orderId, arrayData, fecha, status, quantityItems }) => {
@@ -16,7 +16,7 @@ const CardOrders = ({ orderId, arrayData, fecha, status, quantityItems }) => {
       ? arrayData.reduce((t, item) => t + item.unit_price * item.quantity, 0)
       : arrayData[0].unit_price * arrayData[0].quantity;
   return (
-    <Link to={`detail/${orderId}`}>
+    <Link to={`detail/${orderId}`} target="blank">
       <div className="p-4 font-montserrat transition hover:scale-[101%]">
         {/*   <span className="w-[30%]">#{newOrder}</span>
       <span className="w-[30%]">
@@ -43,7 +43,8 @@ const CardOrders = ({ orderId, arrayData, fecha, status, quantityItems }) => {
                 : status == "send"
                 ? "w-[13%] font-semibold text-orange-600"
                 : "w-[13%] font-semibold text-green-600"
-            }>
+            }
+          >
             {status == "succesfull"
               ? "Pendiente"
               : status == "accept"

@@ -5,10 +5,21 @@ import { UsersManagement } from "../views";
 
 import bgImage from "/assets/image-loginPage.jpeg";
 import AddProducts from "../components/addProduct/AddProducts";
-import Orders from "../components/orders/Orders";
+
+import {useDispatch} from "react-redux";
+import {getLogout} from "../../store";
+import Orders from "../components/orders/orders";
+
 
 export const AdminDashboard = () => {
   const [componentSelected, setComponentSelected] = useState("");
+
+  const dispatch = useDispatch();
+
+  const onLogOut = () => {
+    dispatch(getLogout())
+  }
+
 
   const handleOptionSelect = (option) => {
     setComponentSelected(option);
@@ -37,22 +48,31 @@ export const AdminDashboard = () => {
         src={bgImage}
       />
       <section className="flex gap-5 justify-between items-center h-[70%] w-[80%] z-40 over">
-        <aside className="bg-[#475157F2] h-full gap-1 w-[30%] rounded-xl flex flex-col p-5 ">
-          <AdminOption
-            title={"ordenes"}
-            options={["Ordenes"]}
-            handleOptionSelect={handleOptionSelect}
-          />
-          <AdminOption
-            title={"control de inventario"}
-            options={["Agregar productos", "Inventario"]}
-            handleOptionSelect={handleOptionSelect}
-          />
-          <AdminOption
-            title={"gestion de usuarios"}
-            options={["Control de usuarios"]}
-            handleOptionSelect={handleOptionSelect}
-          />
+        <aside className="bg-[#475157F2] h-full gap-1 w-[30%] rounded-xl flex flex-col p-5 items-center justify-between">
+          <div className="flex flex-col w-full">
+            <AdminOption
+              title={"ordenes"}
+              options={["Ordenes"]}
+              handleOptionSelect={handleOptionSelect}
+            />
+            <AdminOption
+              title={"control de inventario"}
+              options={["Agregar productos", "Inventario"]}
+              handleOptionSelect={handleOptionSelect}
+            />
+            <AdminOption
+              title={"gestion de usuarios"}
+              options={["Control de usuarios"]}
+              handleOptionSelect={handleOptionSelect}
+            />
+          </div>
+
+          <button
+            onClick={onLogOut} 
+            className="px-2 py-1 bg-primary rounded-lg w-24 font-bebas text-white bottom-2"
+          >
+            Logout
+          </button>
         </aside>
         <section className="overflow-scroll overflow-x-hidden bg-primaryLight w-full h-full rounded-xl p-5">
           {/* render selected option */}
